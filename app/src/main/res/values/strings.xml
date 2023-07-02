@@ -30,35 +30,29 @@
     <string name="workplace_title_junior_software_developer">Junior Software Developer</string>
     <string name="workplace_title_android_developer">Android Developer</string>
 
-    <string name="workplace_location_samsung">Samsung SRPOL, Warsaw, Poland</string>
-    <string name="workplace_location_spyrosoft">Spyrosoft, Warsaw, Poland</string>
-    <string name="workplace_location_paramount">Paramount, Warsaw, Poland</string>
-    <string name="workplace_location_viessmann">Viessmann, remote</string>
+    <string name="workplace_location_samsung">Samsung SRPOL, Warsaw Poland</string>
+    <string name="workplace_location_spyrosoft">Spyrosoft, Warsaw Poland, Hybrid</string>
+    <string name="workplace_location_paramount">Paramount, Warsaw Poland, Hybrid</string>
+    <string name="workplace_location_viessmann">Heads Here, fully remote</string>
 
-    <string name="workplace_description_viessmann">
-        Heads Here, consulting for Viessmann, Remote. Work on ViCare application.
+    <string name="workplace_description_viessmann">"External consulting for Viessmann.
+Currently working on ViCare application."
     </string>
-    <string name="workplace_description_paramount">
-        Worked on new features and bug fixes for application Noggin. The work involved working with a modern big multi-module MVVM project (200+modules) with 80+% unit tests coverage.
+    <string name="workplace_description_paramount">"The work consisted of creating new features and maintaining Noggin application.
+The app was written in modern android stack in big multi-module monorepository for several of the Paramount products.
+It consisted of over 200 modules and maintained over 80% unit test coverage."
     </string>
-    <string name="workplace_description_spyrosoft">
-        Consulting for Huawei. Provision of programming services to Huawei company:
-        Prototyping applications based on client requirements
-        Analyzing performance problems and anomalies of EMUI user interface and system
-        Work with standard Android application stack: Android Jetpack components, Square Libraries
-    </string>
-
-    <string name="workplace_description_samsung_junior">
-        1.11.2018 - 1.12.2018 and 12.1.2019 - 1.2.2019
-        Business Trip to South Korea as support in the development of Smart Things application.
-        Developing SmartThings application using standard Android application stack:
-        Android Jetpack components
-        Square Libraries
+    <string name="workplace_description_spyrosoft">"External consulting for Huawei.
+Maintenance and fixes for several Huawei\'s system applications.
+Prototyping applications based on client requirements.
+Analyzing performance problems and anomalies of EMUI user interface and system."
     </string>
 
-    <string name="workplace_description_samsung_intern">
-        Maintenance and bug fixes for SmartThings (back then it was called Samsung Connect) application.
+    <string name="workplace_description_samsung_junior">"Continued maintenance and bug fixes for SmartThings (Samsung Connect) application as well as taking parts in writing new features and refactoring apps to new standard.
+Notably I was invited to two business trips to South Korea as support in development."
     </string>
+
+    <string name="workplace_description_samsung_intern">"Maintenance and bug fixes for SmartThings (Samsung Connect) application."</string>
 
     <string name="workplace_dates_present">present</string>
 
