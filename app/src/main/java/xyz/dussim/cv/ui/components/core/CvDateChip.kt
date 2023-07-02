@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import xyz.dussim.cv.data.CvDatePattern
 import xyz.dussim.cv.ui.theme.Caption
@@ -30,7 +29,7 @@ fun CvDateChip(
     )
 }
 
-@Preview
+
 @Composable
 private fun PreviewCvDateChip() {
     CvDateChip(text = CvDatePattern.format(YearMonth.now()))

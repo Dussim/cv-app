@@ -115,7 +115,7 @@ private fun ContactHeaderSlots(
     ) {
         imageRow()
         socials()
-        buttons()
+//        buttons()
     }
 }
 

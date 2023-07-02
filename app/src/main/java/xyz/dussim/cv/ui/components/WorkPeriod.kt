@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import xyz.dussim.cv.R
 import xyz.dussim.cv.data.ImList
@@ -173,7 +172,7 @@ fun WorkPeriodDescription(
     BasicText(text = text, style = Body2.copy(color = TextAlternative))
 }
 
-@Preview
+
 @Composable
 private fun WorkPeriodColumnPreview() {
     val desc = """
@@ -188,9 +187,9 @@ private fun WorkPeriodColumnPreview() {
     )
 }
 
-@Preview
+
 @Composable
-fun WorkPeriodRowPreview() {
+private fun WorkPeriodRowPreview() {
     val desc = """
         Worked on new features and bug fixes for Noggin application for kids. The work involved working with a modern big multi-module MVVM project (200+modules) with 80+% unit tests coverage.
     """.trimIndent()

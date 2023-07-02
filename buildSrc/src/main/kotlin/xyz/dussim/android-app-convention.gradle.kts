@@ -25,7 +25,7 @@ android {
     buildTypes {
         val debug = getByName("debug")
 
-        create("shrink") {
+        val shrink = create("shrink") {
             initWith(debug)
             isMinifyEnabled = true
             isShrinkResources = true
@@ -36,8 +36,9 @@ android {
         }
 
         getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            initWith(shrink)
+
+            isDebuggable = false
         }
     }
     compileOptions {

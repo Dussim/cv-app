@@ -32,7 +32,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import xyz.dussim.cv.R
 import xyz.dussim.cv.ui.theme.AccentColor
@@ -367,7 +366,7 @@ fun CVOutlinedToggleButton(
     }
 }
 
-@Preview
+
 @Composable
 private fun PreviewCvButton() {
     Column {
@@ -377,7 +376,7 @@ private fun PreviewCvButton() {
     }
 }
 
-@Preview
+
 @Composable
 private fun PreviewCvButtonDisabled() {
     CvButton(onClick = { }, enabled = false) {
@@ -385,7 +384,7 @@ private fun PreviewCvButtonDisabled() {
     }
 }
 
-@Preview
+
 @Composable
 private fun PreviewCvOutlinedButton() {
     CvOutlinedButton(onClick = { }) {
@@ -393,7 +392,7 @@ private fun PreviewCvOutlinedButton() {
     }
 }
 
-@Preview
+
 @Composable
 private fun PreviewCvOutlinedButtonDisabled() {
     CvOutlinedButton(onClick = { }, enabled = false) {
@@ -401,7 +400,7 @@ private fun PreviewCvOutlinedButtonDisabled() {
     }
 }
 
-@Preview
+
 @Composable
 private fun PreviewOutlinedButNormalSizeButtonEnabled() {
     CvOutlinedButton(
@@ -413,7 +412,7 @@ private fun PreviewOutlinedButNormalSizeButtonEnabled() {
     }
 }
 
-@Preview
+
 @Composable
 private fun PreviewToggleStates() {
     Column(
@@ -432,7 +431,7 @@ private fun PreviewToggleStates() {
     }
 }
 
-@Preview
+
 @Composable
 private fun PreviewOutlinedToggle() {
     val (checked, setChecked) = remember {
