@@ -13,24 +13,25 @@ abstract class VersionSchema @Inject constructor(project: Project) {
         const val DEFAULT_MIN_API = 28
     }
 
-    enum class BuildType(val version: Int) {
-        Debug(10), Release(90)
-    }
-
     enum class BuildSubtype(val version: Int) {
-        InstantApp(1), NormalApp(3)
+        InstantApp(1), InstalledApp(3)
     }
 
     val minApi: Property<Int> = project.objects.property<Int>()
         .apply { finalizeValueOnRead() }
+
     val major: Property<Int> = project.objects.property<Int>()
         .apply { finalizeValueOnRead() }
+
     val minor: Property<Int> = project.objects.property<Int>()
+        .apply { finalizeValueOnRead() }
+
+    val buildSubType: Property<BuildSubtype> = project.objects.property<BuildSubtype>()
         .apply { finalizeValueOnRead() }
 
     val versionName: Provider<String> = project.provider { "${major.get()}.${minor.get()}" }
 
     val versionCode: Provider<Int> = project.provider {
-        ((minApi.get() * 100 + major.get()) * 100 + minor.get()) * 100
+        (((minApi.get() * 100 + major.get()) * 100 + minor.get()) * 100) + buildSubType.get().version
     }
 }

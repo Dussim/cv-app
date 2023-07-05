@@ -1,17 +1,8 @@
 plugins {
-    id("xyz.dussim.versioning")
     id("xyz.dussim.android-app-convention")
-}
-
-versionSchema {
-}
-
-android {
-    defaultConfig {
-        minSdk = versionSchema.minApi.get()
-        versionName = versionSchema.versionName.get()
-        versionCode = versionSchema.versionCode.get()
-    }
+    id("xyz.dussim.flavors")
+    id("xyz.dussim.versioning")
+    id("xyz.dussim.defaults")
 }
 
 dependencies {
@@ -38,15 +29,12 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.1")
 
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
-
-    "shrinkImplementation"("androidx.compose.ui:ui-tooling")
-    "shrinkImplementation"("androidx.compose.ui:ui-tooling-preview")
-    "shrinkImplementation"("androidx.compose.ui:ui-test-manifest")
-
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+
     androidTestImplementation(composeBom)
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+
+    instantAppImplementation("com.google.android.gms:play-services-instantapps:18.0.1")
 }

@@ -1,8 +1,10 @@
 package xyz.dussim.cv.model.external.skills
 
 import androidx.compose.runtime.Immutable
+import kotlinx.serialization.Serializable
 
 @Immutable
+@Serializable
 data class Skill(
     val name: SkillName,
     val level: SkillLevel
