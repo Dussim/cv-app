@@ -9,14 +9,20 @@ import xyz.dussim.cv.model.repository.RepositoryComponent
 import xyz.dussim.cv.model.repository.SkillsRepository
 import xyz.dussim.cv.model.repository.SocialsRepository
 import xyz.dussim.cv.model.repository.WorkplacesRepository
+import xyz.dussim.httpclient.api.HttpComponent
+import xyz.dussim.httpclient.impl.create
 
 internal class RepositoryComponentImpl(
+    private val httpComponent: HttpComponent = HttpComponent.create(),
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     override val socialsRepository: SocialsRepository = StaticSocialsRepository,
     override val languagesRepository: LanguagesRepository = StaticLanguagesRepository,
-    override val skillsRepository: SkillsRepository = StaticSkillsRepository,
+    override val skillsRepository: SkillsRepository = NetworkSkillsRepository(
+        httpComponent.skillsApiEndpoint,
+        StaticSkillsRepository
+    ),
     override val aboutMeRepository: AboutMeRepository = StaticAboutMeRepository,
-    override val workplacesRepository: WorkplacesRepository = StaticWorkplacesRepository,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    override val workplacesRepository: WorkplacesRepository = StaticWorkplacesRepository
 ) : RepositoryComponent {
     override val aggregateRepository: AggregateRepository by lazy {
         AggregateRepositoryImpl(

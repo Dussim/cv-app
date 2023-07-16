@@ -44,6 +44,7 @@ import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import xyz.dussim.api.skills.Skill
 import xyz.dussim.cv.data.ImList
 import xyz.dussim.cv.data.LocalTextStyleProvider
 import xyz.dussim.cv.data.TextStyleProvider
@@ -51,7 +52,6 @@ import xyz.dussim.cv.model.MainViewModel
 import xyz.dussim.cv.model.external.ImCvData
 import xyz.dussim.cv.model.external.about.AboutMe
 import xyz.dussim.cv.model.external.languages.Language
-import xyz.dussim.cv.model.external.skills.Skill
 import xyz.dussim.cv.model.external.socials.SocialLink
 import xyz.dussim.cv.model.external.workplace.WorkplaceData
 import xyz.dussim.cv.model.internal.Tab
@@ -73,7 +73,6 @@ import xyz.dussim.cv.ui.components.contactInfoPhotoHeader
 import xyz.dussim.cv.ui.components.core.CVOutlinedToggleButton
 import xyz.dussim.cv.ui.components.core.CvIcon
 import xyz.dussim.cv.ui.components.core.HidingHeader
-import xyz.dussim.cv.ui.theme.BackgroundColor
 import xyz.dussim.cv.ui.theme.H3
 import xyz.dussim.cv.ui.utils.ScreenWidthClass
 import xyz.dussim.cv.ui.utils.ScreenWidthClass.Big
@@ -296,7 +295,6 @@ class MainActivity : ComponentActivity() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(BackgroundColor)
                 .padding(20.dp)
         ) {
             Row(

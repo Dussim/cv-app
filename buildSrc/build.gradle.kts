@@ -12,17 +12,10 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        create("versioningPlugin") {
+
+        create("versioning") {
             id = "xyz.dussim.versioning"
-            implementationClass = "xyz.dussim.OpinionatedVersioningPlugin"
-        }
-        create("flavorsPlugin") {
-            id = "xyz.dussim.flavors"
-            implementationClass = "xyz.dussim.OpinionatedFlavorsPlugin"
-        }
-        create("applyDefaults") {
-            id = "xyz.dussim.defaults"
-            implementationClass = "xyz.dussim.ApplyDefaultsPlugin"
+            implementationClass = "xyz.dussim.buildlogic.VersioningPlugin"
         }
     }
 }

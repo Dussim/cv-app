@@ -1,11 +1,29 @@
+import java.util.Properties
+
 plugins {
     id("xyz.dussim.android-app-convention")
-    id("xyz.dussim.flavors")
     id("xyz.dussim.versioning")
-    id("xyz.dussim.defaults")
+}
+
+android {
+    val propsFile = rootProject.file("keystore.properties")
+    val props = Properties().apply {
+        load(propsFile.reader())
+    }
+    signingConfigs {
+        create("release") {
+            keyAlias = props["alias"] as String
+            keyPassword = props["password"] as String
+            storeFile = rootProject.file(props["location"] as String)
+            storePassword = props["password"] as String
+        }
+    }
 }
 
 dependencies {
+    implementation(project(":api:skills"))
+    implementation(project(":http-client:impl"))
+
     val composeBom = platform("androidx.compose:compose-bom:2023.06.01")
     implementation(composeBom)
 
@@ -30,7 +48,10 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    
+
+    //google play complained that I used old version, it was probably pulled as dependency of other libs
+    implementation("androidx.fragment:fragment-ktx:1.6.0")
+
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
     androidTestImplementation(composeBom)

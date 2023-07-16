@@ -10,3 +10,6 @@ dependencyResolutionManagement {
 rootProject.name = "App"
 
 include(":app")
+include(":api:skills")
+include(":http-client:api")
+include(":http-client:impl")

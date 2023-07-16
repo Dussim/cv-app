@@ -9,7 +9,6 @@ import xyz.dussim.cv.R
 import xyz.dussim.cv.data.toImmutable
 import xyz.dussim.cv.model.external.ImCvData
 import xyz.dussim.cv.model.external.about.AboutMe
-import xyz.dussim.cv.model.external.skills.Skill
 import xyz.dussim.cv.model.external.socials.SocialLink
 import xyz.dussim.cv.model.internal.Tab
 import xyz.dussim.cv.model.internal.Tab.All
@@ -40,7 +39,7 @@ class MainViewModel(
     private val _languages = MutableStateFlow(emptyList<xyz.dussim.cv.model.external.languages.Language>().toImmutable())
     val languages = _languages.asStateFlow()
 
-    private val _skills = MutableStateFlow(emptyList<Skill>().toImmutable())
+    private val _skills = MutableStateFlow(emptyList<xyz.dussim.api.skills.Skill>().toImmutable())
     val skills = _skills.asStateFlow()
 
     private val _socials = MutableStateFlow(emptyList<SocialLink>().toImmutable())
