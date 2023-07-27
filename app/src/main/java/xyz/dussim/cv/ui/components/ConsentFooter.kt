@@ -5,9 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
-import xyz.dussim.cv.R
-import xyz.dussim.cv.ui.theme.Label
-import xyz.dussim.cv.ui.theme.TextAlternative
+import xyz.dussim.resources.R
 
 
 @Composable
@@ -17,9 +15,9 @@ fun ConsentFooter(
 ) {
     BasicText(
         text = text,
-        style = Label.copy(
+        style = xyz.dussim.designsystem.Label.copy(
             fontStyle = FontStyle.Italic,
-            color = TextAlternative
+            color = xyz.dussim.designsystem.TextAlternative
         ),
         modifier = modifier
     )

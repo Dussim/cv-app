@@ -5,19 +5,14 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import xyz.dussim.cv.R
+import xyz.dussim.api.data.DataSource
 import xyz.dussim.cv.data.toImmutable
 import xyz.dussim.cv.model.external.ImCvData
-import xyz.dussim.cv.model.external.about.AboutMe
-import xyz.dussim.cv.model.external.socials.SocialLink
 import xyz.dussim.cv.model.internal.Tab
-import xyz.dussim.cv.model.internal.Tab.All
-import xyz.dussim.cv.model.internal.Tab.Certificates
-import xyz.dussim.cv.model.internal.Tab.Language
-import xyz.dussim.cv.model.internal.Tab.Skills
-import xyz.dussim.cv.model.internal.Tab.Work
+import xyz.dussim.cv.model.internal.Tab.*
 import xyz.dussim.cv.model.internal.TabModel
-import xyz.dussim.cv.model.repository.AggregateRepository
+import xyz.dussim.data.CvData
+import xyz.dussim.resources.R
 
 private val TABS = listOf(
     TabModel(All, null, R.string.button_tab_all),
@@ -28,7 +23,7 @@ private val TABS = listOf(
 ).toImmutable()
 
 class MainViewModel(
-    private val aggregateRepository: AggregateRepository
+    private val cvDataSource: DataSource<CvData>
 ) : ViewModel() {
     private val _selectedTab = MutableStateFlow(All)
     val selectedTab = _selectedTab.asStateFlow()
@@ -36,32 +31,15 @@ class MainViewModel(
     private val _tabs = MutableStateFlow(TABS)
     val tabs = _tabs.asStateFlow()
 
-    private val _languages = MutableStateFlow(emptyList<xyz.dussim.cv.model.external.languages.Language>().toImmutable())
-    val languages = _languages.asStateFlow()
-
-    private val _skills = MutableStateFlow(emptyList<xyz.dussim.api.skills.Skill>().toImmutable())
-    val skills = _skills.asStateFlow()
-
-    private val _socials = MutableStateFlow(emptyList<SocialLink>().toImmutable())
-    val socials = _socials.asStateFlow()
-
-    private val _aboutMe = MutableStateFlow<AboutMe?>(null)
-    val aboutMe = _aboutMe.asStateFlow()
-
     private val _imCvData = MutableStateFlow<ImCvData?>(null)
     val imCvData = _imCvData.asStateFlow()
 
     init {
         viewModelScope.launch {
-            val cvData = aggregateRepository.fetchAggregatedData()
+            val cvData = cvDataSource.fetch()
             val imCvData = ImCvData(cvData)
 
             _imCvData.value = imCvData
-
-            _languages.value = imCvData.languages
-            _skills.value = imCvData.skills
-            _socials.value = imCvData.socials
-            _aboutMe.value = imCvData.aboutMe
         }
     }
 

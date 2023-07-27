@@ -1,17 +1,18 @@
 package xyz.dussim.buildlogic
 
-import gradle.kotlin.dsl.accessors._b546d458d3a5d3620ec2221a4d3f1868.android
+import com.android.build.gradle.BaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.register
+import org.gradle.kotlin.dsl.the
 
 class VersioningPlugin : Plugin<Project> {
     companion object {
         private const val GROUP = "versioning"
 
         private const val INSTANT_APP_VERSION_OFFSET = 1
-        private const val INSTALLED_APP_VERSION_OFFSET = 3
+        private const val INSTALLED_APP_VERSION_OFFSET = 53
     }
 
     override fun apply(target: Project): Unit = with(target) {
@@ -32,8 +33,8 @@ class VersioningPlugin : Plugin<Project> {
             description = "Prints the configured version name and code of each flavor"
         }
 
-        with(android) {
-            flavorDimensions += "installationType"
+        with(the<BaseExtension>()) {
+            flavorDimensions("installationType")
 
             productFlavors {
                 create("instantApp") {

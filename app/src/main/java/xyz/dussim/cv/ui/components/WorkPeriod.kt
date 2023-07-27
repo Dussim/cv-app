@@ -6,27 +6,42 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import xyz.dussim.cv.R
+import xyz.dussim.cv.data.CvDatePattern
 import xyz.dussim.cv.data.ImList
 import xyz.dussim.cv.data.LocalTextStyleProvider
-import xyz.dussim.cv.model.external.workplace.WorkplaceData
-import xyz.dussim.cv.model.external.workplace.periodLabel
-import xyz.dussim.cv.ui.components.core.CvDateChip
-import xyz.dussim.cv.ui.theme.AccentColor
-import xyz.dussim.cv.ui.theme.Body2
-import xyz.dussim.cv.ui.theme.Label
-import xyz.dussim.cv.ui.theme.TextAlternative
+import xyz.dussim.data.workplace.Workplace
+import xyz.dussim.resources.R
+
+inline val Workplace.startLabel: String
+    @Composable get() = remember {
+        CvDatePattern.format(startDate)
+    }
+
+inline val Workplace.endLabel: String
+    @Composable get() = when (endDate) {
+        null -> stringResource(id = R.string.workplace_dates_present)
+        else -> remember { CvDatePattern.format(endDate) }
+    }
+
+inline val Workplace.periodLabel: String
+    @Composable get() {
+        val startLabel = startLabel
+        val endLabel = endLabel
+
+        return remember { "$startLabel – $endLabel" }
+    }
 
 @Composable
 fun WorkPeriodHorizontal(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    workplaces: ImList<WorkplaceData>
+    workplaces: ImList<Workplace>
 ) {
     WorkPeriod(
         modifier = modifier,
@@ -54,7 +69,7 @@ fun WorkPeriodVertical(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    workplaces: ImList<WorkplaceData>
+    workplaces: ImList<Workplace>
 ) {
     WorkPeriod(
         modifier = modifier,
@@ -147,7 +162,7 @@ fun WorkPeriodDates(
     text: String,
     modifier: Modifier = Modifier
 ) {
-    CvDateChip(text, modifier)
+    xyz.dussim.designsystem.core.CvDateChip(text, modifier)
 }
 
 @Composable
@@ -162,14 +177,14 @@ fun WorkPeriodTitle(
 fun WorkPeriodPlace(
     text: String
 ) {
-    BasicText(text = text.uppercase(), style = Label.copy(color = AccentColor))
+    BasicText(text = text.uppercase(), style = xyz.dussim.designsystem.Label.copy(color = xyz.dussim.designsystem.AccentColor))
 }
 
 @Composable
 fun WorkPeriodDescription(
     text: String
 ) {
-    BasicText(text = text, style = Body2.copy(color = TextAlternative))
+    BasicText(text = text, style = xyz.dussim.designsystem.Body2.copy(color = xyz.dussim.designsystem.TextAlternative))
 }
 
 

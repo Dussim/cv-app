@@ -1,6 +1,6 @@
 package xyz.dussim.buildlogic
 
-import gradle.kotlin.dsl.accessors._b546d458d3a5d3620ec2221a4d3f1868.android
+import com.android.build.gradle.BaseExtension
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.the
@@ -33,12 +33,14 @@ abstract class DescribeVersionCodeTask : DefaultTask() {
 
 abstract class PrintFlavorVersionsTask : DefaultTask() {
     @TaskAction
-    fun printFalvorVersions() = with(project.android) {
-        productFlavors.forEach { flavor ->
-            println("Flavor: ${flavor.name}")
-            println("Version name: ${flavor.versionName + flavor.versionNameSuffix.orEmpty()}")
-            println("Version code: ${flavor.versionCode}")
-            println()
+    fun printFalvorVersions() {
+        with(the<BaseExtension>()) {
+            productFlavors.forEach { flavor ->
+                println("Flavor: ${flavor.name}")
+                println("Version name: ${flavor.versionName + flavor.versionNameSuffix.orEmpty()}")
+                println("Version code: ${flavor.versionCode}")
+                println()
+            }
         }
     }
 }

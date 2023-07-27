@@ -1,6 +1,5 @@
 package xyz.dussim.buildlogic.internal
 
-import org.gradle.api.provider.Provider
 import java.io.File
 
 internal class FileVersionSchema(private val file: File) {

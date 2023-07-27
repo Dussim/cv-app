@@ -1,13 +1,14 @@
 package xyz.dussim.cv.model.external
 
 import androidx.compose.runtime.Immutable
-import xyz.dussim.api.skills.Skill
 import xyz.dussim.cv.data.ImList
 import xyz.dussim.cv.data.toImmutable
-import xyz.dussim.cv.model.external.about.AboutMe
-import xyz.dussim.cv.model.external.languages.Language
-import xyz.dussim.cv.model.external.socials.SocialLink
-import xyz.dussim.cv.model.external.workplace.WorkplaceData
+import xyz.dussim.data.CvData
+import xyz.dussim.data.about.AboutMe
+import xyz.dussim.data.languages.Language
+import xyz.dussim.data.skills.Skill
+import xyz.dussim.data.socials.SocialLink
+import xyz.dussim.data.workplace.Workplace
 
 @Immutable
 data class ImCvData(
@@ -15,7 +16,7 @@ data class ImCvData(
     val languages: ImList<Language>,
     val socials: ImList<SocialLink>,
     val aboutMe: AboutMe,
-    val workplaces: ImList<WorkplaceData>
+    val workplaces: ImList<Workplace>
 ) {
     constructor(cvData: CvData) : this(
         cvData.skills.toImmutable(),

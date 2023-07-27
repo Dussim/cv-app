@@ -10,17 +10,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import xyz.dussim.cv.R
 import xyz.dussim.cv.data.ImList
 import xyz.dussim.cv.data.LocalTextStyleProvider
-import xyz.dussim.cv.ui.components.core.CvLinearProgressBar
+import xyz.dussim.resources.R
 
 @Composable
 fun SkillsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    skills: ImList<xyz.dussim.api.skills.Skill>
+    skills: ImList<xyz.dussim.data.skills.Skill>
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
     val skillStyle = LocalTextStyleProvider.current.forSkills()
@@ -43,7 +42,7 @@ fun SkillsColumn(
                         style = skillStyle,
                         modifier = Modifier.weight(1f)
                     )
-                    CvLinearProgressBar(
+                    xyz.dussim.designsystem.core.CvLinearProgressBar(
                         cornerRadius = 40.dp,
                         fraction = it.level.fraction,
                         modifier = Modifier

@@ -1,6 +1,7 @@
 package xyz.dussim
 
 plugins {
+    id("xyz.dussim.module-utilities")
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.serialization")
@@ -31,12 +32,12 @@ android {
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        jvmToolchain(17)
     }
 
     buildFeatures {
@@ -44,7 +45,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.7"
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
 
     packaging {

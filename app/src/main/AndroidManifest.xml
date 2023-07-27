@@ -40,6 +40,9 @@
                 <data android:scheme="https" />
                 <data android:host="tuzim.xyz" />
             </intent-filter>
+            <meta-data
+                android:name="default-url"
+                android:value="https://tuzim.xyz" />
         </activity>
     </application>
 

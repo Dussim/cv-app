@@ -6,30 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
@@ -44,41 +26,32 @@ import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import xyz.dussim.api.skills.Skill
+import xyz.dussim.api.components.LocalComponent
+import xyz.dussim.api.components.ModelComponent
+import xyz.dussim.api.components.NetworkComponent
+import xyz.dussim.api.coroutines.DispatchersComponent
+import xyz.dussim.api.coroutines.create
+import xyz.dussim.api.data.DataSource
 import xyz.dussim.cv.data.ImList
 import xyz.dussim.cv.data.LocalTextStyleProvider
 import xyz.dussim.cv.data.TextStyleProvider
 import xyz.dussim.cv.model.MainViewModel
 import xyz.dussim.cv.model.external.ImCvData
-import xyz.dussim.cv.model.external.about.AboutMe
-import xyz.dussim.cv.model.external.languages.Language
-import xyz.dussim.cv.model.external.socials.SocialLink
-import xyz.dussim.cv.model.external.workplace.WorkplaceData
 import xyz.dussim.cv.model.internal.Tab
 import xyz.dussim.cv.model.internal.TabModel
-import xyz.dussim.cv.model.repository.AggregateRepository
-import xyz.dussim.cv.model.repository.RepositoryComponent
-import xyz.dussim.cv.model.repository.impl.create
-import xyz.dussim.cv.ui.components.AboutSection
-import xyz.dussim.cv.ui.components.CertificatesHorizontal
-import xyz.dussim.cv.ui.components.CertificatesVertical
-import xyz.dussim.cv.ui.components.ConsentFooter
-import xyz.dussim.cv.ui.components.ContactHeader
-import xyz.dussim.cv.ui.components.LanguagesColumn
-import xyz.dussim.cv.ui.components.Orientation
-import xyz.dussim.cv.ui.components.SkillsColumn
-import xyz.dussim.cv.ui.components.WorkPeriodHorizontal
-import xyz.dussim.cv.ui.components.WorkPeriodVertical
-import xyz.dussim.cv.ui.components.contactInfoPhotoHeader
-import xyz.dussim.cv.ui.components.core.CVOutlinedToggleButton
-import xyz.dussim.cv.ui.components.core.CvIcon
-import xyz.dussim.cv.ui.components.core.HidingHeader
-import xyz.dussim.cv.ui.theme.H3
-import xyz.dussim.cv.ui.utils.ScreenWidthClass
-import xyz.dussim.cv.ui.utils.ScreenWidthClass.Big
-import xyz.dussim.cv.ui.utils.ScreenWidthClass.Medium
-import xyz.dussim.cv.ui.utils.ScreenWidthClass.Small
+import xyz.dussim.cv.ui.components.*
 import xyz.dussim.cv.ui.utils.waitBeforeDrawing
+import xyz.dussim.data.CvData
+import xyz.dussim.data.about.AboutMe
+import xyz.dussim.data.languages.Language
+import xyz.dussim.data.skills.Skill
+import xyz.dussim.data.socials.SocialLink
+import xyz.dussim.data.workplace.Workplace
+import xyz.dussim.designsystem.ScreenWidthClass
+import xyz.dussim.designsystem.ScreenWidthClass.*
+import xyz.dussim.local.impl.create
+import xyz.dussim.model.impl.create
+import xyz.dussim.network.internal.create
 
 private fun ScreenWidthClass.toSocialLinksOrientation() = when (this) {
     Small -> Orientation.Column
@@ -107,20 +80,30 @@ private fun ScreenWidthClass.toTextStyleProvider() = when (this) {
     else -> TextStyleProvider.Big
 }
 
-object AggregateRepositoryKey : CreationExtras.Key<AggregateRepository>
+object CvDataSource : CreationExtras.Key<DataSource<CvData>>
 
 class MainActivity : ComponentActivity() {
-    private val repositoryComponent by lazy { RepositoryComponent.create() }
+    private val modelComponent by lazy {
+        val dispatchersComponent = DispatchersComponent.create()
+        val localComponent = LocalComponent.create()
+        val networkComponent = NetworkComponent.create(dispatchersComponent)
+
+        ModelComponent.create(
+            dispatchersComponent = dispatchersComponent,
+            localComponent = localComponent,
+            networkComponent = networkComponent
+        )
+    }
 
     private val creationExtras by lazy {
         MutableCreationExtras(defaultViewModelCreationExtras).apply {
-            this[AggregateRepositoryKey] = repositoryComponent.aggregateRepository
+            this[CvDataSource] = modelComponent.cvDataSource
         }
     }
 
     private val viewModelFactory = viewModelFactory {
         initializer {
-            val aggregateRepository = checkNotNull(this[AggregateRepositoryKey]) {
+            val aggregateRepository = checkNotNull(this[CvDataSource]) {
                 "AggregateRepository was not provided for the viewModel instance"
             }
             MainViewModel(aggregateRepository)
@@ -145,7 +128,7 @@ class MainActivity : ComponentActivity() {
             val selectedTab by viewModel.selectedTab.collectAsState()
             val imCvData by viewModel.imCvData.collectAsState()
 
-            val screenWidthClass = ScreenWidthClass.calculateFor(activity = this)
+            val screenWidthClass = xyz.dussim.designsystem.ScreenWidthClass.calculateFor(activity = this)
 
             val uiController = rememberSystemUiController()
 
@@ -224,9 +207,9 @@ class MainActivity : ComponentActivity() {
         aboutMe: AboutMe,
         languages: ImList<Language>,
         skills: ImList<Skill>,
-        workplaces: ImList<WorkplaceData>
+        workplaces: ImList<Workplace>
     ) {
-        HidingHeader(
+        xyz.dussim.designsystem.core.HidingHeader(
             contentPadding = PaddingValues(screenWidthClass.toContentPadding()),
             header = {
                 HeaderColumn(screenWidthClass, socialLinks, aboutMe)
@@ -290,7 +273,7 @@ class MainActivity : ComponentActivity() {
         aboutMe: AboutMe,
         languages: ImList<Language>,
         skills: ImList<Skill>,
-        workplaces: ImList<WorkplaceData>
+        workplaces: ImList<Workplace>
     ) {
         Box(
             modifier = Modifier
@@ -379,7 +362,7 @@ class MainActivity : ComponentActivity() {
         modifier: Modifier = Modifier,
         onSelected: (Tab) -> Unit
     ) {
-        CVOutlinedToggleButton(
+        xyz.dussim.designsystem.core.CVOutlinedToggleButton(
             checked = checked,
             onCheckedChange = { selected ->
                 if (selected) {
@@ -389,11 +372,11 @@ class MainActivity : ComponentActivity() {
             modifier = modifier
         ) {
             if (tabModel.iconRes != null) {
-                CvIcon(vectorRes = tabModel.iconRes, contentDescription = "todo")
+                xyz.dussim.designsystem.core.CvIcon(vectorRes = tabModel.iconRes, contentDescription = "todo")
                 Spacer(modifier = Modifier.width(10.dp))
             }
             Box(modifier = Modifier.heightIn(min = 24.dp), contentAlignment = Alignment.Center) {
-                BasicText(text = stringResource(id = tabModel.textRes), style = H3)
+                BasicText(text = stringResource(id = tabModel.textRes), style = xyz.dussim.designsystem.H3)
             }
         }
     }
@@ -416,7 +399,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun WorkPeriodFor(screenWidthClass: ScreenWidthClass, workplaces: ImList<WorkplaceData>) {
+    private fun WorkPeriodFor(screenWidthClass: ScreenWidthClass, workplaces: ImList<Workplace>) {
         when (screenWidthClass) {
             Small, Medium -> WorkPeriodVertical(workplaces = workplaces)
             Big -> WorkPeriodHorizontal(workplaces = workplaces)
@@ -436,7 +419,7 @@ class MainActivity : ComponentActivity() {
         screenWidthClass: ScreenWidthClass,
         languages: ImList<Language>,
         skills: ImList<Skill>,
-        workplaces: ImList<WorkplaceData>
+        workplaces: ImList<Workplace>
     ) {
 
         WorkPeriodFor(screenWidthClass, workplaces)
@@ -451,7 +434,7 @@ class MainActivity : ComponentActivity() {
         screenWidthClass: ScreenWidthClass,
         languages: ImList<Language>,
         skills: ImList<Skill>,
-        workplaces: ImList<WorkplaceData>,
+        workplaces: ImList<Workplace>,
         modifier: Modifier = Modifier
     ) {
 

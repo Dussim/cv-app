@@ -12,12 +12,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import xyz.dussim.cv.R
 import xyz.dussim.cv.data.CvDatePattern
 import xyz.dussim.cv.data.ImList
 import xyz.dussim.cv.data.LocalTextStyleProvider
 import xyz.dussim.cv.data.toImmutable
-import xyz.dussim.cv.ui.components.core.CvDateChip
+import xyz.dussim.resources.R
 import java.time.Month.APRIL
 import java.time.Month.MAY
 import java.time.YearMonth
@@ -108,7 +107,7 @@ fun CertificatesBase(
 private fun CertificateColumn(certificate: Certificate) {
     val style = LocalTextStyleProvider.current.forCertificate()
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        CvDateChip(text = CvDatePattern.format(certificate.date))
+        xyz.dussim.designsystem.core.CvDateChip(text = CvDatePattern.format(certificate.date))
         BasicText(text = certificate.name, style = style)
     }
 }
@@ -118,6 +117,6 @@ private fun CertificateRow(certificate: Certificate) {
     val style = LocalTextStyleProvider.current.forCertificate()
     Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
         BasicText(text = certificate.name, style = style)
-        CvDateChip(text = CvDatePattern.format(certificate.date))
+        xyz.dussim.designsystem.core.CvDateChip(text = CvDatePattern.format(certificate.date))
     }
 }

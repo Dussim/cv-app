@@ -3,12 +3,7 @@ package xyz.dussim.cv.data
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
-import xyz.dussim.cv.ui.theme.Body1
-import xyz.dussim.cv.ui.theme.Caption
-import xyz.dussim.cv.ui.theme.H1
-import xyz.dussim.cv.ui.theme.H2
-import xyz.dussim.cv.ui.theme.H3
-import xyz.dussim.cv.ui.theme.TextAlternative
+import xyz.dussim.designsystem.*
 
 interface TextStyleProvider {
     object Default : TextStyleProvider

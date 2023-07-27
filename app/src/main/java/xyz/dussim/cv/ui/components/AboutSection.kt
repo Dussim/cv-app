@@ -10,10 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import xyz.dussim.cv.R
 import xyz.dussim.cv.data.LocalTextStyleProvider
-import xyz.dussim.cv.model.external.about.AboutMe
-import xyz.dussim.cv.ui.theme.Body1
+import xyz.dussim.data.about.AboutMe
+import xyz.dussim.resources.R
 
 
 @Composable
@@ -28,7 +27,7 @@ fun AboutSection(
         BasicText(text = stringResource(R.string.section_name_about_me), style = style)
         Spacer(modifier = Modifier.height(spacingHeight))
         BasicText(
-            style = Body1,
+            style = xyz.dussim.designsystem.Body1,
             text = stringResource(id = aboutMe.aboutMeRes)
         )
     }

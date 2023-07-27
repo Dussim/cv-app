@@ -4,16 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -26,13 +17,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import xyz.dussim.cv.R
 import xyz.dussim.cv.data.ImList
 import xyz.dussim.cv.data.LocalTextStyleProvider
-import xyz.dussim.cv.model.external.socials.SocialLink
-import xyz.dussim.cv.ui.theme.AccentColor
-import xyz.dussim.cv.ui.theme.CardBackgroundColor
-import xyz.dussim.cv.ui.utils.ScreenWidthClass
+import xyz.dussim.data.socials.SocialLink
+import xyz.dussim.resources.R
 
 enum class Orientation {
     Row, Column
@@ -53,7 +41,7 @@ fun ContactHeader(
     Box(
         modifier = modifier.then(
             Modifier
-                .background(CardBackgroundColor, RoundedCornerShape(16.dp))
+                .background(xyz.dussim.designsystem.CardBackgroundColor, RoundedCornerShape(16.dp))
                 .padding(contentPadding)
         )
     ) {
@@ -209,13 +197,13 @@ private fun SocialsRow(
 
 //TODO refactor this to Defaults, make them required param but also make overload that takes ScreenWidthClass and creates the Defaults
 @Composable
-fun contactInfoPhotoHeader(screenWidthClass: ScreenWidthClass): @Composable () -> Unit {
+fun contactInfoPhotoHeader(screenWidthClass: xyz.dussim.designsystem.ScreenWidthClass): @Composable () -> Unit {
     fun dimen(
         small: Dp, medium: Dp = small, large: Dp = medium
     ) = when (screenWidthClass) {
-        ScreenWidthClass.Small -> small
-        ScreenWidthClass.Medium -> medium
-        ScreenWidthClass.Big -> large
+        xyz.dussim.designsystem.ScreenWidthClass.Small -> small
+        xyz.dussim.designsystem.ScreenWidthClass.Medium -> medium
+        xyz.dussim.designsystem.ScreenWidthClass.Big -> large
     }
 
     return {
@@ -237,7 +225,7 @@ fun ContactInfoPhotoHeader(
     textSpacing: Dp,
     imageTextSpacing: Dp,
     textTopPadding: Dp,
-    borderColor: Color = AccentColor,
+    borderColor: Color = xyz.dussim.designsystem.AccentColor,
     borderStroke: BorderStroke = BorderStroke(borderSize, borderColor)
 ) {
     val bitmap = painterResource(id = R.drawable.my_image)

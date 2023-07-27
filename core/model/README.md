@@ -1,0 +1,24 @@
+# Dependency Diagram
+
+```mermaid
+%%{
+  init: {
+    'theme': 'dark'
+  }
+}%%
+
+graph TB
+  subgraph core
+    api
+    data
+    model
+  end
+  model -- api --> api
+  model -- api --> data
+
+```
+# :core:model
+
+This is the main domain model module that defines top level domain component. 
+
+This also place where more complicated classes like network first data sources.
