@@ -10,11 +10,9 @@
 graph TB
   subgraph core
     api
-    data
     model
   end
   model -- api --> api
-  model -- api --> data
 
 ```
 # :core:model

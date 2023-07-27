@@ -12,5 +12,5 @@ android {
 
 dependencies {
     api(project(":core:api"))
-    api(project(":core:data"))
+    api(project(":core:resources"))
 }

@@ -7,6 +7,5 @@ android {
 }
 
 dependencies {
-    api(project(":core:resources"))
     api("androidx.annotation:annotation:1.6.0")
 }

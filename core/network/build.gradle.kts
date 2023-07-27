@@ -8,7 +8,6 @@ android {
 
 dependencies {
     api(project(":core:api"))
-    api(project(":core:data"))
 
     val ktorVersion = "2.3.2"
 

@@ -10,9 +10,7 @@
 graph TB
   subgraph core
     data
-    resources
   end
-  data -- api --> resources
 
 ```
 # :core:data

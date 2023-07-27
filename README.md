@@ -19,13 +19,10 @@ graph TB
     resources
   end
   model -- api --> api
-  model -- api --> data
   api -- api --> data
-  data -- api --> resources
   local -- api --> api
-  local -- api --> data
+  local -- api --> resources
   network -- api --> api
-  network -- api --> data
   app -- implementation --> design-system
   app -- implementation --> model
   app -- implementation --> local
