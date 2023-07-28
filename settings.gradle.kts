@@ -22,3 +22,4 @@ include(":core:model")
 
 //Top layer - Top level modules that are dependent on previous layers
 include(":app")
+include(":backend")
