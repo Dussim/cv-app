@@ -1,9 +1,14 @@
 package xyz.dussim.data.skills
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 public data class Skill(
     val name: SkillName,
     val level: SkillLevel
-) {
+) : Parcelable {
+
     public companion object {
         public fun expert(skillName: SkillName): Skill {
             return Skill(skillName, SkillLevel.Expert)
