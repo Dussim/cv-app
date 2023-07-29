@@ -4,10 +4,6 @@ plugins {
 
 android {
     namespace = "xyz.dussim.api"
-
-    kotlin {
-        explicitApiWarning()
-    }
 }
 
 dependencies {

@@ -10,15 +10,22 @@
 graph TB
 
   subgraph core
-    design-system
+    api-compose
     local
     model
     network
   end
-  app -- implementation --> design-system
+  subgraph feature
+    cv-content
+    splash-screen
+  end
+  app -- implementation --> api-compose
+  app -- implementation --> ui
   app -- implementation --> model
   app -- implementation --> local
   app -- implementation --> network
+  app -- implementation --> splash-screen
+  app -- implementation --> cv-content
 
 ```
 # :app

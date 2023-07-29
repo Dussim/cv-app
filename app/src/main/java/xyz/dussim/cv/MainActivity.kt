@@ -14,8 +14,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -26,18 +24,13 @@ import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import xyz.dussim.api.components.LocalComponent
-import xyz.dussim.api.components.ModelComponent
-import xyz.dussim.api.components.NetworkComponent
-import xyz.dussim.api.coroutines.DispatchersComponent
-import xyz.dussim.api.coroutines.create
+import xyz.dussim.api.components.AppComponentHolder
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.cv.data.ImList
-import xyz.dussim.cv.data.LocalTextStyleProvider
-import xyz.dussim.cv.data.TextStyleProvider
 import xyz.dussim.cv.model.MainViewModel
 import xyz.dussim.cv.model.external.ImCvData
 import xyz.dussim.cv.model.internal.Tab
+import xyz.dussim.cv.model.internal.Tab.*
 import xyz.dussim.cv.model.internal.TabModel
 import xyz.dussim.cv.ui.components.*
 import xyz.dussim.cv.ui.utils.waitBeforeDrawing
@@ -47,12 +40,13 @@ import xyz.dussim.data.languages.Language
 import xyz.dussim.data.skills.Skill
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
+import xyz.dussim.designsystem.LocalScreenWidthClass
 import xyz.dussim.designsystem.ScreenWidthClass
 import xyz.dussim.designsystem.ScreenWidthClass.*
-import xyz.dussim.local.impl.create
-import xyz.dussim.model.impl.create
-import xyz.dussim.network.internal.create
+import xyz.dussim.designsystem.core.ContentBox
 
+// todo move to design system
+//region Styling
 private fun ScreenWidthClass.toSocialLinksOrientation() = when (this) {
     Small -> Orientation.Column
     Medium -> Orientation.Row
@@ -74,25 +68,13 @@ private fun ScreenWidthClass.toContactHeaderContentPadding() = when (this) {
     Small -> PaddingValues(20.dp)
     else -> PaddingValues(40.dp)
 }
-
-private fun ScreenWidthClass.toTextStyleProvider() = when (this) {
-    Small -> TextStyleProvider.Default
-    else -> TextStyleProvider.Big
-}
+//endregion
 
 object CvDataSource : CreationExtras.Key<DataSource<CvData>>
 
 class MainActivity : ComponentActivity() {
     private val modelComponent by lazy {
-        val dispatchersComponent = DispatchersComponent.create()
-        val localComponent = LocalComponent.create()
-        val networkComponent = NetworkComponent.create(dispatchersComponent)
-
-        ModelComponent.create(
-            dispatchersComponent = dispatchersComponent,
-            localComponent = localComponent,
-            networkComponent = networkComponent
-        )
+        (application as AppComponentHolder).appComponent.modelComponent
     }
 
     private val creationExtras by lazy {
@@ -128,7 +110,7 @@ class MainActivity : ComponentActivity() {
             val selectedTab by viewModel.selectedTab.collectAsState()
             val imCvData by viewModel.imCvData.collectAsState()
 
-            val screenWidthClass = xyz.dussim.designsystem.ScreenWidthClass.calculateFor(activity = this)
+            val screenWidthClass = ScreenWidthClass.calculateFor(activity = this)
 
             val uiController = rememberSystemUiController()
 
@@ -139,20 +121,9 @@ class MainActivity : ComponentActivity() {
 
             imCvData?.let {
                 CompositionLocalProvider(
-                    LocalTextStyleProvider.provides(screenWidthClass.toTextStyleProvider())
+                    LocalScreenWidthClass.provides(screenWidthClass)
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .background(
-                                Brush.linearGradient(
-                                    0f to Color(17, 23, 55),
-                                    0.5f to Color(22, 42, 108),
-                                    1f to Color(22, 38, 91),
-                                )
-                            )
-                            .safeDrawingPadding()
-                            .clipToBounds()
-                    ) {
+                    ContentBox {
                         ScreenLayout(
                             screenWidthClass = screenWidthClass,
                             selectedTab = selectedTab,
@@ -162,7 +133,6 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-
         }
     }
 
@@ -215,7 +185,7 @@ class MainActivity : ComponentActivity() {
                 HeaderColumn(screenWidthClass, socialLinks, aboutMe)
             }
         ) { scrollState ->
-            //TODO make it its own modifier that will be easy to apply and reuse
+            // TODO make it its own modifier that will be easy to apply and reuse
 //            val scrollFraction by remember {
 //                derivedStateOf {
 //                    (scrollState.value.toFloat() / (scrollState.maxValue / 4)).coerceAtMost(1f)
@@ -342,7 +312,7 @@ class MainActivity : ComponentActivity() {
         Column {
             Row(
                 modifier = modifier.horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),//FIXME
+                horizontalArrangement = Arrangement.spacedBy(8.dp) // FIXME
             ) {
                 tabs.forEach { model ->
                     CategoryTab(
@@ -384,7 +354,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun ContentColumn(
         modifier: Modifier = Modifier,
-        verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),//FIXME
+        verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp), // FIXME
         horizontalAlignment: Alignment.Horizontal = Alignment.Start,
         content: @Composable ColumnScope.() -> Unit
     ) {
@@ -394,7 +364,7 @@ class MainActivity : ComponentActivity() {
             horizontalAlignment = horizontalAlignment
         ) {
             content()
-            ConsentFooter(Modifier.padding(top = 20.dp))//FIXME
+            ConsentFooter(Modifier.padding(top = 20.dp)) // FIXME
         }
     }
 
@@ -421,7 +391,6 @@ class MainActivity : ComponentActivity() {
         skills: ImList<Skill>,
         workplaces: ImList<Workplace>
     ) {
-
         WorkPeriodFor(screenWidthClass, workplaces)
         LanguagesColumn(languages = languages)
         SkillsColumn(skills = skills)
@@ -437,14 +406,13 @@ class MainActivity : ComponentActivity() {
         workplaces: ImList<Workplace>,
         modifier: Modifier = Modifier
     ) {
-
         ContentColumn(modifier) {
             when (selectedTab) {
-                Tab.All -> CombinedSections(screenWidthClass, languages, skills, workplaces)
-                Tab.Work -> WorkPeriodFor(screenWidthClass, workplaces)
-                Tab.Language -> LanguagesColumn(languages = languages)
-                Tab.Skills -> SkillsColumn(skills = skills)
-                Tab.Certificates -> CertificatesFor(screenWidthClass)
+                All -> CombinedSections(screenWidthClass, languages, skills, workplaces)
+                Work -> WorkPeriodFor(screenWidthClass, workplaces)
+                Language -> LanguagesColumn(languages = languages)
+                Skills -> SkillsColumn(skills = skills)
+                Certificates -> CertificatesFor(screenWidthClass)
             }
         }
     }

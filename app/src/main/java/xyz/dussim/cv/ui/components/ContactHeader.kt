@@ -18,14 +18,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import xyz.dussim.cv.data.ImList
-import xyz.dussim.cv.data.LocalTextStyleProvider
 import xyz.dussim.data.socials.SocialLink
+import xyz.dussim.designsystem.CardBackgroundColor
+import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.resources.R
 
 enum class Orientation {
     Row, Column
 }
-
 
 @Composable
 fun ContactHeader(
@@ -41,7 +41,7 @@ fun ContactHeader(
     Box(
         modifier = modifier.then(
             Modifier
-                .background(xyz.dussim.designsystem.CardBackgroundColor, RoundedCornerShape(16.dp))
+                .background(CardBackgroundColor, RoundedCornerShape(16.dp))
                 .padding(contentPadding)
         )
     ) {
@@ -86,7 +86,6 @@ fun DownloadAndShare(buttonsOrientation: Orientation) {
     }
 }
 
-
 @Composable
 private fun ContactHeaderSlots(
     imageRow: @Composable () -> Unit,
@@ -94,7 +93,7 @@ private fun ContactHeaderSlots(
     buttons: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
-    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start
 ) {
     Column(
         modifier = modifier,
@@ -112,16 +111,14 @@ private fun ButtonColumn(
     modifier: Modifier = Modifier,
     download: @Composable ColumnScope.() -> Unit = {
         DownloadButton(Modifier.fillMaxWidth()) {
-
         }
     },
     share: @Composable ColumnScope.() -> Unit = {
         ShareButton(Modifier.fillMaxWidth()) {
-
         }
     },
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
-    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start
 ) {
     Column(
         modifier = modifier,
@@ -156,16 +153,14 @@ private fun ButtonRow(
     modifier: Modifier = Modifier,
     download: @Composable RowScope.() -> Unit = {
         DownloadButton(Modifier.weight(1f)) {
-
         }
     },
     share: @Composable RowScope.() -> Unit = {
         ShareButton(Modifier.weight(1f)) {
-
         }
     },
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
-    verticalAlignment: Alignment.Vertical = Alignment.Top,
+    verticalAlignment: Alignment.Vertical = Alignment.Top
 ) {
     Row(
         modifier = modifier,
@@ -195,11 +190,13 @@ private fun SocialsRow(
     }
 }
 
-//TODO refactor this to Defaults, make them required param but also make overload that takes ScreenWidthClass and creates the Defaults
+// TODO refactor this to Defaults, make them required param but also make overload that takes ScreenWidthClass and creates the Defaults
 @Composable
 fun contactInfoPhotoHeader(screenWidthClass: xyz.dussim.designsystem.ScreenWidthClass): @Composable () -> Unit {
     fun dimen(
-        small: Dp, medium: Dp = small, large: Dp = medium
+        small: Dp,
+        medium: Dp = small,
+        large: Dp = medium
     ) = when (screenWidthClass) {
         xyz.dussim.designsystem.ScreenWidthClass.Small -> small
         xyz.dussim.designsystem.ScreenWidthClass.Medium -> medium
@@ -212,11 +209,10 @@ fun contactInfoPhotoHeader(screenWidthClass: xyz.dussim.designsystem.ScreenWidth
             borderSize = dimen(2.dp, 4.dp),
             textSpacing = dimen(4.dp, 6.dp),
             imageTextSpacing = dimen(12.dp, 32.dp),
-            textTopPadding = dimen(0.dp, 20.dp),
+            textTopPadding = dimen(0.dp, 20.dp)
         )
     }
 }
-
 
 @Composable
 fun ContactInfoPhotoHeader(

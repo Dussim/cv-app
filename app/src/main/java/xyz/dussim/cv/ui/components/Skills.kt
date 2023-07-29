@@ -11,7 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.cv.data.ImList
-import xyz.dussim.cv.data.LocalTextStyleProvider
+import xyz.dussim.designsystem.LocalTextStyleProvider
+import xyz.dussim.designsystem.core.CvLinearProgressBar
 import xyz.dussim.resources.R
 
 @Composable
@@ -42,7 +43,7 @@ fun SkillsColumn(
                         style = skillStyle,
                         modifier = Modifier.weight(1f)
                     )
-                    xyz.dussim.designsystem.core.CvLinearProgressBar(
+                    CvLinearProgressBar(
                         cornerRadius = 40.dp,
                         fraction = it.level.fraction,
                         modifier = Modifier

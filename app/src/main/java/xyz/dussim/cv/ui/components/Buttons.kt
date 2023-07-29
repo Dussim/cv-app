@@ -10,6 +10,11 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import xyz.dussim.designsystem.H3
+import xyz.dussim.designsystem.core.CvButton
+import xyz.dussim.designsystem.core.CvButtonDefaults
+import xyz.dussim.designsystem.core.CvIcon
+import xyz.dussim.designsystem.core.CvOutlinedButton
 import xyz.dussim.resources.R
 
 @Composable
@@ -23,13 +28,13 @@ fun DownloadButton(
 
     val text = stringResource(R.string.button_download_text)
 
-    xyz.dussim.designsystem.core.CvButton(
+    CvButton(
         onClick = onClick,
         modifier = modifier
     ) {
-        BasicText(text, style = xyz.dussim.designsystem.H3)
+        BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))
-        xyz.dussim.designsystem.core.CvIcon(icon, contentDescription = text)
+        CvIcon(icon, contentDescription = text)
     }
 }
 
@@ -44,14 +49,14 @@ fun ShareButton(
 
     val text = stringResource(R.string.button_share_text)
 
-    xyz.dussim.designsystem.core.CvOutlinedButton(
+    CvOutlinedButton(
         onClick = onClick,
         modifier = modifier,
-        shape = xyz.dussim.designsystem.core.CvButtonDefaults.Shape,
-        contentPadding = xyz.dussim.designsystem.core.CvButtonDefaults.ContentPadding
+        shape = CvButtonDefaults.Shape,
+        contentPadding = CvButtonDefaults.ContentPadding
     ) {
-        BasicText(text, style = xyz.dussim.designsystem.H3)
+        BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))
-        xyz.dussim.designsystem.core.CvIcon(icon, contentDescription = text)
+        CvIcon(icon, contentDescription = text)
     }
 }

@@ -13,8 +13,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.cv.data.CvDatePattern
 import xyz.dussim.cv.data.ImList
-import xyz.dussim.cv.data.LocalTextStyleProvider
 import xyz.dussim.data.workplace.Workplace
+import xyz.dussim.designsystem.*
+import xyz.dussim.designsystem.core.DeprecatedCvChip
 import xyz.dussim.resources.R
 
 inline val Workplace.startLabel: String
@@ -51,9 +52,9 @@ fun WorkPeriodHorizontal(
         workplaces.forEach { workplace ->
             WorkPeriodRow(
                 dates = {
-                    WorkPeriodDates(
+                    DeprecatedCvChip(
                         text = workplace.periodLabel,
-                        modifier = Modifier.width(156.dp)//fixme hardcoded length
+                        modifier = Modifier.width(156.dp) // fixme hardcoded length
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
@@ -79,9 +80,9 @@ fun WorkPeriodVertical(
         workplaces.forEach { workplace ->
             WorkPeriodColumn(
                 dates = {
-                    WorkPeriodDates(
+                    DeprecatedCvChip(
                         text = workplace.periodLabel,
-                        modifier = Modifier.width(156.dp)//fixme hardcoded length
+                        modifier = Modifier.width(156.dp) // fixme hardcoded length
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
@@ -110,7 +111,6 @@ fun WorkPeriod(
     }
 }
 
-
 @Composable
 fun WorkPeriodColumn(
     title: @Composable () -> Unit,
@@ -119,7 +119,7 @@ fun WorkPeriodColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(8.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    dates: (@Composable () -> Unit)? = null,
+    dates: (@Composable () -> Unit)? = null
 ) {
     Column(
         modifier = modifier,
@@ -141,7 +141,7 @@ fun WorkPeriodRow(
     description: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.spacedBy(20.dp),
-    verticalAlignment: Alignment.Vertical = Alignment.Top,
+    verticalAlignment: Alignment.Vertical = Alignment.Top
 ) {
     Row(
         modifier = modifier,
@@ -158,14 +158,6 @@ fun WorkPeriodRow(
 }
 
 @Composable
-fun WorkPeriodDates(
-    text: String,
-    modifier: Modifier = Modifier
-) {
-    xyz.dussim.designsystem.core.CvDateChip(text, modifier)
-}
-
-@Composable
 fun WorkPeriodTitle(
     text: String
 ) {
@@ -177,16 +169,15 @@ fun WorkPeriodTitle(
 fun WorkPeriodPlace(
     text: String
 ) {
-    BasicText(text = text.uppercase(), style = xyz.dussim.designsystem.Label.copy(color = xyz.dussim.designsystem.AccentColor))
+    BasicText(text = text.uppercase(), style = Label.copy(color = AccentColor))
 }
 
 @Composable
 fun WorkPeriodDescription(
     text: String
 ) {
-    BasicText(text = text, style = xyz.dussim.designsystem.Body2.copy(color = xyz.dussim.designsystem.TextAlternative))
+    BasicText(text = text, style = Body2.copy(color = TextAlternative))
 }
-
 
 @Composable
 private fun WorkPeriodColumnPreview() {
@@ -195,13 +186,12 @@ private fun WorkPeriodColumnPreview() {
     """.trimIndent()
 
     WorkPeriodColumn(
-        dates = { WorkPeriodDates(text = "2020-09 – 2022-04") },
+        dates = { DeprecatedCvChip(text = "2020-09 – 2022-04") },
         title = { WorkPeriodTitle(text = "Android Developer") },
         place = { WorkPeriodPlace(text = "Paramount, Warszawa, Polska") },
         description = { WorkPeriodDescription(text = desc) }
     )
 }
-
 
 @Composable
 private fun WorkPeriodRowPreview() {
@@ -210,7 +200,7 @@ private fun WorkPeriodRowPreview() {
     """.trimIndent()
 
     WorkPeriodRow(
-        dates = { WorkPeriodDates(text = "2020-09 – 2022-04") },
+        dates = { DeprecatedCvChip(text = "2020-09 – 2022-04") },
         title = { WorkPeriodTitle(text = "Android Developer") },
         place = { WorkPeriodPlace(text = "Paramount, Warszawa, Polska") },
         description = { WorkPeriodDescription(text = desc) }

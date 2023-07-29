@@ -9,6 +9,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
     implementation("org.jetbrains.kotlin:kotlin-serialization:1.9.0")
     implementation("dev.iurysouza:modulegraph:0.4.0")
+
+    implementation("org.jlleitschuh.gradle:ktlint-gradle:11.5.0")
 }
 
 gradlePlugin {

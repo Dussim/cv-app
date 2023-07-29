@@ -7,7 +7,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,16 +16,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import xyz.dussim.designsystem.AccentColor
-import xyz.dussim.designsystem.DisabledColor
+import xyz.dussim.designsystem.*
 
 public object CvButtonDefaults {
 
-    private val ButtonHorizontalPadding = 16.dp
-    private val ButtonVerticalPadding = 16.dp
+    private val ButtonHorizontalPadding = margin_2x
+    private val ButtonVerticalPadding = margin_2x
 
-    private val OutlinedButtonHorizontalPadding = 16.dp
-    private val OutlinedButtonVerticalPadding = 8.dp
+    private val OutlinedButtonHorizontalPadding = margin_2x
+    private val OutlinedButtonVerticalPadding = margin_1x
 
     public val ContentPadding: PaddingValues =
         PaddingValues(
@@ -58,9 +56,9 @@ public object CvButtonDefaults {
             disabledOutlineColor = DisabledColor
         )
 
-    val Shape = RoundedCornerShape(64.dp)
+    val Shape = ShapeCorner_8x
 
-    val OutlinedShape = RoundedCornerShape(8.dp)
+    val OutlinedShape = ShapeCorner_1x
 
     @Composable
     fun outlineBorderStroke(enabled: Boolean): BorderStroke {
@@ -70,8 +68,8 @@ public object CvButtonDefaults {
 }
 
 object CvToggleButtonDefaults {
-    private val ToggleButtonHorizontalPadding = 16.dp
-    private val ToggleButtonVerticalPadding = 8.dp
+    private val ToggleButtonHorizontalPadding = margin_2x
+    private val ToggleButtonVerticalPadding = margin_1x
 
     val ContentPadding =
         PaddingValues(

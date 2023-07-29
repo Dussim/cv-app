@@ -9,23 +9,22 @@ import xyz.dussim.api.data.DataSource
 import xyz.dussim.cv.data.toImmutable
 import xyz.dussim.cv.model.external.ImCvData
 import xyz.dussim.cv.model.internal.Tab
-import xyz.dussim.cv.model.internal.Tab.*
 import xyz.dussim.cv.model.internal.TabModel
 import xyz.dussim.data.CvData
 import xyz.dussim.resources.R
 
 private val TABS = listOf(
-    TabModel(All, null, R.string.button_tab_all),
-    TabModel(Work, R.drawable.briefcase, R.string.button_tab_work_history),
-    TabModel(Language, R.drawable.languages, R.string.button_tab_languages),
-    TabModel(Skills, R.drawable.brain, R.string.button_tab_skills),
-    TabModel(Certificates, R.drawable.certificate, R.string.button_tab_certificates),
+    TabModel(Tab.All, null, R.string.button_tab_all),
+    TabModel(Tab.Work, R.drawable.briefcase, R.string.button_tab_work_history),
+    TabModel(Tab.Language, R.drawable.languages, R.string.button_tab_languages),
+    TabModel(Tab.Skills, R.drawable.brain, R.string.button_tab_skills),
+    TabModel(Tab.Certificates, R.drawable.certificate, R.string.button_tab_certificates)
 ).toImmutable()
 
 class MainViewModel(
     private val cvDataSource: DataSource<CvData>
 ) : ViewModel() {
-    private val _selectedTab = MutableStateFlow(All)
+    private val _selectedTab = MutableStateFlow(Tab.All)
     val selectedTab = _selectedTab.asStateFlow()
 
     private val _tabs = MutableStateFlow(TABS)

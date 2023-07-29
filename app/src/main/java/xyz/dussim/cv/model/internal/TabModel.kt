@@ -6,5 +6,5 @@ import androidx.annotation.StringRes
 data class TabModel(
     val tab: Tab,
     @DrawableRes val iconRes: Int?,
-    @StringRes val textRes: Int,
+    @StringRes val textRes: Int
 )

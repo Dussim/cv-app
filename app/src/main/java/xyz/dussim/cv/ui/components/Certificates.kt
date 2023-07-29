@@ -12,11 +12,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import xyz.dussim.cv.data.CvDatePattern
 import xyz.dussim.cv.data.ImList
-import xyz.dussim.cv.data.LocalTextStyleProvider
 import xyz.dussim.cv.data.toImmutable
+import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.resources.R
+import xyz.dussim.ui.language.DateChip
 import java.time.Month.APRIL
 import java.time.Month.MAY
 import java.time.YearMonth
@@ -25,7 +25,7 @@ import java.time.YearMonth
 data class Certificate(
     val name: String,
     val date: YearMonth,
-    val link: Uri? = null,
+    val link: Uri? = null
 )
 
 @Composable
@@ -42,7 +42,7 @@ fun CertificatesVertical(
             name = "Samsung Software Test Level Professional (Internal)",
             date = YearMonth.of(2019, MAY)
         )
-    ).toImmutable(),
+    ).toImmutable()
 ) {
     CertificatesBase(
         modifier,
@@ -69,7 +69,7 @@ fun CertificatesHorizontal(
             name = "Samsung Software Test Level Professional (Internal)",
             date = YearMonth.of(2019, MAY)
         )
-    ).toImmutable(),
+    ).toImmutable()
 ) {
     CertificatesBase(
         modifier,
@@ -107,7 +107,7 @@ fun CertificatesBase(
 private fun CertificateColumn(certificate: Certificate) {
     val style = LocalTextStyleProvider.current.forCertificate()
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        xyz.dussim.designsystem.core.CvDateChip(text = CvDatePattern.format(certificate.date))
+        DateChip(date = certificate.date)
         BasicText(text = certificate.name, style = style)
     }
 }
@@ -117,6 +117,6 @@ private fun CertificateRow(certificate: Certificate) {
     val style = LocalTextStyleProvider.current.forCertificate()
     Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
         BasicText(text = certificate.name, style = style)
-        xyz.dussim.designsystem.core.CvDateChip(text = CvDatePattern.format(certificate.date))
+        DateChip(date = certificate.date)
     }
 }

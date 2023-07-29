@@ -3,6 +3,8 @@ import java.util.*
 plugins {
     id("xyz.dussim.android-app-convention")
     id("xyz.dussim.versioning")
+    id("org.jetbrains.kotlin.android")
+    kotlin("plugin.parcelize")
 }
 
 android {
@@ -18,17 +20,35 @@ android {
             storePassword = props["password"] as String
         }
     }
+    defaultConfig {
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
-    implementation(project(":core:design-system"))
+    val composeBom = platform("androidx.compose:compose-bom:2023.06.01")
+
+    implementation(composeBom)
+
+    val voyagerVersion = "1.0.0-rc06"
+    implementation(project(":core:api-compose"))
+    implementation(project(":core:ui"))
     implementation(project(":core:model"))
 
     implementation(project(":core:local"))
     implementation(project(":core:network"))
 
-    val composeBom = platform("androidx.compose:compose-bom:2023.06.01")
-    implementation(composeBom)
+    implementation(project(":feature:splash-screen"))
+    implementation(project(":feature:cv-content"))
+
+    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
 
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
@@ -44,13 +64,11 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
-    //google play complained that I used old version, it was probably pulled as dependency of other libs
+    // google play complained that I used old version, it was probably pulled as dependency of other libs
     implementation("androidx.fragment:fragment-ktx:1.6.1")
-
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
     androidTestImplementation(composeBom)
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 
-//    instantAppImplementation("com.google.android.gms:play-services-instantapps:18.0.1")
+    instantAppImplementation("com.google.android.gms:play-services-instantapps:18.0.1")
 }

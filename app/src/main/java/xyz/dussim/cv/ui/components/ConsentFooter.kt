@@ -7,7 +7,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import xyz.dussim.resources.R
 
-
 @Composable
 fun ConsentFooter(
     modifier: Modifier = Modifier,

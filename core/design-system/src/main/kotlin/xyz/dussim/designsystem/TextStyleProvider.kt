@@ -1,10 +1,10 @@
-package xyz.dussim.cv.data
+package xyz.dussim.designsystem
 
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
-import xyz.dussim.designsystem.*
 
+//TODO rename all styles, this module doesnt know what skills or languages etc. are
 interface TextStyleProvider {
     object Default : TextStyleProvider
 

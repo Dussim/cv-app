@@ -4,8 +4,9 @@ import dev.iurysouza.modulegraph.Orientation
 import dev.iurysouza.modulegraph.Theme
 import dev.iurysouza.modulegraph.LinkText
 
-plugins{
+plugins {
     id("dev.iurysouza.modulegraph")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 moduleGraphConfig {

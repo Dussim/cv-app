@@ -19,10 +19,8 @@ private val H3UnderlineSpanStyle: SpanStyle
     @Composable
     get() = xyz.dussim.designsystem.H3.copy(textDecoration = TextDecoration.Underline).toSpanStyle()
 
-
 private val HorizontalArrangement
     @Composable get() = Arrangement.spacedBy(10.dp)
-
 
 @Composable
 fun SocialLinkRow(

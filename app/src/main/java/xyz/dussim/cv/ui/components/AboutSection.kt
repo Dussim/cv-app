@@ -10,10 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import xyz.dussim.cv.data.LocalTextStyleProvider
 import xyz.dussim.data.about.AboutMe
+import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.resources.R
-
 
 @Composable
 fun AboutSection(
