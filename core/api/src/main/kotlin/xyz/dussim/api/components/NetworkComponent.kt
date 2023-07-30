@@ -4,8 +4,8 @@ import xyz.dussim.api.data.DataSource
 import xyz.dussim.api.state.State
 import xyz.dussim.data.skills.Skill
 
-public interface NetworkComponent {
-    public companion object;
+interface NetworkComponent {
+    companion object;
 
-    public val skillsDataSource: DataSource<State<List<Skill>>>
+    val skillsDataSource: DataSource<State<List<Skill>>>
 }

@@ -18,7 +18,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import xyz.dussim.designsystem.*
 
-public object CvButtonDefaults {
+object CvButtonDefaults {
 
     private val ButtonHorizontalPadding = margin_2x
     private val ButtonVerticalPadding = margin_2x
@@ -26,7 +26,7 @@ public object CvButtonDefaults {
     private val OutlinedButtonHorizontalPadding = margin_2x
     private val OutlinedButtonVerticalPadding = margin_1x
 
-    public val ContentPadding: PaddingValues =
+    val ContentPadding: PaddingValues =
         PaddingValues(
             start = ButtonHorizontalPadding,
             top = ButtonVerticalPadding,

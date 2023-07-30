@@ -1,7 +1,6 @@
 package xyz.dussim.data.skills
 
-
-public enum class SkillLevel(public val fraction: Float) {
+enum class SkillLevel(val fraction: Float) {
     Beginner(0.2f),
     Competent(0.4f),
     Advanced(0.6f),

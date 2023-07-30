@@ -21,7 +21,7 @@ private fun Language.Level.string(): String = when (this) {
 }
 
 @Composable
-public fun LanguageChip(
+fun LanguageChip(
     language: Language,
     modifier: Modifier = Modifier
 ) {

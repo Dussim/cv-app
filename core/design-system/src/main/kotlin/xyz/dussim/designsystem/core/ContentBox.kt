@@ -17,7 +17,7 @@ private fun ScreenWidthClass.toTextStyleProvider() = when (this) {
 }
 
 @Composable
-public fun ContentBox(
+fun ContentBox(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit
 ) {

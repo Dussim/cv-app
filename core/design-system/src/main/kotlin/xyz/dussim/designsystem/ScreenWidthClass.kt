@@ -11,12 +11,12 @@ import androidx.window.layout.WindowMetricsCalculator
 /**
  * Opinionated screen width classes for responsive design of this app
  */
-public enum class ScreenWidthClass {
+enum class ScreenWidthClass {
     Small, Medium, Big;
 
-    public companion object {
+    companion object {
         @Composable
-        public fun calculateFor(activity: Activity): ScreenWidthClass {
+        fun calculateFor(activity: Activity): ScreenWidthClass {
             LocalConfiguration.current
             val density = LocalDensity.current
             val metrics = WindowMetricsCalculator.getOrCreate().computeCurrentWindowMetrics(activity)

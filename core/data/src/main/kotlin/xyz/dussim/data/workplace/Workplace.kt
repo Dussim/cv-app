@@ -5,9 +5,8 @@ import androidx.annotation.StringRes
 import kotlinx.parcelize.Parcelize
 import java.time.YearMonth
 
-//@Immutable
 @Parcelize
-public data class Workplace(
+data class Workplace(
     val startDate: YearMonth,
     val endDate: YearMonth?,
     @StringRes val workTitle: Int,

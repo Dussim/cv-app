@@ -38,6 +38,6 @@ internal class NetworkComponentImpl(
     override val skillsDataSource by lazy { NetworkSkillsDataSource(endpointClient, dispatchersComponent.io) }
 }
 
-public fun NetworkComponent.Companion.create(dispatchersComponent: DispatchersComponent): NetworkComponent {
+fun NetworkComponent.Companion.create(dispatchersComponent: DispatchersComponent): NetworkComponent {
     return NetworkComponentImpl(dispatchersComponent)
 }

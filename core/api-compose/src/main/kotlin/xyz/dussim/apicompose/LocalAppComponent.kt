@@ -4,6 +4,6 @@ import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
 import xyz.dussim.api.components.AppComponent
 
-public val LocalAppComponent: ProvidableCompositionLocal<AppComponent> = staticCompositionLocalOf {
+val LocalAppComponent: ProvidableCompositionLocal<AppComponent> = staticCompositionLocalOf {
     error("AppComponent is not provided")
 }

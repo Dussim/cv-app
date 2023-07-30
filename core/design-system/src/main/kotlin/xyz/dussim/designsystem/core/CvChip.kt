@@ -16,7 +16,7 @@ import xyz.dussim.designsystem.RoundedCornerShape_1x
 import xyz.dussim.designsystem.margin_0_5x
 import xyz.dussim.designsystem.margin_1x
 
-public data object CvChipDefaults {
+data object CvChipDefaults {
     private val CvChipHorizontalPadding = margin_1x
     private val CvChipVerticalPadding = margin_0_5x
 
@@ -34,9 +34,8 @@ public data object CvChipDefaults {
     val CvChipShape: Shape = RoundedCornerShape_1x
 }
 
-@Stable
-public interface CvChipColors {
-    public val background: Color
+@Stable interface CvChipColors {
+    val background: Color
 }
 
 @Immutable
@@ -45,7 +44,7 @@ internal class CvChipColorsImpl(
 ) : CvChipColors
 
 @Composable
-public fun CvChip(
+fun CvChip(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = CvChipDefaults.ContentPadding,
     cvChipColors: CvChipColors = CvChipDefaults.CvChipColors,

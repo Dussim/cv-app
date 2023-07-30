@@ -19,4 +19,4 @@ private class DispatchersComponentImpl(
     override val unconfined: CoroutineDispatcher = Dispatchers.Unconfined
 ) : DispatchersComponent
 
-public fun DispatchersComponent.Companion.create(): DispatchersComponent = DispatchersComponentImpl()
+fun DispatchersComponent.Companion.create(): DispatchersComponent = DispatchersComponentImpl()

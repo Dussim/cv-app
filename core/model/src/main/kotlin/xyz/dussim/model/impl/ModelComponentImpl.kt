@@ -29,7 +29,7 @@ internal class ModelComponentImpl(
     }
 }
 
-public fun ModelComponent.Companion.create(
+fun ModelComponent.Companion.create(
     dispatchersComponent: DispatchersComponent,
     localComponent: LocalComponent,
     networkComponent: NetworkComponent

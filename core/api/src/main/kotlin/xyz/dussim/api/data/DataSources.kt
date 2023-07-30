@@ -2,7 +2,7 @@ package xyz.dussim.api.data
 
 import kotlinx.coroutines.flow.MutableStateFlow
 
-public fun <T> DataSource<T>.withState(initial: T): StateSource<T> {
+fun <T> DataSource<T>.withState(initial: T): StateSource<T> {
     return object : StateSource<T> {
         override val state = MutableStateFlow(initial)
 

@@ -9,9 +9,8 @@ import xyz.dussim.data.skills.Skill
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
 
-//@Immutable
 @Parcelize
-public data class CvData(
+data class CvData(
     val skills: List<Skill>,
     val languages: List<Language>,
     val socials: List<SocialLink>,

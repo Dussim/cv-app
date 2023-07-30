@@ -1,6 +1,6 @@
 package xyz.dussim.data.skills
 
-public enum class SkillName {
+enum class SkillName {
     Kotlin,
     Java,
     Dagger2,

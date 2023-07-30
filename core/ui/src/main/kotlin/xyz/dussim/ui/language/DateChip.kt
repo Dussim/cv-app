@@ -12,7 +12,7 @@ import xyz.dussim.resources.R
 import java.time.YearMonth
 
 @Composable
-public fun DateChip(
+fun DateChip(
     modifier: Modifier = Modifier,
     date: YearMonth
 ) {
@@ -26,7 +26,7 @@ public fun DateChip(
 }
 
 @Composable
-public fun TimeFrameChip(
+fun TimeFrameChip(
     modifier: Modifier = Modifier,
     start: YearMonth?,
     end: YearMonth?
