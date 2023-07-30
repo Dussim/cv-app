@@ -3,6 +3,7 @@ package xyz.dussim.data
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import xyz.dussim.data.about.AboutMe
+import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.data.languages.Language
 import xyz.dussim.data.skills.Skill
 import xyz.dussim.data.socials.SocialLink
@@ -15,5 +16,6 @@ public data class CvData(
     val languages: List<Language>,
     val socials: List<SocialLink>,
     val aboutMe: AboutMe,
-    val workplaces: List<Workplace>
+    val workplaces: List<Workplace>,
+    val certificates: List<Certificate>
 ) : Parcelable

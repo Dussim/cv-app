@@ -9,5 +9,5 @@ android {
 dependencies {
     api(project(":core:data"))
 
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 }

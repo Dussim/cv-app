@@ -56,9 +56,9 @@ public object CvButtonDefaults {
             disabledOutlineColor = DisabledColor
         )
 
-    val Shape = ShapeCorner_8x
+    val Shape = RoundedCornerShape_8x
 
-    val OutlinedShape = ShapeCorner_1x
+    val OutlinedShape = RoundedCornerShape_1x
 
     @Composable
     fun outlineBorderStroke(enabled: Boolean): BorderStroke {

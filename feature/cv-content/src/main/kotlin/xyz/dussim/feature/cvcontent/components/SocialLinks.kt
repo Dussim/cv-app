@@ -13,10 +13,12 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.socials.SocialLink
+import xyz.dussim.designsystem.H3
+import xyz.dussim.designsystem.core.CvIcon
 
 private val H3UnderlineSpanStyle: SpanStyle
     @Composable
-    get() = xyz.dussim.designsystem.H3.copy(textDecoration = TextDecoration.Underline).toSpanStyle()
+    get() = H3.copy(textDecoration = TextDecoration.Underline).toSpanStyle()
 
 
 private val HorizontalArrangement
@@ -24,7 +26,7 @@ private val HorizontalArrangement
 
 
 @Composable
-fun SocialLinkRow(
+internal fun SocialLinkRow(
     socialLink: SocialLink
 ) {
     val context = LocalContext.current
@@ -40,11 +42,11 @@ fun SocialLinkRow(
         horizontalArrangement = HorizontalArrangement,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        xyz.dussim.designsystem.core.CvIcon(vectorRes = socialLink.icon)
+        CvIcon(vectorRes = socialLink.icon)
         ClickableText(annotatedString) {
-            val emailIntent = Intent(socialLink.action, socialLink.uri)
+            val intent = Intent(socialLink.action, socialLink.uri)
 
-//            ContextCompat.startActivity(context, emailIntent, null)
+            context.startActivity(intent)
         }
     }
 }

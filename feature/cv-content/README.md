@@ -10,18 +10,14 @@
 graph TB
   subgraph core
     api-compose
-    design-system
     navigation
-    resources
   end
   subgraph feature
     cv-content
   end
   cv-content -- api --> navigation
-  cv-content -- api --> ui
-  cv-content -- implementation --> design-system
   cv-content -- implementation --> api-compose
-  cv-content -- implementation --> resources
+  cv-content -- implementation --> ui
 
 ```
 # :feature:splash-screen

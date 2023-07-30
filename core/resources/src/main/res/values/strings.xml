@@ -25,6 +25,8 @@
     <string name="section_name_certificates">Certificates</string>
     <string name="section_name_about_me">About</string>
 
+    <string name="certificate_samsung">Oracle Certified Professional: Java SE 11 Developer</string>
+    <string name="certificate_java">Samsung Software Test Level Professional (Internal)</string>
 
     <string name="workplace_title_intern">Intern</string>
     <string name="workplace_title_junior_software_developer">Junior Software Developer</string>

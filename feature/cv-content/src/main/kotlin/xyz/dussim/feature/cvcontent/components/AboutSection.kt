@@ -16,7 +16,7 @@ import xyz.dussim.resources.R
 
 
 @Composable
-fun AboutSection(
+internal fun AboutSection(
     modifier: Modifier = Modifier,
     spacingHeight: Dp = 16.dp,
     aboutMe: AboutMe

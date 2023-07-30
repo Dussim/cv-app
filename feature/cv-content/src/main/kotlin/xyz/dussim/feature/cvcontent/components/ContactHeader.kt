@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.designsystem.CardBackgroundColor
 import xyz.dussim.designsystem.LocalTextStyleProvider
+import xyz.dussim.designsystem.ScreenWidthClass
 import xyz.dussim.resources.R
 
 enum class Orientation {
@@ -28,7 +29,7 @@ enum class Orientation {
 
 
 @Composable
-fun ContactHeader(
+internal fun ContactHeader(
     modifier: Modifier = Modifier,
     socialLinksOrientation: Orientation = Orientation.Column,
     buttonsOrientation: Orientation = Orientation.Column,
@@ -55,7 +56,7 @@ fun ContactHeader(
 }
 
 @Composable
-fun SocialLinks(socialLinksOrientation: Orientation, socialLinks: List<SocialLink>) {
+internal fun SocialLinks(socialLinksOrientation: Orientation, socialLinks: List<SocialLink>) {
     when (socialLinksOrientation) {
         Orientation.Row -> SocialsRow(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -72,7 +73,7 @@ fun SocialLinks(socialLinksOrientation: Orientation, socialLinks: List<SocialLin
 }
 
 @Composable
-fun DownloadAndShare(buttonsOrientation: Orientation) {
+internal fun DownloadAndShare(buttonsOrientation: Orientation) {
     when (buttonsOrientation) {
         Orientation.Row -> ButtonRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -197,13 +198,13 @@ private fun SocialsRow(
 
 //TODO refactor this to Defaults, make them required param but also make overload that takes ScreenWidthClass and creates the Defaults
 @Composable
-fun contactInfoPhotoHeader(screenWidthClass: xyz.dussim.designsystem.ScreenWidthClass): @Composable () -> Unit {
+internal fun contactInfoPhotoHeader(screenWidthClass: ScreenWidthClass): @Composable () -> Unit {
     fun dimen(
         small: Dp, medium: Dp = small, large: Dp = medium
     ) = when (screenWidthClass) {
-        xyz.dussim.designsystem.ScreenWidthClass.Small -> small
-        xyz.dussim.designsystem.ScreenWidthClass.Medium -> medium
-        xyz.dussim.designsystem.ScreenWidthClass.Big -> large
+        ScreenWidthClass.Small -> small
+        ScreenWidthClass.Medium -> medium
+        ScreenWidthClass.Big -> large
     }
 
     return {
@@ -219,7 +220,7 @@ fun contactInfoPhotoHeader(screenWidthClass: xyz.dussim.designsystem.ScreenWidth
 
 
 @Composable
-fun ContactInfoPhotoHeader(
+internal fun ContactInfoPhotoHeader(
     imageSize: Dp,
     borderSize: Dp,
     textSpacing: Dp,

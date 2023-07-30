@@ -5,31 +5,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import xyz.dussim.designsystem.*
-
-
-@Deprecated("Use CvChip instead")
-@Composable
-fun DeprecatedCvChip(
-    text: String,
-    modifier: Modifier = Modifier
-) {
-    CvChip(modifier = modifier) {
-        BasicText(
-            text = text,
-            style = Caption.copy(TextAlternative),
-            modifier = Modifier.align(Alignment.Center)
-        )
-    }
-}
+import xyz.dussim.designsystem.DisabledColor
+import xyz.dussim.designsystem.RoundedCornerShape_1x
+import xyz.dussim.designsystem.margin_0_5x
+import xyz.dussim.designsystem.margin_1x
 
 public data object CvChipDefaults {
     private val CvChipHorizontalPadding = margin_1x
@@ -46,7 +31,7 @@ public data object CvChipDefaults {
             background = DisabledColor
         )
 
-    val CvChipShape: Shape = ShapeCorner_1x
+    val CvChipShape: Shape = RoundedCornerShape_1x
 }
 
 @Stable

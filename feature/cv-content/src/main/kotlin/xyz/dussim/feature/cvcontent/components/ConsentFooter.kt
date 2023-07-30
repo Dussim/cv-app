@@ -9,7 +9,7 @@ import xyz.dussim.resources.R
 
 
 @Composable
-fun ConsentFooter(
+internal fun ConsentFooter(
     modifier: Modifier = Modifier,
     text: String = stringResource(R.string.footer_content)
 ) {

@@ -3,6 +3,7 @@ package xyz.dussim.local.impl
 import xyz.dussim.api.components.LocalComponent
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.about.AboutMe
+import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.data.languages.Language
 import xyz.dussim.data.skills.Skill
 import xyz.dussim.data.socials.SocialLink
@@ -13,7 +14,8 @@ internal class LocalComponentImpl(
     override val languagesDataSource: DataSource<List<Language>> = LocalLanguagesDataSource(),
     override val aboutMeDataSource: DataSource<AboutMe> = LocalAboutMeDataSource(),
     override val workplacesDataSource: DataSource<List<Workplace>> = LocalWorkplacesDataSource(),
-    override val socialMediaDataSource: DataSource<List<SocialLink>> = LocalSocialsDataSource()
+    override val socialMediaDataSource: DataSource<List<SocialLink>> = LocalSocialsDataSource(),
+    override val certificatesDataSource: DataSource<List<Certificate>> = LocalCertificatesDataSource()
 ) : LocalComponent
 
-public fun LocalComponent.Companion.create(): LocalComponent = LocalComponentImpl()
+fun LocalComponent.Companion.create(): LocalComponent = LocalComponentImpl()

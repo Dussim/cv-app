@@ -30,6 +30,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
 }
 
 dependencies {
@@ -41,7 +46,6 @@ dependencies {
     implementation(project(":core:api-compose"))
     implementation(project(":core:ui"))
     implementation(project(":core:model"))
-
     implementation(project(":core:local"))
     implementation(project(":core:network"))
 

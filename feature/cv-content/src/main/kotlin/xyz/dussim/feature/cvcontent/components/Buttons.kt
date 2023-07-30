@@ -18,7 +18,7 @@ import xyz.dussim.designsystem.core.CvOutlinedButton
 import xyz.dussim.resources.R
 
 @Composable
-fun DownloadButton(
+internal fun DownloadButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -39,7 +39,7 @@ fun DownloadButton(
 }
 
 @Composable
-fun ShareButton(
+internal fun ShareButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {

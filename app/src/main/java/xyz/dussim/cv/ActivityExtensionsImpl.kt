@@ -22,7 +22,7 @@ import xyz.dussim.designsystem.ScreenWidthClass
 import xyz.dussim.designsystem.core.ContentBox
 import xyz.dussim.navigation.CvAppScreens
 
-class ActivityExtensionsImpl : ActivityExtensions {
+internal class ActivityExtensionsImpl : ActivityExtensions {
     private var loaded: Boolean = false
     override fun Activity.installSplashScreenAndWaitUntilLoaded() {
         installSplashScreen().apply {

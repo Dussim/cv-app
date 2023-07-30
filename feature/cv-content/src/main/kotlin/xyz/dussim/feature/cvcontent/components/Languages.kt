@@ -16,7 +16,7 @@ import xyz.dussim.ui.language.LanguageChip
 
 
 @Composable
-fun LanguagesColumn(
+internal fun LanguagesColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,

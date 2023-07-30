@@ -19,6 +19,7 @@ graph TB
     navigation
     network
     resources
+    ui
   end
   subgraph feature
     cv-content
@@ -34,10 +35,8 @@ graph TB
   local -- api --> api
   local -- api --> resources
   cv-content -- api --> navigation
-  cv-content -- api --> ui
-  cv-content -- implementation --> design-system
   cv-content -- implementation --> api-compose
-  cv-content -- implementation --> resources
+  cv-content -- implementation --> ui
   ui -- api --> data
   ui -- api --> design-system
   ui -- api --> resources

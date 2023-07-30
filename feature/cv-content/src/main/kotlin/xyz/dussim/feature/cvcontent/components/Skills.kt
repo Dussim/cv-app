@@ -15,7 +15,7 @@ import xyz.dussim.designsystem.core.CvLinearProgressBar
 import xyz.dussim.resources.R
 
 @Composable
-fun SkillsColumn(
+internal fun SkillsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,

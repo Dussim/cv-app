@@ -1,46 +1,26 @@
 package xyz.dussim.feature.cvcontent.components
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.resources.R
 import xyz.dussim.ui.language.DateChip
-import java.time.Month.APRIL
-import java.time.Month.MAY
-import java.time.YearMonth
-
-@Immutable
-data class Certificate(
-    val name: String,
-    val date: YearMonth,
-    val link: Uri? = null,
-)
 
 @Composable
-fun CertificatesVertical(
+internal fun CertificatesVertical(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    certificates: List<Certificate> = listOf(
-        Certificate(
-            name = "Oracle Certified Professional: Java SE 11 Developer",
-            date = YearMonth.of(2021, APRIL)
-        ),
-        Certificate(
-            name = "Samsung Software Test Level Professional (Internal)",
-            date = YearMonth.of(2019, MAY)
-        )
-    ),
+    certificates: List<Certificate>,
 ) {
     CertificatesBase(
         modifier,
@@ -54,20 +34,11 @@ fun CertificatesVertical(
 }
 
 @Composable
-fun CertificatesHorizontal(
+internal fun CertificatesHorizontal(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    certificates: List<Certificate> = listOf(
-        Certificate(
-            name = "Oracle Certified Professional: Java SE 11 Developer",
-            date = YearMonth.of(2021, APRIL)
-        ),
-        Certificate(
-            name = "Samsung Software Test Level Professional (Internal)",
-            date = YearMonth.of(2019, MAY)
-        )
-    ),
+    certificates: List<Certificate>
 ) {
     CertificatesBase(
         modifier,
@@ -81,7 +52,7 @@ fun CertificatesHorizontal(
 }
 
 @Composable
-fun CertificatesBase(
+internal fun CertificatesBase(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
@@ -106,7 +77,7 @@ private fun CertificateColumn(certificate: Certificate) {
     val style = LocalTextStyleProvider.current.forCertificate()
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         DateChip(date = certificate.date)
-        BasicText(text = certificate.name, style = style)
+        BasicText(text = stringResource(id = certificate.name), style = style)
     }
 }
 
@@ -114,7 +85,7 @@ private fun CertificateColumn(certificate: Certificate) {
 private fun CertificateRow(certificate: Certificate) {
     val style = LocalTextStyleProvider.current.forCertificate()
     Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
-        BasicText(text = certificate.name, style = style)
+        BasicText(text = stringResource(id = certificate.name), style = style)
         DateChip(date = certificate.date)
     }
 }

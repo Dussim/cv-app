@@ -23,6 +23,7 @@ internal class ModelComponentImpl(
             workplacesDataSource = localComponent.workplacesDataSource,
             socialsDataSource = localComponent.socialMediaDataSource,
             aboutMeDataSource = localComponent.aboutMeDataSource,
+            certificatesDataSource = localComponent.certificatesDataSource,
             dispatcher = dispatchersComponent.io
         )
     }

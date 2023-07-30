@@ -7,14 +7,14 @@ import xyz.dussim.local.impl.create
 import xyz.dussim.model.impl.create
 import xyz.dussim.network.internal.create
 
-internal data object LazyAppComponentHolder : AppComponentHolder {
+internal data object AppComponentHolderImpl : AppComponentHolder {
     private class AppComponentImpl(
         override val modelComponent: ModelComponent,
         override val localComponent: LocalComponent,
         override val networkComponent: NetworkComponent
     ) : AppComponent
 
-    override val appComponent: AppComponent by lazy {
+    override val appComponent: AppComponent = run {
         val dispatchersComponent = DispatchersComponent.create()
         val localComponent = LocalComponent.create()
         val networkComponent = NetworkComponent.create(dispatchersComponent)

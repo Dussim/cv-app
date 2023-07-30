@@ -12,12 +12,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.designsystem.*
-import xyz.dussim.designsystem.core.DeprecatedCvChip
 import xyz.dussim.resources.R
 import xyz.dussim.ui.language.TimeFrameChip
 
 @Composable
-fun WorkPeriodHorizontal(
+internal fun WorkPeriodHorizontal(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
@@ -46,7 +45,7 @@ fun WorkPeriodHorizontal(
 }
 
 @Composable
-fun WorkPeriodVertical(
+internal fun WorkPeriodVertical(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
@@ -75,7 +74,7 @@ fun WorkPeriodVertical(
 }
 
 @Composable
-fun WorkPeriod(
+internal fun WorkPeriod(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
@@ -94,7 +93,7 @@ fun WorkPeriod(
 
 
 @Composable
-fun WorkPeriodColumn(
+internal fun WorkPeriodColumn(
     title: @Composable () -> Unit,
     place: @Composable () -> Unit,
     description: @Composable () -> Unit,
@@ -116,7 +115,7 @@ fun WorkPeriodColumn(
 }
 
 @Composable
-fun WorkPeriodRow(
+internal fun WorkPeriodRow(
     dates: @Composable () -> Unit,
     title: @Composable () -> Unit,
     place: @Composable () -> Unit,
@@ -140,7 +139,7 @@ fun WorkPeriodRow(
 }
 
 @Composable
-fun WorkPeriodTitle(
+internal fun WorkPeriodTitle(
     text: String
 ) {
     val style = LocalTextStyleProvider.current.forWorkTitle()
@@ -148,45 +147,15 @@ fun WorkPeriodTitle(
 }
 
 @Composable
-fun WorkPeriodPlace(
+internal fun WorkPeriodPlace(
     text: String
 ) {
     BasicText(text = text.uppercase(), style = Label.copy(color = AccentColor))
 }
 
 @Composable
-fun WorkPeriodDescription(
+internal fun WorkPeriodDescription(
     text: String
 ) {
     BasicText(text = text, style = Body2.copy(color = TextAlternative))
-}
-
-
-@Composable
-private fun WorkPeriodColumnPreview() {
-    val desc = """
-        Worked on new features and bug fixes for Noggin application for kids. The work involved working with a modern big multi-module MVVM project (200+modules) with 80+% unit tests coverage.
-    """.trimIndent()
-
-    WorkPeriodColumn(
-        dates = { DeprecatedCvChip(text = "2020-09 – 2022-04") },
-        title = { WorkPeriodTitle(text = "Android Developer") },
-        place = { WorkPeriodPlace(text = "Paramount, Warszawa, Polska") },
-        description = { WorkPeriodDescription(text = desc) }
-    )
-}
-
-
-@Composable
-private fun WorkPeriodRowPreview() {
-    val desc = """
-        Worked on new features and bug fixes for Noggin application for kids. The work involved working with a modern big multi-module MVVM project (200+modules) with 80+% unit tests coverage.
-    """.trimIndent()
-
-    WorkPeriodRow(
-        dates = { DeprecatedCvChip(text = "2020-09 – 2022-04") },
-        title = { WorkPeriodTitle(text = "Android Developer") },
-        place = { WorkPeriodPlace(text = "Paramount, Warszawa, Polska") },
-        description = { WorkPeriodDescription(text = desc) }
-    )
 }
