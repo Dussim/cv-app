@@ -21,7 +21,7 @@ private fun configureHttpClient(serialization: Json) = HttpClient(CIO) {
     }
     install(Resources)
     defaultRequest {
-        url("https://rare-carp-61.deno.dev/")
+        url("https://api.tuzim.xyz")
     }
 }
 

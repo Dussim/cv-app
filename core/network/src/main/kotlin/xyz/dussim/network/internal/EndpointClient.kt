@@ -10,7 +10,7 @@ internal class EndpointClient(
 ) {
     suspend fun fetchSkills(): Result<List<SkillDto>> {
         return runCatching {
-            return httpClient.get(ApiRoutes.Skills()).body()
+            httpClient.get(ApiRoutes.Skills()).body()
         }
     }
 }

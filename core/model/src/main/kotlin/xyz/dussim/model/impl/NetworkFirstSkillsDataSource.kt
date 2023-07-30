@@ -1,5 +1,6 @@
 package xyz.dussim.model.impl
 
+import android.util.Log
 import kotlinx.coroutines.withTimeoutOrNull
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.api.state.State
@@ -20,6 +21,7 @@ internal class NetworkFirstSkillsDataSource(
         return withTimeoutOrNull(TIMEOUT) {
             network.fetch()
         }?.getOrElse {
+            Log.e("NetworkFirstSkillsDataSource", "Network error", it)
             localResult
         } ?: localResult
     }
