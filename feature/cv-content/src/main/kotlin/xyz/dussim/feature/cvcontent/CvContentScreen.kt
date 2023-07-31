@@ -38,9 +38,11 @@ internal class CvContentScreenModel : ScreenModel {
 }
 
 @Parcelize
-class CvContentScreen(
+data class CvContentScreen(
     private val cvData: CvData
 ) : ParcelableScreen {
+
+    override fun toString() = "CvContentScreen"
 
     @Composable
     override fun Content() {

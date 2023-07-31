@@ -1,4 +1,4 @@
-import java.util.*
+import java.util.Properties
 
 plugins {
     id("xyz.dussim.android-app-convention")
@@ -8,18 +8,24 @@ plugins {
 }
 
 android {
-    val propsFile = rootProject.file("keystore.properties")
-    val props = Properties().apply {
-        load(propsFile.reader())
-    }
-    signingConfigs {
-        create("release") {
-            keyAlias = props["alias"] as String
-            keyPassword = props["password"] as String
-            storeFile = rootProject.file(props["location"] as String)
-            storePassword = props["password"] as String
+    rootProject.file("keystore.properties").takeIf { it.exists() }?.let { propsFile ->
+        val props = Properties().apply {
+            load(propsFile.reader())
         }
+        signingConfigs {
+            create("release") {
+                keyAlias = props["alias"] as String
+                keyPassword = props["password"] as String
+                storeFile = rootProject.file(props["location"] as String)
+                storePassword = props["password"] as String
+            }
+        }
+    } ?: run {
+        println(
+            "Keystore file not found. Please create a `keystore.properties` file in the root project directory."
+        )
     }
+
     defaultConfig {
         vectorDrawables {
             useSupportLibrary = true
@@ -31,8 +37,10 @@ android {
         }
     }
     buildTypes {
-        getByName("release") {
-            signingConfig = signingConfigs.getByName("release")
+        val release by getting {
+            signingConfigs.findByName("release")?.let { releaseConfig ->
+                signingConfig = releaseConfig
+            }
         }
     }
 }

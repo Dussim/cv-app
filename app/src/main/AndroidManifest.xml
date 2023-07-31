@@ -18,6 +18,7 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="33">
         <activity
+            android:launchMode="singleInstance"
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App"

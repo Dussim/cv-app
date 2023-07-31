@@ -27,7 +27,7 @@ internal data object SplashScreen : ParcelableScreen {
             State.Loading, is State.Error -> Unit //TODO handle error
             is State.Success -> {
                 val screen = rememberScreen(CvAppScreens.CvContent(cvData.value))
-                LocalNavigator.current?.replace(screen)
+                LocalNavigator.current?.replaceAll(screen)
             }
         }
     }
