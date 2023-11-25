@@ -1,7 +1,7 @@
 package xyz.dussim
 
 plugins {
-    id("xyz.dussim.android-library-convention")
+    id("xyz.dussim.android.library.convention")
 }
 
 dependencies {

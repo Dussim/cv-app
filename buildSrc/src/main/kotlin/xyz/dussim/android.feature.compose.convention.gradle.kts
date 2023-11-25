@@ -1,7 +1,7 @@
 package xyz.dussim
 
 plugins {
-    id("xyz.dussim.android-library-compose-convention")
+    id("xyz.dussim.android.library.compose.convention")
     kotlin("plugin.parcelize")
 }
 

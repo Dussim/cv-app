@@ -1,9 +1,9 @@
 import java.util.*
 
 plugins {
-    id("xyz.dussim.android-app-convention")
-    id("xyz.dussim.versioning")
-    id("org.jetbrains.kotlin.android")
+    xyz.dussim.android.app.convention
+    xyz.dussim.versioning
+    kotlin("android")
     kotlin("plugin.parcelize")
 }
 

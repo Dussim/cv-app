@@ -1,7 +1,7 @@
 package xyz.dussim
 
 plugins {
-    id("xyz.dussim.module-utilities")
+    id("xyz.dussim.module.utilities")
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.serialization")

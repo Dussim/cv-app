@@ -1,7 +1,7 @@
 import java.util.*
 
 plugins {
-    id("xyz.dussim.module-utilities")
+    xyz.dussim.module.utilities
 }
 
 tasks.register("incrementMajor") {

@@ -1,8 +1,8 @@
 package xyz.dussim
 
 plugins {
-    id("xyz.dussim.module-utilities")
-    id("xyz.dussim.android-library-convention")
+    id("xyz.dussim.module.utilities")
+    id("xyz.dussim.android.library.convention")
 }
 
 android {
