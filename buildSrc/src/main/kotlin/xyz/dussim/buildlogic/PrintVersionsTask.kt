@@ -33,7 +33,7 @@ abstract class DescribeVersionCodeTask : DefaultTask() {
 
 abstract class PrintFlavorVersionsTask : DefaultTask() {
     @TaskAction
-    fun printFalvorVersions() {
+    fun printFlavorVersions() {
         with(the<BaseExtension>()) {
             productFlavors.forEach { flavor ->
                 println("Flavor: ${flavor.name}")

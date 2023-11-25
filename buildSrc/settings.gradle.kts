@@ -12,5 +12,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven("https://androidx.dev/storage/compose-compiler/repository/")
     }
 }

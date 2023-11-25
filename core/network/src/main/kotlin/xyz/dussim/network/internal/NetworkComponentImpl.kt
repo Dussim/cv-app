@@ -1,7 +1,7 @@
 package xyz.dussim.network.internal
 
 import io.ktor.client.*
-import io.ktor.client.engine.cio.*
+import io.ktor.client.engine.okhttp.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.resources.*
@@ -13,9 +13,10 @@ import xyz.dussim.api.coroutines.DispatchersComponent
 private fun configureJson() = Json {
     coerceInputValues = true
     ignoreUnknownKeys = true
+    explicitNulls = false
 }
 
-private fun configureHttpClient(serialization: Json) = HttpClient(CIO) {
+private fun configureHttpClient(serialization: Json) = HttpClient(OkHttp) {
     install(ContentNegotiation) {
         json(serialization)
     }
@@ -36,6 +37,8 @@ internal class NetworkComponentImpl(
     private val endpointClient by lazy { EndpointClient(httpClient) }
 
     override val skillsDataSource by lazy { NetworkSkillsDataSource(endpointClient, dispatchersComponent.io) }
+
+    override val gymStatsDataSource by lazy { NetworkGymStatsDataSource(endpointClient, dispatchersComponent.io) }
 }
 
 fun NetworkComponent.Companion.create(dispatchersComponent: DispatchersComponent): NetworkComponent {

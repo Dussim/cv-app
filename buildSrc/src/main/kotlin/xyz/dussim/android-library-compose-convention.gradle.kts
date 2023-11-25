@@ -11,22 +11,22 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.5-dev-k2.0.0-Beta1-06b8ae672a4"
     }
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2023.06.01")
+    val composeBom = platform("androidx.compose:compose-bom:2023.10.01")
 
     implementation(composeBom)
 
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.runtime:runtime")
-    implementation("androidx.compose.foundation:foundation:1.5.0-beta03")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.ui:ui-tooling-preview")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-tooling-preview")
 
     androidTestImplementation(composeBom)
 }

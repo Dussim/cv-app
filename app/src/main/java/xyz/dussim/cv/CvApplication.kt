@@ -4,6 +4,7 @@ import android.app.Application
 import cafe.adriel.voyager.core.registry.ScreenRegistry
 import xyz.dussim.api.components.AppComponentHolder
 import xyz.dussim.feature.cvcontent.cvContentScreenModule
+import xyz.dussim.feature.eastereggs.gym.gymStatsModule
 import xyz.dussim.feature.splashscreen.splashScreenModule
 
 /**
@@ -19,6 +20,7 @@ class CvApplication(
         ScreenRegistry {
             splashScreenModule()
             cvContentScreenModule()
+            gymStatsModule()
         }
     }
 }

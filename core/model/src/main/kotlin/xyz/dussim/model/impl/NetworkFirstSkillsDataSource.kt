@@ -12,7 +12,7 @@ internal class NetworkFirstSkillsDataSource(
     private val local: DataSource<List<Skill>>
 ) : DataSource<List<Skill>> {
     companion object {
-        private const val TIMEOUT = 2_000L
+        private const val TIMEOUT = 20_000L
     }
 
     override suspend fun fetch(): List<Skill> {

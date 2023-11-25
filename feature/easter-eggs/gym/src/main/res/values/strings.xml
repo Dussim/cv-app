@@ -1,0 +1,11 @@
+<resources>
+    <string name="section_name_gym_stats">Gym Stats</string>
+
+    <plurals name="reps_count">
+        <item quantity="one">%d rep</item>
+        <item quantity="other">%d reps</item>
+    </plurals>
+    <string name="kilograms">%d kg</string>
+
+    <string name="unknown">unknown</string>
+</resources>

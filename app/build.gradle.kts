@@ -1,4 +1,4 @@
-import java.util.Properties
+import java.util.*
 
 plugins {
     id("xyz.dussim.android-app-convention")
@@ -50,7 +50,7 @@ dependencies {
 
     implementation(composeBom)
 
-    val voyagerVersion = "1.0.0-rc06"
+    val voyagerVersion = "1.0.0-rc10"
     implementation(project(":core:api-compose"))
     implementation(project(":core:ui"))
     implementation(project(":core:model"))
@@ -59,25 +59,27 @@ dependencies {
 
     implementation(project(":feature:splash-screen"))
     implementation(project(":feature:cv-content"))
+    implementation(project(":feature:easter-eggs:gym"))
 
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+    implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
 
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.foundation:foundation")
 
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.2")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.activity:activity-compose:1.8.1")
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
     // google play complained that I used old version, it was probably pulled as dependency of other libs
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 
     androidTestImplementation(composeBom)
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")

@@ -10,8 +10,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.core.registry.rememberScreen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import xyz.dussim.data.skills.Skill
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.core.CvLinearProgressBar
+import xyz.dussim.designsystem.core.modifiers.easterEggClickable
+import xyz.dussim.navigation.CvAppScreens
 import xyz.dussim.resources.R
 
 @Composable
@@ -19,8 +25,11 @@ internal fun SkillsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    skills: List<xyz.dussim.data.skills.Skill>
+    skills: List<Skill>
 ) {
+    val navigator = LocalNavigator.currentOrThrow
+    val gymStatsEasterEgg = rememberScreen(CvAppScreens.GymStats)
+
     val style = LocalTextStyleProvider.current.forSectionTitle()
     val skillStyle = LocalTextStyleProvider.current.forSkills()
     Column(
@@ -28,7 +37,13 @@ internal fun SkillsColumn(
         verticalArrangement = verticalArrangement,
         horizontalAlignment = horizontalAlignment
     ) {
-        BasicText(text = stringResource(R.string.section_name_skills), style = style)
+        BasicText(
+            text = stringResource(R.string.section_name_skills),
+            style = style,
+            modifier = Modifier.easterEggClickable {
+                navigator.push(gymStatsEasterEgg)
+            }
+        )
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {

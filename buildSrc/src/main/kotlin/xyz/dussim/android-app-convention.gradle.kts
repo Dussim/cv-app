@@ -9,11 +9,11 @@ plugins {
 
 android {
     namespace = "xyz.dussim.cv"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "xyz.dussim.cv"
-        targetSdk = 33
+        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -44,7 +44,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.5-dev-k2.0.0-Beta1-06b8ae672a4"
     }
 
     packaging {

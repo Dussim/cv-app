@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 class CvDataController(
     @Value("classpath:internal/skills.json") resource: Resource
 ) {
-    private val skills = resource.inputStream.bufferedReader().readText()
+    private val skills = resource.readAsString()
 
     @GetMapping("/skills", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun skills(): String = skills

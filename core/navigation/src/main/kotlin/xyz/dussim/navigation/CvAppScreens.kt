@@ -7,4 +7,6 @@ sealed interface CvAppScreens : ScreenProvider {
     data object Splash : CvAppScreens
 
     data class CvContent(val cvData: CvData) : CvAppScreens
+
+    data object GymStats : CvAppScreens
 }

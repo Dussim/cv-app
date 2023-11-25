@@ -2,7 +2,8 @@ package xyz.dussim.network.internal.dto
 
 import kotlinx.serialization.Serializable
 import xyz.dussim.data.skills.Skill
-import xyz.dussim.network.internal.util.*
+import xyz.dussim.data.skills.SkillLevel
+import xyz.dussim.data.skills.SkillName
 
 @Serializable
 internal data class SkillDto(
@@ -11,8 +12,13 @@ internal data class SkillDto(
 )
 
 internal fun SkillDto.mapToSkill(): Skill? {
-    return Maybe.of(::Skill)
-        .compose2 { maybeOf(name) }
-        .compose { maybeOf(level) }
-        .orNull()
+    val name = name ?: return null
+    val level = level ?: return null
+
+    return runCatching {
+        return Skill(
+            SkillName.valueOf(name),
+            SkillLevel.valueOf(level)
+        )
+    }.getOrNull()
 }

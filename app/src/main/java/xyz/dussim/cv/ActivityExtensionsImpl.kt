@@ -11,8 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import cafe.adriel.voyager.core.registry.rememberScreen
-import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.FadeTransition
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import xyz.dussim.api.components.AppComponentHolder
 import xyz.dussim.apicompose.LocalAppComponent
@@ -55,9 +55,9 @@ internal class ActivityExtensionsImpl : ActivityExtensions {
                 ContentBox(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    Navigator(splash) {
-                        loaded = it.lastItem != splash
-                        CurrentScreen()
+                    Navigator(splash) { navigator ->
+                        loaded = navigator.lastItem != splash
+                        FadeTransition(navigator)
                     }
                 }
             }

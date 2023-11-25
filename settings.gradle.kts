@@ -4,6 +4,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven("https://androidx.dev/storage/compose-compiler/repository/")
     }
 }
 
@@ -26,6 +27,8 @@ include(":core:model")
 // Features Layer - Modules that are dependent on previous layers and provide chunks of app functionality
 include(":feature:splash-screen")
 include(":feature:cv-content")
+
+include(":feature:easter-eggs:gym")
 
 // Top layer - Top level modules that are dependent on previous layers
 include(":app")

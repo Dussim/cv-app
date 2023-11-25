@@ -2,7 +2,7 @@ package xyz.dussim.buildlogic.internal
 
 import java.io.File
 
-internal class FileVersionSchema(private val file: File) {
+internal class FileVersionSchema(file: File) {
     companion object {
         private const val MINOR_KEY = "minor"
         private const val MAJOR_KEY = "major"
