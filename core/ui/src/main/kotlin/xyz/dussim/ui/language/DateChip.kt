@@ -8,7 +8,7 @@ import androidx.compose.ui.res.stringResource
 import xyz.dussim.designsystem.Caption
 import xyz.dussim.designsystem.TextAlternative
 import xyz.dussim.designsystem.core.CvChip
-import xyz.dussim.resources.R
+import xyz.dussim.ui.R
 import java.time.YearMonth
 
 @Composable
@@ -34,7 +34,7 @@ fun TimeFrameChip(
     val text = if (start != null && end != null) {
         "${CvDateFormatter.format(start)} - ${CvDateFormatter.format(end)}"
     } else if (start != null) {
-        val endText = stringResource(id = R.string.workplace_dates_present)
+        val endText = stringResource(id = R.string.present_day)
         "${CvDateFormatter.format(start)} - $endText"
     } else if (end != null) {
         CvDateFormatter.format(end)

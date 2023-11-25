@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import xyz.dussim.feature.cvcontent.model.internal.Tab
 import xyz.dussim.feature.cvcontent.model.internal.TabModel
-import xyz.dussim.resources.R
 
 internal class CvContentScreenModel : ScreenModel {
     companion object {

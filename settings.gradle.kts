@@ -9,7 +9,6 @@ dependencyResolutionManagement {
 }
 
 // Layer 1 - Modules that are not dependent on any other project module
-include(":core:resources")
 include(":core:data")
 include(":core:design-system")
 

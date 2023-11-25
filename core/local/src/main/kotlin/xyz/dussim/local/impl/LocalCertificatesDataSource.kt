@@ -2,7 +2,7 @@ package xyz.dussim.local.impl
 
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.certificates.Certificate
-import xyz.dussim.resources.R
+import xyz.dussim.local.R
 import java.time.YearMonth
 import java.util.Calendar.APRIL
 import java.util.Calendar.MAY

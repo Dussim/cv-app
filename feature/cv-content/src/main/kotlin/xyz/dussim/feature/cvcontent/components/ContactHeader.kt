@@ -21,7 +21,7 @@ import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.designsystem.CardBackgroundColor
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.ScreenWidthClass
-import xyz.dussim.resources.R
+import xyz.dussim.feature.cvcontent.R
 
 enum class Orientation {
     Row, Column

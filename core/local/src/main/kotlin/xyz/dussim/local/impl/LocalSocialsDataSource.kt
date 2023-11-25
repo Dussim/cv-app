@@ -4,8 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.socials.SocialLink
-import xyz.dussim.resources.R
-
+import xyz.dussim.local.R
 internal class LocalSocialsDataSource : DataSource<List<SocialLink>> by LocalDataSource(STATIC_DATA) {
     companion object {
         private const val LinkedinUrl = "https://www.linkedin.com/in/artur-tuzim-11291017b/"

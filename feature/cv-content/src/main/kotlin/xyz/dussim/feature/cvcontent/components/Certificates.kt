@@ -12,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.designsystem.LocalTextStyleProvider
-import xyz.dussim.resources.R
+import xyz.dussim.feature.cvcontent.R
 import xyz.dussim.ui.language.DateChip
 
 @Composable

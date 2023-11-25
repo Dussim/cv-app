@@ -12,12 +12,12 @@ graph TB
     api-compose
     navigation
   end
-  subgraph feature
-    cv-content
+  subgraph easter-eggs
+    gym
   end
-  cv-content -- api --> navigation
-  cv-content -- implementation --> api-compose
-  cv-content -- implementation --> ui
+  gym -- api --> navigation
+  gym -- implementation --> api-compose
+  gym -- implementation --> ui
 
 ```
 # :feature:easter-eggs:gym

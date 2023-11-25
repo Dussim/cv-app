@@ -5,7 +5,7 @@ import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.languages.Language
-import xyz.dussim.resources.R
+import xyz.dussim.local.R
 
 internal class LocalLanguagesDataSource : DataSource<List<Language>> by LocalDataSource(STATIC_DATA) {
     companion object {

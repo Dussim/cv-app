@@ -1,29 +1,12 @@
 <resources>
-    <string name="app_name" translatable="false">Artur Tuzim - CV</string>
     <string name="full_name" translatable="false">Artur Tuzim</string>
     <string name="phone_number" translatable="false">+48 512 389 629</string>
     <string name="email_address" translatable="false">artur@tuzim.xyz</string>
-
-    <string name="button_download_text">Download</string>
-    <string name="button_share_text">Share</string>
-    <string name="button_tab_all">All</string>
-    <string name="button_tab_work_history">Work History</string>
-    <string name="button_tab_languages">Languages</string>
-    <string name="button_tab_skills">Skills</string>
-    <string name="button_tab_certificates">Certificates</string>
-
 
     <string name="language_english">English</string>
     <string name="language_polish">Polish</string>
 
     <string name="language_level_native">Native</string>
-    <string name="title_activity_test">TestActivity</string>
-
-    <string name="section_name_skills">Skills</string>
-    <string name="section_name_languages">Languages</string>
-    <string name="section_name_work_history">Work History</string>
-    <string name="section_name_certificates">Certificates</string>
-    <string name="section_name_about_me">About</string>
 
     <string name="certificate_samsung">Oracle Certified Professional: Java SE 11 Developer</string>
     <string name="certificate_java">Samsung Software Test Level Professional (Internal)</string>
@@ -56,15 +39,5 @@ Notably I was invited to two business trips to South Korea as support in develop
 
     <string name="workplace_description_samsung_intern">"Maintenance and bug fixes for SmartThings (Samsung Connect) application."</string>
 
-    <string name="workplace_dates_present">present</string>
-
-    <string name="footer_content">"I hereby give consent for my personal data included in the application to be processed for the purposes of the current and future recruitment processes in accordance with Art. 6 paragraph 1 letter a of the Regulation of the European Parliament and of the Council (EU) 2016/679 of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)."</string>
     <string name="about_me">Hello, I am Artur, and I am passionate Android Developer with history of working on ambitious projects. Since my first job I worked on big projects being in the top of their respective genre. I keep up with all recent trends and developments in Android world, just check the source code of this app to be sure. In my free time I go to the gym, travel or just play video games.</string>
-    <plurals name="reps_count">
-        <item quantity="one">%d rep</item>
-        <item quantity="other">%d reps</item>
-    </plurals>
-    <string name="kilograms">%d kg</string>
-
-    <string name="unknown">unknown</string>
 </resources>

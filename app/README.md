@@ -19,6 +19,9 @@ graph TB
     cv-content
     splash-screen
   end
+  subgraph easter-eggs
+    gym
+  end
   app -- implementation --> api-compose
   app -- implementation --> ui
   app -- implementation --> model
@@ -26,6 +29,7 @@ graph TB
   app -- implementation --> network
   app -- implementation --> splash-screen
   app -- implementation --> cv-content
+  app -- implementation --> gym
 
 ```
 # :app

@@ -12,7 +12,8 @@ import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.core.CvChip
 import xyz.dussim.designsystem.core.CvIcon
 import xyz.dussim.designsystem.margin_1x
-import xyz.dussim.resources.R
+import xyz.dussim.ui.R
+
 
 @Composable
 private fun Language.Level.string(): String = when (this) {

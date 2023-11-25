@@ -10,6 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.CvData
 import xyz.dussim.designsystem.*
@@ -150,6 +151,6 @@ private fun ContentColumn(
         horizontalAlignment = horizontalAlignment
     ) {
         content()
-        ConsentFooter(Modifier.padding(top = margin_2_5x))
+        ConsentFooter(Modifier.padding(top = margin_2_5x), stringResource(R.string.footer_content))
     }
 }

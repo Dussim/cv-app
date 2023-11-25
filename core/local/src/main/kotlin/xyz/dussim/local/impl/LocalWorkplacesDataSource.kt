@@ -2,7 +2,7 @@ package xyz.dussim.local.impl
 
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.workplace.Workplace
-import xyz.dussim.resources.R
+import xyz.dussim.local.R
 import java.time.Month
 import java.time.YearMonth
 

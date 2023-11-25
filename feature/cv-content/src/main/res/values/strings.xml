@@ -1,0 +1,17 @@
+<resources>
+    <string name="button_download_text">Download</string>
+    <string name="button_share_text">Share</string>
+    <string name="button_tab_all">All</string>
+    <string name="button_tab_work_history">Work History</string>
+    <string name="button_tab_languages">Languages</string>
+    <string name="button_tab_skills">Skills</string>
+    <string name="button_tab_certificates">Certificates</string>
+
+    <string name="section_name_skills">Skills</string>
+    <string name="section_name_languages">Languages</string>
+    <string name="section_name_work_history">Work History</string>
+    <string name="section_name_certificates">Certificates</string>
+    <string name="section_name_about_me">About</string>
+
+    <string name="footer_content">"I hereby give consent for my personal data included in the application to be processed for the purposes of the current and future recruitment processes in accordance with Art. 6 paragraph 1 letter a of the Regulation of the European Parliament and of the Council (EU) 2016/679 of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)."</string>
+</resources>

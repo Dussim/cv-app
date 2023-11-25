@@ -17,8 +17,8 @@ import xyz.dussim.data.skills.Skill
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.core.CvLinearProgressBar
 import xyz.dussim.designsystem.core.modifiers.easterEggClickable
+import xyz.dussim.feature.cvcontent.R
 import xyz.dussim.navigation.CvAppScreens
-import xyz.dussim.resources.R
 
 @Composable
 internal fun SkillsColumn(

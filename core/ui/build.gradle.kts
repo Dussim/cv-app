@@ -9,5 +9,4 @@ android {
 dependencies {
     api(project(":core:data"))
     api(project(":core:design-system"))
-    api(project(":core:resources"))
 }

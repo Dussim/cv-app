@@ -16,8 +16,8 @@ import kotlinx.parcelize.Parcelize
 import xyz.dussim.api.state.State
 import xyz.dussim.apicompose.LocalAppComponent
 import xyz.dussim.designsystem.core.CvCircularProgressIndicator
+import xyz.dussim.feature.ee.gym.R
 import xyz.dussim.navigation.ParcelableScreen
-import xyz.dussim.resources.R
 
 @Parcelize
 internal data object GymStatsLoadingScreen : ParcelableScreen {

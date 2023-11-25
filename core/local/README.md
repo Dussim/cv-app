@@ -11,10 +11,8 @@ graph TB
   subgraph core
     api
     local
-    resources
   end
   local -- api --> api
-  local -- api --> resources
 
 ```
 # :core:local

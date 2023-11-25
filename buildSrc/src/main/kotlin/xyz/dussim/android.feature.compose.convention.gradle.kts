@@ -9,7 +9,5 @@ dependencies {
     val voyagerVersion = "1.0.0-rc10"
     api(project(":core:navigation"))
 
-    implementation(project(":core:resources"))
-
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
 }

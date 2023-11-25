@@ -15,7 +15,7 @@ import xyz.dussim.designsystem.core.CvButton
 import xyz.dussim.designsystem.core.CvButtonDefaults
 import xyz.dussim.designsystem.core.CvIcon
 import xyz.dussim.designsystem.core.CvOutlinedButton
-import xyz.dussim.resources.R
+import xyz.dussim.feature.cvcontent.R
 
 @Composable
 internal fun DownloadButton(

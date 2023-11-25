@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.about.AboutMe
 import xyz.dussim.designsystem.LocalTextStyleProvider
-import xyz.dussim.resources.R
+import xyz.dussim.feature.cvcontent.R
 
 
 @Composable

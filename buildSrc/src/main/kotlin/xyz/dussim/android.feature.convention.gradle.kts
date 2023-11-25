@@ -6,5 +6,4 @@ plugins {
 
 dependencies {
     implementation(project(":core:api"))
-    implementation(project(":core:resources"))
 }
