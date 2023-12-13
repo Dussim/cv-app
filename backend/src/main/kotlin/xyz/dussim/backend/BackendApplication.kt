@@ -1,11 +1,14 @@
 package xyz.dussim.backend
 
+import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 
 @SpringBootApplication
 class BackendApplication
 
 fun main(args: Array<String>) {
-    runApplication<BackendApplication>(*args)
+    SpringApplication(BackendApplication::class.java).apply {
+        setDefaultProperties(mapOf("server.port" to "80"))
+        run(*args)
+    }
 }

@@ -30,7 +30,6 @@ graph TB
   app -- implementation --> splash-screen
   app -- implementation --> cv-content
   app -- implementation --> gym
-
 ```
 # :app
 

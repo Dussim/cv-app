@@ -1,46 +1,45 @@
-import java.util.*
-
 plugins {
-    xyz.dussim.android.app.convention
-    xyz.dussim.versioning
-    kotlin("android")
-    kotlin("plugin.parcelize")
+    id("xyz.dussim.android.app.convention")
+    id("xyz.dussim.build-parameters")
+}
+
+versioning {
+    propertiesFile = rootProject.file("version.properties")
 }
 
 android {
-    rootProject.file("keystore.properties").takeIf { it.exists() }?.let { propsFile ->
-        val props = Properties().apply {
-            load(propsFile.reader())
+    signingConfigs {
+        create("release") {
+            keyAlias = buildParameters.signing.key.name
+            keyPassword = buildParameters.signing.key.password
+            storeFile = File("../.keystore/${buildParameters.signing.keystore.name}")
+            storePassword = buildParameters.signing.keystore.password
         }
-        signingConfigs {
-            create("release") {
-                keyAlias = props["alias"] as String
-                keyPassword = props["password"] as String
-                storeFile = rootProject.file(props["location"] as String)
-                storePassword = props["password"] as String
-            }
-        }
-    } ?: run {
-        println(
-            "Keystore file not found. Please create a `keystore.properties` file in the root project directory."
-        )
     }
 
-    defaultConfig {
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
     buildTypes {
-        val release by getting {
-            signingConfigs.findByName("release")?.let { releaseConfig ->
-                signingConfig = releaseConfig
-            }
+        release {
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+
+    flavorDimensions.add("installationType")
+
+    productFlavors {
+        create("instantApp") {
+            dimension = "installationType"
+            versionCode = versioning.versionCode.get()
+            versionNameSuffix = "-instant"
+        }
+
+        create("installedApp") {
+            dimension = "installationType"
+            versionCode = versioning.versionCode.get() + 50
+        }
+
+        forEach {
+            it.versionName = versioning.versionName.get()
+            it.minSdk = versioning.minApi.get()
         }
     }
 }
@@ -78,11 +77,11 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
-    // google play complained that I used old version, it was probably pulled as dependency of other libs
+    // Google Play complained that I used an old version; it was probably pulled as a dependency of other libs
     implementation("androidx.fragment:fragment-ktx:1.6.2")
 
     androidTestImplementation(composeBom)
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 
-    instantAppImplementation("com.google.android.gms:play-services-instantapps:18.0.1")
+    "instantAppImplementation"("com.google.android.gms:play-services-instantapps:18.0.1")
 }

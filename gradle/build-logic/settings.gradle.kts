@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("../versioning-plugin")
     repositories {
         google()
         mavenCentral()

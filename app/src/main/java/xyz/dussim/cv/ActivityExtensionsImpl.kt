@@ -24,6 +24,7 @@ import xyz.dussim.navigation.CvAppScreens
 
 internal class ActivityExtensionsImpl : ActivityExtensions {
     private var loaded: Boolean = false
+
     override fun Activity.installSplashScreenAndWaitUntilLoaded() {
         installSplashScreen().apply {
             setKeepOnScreenCondition { !loaded }
@@ -50,10 +51,10 @@ internal class ActivityExtensionsImpl : ActivityExtensions {
             CompositionLocalProvider(
                 LocalAppComponentHolder.provides(appComponentHolder),
                 LocalScreenWidthClass.provides(screenWidthClass),
-                LocalAppComponent.provides(appComponent)
+                LocalAppComponent.provides(appComponent),
             ) {
                 ContentBox(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
                 ) {
                     Navigator(splash) { navigator ->
                         loaded = navigator.lastItem != splash

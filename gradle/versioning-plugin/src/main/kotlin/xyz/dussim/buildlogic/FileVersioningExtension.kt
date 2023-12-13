@@ -1,10 +1,10 @@
 package xyz.dussim.buildlogic
 
-import xyz.dussim.buildlogic.internal.FileVersionSchema
+import javax.inject.Inject
 import org.gradle.api.Project
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Provider
-import javax.inject.Inject
+import xyz.dussim.buildlogic.internal.FileVersionSchema
 
 abstract class FileVersioningExtension @Inject constructor(project: Project) {
     private val fileVersionSchema: Lazy<FileVersionSchema> = lazy {
@@ -13,9 +13,8 @@ abstract class FileVersioningExtension @Inject constructor(project: Project) {
 
     private val versionProperties: Provider<FileVersionSchema> = project.provider(fileVersionSchema::value)
 
-    private val propertiesFile: RegularFileProperty = project.objects.fileProperty()
+    val propertiesFile: RegularFileProperty = project.objects.fileProperty()
         .apply { finalizeValueOnRead() }
-        .convention(project.rootProject.layout.projectDirectory.file("version.properties"))
 
     val minor: Provider<Int> get() = versionProperties.map { it.minor }
     val major: Provider<Int> get() = versionProperties.map { it.major }

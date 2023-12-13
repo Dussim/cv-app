@@ -5,6 +5,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("plugin.serialization")
+    kotlin("plugin.parcelize")
 }
 
 android {
@@ -25,13 +26,8 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(21)
     }
 }
 

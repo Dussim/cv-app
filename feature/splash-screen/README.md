@@ -17,7 +17,6 @@ graph TB
   end
   splash-screen -- api --> navigation
   splash-screen -- implementation --> api-compose
-
 ```
 # :feature:splash-screen
 

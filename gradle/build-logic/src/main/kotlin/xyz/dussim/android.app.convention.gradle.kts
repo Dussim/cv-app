@@ -1,10 +1,12 @@
 package xyz.dussim
 
 plugins {
+    id("xyz.dussim.versioning")
     id("xyz.dussim.module.utilities")
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.serialization")
+    kotlin("plugin.parcelize")
 }
 
 android {
@@ -30,13 +32,8 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(21)
     }
 
     buildFeatures {
@@ -53,7 +50,7 @@ android {
         }
     }
 
-    lint{
+    lint {
         abortOnError = false
     }
 }

@@ -13,7 +13,6 @@ graph TB
     api-compose
   end
   api-compose -- api --> api
-
 ```
 # :core:api-compose
 

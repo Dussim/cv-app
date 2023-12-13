@@ -7,11 +7,19 @@ import androidx.core.app.AppComponentFactory
 
 class CvAppComponentFactory : AppComponentFactory() {
     private val activityExtensions = ActivityExtensionsImpl()
-    override fun instantiateApplicationCompat(cl: ClassLoader, className: String): Application {
+
+    override fun instantiateApplicationCompat(
+        cl: ClassLoader,
+        className: String,
+    ): Application {
         return CvApplication(AppComponentHolderImpl)
     }
 
-    override fun instantiateActivityCompat(cl: ClassLoader, className: String, intent: Intent?): Activity {
+    override fun instantiateActivityCompat(
+        cl: ClassLoader,
+        className: String,
+        intent: Intent?,
+    ): Activity {
         // By definition of the app, there is only one activity
         return MainActivity(activityExtensions)
     }

@@ -13,7 +13,6 @@ graph TB
     local
   end
   local -- api --> api
-
 ```
 # :core:local
 

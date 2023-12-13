@@ -1,6 +1,10 @@
 package xyz.dussim.cv
 
-import xyz.dussim.api.components.*
+import xyz.dussim.api.components.AppComponent
+import xyz.dussim.api.components.AppComponentHolder
+import xyz.dussim.api.components.LocalComponent
+import xyz.dussim.api.components.ModelComponent
+import xyz.dussim.api.components.NetworkComponent
 import xyz.dussim.api.coroutines.DispatchersComponent
 import xyz.dussim.api.coroutines.create
 import xyz.dussim.local.impl.create
@@ -11,24 +15,26 @@ internal data object AppComponentHolderImpl : AppComponentHolder {
     private class AppComponentImpl(
         override val modelComponent: ModelComponent,
         override val localComponent: LocalComponent,
-        override val networkComponent: NetworkComponent
+        override val networkComponent: NetworkComponent,
     ) : AppComponent
 
-    override val appComponent: AppComponent = run {
-        val dispatchersComponent = DispatchersComponent.create()
-        val localComponent = LocalComponent.create()
-        val networkComponent = NetworkComponent.create(dispatchersComponent)
+    override val appComponent: AppComponent =
+        run {
+            val dispatchersComponent = DispatchersComponent.create()
+            val localComponent = LocalComponent.create()
+            val networkComponent = NetworkComponent.create(dispatchersComponent)
 
-        val modelComponent = ModelComponent.create(
-            dispatchersComponent = dispatchersComponent,
-            localComponent = localComponent,
-            networkComponent = networkComponent
-        )
+            val modelComponent =
+                ModelComponent.create(
+                    dispatchersComponent = dispatchersComponent,
+                    localComponent = localComponent,
+                    networkComponent = networkComponent,
+                )
 
-        AppComponentImpl(
-            modelComponent = modelComponent,
-            localComponent = localComponent,
-            networkComponent = networkComponent
-        )
-    }
+            AppComponentImpl(
+                modelComponent = modelComponent,
+                localComponent = localComponent,
+                networkComponent = networkComponent,
+            )
+        }
 }

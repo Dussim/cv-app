@@ -18,6 +18,5 @@ graph TB
   gym -- api --> navigation
   gym -- implementation --> api-compose
   gym -- implementation --> ui
-
 ```
 # :feature:easter-eggs:gym

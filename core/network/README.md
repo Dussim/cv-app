@@ -13,7 +13,6 @@ graph TB
     network
   end
   network -- api --> api
-
 ```
 # :core:network
 

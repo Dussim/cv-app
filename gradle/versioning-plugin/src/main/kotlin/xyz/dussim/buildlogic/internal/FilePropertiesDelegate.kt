@@ -1,6 +1,5 @@
 package xyz.dussim.buildlogic.internal
 
-import org.jetbrains.kotlin.konan.file.use
 import java.io.File
 import java.util.Properties
 import kotlin.properties.ReadOnlyProperty

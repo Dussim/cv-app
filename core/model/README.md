@@ -13,7 +13,6 @@ graph TB
     model
   end
   model -- api --> api
-
 ```
 # :core:model
 
