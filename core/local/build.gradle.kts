@@ -1,6 +1,5 @@
 plugins {
-    xyz.dussim.android.library.convention
-    kotlin("plugin.parcelize")
+    id("xyz.dussim.android.library.convention")
 }
 
 android {

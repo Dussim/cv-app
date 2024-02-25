@@ -5,5 +5,6 @@ import androidx.activity.ComponentActivity
 
 interface ActivityExtensions {
     fun Activity.installSplashScreenAndWaitUntilLoaded()
+
     fun ComponentActivity.loadAppComposableContent()
 }

@@ -14,7 +14,6 @@ graph TB
   end
   ui -- api --> data
   ui -- api --> design-system
-
 ```
 # :core:ui
 

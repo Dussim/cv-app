@@ -13,7 +13,6 @@ graph TB
     navigation
   end
   navigation -- api --> data
-
 ```
 # :core:navigation
 

@@ -8,12 +8,11 @@ import xyz.dussim.feature.eastereggs.gym.gymStatsModule
 import xyz.dussim.feature.splashscreen.splashScreenModule
 
 /**
- * This is not mistake, that is application with a constructor. See [CvAppComponentFactory].
+ * This is not a mistake, that is application with a constructor. See [CvAppComponentFactory].
  * */
 class CvApplication(
-    appComponentHolder: AppComponentHolder
+    appComponentHolder: AppComponentHolder,
 ) : Application(), AppComponentHolder by appComponentHolder {
-
     override fun onCreate() {
         super.onCreate()
 

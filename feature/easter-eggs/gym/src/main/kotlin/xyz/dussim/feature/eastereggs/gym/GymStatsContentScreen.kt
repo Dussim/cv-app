@@ -1,6 +1,10 @@
 package xyz.dussim.feature.eastereggs.gym
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
@@ -12,8 +16,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import kotlinx.parcelize.Parcelize
 import xyz.dussim.data.gym.GymStats
-import xyz.dussim.designsystem.*
+import xyz.dussim.designsystem.LocalScreenWidthClass
+import xyz.dussim.designsystem.LocalTextStyleProvider
+import xyz.dussim.designsystem.ScreenWidthClass
 import xyz.dussim.designsystem.core.CvChip
+import xyz.dussim.designsystem.margin_1x
+import xyz.dussim.designsystem.margin_2_5x
 import xyz.dussim.feature.ee.gym.R
 import xyz.dussim.navigation.ParcelableScreen
 

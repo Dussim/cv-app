@@ -13,7 +13,6 @@ graph TB
     data
   end
   api -- api --> data
-
 ```
 # :core:api
 

@@ -18,7 +18,6 @@ graph TB
   cv-content -- api --> navigation
   cv-content -- implementation --> api-compose
   cv-content -- implementation --> ui
-
 ```
 # :feature:splash-screen
 

@@ -8,5 +8,5 @@ enum class SkillName {
     RxJava,
     Android,
     Git,
-    Spring
+    Ktor
 }

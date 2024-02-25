@@ -1,5 +1,5 @@
 plugins {
-    xyz.dussim.android.library.compose.convention
+    id("xyz.dussim.android.library.compose.convention")
 }
 
 android {
