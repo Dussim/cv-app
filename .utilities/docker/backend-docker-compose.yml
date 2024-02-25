@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: "traefik:v2.11"
+    container_name: "traefik"
+    restart: "unless-stopped"
+    command:
+      - "--accesslog=true"
+      - "--log.level=DEBUG"
+      - "--api=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.le.acme.tlschallenge=true"
+      - "--certificatesresolvers.le.acme.email=artur@tuzim.xyz"
+      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
+    labels:
+      - "traefik.enable=true"
+      # Dashboard
+      - "traefik.http.routers.traefik.rule=Host(`dashboard.tuzim.xyz`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.tls=true"
+      - "traefik.http.routers.traefik.tls.certresolver=le"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      # global redirect to https
+      - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)"
+      - "traefik.http.routers.http-catchall.entrypoints=web"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+      # middleware redirect
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./letsencrypt:/letsencrypt"
+    networks:
+      - "traefik-network"
+
+  cv-api:
+    image: "dussim/cv-api:1.2"
+    container_name: "cvapi"
+    restart: "unless-stopped"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cvapi.rule=Host(`api.tuzim.xyz`)"
+      - "traefik.http.routers.cvapi.entrypoints=websecure"
+      - "traefik.http.routers.cvapi.tls.certresolver=le"
+    networks:
+      - "traefik-network"
+
+  cv-api-staging:
+    image: "dussim/cv-api:latest"
+    container_name: "cvapi_staging"
+    restart: "unless-stopped"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cvapi-staging.rule=Host(`staging.tuzim.xyz`)||(Host(`tuzim.xyz`)&&Path(`/.well-known/assetlinks.json`))"
+      - "traefik.http.routers.cvapi-staging.entrypoints=websecure"
+      - "traefik.http.routers.cvapi-staging.tls.certresolver=le"
+    networks:
+      - "traefik-network"
+
+networks:
+  traefik-network:
+    external: true
