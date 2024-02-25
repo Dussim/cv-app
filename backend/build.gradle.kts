@@ -2,7 +2,6 @@ plugins {
     id("xyz.dussim.ktor.app.convention")
     id("com.bmuschko.docker-java-application") version "9.4.0"
 }
-
 application {
     mainClass = "xyz.dussim.backend.ApplicationKt"
 }

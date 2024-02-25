@@ -14,12 +14,12 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
-      - "--certificatesresolvers.le.acme.email=artur@tuzim.xyz"
+      - "--certificatesresolvers.le.acme.email=${EMAIL}"
       - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
     labels:
       - "traefik.enable=true"
       # Dashboard
-      - "traefik.http.routers.traefik.rule=Host(`dashboard.tuzim.xyz`)"
+      - "traefik.http.routers.traefik.rule=Host(`dashboard.${DOMAIN}`)"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.tls=true"
       - "traefik.http.routers.traefik.tls.certresolver=le"
@@ -41,24 +41,24 @@ services:
       - "traefik-network"
 
   cv-api:
-    image: "dussim/cv-api:1.2"
+    image: "dussim/cv-api:${LIVE_VERSION}"
     container_name: "cvapi"
     restart: "unless-stopped"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cvapi.rule=Host(`api.tuzim.xyz`)"
+      - "traefik.http.routers.cvapi.rule=Host(`api.${DOMAIN}`)||(Host(`${DOMAIN}`)&&Path(`/.well-known/assetlinks.json`))"
       - "traefik.http.routers.cvapi.entrypoints=websecure"
       - "traefik.http.routers.cvapi.tls.certresolver=le"
     networks:
       - "traefik-network"
 
   cv-api-staging:
-    image: "dussim/cv-api:latest"
+    image: "dussim/cv-api:${STAGING_VERSION}"
     container_name: "cvapi_staging"
     restart: "unless-stopped"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cvapi-staging.rule=Host(`staging.tuzim.xyz`)||(Host(`tuzim.xyz`)&&Path(`/.well-known/assetlinks.json`))"
+      - "traefik.http.routers.cvapi-staging.rule=Host(`staging.${DOMAIN}`)"
       - "traefik.http.routers.cvapi-staging.entrypoints=websecure"
       - "traefik.http.routers.cvapi-staging.tls.certresolver=le"
     networks:

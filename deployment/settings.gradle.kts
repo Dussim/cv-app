@@ -10,8 +10,8 @@ dependencyResolutionManagement {
     }
 }
 pluginManagement {
-    includeBuild("gradle/build-logic")
-    includeBuild("gradle/build-parameters")
+    includeBuild("../gradle/build-logic")
+    includeBuild("../gradle/build-parameters")
     repositories {
         google()
         mavenCentral()
@@ -49,26 +49,4 @@ buildCache {
     }
 }
 
-includeBuild("backend")
-includeBuild("deployment")
-
-include(
-    // Layer 1 - Modules that are not dependent on any other project module
-    ":core:data",
-    ":core:design-system",
-    // Layer 2 - Modules that are dependent on Layer 1 modules
-    ":core:ui",
-    ":core:api",
-    ":core:navigation",
-    // Layer 3 - Modules that are dependent on previous layers
-    ":core:api-compose",
-    ":core:network",
-    ":core:local",
-    ":core:model",
-    // Features Layer - Modules that are dependent on previous layers and provide chunks of app functionality
-    ":feature:splash-screen",
-    ":feature:cv-content",
-    ":feature:easter-eggs:gym",
-    // Top layer - Top level modules that are dependent on previous layers
-    ":app",
-)
+includeBuild("../backend")
