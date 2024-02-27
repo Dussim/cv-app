@@ -3,6 +3,7 @@
 .idea/
 **/build/
 **/.gradle
+*.aab
 
 .keystore/*
 !.keystore/debug.jks
