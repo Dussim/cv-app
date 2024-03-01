@@ -4,15 +4,16 @@ import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import androidx.core.app.AppComponentFactory
+import xyz.dussim.api.components.AppComponentHolder
 
 class CvAppComponentFactory : AppComponentFactory() {
-    private val activityExtensions = ActivityExtensionsImpl()
+    private lateinit var appComponentHolder: AppComponentHolder
 
     override fun instantiateApplicationCompat(
         cl: ClassLoader,
         className: String,
     ): Application {
-        return CvApplication(AppComponentHolderImpl)
+        return CvApplication().also { appComponentHolder = it }
     }
 
     override fun instantiateActivityCompat(
@@ -21,6 +22,6 @@ class CvAppComponentFactory : AppComponentFactory() {
         intent: Intent?,
     ): Activity {
         // By definition of the app, there is only one activity
-        return MainActivity(activityExtensions)
+        return MainActivity(appComponentHolder)
     }
 }

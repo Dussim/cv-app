@@ -14,7 +14,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kotlinx.parcelize.Parcelize
 import xyz.dussim.api.state.State
-import xyz.dussim.apicompose.LocalAppComponent
+import xyz.dussim.apicompose.LocalActivityComponent
 import xyz.dussim.designsystem.core.CvCircularProgressIndicator
 import xyz.dussim.feature.ee.gym.R
 import xyz.dussim.navigation.ParcelableScreen
@@ -29,9 +29,9 @@ internal data object GymStatsLoadingScreen : ParcelableScreen {
 
         val unknown = stringResource(id = R.string.unknown)
 
-        val appComponent = LocalAppComponent.current
+        val gymStatsDataSource = LocalActivityComponent.current.networkComponent.gymStatsDataSource
 
-        val model = rememberScreenModel { GymStatsModel(appComponent.networkComponent.gymStatsDataSource) }
+        val model = rememberScreenModel { GymStatsModel(gymStatsDataSource) }
 
         val state by model.state.collectAsState()
 
@@ -51,4 +51,3 @@ internal data object GymStatsLoadingScreen : ParcelableScreen {
         }
     }
 }
-

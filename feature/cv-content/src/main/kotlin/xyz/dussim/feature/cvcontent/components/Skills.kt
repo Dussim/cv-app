@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import xyz.dussim.data.skills.Skill
+import xyz.dussim.datamodel.skill.Skill
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.core.CvLinearProgressBar
 import xyz.dussim.designsystem.core.modifiers.easterEggClickable
@@ -53,13 +53,13 @@ internal fun SkillsColumn(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     BasicText(
-                        text = it.name.toString(),
+                        text = it.name,
                         style = skillStyle,
                         modifier = Modifier.weight(1f)
                     )
                     CvLinearProgressBar(
                         cornerRadius = 40.dp,
-                        fraction = it.level.fraction,
+                        fraction = it.fraction,
                         modifier = Modifier
                             .weight(1f)
                             .height(10.dp)

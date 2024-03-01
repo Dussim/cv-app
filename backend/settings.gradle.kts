@@ -48,3 +48,5 @@ buildCache {
         }
     }
 }
+
+includeBuild("../shared")

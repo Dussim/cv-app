@@ -2,18 +2,25 @@ package xyz.dussim.local.impl
 
 import java.util.Comparator.comparing
 import xyz.dussim.api.data.DataSource
-import xyz.dussim.data.skills.Skill
-import xyz.dussim.data.skills.SkillName
+import xyz.dussim.datamodel.UniversalMapper
+import xyz.dussim.datamodel.skill.Skill
+import xyz.dussim.datamodel.skill.dto.SkillDto
+import xyz.dussim.datamodel.skill.dto.SkillName
 
-internal class LocalSkillsDataSource : DataSource<List<Skill>> by LocalDataSource(STATIC_DATA) {
+
+internal class LocalSkillsDataSource(
+    private val universalMapper: UniversalMapper
+) : DataSource<List<Skill>> by LocalDataSource(staticData(universalMapper)) {
     companion object {
-        private val STATIC_DATA = listOf(
-            Skill.proficient(SkillName.Kotlin),
-            Skill.proficient(SkillName.Java),
-            Skill.proficient(SkillName.Android),
-            Skill.advanced(SkillName.Dagger2),
-            Skill.advanced(SkillName.Git),
-            Skill.competent(SkillName.Ktor)
-        ).sortedWith(comparing(Skill::level).reversed())
+        private fun staticData(universalMapper: UniversalMapper) = listOf(
+            SkillDto.proficient(SkillName.Kotlin),
+            SkillDto.proficient(SkillName.Java),
+            SkillDto.proficient(SkillName.Android),
+            SkillDto.advanced(SkillName.Dagger2),
+            SkillDto.advanced(SkillName.Git),
+            SkillDto.competent(SkillName.Ktor)
+        )
+            .sortedWith(comparing(SkillDto::level).reversed())
+            .map(universalMapper::map)
     }
 }

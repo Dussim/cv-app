@@ -7,10 +7,10 @@ import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.CvData
 import xyz.dussim.data.about.AboutMe
 import xyz.dussim.data.certificates.Certificate
-import xyz.dussim.data.languages.Language
-import xyz.dussim.data.skills.Skill
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
+import xyz.dussim.datamodel.language.Language
+import xyz.dussim.datamodel.skill.Skill
 
 internal class CvDataSource(
     private val skillsDataSource: DataSource<List<Skill>>,

@@ -1,7 +1,10 @@
 package xyz.dussim.api.components
 
+import android.content.Context
+import xyz.dussim.api.coroutines.DispatchersComponent
+
 interface AppComponent {
-    val modelComponent: ModelComponent
-    val localComponent: LocalComponent
-    val networkComponent: NetworkComponent
+    val appContext: Context
+    val baseUrlProvider: BaseUrlProvider
+    val dispatchersComponent: DispatchersComponent
 }

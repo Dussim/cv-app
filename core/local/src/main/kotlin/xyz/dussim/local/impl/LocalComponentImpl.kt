@@ -1,21 +1,35 @@
 package xyz.dussim.local.impl
 
 import xyz.dussim.api.components.LocalComponent
+import xyz.dussim.api.components.MapperComponent
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.about.AboutMe
 import xyz.dussim.data.certificates.Certificate
-import xyz.dussim.data.languages.Language
-import xyz.dussim.data.skills.Skill
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
+import xyz.dussim.datamodel.language.Language
+import xyz.dussim.datamodel.skill.Skill
 
-internal class LocalComponentImpl(
-    override val skillsDataSource: DataSource<List<Skill>> = LocalSkillsDataSource(),
-    override val languagesDataSource: DataSource<List<Language>> = LocalLanguagesDataSource(),
-    override val aboutMeDataSource: DataSource<AboutMe> = LocalAboutMeDataSource(),
-    override val workplacesDataSource: DataSource<List<Workplace>> = LocalWorkplacesDataSource(),
-    override val socialMediaDataSource: DataSource<List<SocialLink>> = LocalSocialsDataSource(),
+private class LocalComponentImpl(
+    mapperComponent: MapperComponent,
+) : LocalComponent {
+    override val skillsDataSource: DataSource<List<Skill>> = LocalSkillsDataSource(
+        universalMapper = mapperComponent.universalMapper
+    )
+
+    override val languagesDataSource: DataSource<List<Language>> = LocalLanguagesDataSource(
+        universalMapper = mapperComponent.universalMapper
+    )
+
+    override val aboutMeDataSource: DataSource<AboutMe> = LocalAboutMeDataSource()
+
+    override val workplacesDataSource: DataSource<List<Workplace>> = LocalWorkplacesDataSource()
+
+    override val socialMediaDataSource: DataSource<List<SocialLink>> = LocalSocialsDataSource()
+
     override val certificatesDataSource: DataSource<List<Certificate>> = LocalCertificatesDataSource()
-) : LocalComponent
+}
 
-fun LocalComponent.Companion.create(): LocalComponent = LocalComponentImpl()
+fun LocalComponent.Companion.create(
+    mapperComponent: MapperComponent
+): LocalComponent = LocalComponentImpl(mapperComponent)

@@ -51,6 +51,7 @@ buildCache {
 
 includeBuild("backend")
 includeBuild("deployment")
+includeBuild("shared")
 
 include(
     // Layer 1 - Modules that are not dependent on any other project module

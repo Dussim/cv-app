@@ -19,7 +19,10 @@ internal class ModelComponentImpl(
                 network = networkComponent.skillsDataSource,
                 local = localComponent.skillsDataSource
             ),
-            languagesDataSource = localComponent.languagesDataSource,
+            languagesDataSource = NetworkFirstLanguagesDataSource(
+                network = networkComponent.leanguagesDataSource,
+                local = localComponent.languagesDataSource
+            ),
             workplacesDataSource = localComponent.workplacesDataSource,
             socialsDataSource = localComponent.socialMediaDataSource,
             aboutMeDataSource = localComponent.aboutMeDataSource,

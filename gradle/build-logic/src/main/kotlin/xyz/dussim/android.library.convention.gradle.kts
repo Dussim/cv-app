@@ -19,6 +19,10 @@ android {
     }
 
     buildTypes {
+        create("staging") {
+            initWith(getByName("debug"))
+        }
+
         release {
             isMinifyEnabled = true
 

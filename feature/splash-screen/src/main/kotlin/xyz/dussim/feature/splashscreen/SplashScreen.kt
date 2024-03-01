@@ -10,7 +10,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import kotlinx.parcelize.Parcelize
 import xyz.dussim.api.state.State
-import xyz.dussim.apicompose.LocalAppComponent
+import xyz.dussim.apicompose.LocalActivityComponent
 import xyz.dussim.navigation.CvAppScreens
 import xyz.dussim.navigation.ParcelableScreen
 
@@ -21,8 +21,7 @@ internal data object SplashScreen : ParcelableScreen {
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-
-        val cvDataSource = LocalAppComponent.current.modelComponent.cvDataSource
+        val cvDataSource = LocalActivityComponent.current.modelComponent.cvDataSource
 
         val model = rememberScreenModel { SplashScreenModel(cvDataSource) }
 
@@ -37,4 +36,3 @@ internal data object SplashScreen : ParcelableScreen {
         }
     }
 }
-

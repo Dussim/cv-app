@@ -1,12 +1,19 @@
 package xyz.dussim.network.internal
 
-import io.ktor.client.*
-import io.ktor.client.engine.okhttp.*
-import io.ktor.client.plugins.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.client.plugins.resources.*
-import io.ktor.serialization.kotlinx.json.*
+import android.util.Log
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.logging.MessageLengthLimitingLogger
+import io.ktor.client.plugins.resources.Resources
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import xyz.dussim.api.components.BaseUrlProvider
+import xyz.dussim.api.components.MapperComponent
 import xyz.dussim.api.components.NetworkComponent
 import xyz.dussim.api.coroutines.DispatchersComponent
 
@@ -16,31 +23,69 @@ private fun configureJson() = Json {
     explicitNulls = false
 }
 
-private fun configureHttpClient(serialization: Json) = HttpClient(OkHttp) {
+private fun configureHttpClient(
+    serialization: Json,
+    baseUrlProvider: BaseUrlProvider
+) = HttpClient(OkHttp) {
     install(ContentNegotiation) {
         json(serialization)
     }
     install(Resources)
+    install(Logging) {
+        level = LogLevel.ALL
+        logger = MessageLengthLimitingLogger(delegate = object : Logger {
+            override fun log(message: String) {
+                Log.v("Ktor", message)
+            }
+        })
+    }
     defaultRequest {
-        url("https://api.tuzim.xyz")
+        url(baseUrlProvider.getBaseUrl())
     }
 }
 
 internal class NetworkComponentImpl(
-    private val dispatchersComponent: DispatchersComponent
+    private val mapperComponent: MapperComponent,
+    private val dispatchersComponent: DispatchersComponent,
+    baseUrlProvider: BaseUrlProvider
 ) : NetworkComponent {
 
     private val serialization by lazy(::configureJson)
 
-    private val httpClient by lazy { configureHttpClient(serialization) }
+    private val httpClient by lazy { configureHttpClient(serialization, baseUrlProvider) }
 
     private val endpointClient by lazy { EndpointClient(httpClient) }
 
-    override val skillsDataSource by lazy { NetworkSkillsDataSource(endpointClient, dispatchersComponent.io) }
+    override val skillsDataSource by lazy {
+        NetworkSkillsDataSource(
+            endpointClient,
+            mapperComponent.universalMapper,
+            dispatchersComponent.io
+        )
+    }
 
-    override val gymStatsDataSource by lazy { NetworkGymStatsDataSource(endpointClient, dispatchersComponent.io) }
+    override val leanguagesDataSource by lazy {
+        NetworkLanguagesDataSource(
+            endpointClient,
+            mapperComponent.universalMapper,
+            dispatchersComponent.io
+        )
+    }
+
+    override val gymStatsDataSource by lazy {
+        NetworkGymStatsDataSource(
+            endpointClient,
+            dispatchersComponent.io
+        )
+    }
 }
 
-fun NetworkComponent.Companion.create(dispatchersComponent: DispatchersComponent): NetworkComponent {
-    return NetworkComponentImpl(dispatchersComponent)
-}
+fun NetworkComponent.Companion.create(
+    mapperComponent: MapperComponent,
+    dispatchersComponent: DispatchersComponent,
+    baseUrlProvider: BaseUrlProvider
+): NetworkComponent = NetworkComponentImpl(
+    mapperComponent = mapperComponent,
+    dispatchersComponent = dispatchersComponent,
+    baseUrlProvider = baseUrlProvider
+)

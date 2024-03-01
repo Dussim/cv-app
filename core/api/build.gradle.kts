@@ -10,4 +10,7 @@ dependencies {
     api(project(":core:data"))
 
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+    api("xyz.dussim:data-model:1.0.0")
 }
+

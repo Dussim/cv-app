@@ -18,8 +18,22 @@ android {
     }
 
     buildTypes {
+        debug {
+            manifestPlaceholders["api-url-placeholder"] = "https://api.tuzim.xyz"
+        }
+
         release {
             signingConfig = signingConfigs.getByName("release")
+
+            manifestPlaceholders["api-url-placeholder"] = "https://api.tuzim.xyz"
+        }
+
+        create("staging") {
+            initWith(getByName("debug"))
+            applicationIdSuffix = ".staging"
+            versionNameSuffix = "-staging"
+
+            manifestPlaceholders["api-url-placeholder"] = "https://staging.tuzim.xyz"
         }
     }
 
@@ -45,11 +59,11 @@ android {
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2023.06.01")
+    val composeBom = platform("androidx.compose:compose-bom:2024.02.01")
 
     implementation(composeBom)
 
-    val voyagerVersion = "1.0.0-rc10"
+    val voyagerVersion = "1.0.0"
     implementation(project(":core:api-compose"))
     implementation(project(":core:ui"))
     implementation(project(":core:model"))
@@ -61,6 +75,7 @@ dependencies {
     implementation(project(":feature:easter-eggs:gym"))
 
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+    implementation("cafe.adriel.voyager:voyager-screenmodel:$voyagerVersion")
     implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
 
     implementation("androidx.compose.ui:ui")
@@ -68,14 +83,14 @@ dependencies {
     implementation("androidx.compose.foundation:foundation")
 
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation("androidx.activity:activity-compose:1.8.2")
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
 
     // Google Play complained that I used an old version; it was probably pulled as a dependency of other libs
     implementation("androidx.fragment:fragment-ktx:1.6.2")

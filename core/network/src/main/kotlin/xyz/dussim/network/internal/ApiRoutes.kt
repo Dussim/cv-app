@@ -1,11 +1,14 @@
 package xyz.dussim.network.internal
 
-import io.ktor.resources.*
+import io.ktor.resources.Resource
 
 @Resource("/cv")
 internal class ApiRoutes {
     @Resource("/skills")
     internal class Skills(val parent: ApiRoutes = ApiRoutes())
+
+    @Resource("/languages")
+    internal class Languages(val parent: ApiRoutes = ApiRoutes())
 }
 
 @Resource("/ee")

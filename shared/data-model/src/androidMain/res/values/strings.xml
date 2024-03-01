@@ -1,0 +1,12 @@
+<resources>
+    <string name="data_model_language_level_native">Native</string>
+
+    <string name="data_model_language_name_polish">Polish</string>
+    <string name="data_model_language_name_english">English</string>
+
+    <string name="data_model_skill_level_beginner">beginner</string>
+    <string name="data_model_skill_level_competent">competent</string>
+    <string name="data_model_skill_level_advanced">advanced</string>
+    <string name="data_model_skill_level_proficient">proficient</string>
+    <string name="data_model_skill_level_expert">expert</string>
+</resources>

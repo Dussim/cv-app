@@ -1,30 +1,19 @@
 package xyz.dussim.local.impl
 
-import androidx.annotation.StringRes
-import kotlinx.parcelize.IgnoredOnParcel
-import kotlinx.parcelize.Parcelize
 import xyz.dussim.api.data.DataSource
-import xyz.dussim.data.languages.Language
-import xyz.dussim.local.R
+import xyz.dussim.datamodel.UniversalMapper
+import xyz.dussim.datamodel.language.Language
+import xyz.dussim.datamodel.language.dto.LanguageDto
+import xyz.dussim.datamodel.language.dto.LanguageLevel
+import xyz.dussim.datamodel.language.dto.LanguageName.Predefined
 
-internal class LocalLanguagesDataSource : DataSource<List<Language>> by LocalDataSource(STATIC_DATA) {
+internal class LocalLanguagesDataSource(
+    universalMapper: UniversalMapper
+) : DataSource<List<Language>> by LocalDataSource(staticData(universalMapper)) {
     companion object {
-        @Parcelize
-        data object B2 : Language.NonTranslatable {
-            @IgnoredOnParcel
-            override val name: String = "B2"
-        }
-
-        @Parcelize
-        data object Native : Language.Translatable {
-            @StringRes
-            @IgnoredOnParcel
-            override val resId: Int = R.string.language_level_native
-        }
-
-        private val STATIC_DATA = listOf(
-            Language(R.string.language_polish, Native),
-            Language(R.string.language_english, B2)
-        )
+        private fun staticData(universalMapper: UniversalMapper) = listOf(
+            LanguageDto(Predefined.Polish, LanguageLevel.Native),
+            LanguageDto(Predefined.English, LanguageLevel.B2)
+        ).map(universalMapper::map)
     }
 }

@@ -1,10 +1,11 @@
 package xyz.dussim.network.internal
 
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.plugins.resources.*
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.plugins.resources.get
+import xyz.dussim.datamodel.language.dto.LanguageDto
+import xyz.dussim.datamodel.skill.dto.SkillDto
 import xyz.dussim.network.internal.dto.GymStatsDto
-import xyz.dussim.network.internal.dto.SkillDto
 
 internal class EndpointClient(
     private val httpClient: HttpClient
@@ -12,6 +13,12 @@ internal class EndpointClient(
     suspend fun fetchSkills(): Result<List<SkillDto>> {
         return runCatching {
             httpClient.get(ApiRoutes.Skills()).body()
+        }
+    }
+
+    suspend fun fetchLanguages(): Result<List<LanguageDto>> {
+        return runCatching {
+            httpClient.get(ApiRoutes.Languages()).body()
         }
     }
 

@@ -1,6 +1,5 @@
 package xyz.dussim.backend
 
-
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
@@ -8,6 +7,7 @@ import xyz.dussim.backend.plugins.configureAssetLinks
 import xyz.dussim.backend.plugins.configureHTTP
 import xyz.dussim.backend.plugins.configureMonitoring
 import xyz.dussim.backend.plugins.configureRouting
+import xyz.dussim.backend.plugins.configureSerialization
 
 fun main() {
     embeddedServer(
@@ -20,7 +20,7 @@ fun main() {
 
 fun Application.module() {
 //    configureTemplating()
-//    configureSerialization()
+    configureSerialization()
     configureMonitoring()
     configureHTTP()
     configureRouting()

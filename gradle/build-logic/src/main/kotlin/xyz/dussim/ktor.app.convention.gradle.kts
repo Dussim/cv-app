@@ -7,6 +7,10 @@ plugins {
     id("xyz.dussim.module.utilities")
 }
 
+kotlin {
+    jvmToolchain(21)
+}
+
 dependencies {
     val ktorVersion = "2.3.8"
     implementation("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
