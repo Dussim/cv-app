@@ -36,14 +36,17 @@ buildParameters {
 
     group("cache") {
         string("url") {
+            fromEnvironment("BUILD_CACHE_URL")
             description = "Url of remote cache node."
-            defaultValue = "https://0885225.xyz/cache/"
+            defaultValue = "https://build-cache.dussim.xyz/cache/"
         }
         string("username") {
+            fromEnvironment("BUILD_CACHE_USER")
             description = "Username used for remote cache read/write user. Default for read only user"
             defaultValue = "build-cache-r"
         }
         string("password") {
+            fromEnvironment("BUILD_CACHE_USER_PASSWORD")
             description = "Password used for remote cache read/write user. Default for read only user"
             defaultValue = ",79'2V`?2CuC"
         }

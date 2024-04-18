@@ -35,6 +35,7 @@ buildCache {
     val buildParameters = the<BuildParametersExtension>()
     local {
         isEnabled = !buildParameters.ci
+        isPush = true
     }
 
     remote<HttpBuildCache> {

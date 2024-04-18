@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+        docker {
+            image 'dussim/build-env:21-8.7'
+            args '-v gradle-cache:/home/gradle/.gradle'
+        }
+    }
+    stages {
+        stage('Workflow') {
+            steps {
+                sh 'cat .jenkins/Jenkinsfile'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'gradle :app:assembleInstalledAppDebug --scan'
+                recordIssues enabledForFailure: true, tool: kotlin()
+                findBuildScans()
+            }
+        }
+        stage('Quality') {
+            // TODO add detekt, and android lint
+            steps {
+                sh 'gradle ktlintCheck'
+                recordIssues enabledForFailure: true, tool: ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Archiving artifacts'
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'app/build/outputs/apk/**/*.apk', fingerprint: true
+        }
+    }
+}
