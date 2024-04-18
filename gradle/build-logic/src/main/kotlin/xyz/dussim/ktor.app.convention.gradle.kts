@@ -29,5 +29,5 @@ dependencies {
     implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.148-kotlin-1.4.30")
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:2.0.0-Beta4")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:2.0.0-RC1")
 }
