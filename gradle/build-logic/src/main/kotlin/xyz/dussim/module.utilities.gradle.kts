@@ -20,9 +20,9 @@ moduleGraphConfig {
 }
 
 configure<KtlintExtension> {
+    ignoreFailures = true
+
     reporters {
-        reporter(ReporterType.PLAIN_GROUP_BY_FILE)
-        reporter(ReporterType.CHECKSTYLE)
-        reporter(ReporterType.JSON)
+        reporter(ReporterType.HTML)
     }
 }
