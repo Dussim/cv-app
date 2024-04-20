@@ -1,0 +1,4 @@
+{
+  name: "cv-app dev environment",
+  image: "dussim/build-env:21-8.7"
+}
