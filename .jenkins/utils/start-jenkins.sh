@@ -1,8 +1,8 @@
 #!/bin/bash
 set -o errexit -o nounset
-docker run \
+docker run --detach \
   --name jenkins-server \
-  --detach \
+  --restart=unless-stoped \
   --network jenkins \
   --env DOCKER_HOST=tcp://docker:2376 \
   --env DOCKER_CERT_PATH=/certs/client \
@@ -11,5 +11,4 @@ docker run \
   --publish 50000:50000 \
   --volume jenkins-data:/var/jenkins_home \
   --volume jenkins-docker-certs:/certs/client:ro \
-  --restart=on-failure \
   dussim/jenkins-env:latest
