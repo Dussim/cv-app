@@ -14,7 +14,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'gradle :app:assembleInstalledAppDebug --scan'
-                recordIssues enabledForFailure: true, tool: kotlin()
+                recordIssues([
+                        enabledForFailure: true,
+                        tool             : kotlin()
+                ])
                 findBuildScans()
             }
         }
@@ -22,14 +25,33 @@ pipeline {
             // TODO add detekt, and android lint
             steps {
                 sh 'gradle ktlintCheck'
-                recordIssues enabledForFailure: true, tool: ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
+                recordIssues([
+                        enabledForFailure: true,
+                        tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
+                ])
+            }
+        }
+        stage('Versions') {
+            steps {
+                sh 'gradle dependencyUpdates --no-configure-on-demand --no-configuration-cache --warning-mode=none'
             }
         }
     }
     post {
-        always {
+        success {
             echo 'Archiving artifacts'
-            archiveArtifacts allowEmptyArchive: true, artifacts: 'app/build/outputs/apk/**/*.apk', fingerprint: true
+            archiveArtifacts([
+                    allowEmptyArchive: true,
+                    artifacts        : 'app/build/outputs/apk/**/*.apk'
+            ])
+            publishHTML([
+                    allowMissing         : false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll              : false,
+                    reportDir            : '.reports',
+                    reportFiles          : '**/*.html',
+                    reportName           : 'Aggregated Reports',
+            ])
         }
     }
 }

@@ -6,4 +6,5 @@
 *.aab
 
 .keystore/*
+.reports/*
 !.keystore/debug.jks
