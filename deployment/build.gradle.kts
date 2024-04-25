@@ -4,8 +4,8 @@ import org.hidetake.groovy.ssh.core.Service
 import org.hidetake.groovy.ssh.session.SessionHandler
 
 plugins {
-    id("org.hidetake.ssh") version "2.11.2"
     id("xyz.dussim.build-parameters")
+    id("org.hidetake.ssh") version "2.11.2"
 }
 
 val remote: Remote? by lazy {
