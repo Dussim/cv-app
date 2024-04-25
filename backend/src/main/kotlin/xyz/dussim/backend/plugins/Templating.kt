@@ -8,8 +8,9 @@ import io.ktor.server.html.respondHtml
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import kotlinx.css.CSSBuilder
 import kotlinx.css.Color
+import kotlinx.css.CssBuilder
+import kotlinx.css.Margin
 import kotlinx.css.backgroundColor
 import kotlinx.css.body
 import kotlinx.css.color
@@ -40,7 +41,7 @@ fun Application.configureTemplating() {
             call.respondCss {
                 body {
                     backgroundColor = Color.darkBlue
-                    margin(0.px)
+                    margin = Margin(0.px)
                 }
                 rule("h1.page-title") {
                     color = Color.white
@@ -62,7 +63,7 @@ fun Application.configureTemplating() {
     }
 }
 
-suspend inline fun ApplicationCall.respondCss(builder: CSSBuilder.() -> Unit) {
-   this.respondText(CSSBuilder().apply(builder).toString(), ContentType.Text.CSS)
+suspend inline fun ApplicationCall.respondCss(builder: CssBuilder.() -> Unit) {
+    this.respondText(CssBuilder().apply(builder).toString(), ContentType.Text.CSS)
 }
 

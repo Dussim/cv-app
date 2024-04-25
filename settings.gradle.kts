@@ -1,14 +1,5 @@
 import buildparameters.BuildParametersExtension
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-        maven("https://androidx.dev/storage/compose-compiler/repository/")
-    }
-}
 pluginManagement {
     includeBuild("gradle/build-logic")
     includeBuild("gradle/build-parameters")
@@ -19,8 +10,18 @@ pluginManagement {
     }
 }
 
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven("https://androidx.dev/storage/compose-compiler/repository/")
+    }
+}
+
 plugins {
-    id("com.gradle.enterprise").version("3.16")
+    id("com.gradle.enterprise").version("3.17.2")
     id("xyz.dussim.build-parameters")
 }
 

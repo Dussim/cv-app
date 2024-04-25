@@ -26,7 +26,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.4.14")
 
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.11.0")
-    implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.148-kotlin-1.4.30")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.625")
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:2.0.0-RC1")
