@@ -12,7 +12,7 @@ kotlin {
 }
 
 dependencies {
-    val ktorVersion = "2.3.8"
+    val ktorVersion = "2.3.10"
     implementation("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")

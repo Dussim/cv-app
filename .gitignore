@@ -7,4 +7,5 @@
 
 .keystore/*
 .reports/*
+.kotlin/
 !.keystore/debug.jks

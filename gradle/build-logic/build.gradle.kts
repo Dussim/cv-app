@@ -10,7 +10,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0-RC1")
     implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.0-RC1")
     implementation("org.jetbrains.kotlin:kotlin-allopen:2.0.0-RC1")
-    implementation("dev.iurysouza:modulegraph:0.5.0")
+    implementation("dev.iurysouza:modulegraph:0.8.0")
 
     implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.0")
 
