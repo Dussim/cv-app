@@ -2,18 +2,19 @@ package xyz.dussim.cv
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.FadeTransition
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import xyz.dussim.api.components.ActivityComponent
 import xyz.dussim.api.components.ActivityComponentHolder
 import xyz.dussim.api.components.AppComponentHolder
@@ -55,13 +56,25 @@ class MainActivity(
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            val screenWidthClass = ScreenWidthClass.calculateFor(activity = this)
-            val uiController = rememberSystemUiController()
+            val darkTheme = isSystemInDarkTheme()
+            DisposableEffect(darkTheme) {
+                enableEdgeToEdge(
+                    statusBarStyle = SystemBarStyle.auto(
+                        lightScrim = android.graphics.Color.TRANSPARENT,
+                        darkScrim = android.graphics.Color.TRANSPARENT,
+                        detectDarkMode = { darkTheme }
+                    ),
+                    navigationBarStyle = SystemBarStyle.auto(
+                        lightScrim = android.graphics.Color.TRANSPARENT,
+                        darkScrim = android.graphics.Color.TRANSPARENT,
+                        detectDarkMode = { darkTheme }
+                    )
+                )
 
-            DisposableEffect(uiController) {
-                uiController.setSystemBarsColor(Color.Transparent)
-                onDispose { }
+                onDispose {}
             }
+
+            val screenWidthClass = ScreenWidthClass.calculateFor(activity = this)
 
             val splash = rememberScreen(CvAppScreens.Splash)
 
