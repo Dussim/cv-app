@@ -1,5 +1,7 @@
 import buildparameters.BuildParametersExtension
 
+enableFeaturePreview("GROOVY_COMPILATION_AVOIDANCE")
+
 pluginManagement {
     includeBuild("gradle/build-logic")
     includeBuild("gradle/build-parameters")
@@ -21,14 +23,30 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("com.gradle.enterprise").version("3.17.2")
+    id("com.gradle.develocity").version("3.17.2")
     id("xyz.dussim.build-parameters")
 }
 
-gradleEnterprise {
+develocity {
+    val buildParameters = the<BuildParametersExtension>()
+
     buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
+        publishing.onlyIf { false }
+
+        termsOfUseUrl = "https://gradle.com/terms-of-service"
+        termsOfUseAgree = "yes"
+
+        capture {
+            buildLogging = true
+            testLogging = true
+        }
+
+        tag(
+            when (buildParameters.ci) {
+                true -> "CI"
+                false -> "LOCAL"
+            }
+        )
     }
 }
 
