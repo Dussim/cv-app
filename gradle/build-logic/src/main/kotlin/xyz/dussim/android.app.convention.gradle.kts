@@ -7,6 +7,7 @@ plugins {
     kotlin("android")
     kotlin("plugin.serialization")
     kotlin("plugin.parcelize")
+    kotlin("plugin.compose")
 }
 
 android {
@@ -34,14 +35,6 @@ android {
 
     kotlin {
         jvmToolchain(21)
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13-dev-k2.0.0-RC1-50f08dfa4b4"
     }
 
     packaging {

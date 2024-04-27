@@ -8,16 +8,17 @@
 }%%
 
 graph TB
-  subgraph core
-    api-compose
-    navigation
-  end
-  subgraph feature
-    cv-content
-  end
-  cv-content -- api --> navigation
-  cv-content -- implementation --> api-compose
-  cv-content -- implementation --> ui
+  :feature:cv-content -- api --> :core:navigation
+  :feature:cv-content -- implementation --> :core:api-compose
+  :feature:cv-content -- implementation --> :core:ui
+
+classDef android-library fill:#3BD482,stroke:#fff,stroke-width:2px,color:#fff;
+classDef unknown fill:#676767,stroke:#fff,stroke-width:2px,color:#fff;
+class :feature:cv-content android-library
+class :core:navigation unknown
+class :core:api-compose unknown
+class :core:ui unknown
+
 ```
 # :feature:splash-screen
 

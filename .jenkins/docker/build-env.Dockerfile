@@ -27,11 +27,11 @@ RUN set -o errexit -o nounset \
         openssh-client \
     && rm --recursive --force /var/lib/apt/lists/*
 
-ENV GRADLE_VERSION 8.7
-ARG GRADLE_DOWNLOAD_SHA256=194717442575a6f96e1c1befa2c30e9a4fc90f701d7aee33eb879b79e7ff05c0
+ENV GRADLE_VERSION="8.8"
+ARG GRADLE_DOWNLOAD_SHA256=a4b4158601f8636cdeeab09bd76afb640030bb5b144aafe261a5e8af027dc612
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
-    && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip" \
+    && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
     \
     && echo "Checking Gradle download hash" \
     && echo "${GRADLE_DOWNLOAD_SHA256} *gradle.zip" | sha256sum --check - \
@@ -51,8 +51,8 @@ RUN set -o errexit -o nounset \
 USER root
 
 ENV ANDROID_HOME /opt/android-sdk
-ARG ANDROID_SDK_VERSION=10406996
-ARG ANDROID_SDK_DOWNLOAD_SHA256=8919e8752979db73d8321e9babe2caedcc393750817c1a5f56c128ec442fb540
+ARG ANDROID_SDK_VERSION=11076708
+ARG ANDROID_SDK_DOWNLOAD_SHA256=2d2d50857e4eb553af5a6dc3ad507a17adf43d115264b1afc116f95c92e5e258
 
 RUN set -o errexit -o nounset \
     && echo "Downloading Android SDK" \

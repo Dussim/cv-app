@@ -9,5 +9,5 @@ android {
 dependencies {
     api(project(":core:api"))
 
-    api("xyz.dussim:data-model:1.0.0")
+    api("xyz.dussim:data-model")
 }

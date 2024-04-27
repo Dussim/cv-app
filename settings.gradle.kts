@@ -1,4 +1,7 @@
 import buildparameters.BuildParametersExtension
+import java.io.ByteArrayOutputStream
+import java.util.Date
+import org.gradle.kotlin.dsl.support.serviceOf
 
 enableFeaturePreview("GROOVY_COMPILATION_AVOIDANCE")
 
@@ -28,6 +31,7 @@ plugins {
 }
 
 develocity {
+    val execOps = serviceOf<ExecOperations>()
     val buildParameters = the<BuildParametersExtension>()
 
     buildScan {
@@ -47,6 +51,24 @@ develocity {
                 false -> "LOCAL"
             }
         )
+
+        background {
+            if (!buildParameters.ci) {
+                val output = ByteArrayOutputStream()
+                execOps.exec {
+                    commandLine("git", "rev-parse", "--short", "HEAD")
+                    standardOutput = output
+                }
+                value("Git Commit ID", output.toString())
+            }
+        }
+
+        buildScanPublished {
+            if (!buildParameters.ci) {
+                file(".reports/scan-journal.log")
+                    .appendText("${Date()} - $buildScanId - $buildScanUri\n")
+            }
+        }
     }
 }
 
@@ -71,7 +93,11 @@ buildCache {
 
 includeBuild("backend")
 includeBuild("deployment")
-includeBuild("shared")
+includeBuild("shared") {
+    dependencySubstitution {
+        substitute(module("xyz.dussim:data-model")).using(project(":data-model"))
+    }
+}
 
 include(
     // Layer 1 - Modules that are not dependent on any other project module

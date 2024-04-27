@@ -8,11 +8,13 @@
 }%%
 
 graph TB
-  subgraph core
-    api
-    network
-  end
-  network -- api --> api
+  :core:network -- api --> :core:api
+
+classDef android-library fill:#3BD482,stroke:#fff,stroke-width:2px,color:#fff;
+classDef unknown fill:#676767,stroke:#fff,stroke-width:2px,color:#fff;
+class :core:network android-library
+class :core:api unknown
+
 ```
 # :core:network
 

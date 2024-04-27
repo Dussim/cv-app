@@ -11,6 +11,6 @@ dependencies {
 
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 
-    api("xyz.dussim:data-model:1.0.0")
+    api("xyz.dussim:data-model")
 }
 

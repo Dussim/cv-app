@@ -12,7 +12,7 @@ android {
         create("release") {
             keyAlias = buildParameters.signing.key.name
             keyPassword = buildParameters.signing.key.password
-            storeFile = File("../.keystore/${buildParameters.signing.keystore.name}")
+            storeFile = rootProject.layout.projectDirectory.file(".keystore/${buildParameters.signing.keystore.name}").asFile
             storePassword = buildParameters.signing.keystore.password
         }
     }
@@ -55,6 +55,10 @@ android {
             it.versionName = versioning.versionName.get()
             it.minSdk = versioning.minApi.get()
         }
+    }
+
+    lint{
+        disable += "Instantiatable"
     }
 }
 

@@ -20,5 +20,5 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
 
-    api("xyz.dussim:data-model:1.0.0")
+    api("xyz.dussim:data-model")
 }
