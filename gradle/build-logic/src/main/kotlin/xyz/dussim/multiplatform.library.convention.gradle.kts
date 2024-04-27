@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.android.library")
     kotlin("plugin.parcelize")
+    id("xyz.dussim.module.utilities")
 }
 
 android {

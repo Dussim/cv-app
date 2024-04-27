@@ -24,7 +24,7 @@ buildParameters {
         }
         group("key") {
             string("name") {
-                defaultValue = "debug"
+                defaultValue = "dummy"
                 description = "Name of the key to use"
             }
             string("password") {

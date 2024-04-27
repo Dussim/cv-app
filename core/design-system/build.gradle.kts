@@ -12,3 +12,7 @@ dependencies {
 
     implementation("androidx.window:window:1.2.0")
 }
+
+tasks.createModuleGraph {
+    enabled = false
+}

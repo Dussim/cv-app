@@ -17,5 +17,5 @@ docker {
 }
 
 dependencies {
-    implementation("xyz.dussim:data-model:1.0.0")
+    implementation("xyz.dussim:data-model")
 }

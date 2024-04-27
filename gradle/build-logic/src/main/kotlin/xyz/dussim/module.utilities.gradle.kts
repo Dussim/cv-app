@@ -17,6 +17,10 @@ moduleGraphConfig {
     orientation = Orientation.TOP_TO_BOTTOM
     theme = Theme.DARK
     linkText = LinkText.CONFIGURATION
+
+    excludedConfigurationsRegex = ".*[Tt]est.*"
+    setStyleByModuleType = true
+    showFullPath = true
 }
 
 configure<KtlintExtension> {

@@ -12,7 +12,7 @@ kotlin {
 }
 
 dependencies {
-    val ktorVersion = "2.3.10"
+    val ktorVersion = "2.3.11"
     implementation("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
@@ -29,5 +29,5 @@ dependencies {
     implementation("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.625")
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:2.0.0-RC1")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:2.0.0")
 }

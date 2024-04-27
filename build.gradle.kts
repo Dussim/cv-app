@@ -1,6 +1,7 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
+    id("xyz.dussim.module.utilities")
     id("com.github.ben-manes.versions").version("0.51.0")
 }
 
@@ -37,4 +38,8 @@ tasks.named("dependencyUpdates") {
             into(layout.projectDirectory.dir(".reports/versions"))
         }
     }
+}
+
+tasks.wrapper {
+    distributionType = Wrapper.DistributionType.ALL
 }

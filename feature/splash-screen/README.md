@@ -8,15 +8,15 @@
 }%%
 
 graph TB
-  subgraph core
-    api-compose
-    navigation
-  end
-  subgraph feature
-    splash-screen
-  end
-  splash-screen -- api --> navigation
-  splash-screen -- implementation --> api-compose
+  :feature:splash-screen -- api --> :core:navigation
+  :feature:splash-screen -- implementation --> :core:api-compose
+
+classDef android-library fill:#3BD482,stroke:#fff,stroke-width:2px,color:#fff;
+classDef unknown fill:#676767,stroke:#fff,stroke-width:2px,color:#fff;
+class :feature:splash-screen android-library
+class :core:navigation unknown
+class :core:api-compose unknown
+
 ```
 # :feature:splash-screen
 

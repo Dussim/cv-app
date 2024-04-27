@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'dussim/build-env:21-8.7'
+            image 'dussim/build-env:jdk21_gradle-8.8_android-34'
             args '-v gradle-cache:/home/gradle/.gradle'
         }
     }
@@ -48,13 +48,25 @@ pipeline {
                     allowEmptyArchive: true,
                     artifacts        : '.reports/**/*.html'
             ])
+            archiveArtifacts([
+                    allowEmptyArchive: true,
+                    artifacts        : 'build/reports/**/*.html'
+            ])
             publishHTML([
-                    allowMissing         : false,
+                    allowMissing         : true,
                     alwaysLinkToLastBuild: false,
                     keepAll              : false,
                     reportDir            : '.reports',
                     reportFiles          : '**/*.html',
                     reportName           : 'Aggregated Reports',
+            ])
+            publishHTML([
+                    allowMissing         : true,
+                    alwaysLinkToLastBuild: false,
+                    keepAll              : false,
+                    reportDir            : 'build/reports/',
+                    reportFiles          : '**/*.html',
+                    reportName           : 'Build Reports',
             ])
         }
     }
