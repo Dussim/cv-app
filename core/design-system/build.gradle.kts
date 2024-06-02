@@ -10,7 +10,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material3:material3-window-size-class")
 
-    implementation("androidx.window:window:1.2.0")
+    implementation("androidx.window:window:1.3.0")
 }
 
 tasks.createModuleGraph {

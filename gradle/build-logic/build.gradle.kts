@@ -12,7 +12,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.0")
     implementation("dev.iurysouza:modulegraph:0.10.0")
 
-    implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.0")
+    implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.1")
 
     implementation("xyz.dussim:versioning-plugin:1.0.0")
 }
