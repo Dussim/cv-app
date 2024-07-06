@@ -22,6 +22,10 @@ android {
         create("staging") {
             initWith(getByName("debug"))
         }
+
+        release {
+            isMinifyEnabled = false
+        }
     }
 }
 
@@ -33,7 +37,7 @@ kotlin {
 
     sourceSets.commonMain.dependencies {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.1")
     }
 
     targets.all {

@@ -13,7 +13,7 @@ internal class LocalLanguagesDataSource(
     companion object {
         private fun staticData(universalMapper: UniversalMapper) = listOf(
             LanguageDto(Predefined.Polish, LanguageLevel.Native),
-            LanguageDto(Predefined.English, LanguageLevel.B2)
+            LanguageDto(Predefined.English, LanguageLevel.C1)
         ).map(universalMapper::map)
     }
 }
