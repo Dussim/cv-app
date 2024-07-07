@@ -56,15 +56,11 @@ buildParameters {
         group("ssh") {
             string("host") {
                 description = "Host to deploy to"
-                defaultValue = "tuzim.xyz"
+                defaultValue = "192.168.88.253"
             }
             string("user") {
                 description = "User to deploy as"
-                defaultValue = "ubuntu"
-            }
-            string("idRsaPath") {
-                fromEnvironment("ID_RSA_PATH")
-                description = "Path to the id_rsa file"
+                defaultValue = "dussim"
             }
         }
     }
