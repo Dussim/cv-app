@@ -48,7 +48,7 @@ android {
 
         create("installedApp") {
             dimension = "installationType"
-            versionCode = versioning.versionCode.get() + 50
+            versionCode = versioning.versionCode.get() + 60
         }
 
         forEach {
