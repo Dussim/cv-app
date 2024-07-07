@@ -16,7 +16,6 @@ android {
 
     defaultConfig {
         applicationId = "xyz.dussim.cv"
-        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
