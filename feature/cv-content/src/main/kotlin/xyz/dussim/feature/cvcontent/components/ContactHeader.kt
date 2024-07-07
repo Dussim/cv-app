@@ -1,10 +1,22 @@
 package xyz.dussim.feature.cvcontent.components
 
+import android.content.Intent
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -14,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -27,7 +40,6 @@ enum class Orientation {
     Row, Column
 }
 
-
 @Composable
 internal fun ContactHeader(
     modifier: Modifier = Modifier,
@@ -36,7 +48,7 @@ internal fun ContactHeader(
     contentPadding: PaddingValues = PaddingValues(20.dp),
     socialLinks: List<SocialLink>,
     socials: @Composable () -> Unit = { SocialLinks(socialLinksOrientation, socialLinks) },
-    buttons: @Composable () -> Unit = { DownloadAndShare(buttonsOrientation) },
+    buttons: @Composable () -> Unit = { GithubButton(buttonsOrientation) },
     imageRow: @Composable () -> Unit = {}
 ) {
     Box(
@@ -87,6 +99,23 @@ internal fun DownloadAndShare(buttonsOrientation: Orientation) {
     }
 }
 
+@Composable
+internal fun GithubButton(buttonsOrientation: Orientation) {
+    val context = LocalContext.current
+    val onClick = {
+        context.startActivity(Intent(ACTION_VIEW, Uri.parse("https://github.com/Dussim/cv-app")))
+    }
+
+    when (buttonsOrientation) {
+        Orientation.Row -> Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally)) {
+            GithubButton(onClick = onClick)
+        }
+
+        Orientation.Column -> Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            GithubButton(onClick = onClick)
+        }
+    }
+}
 
 @Composable
 private fun ContactHeaderSlots(
@@ -104,7 +133,7 @@ private fun ContactHeaderSlots(
     ) {
         imageRow()
         socials()
-//        buttons()
+        buttons()
     }
 }
 
