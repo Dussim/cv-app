@@ -2,7 +2,7 @@ FROM eclipse-temurin:21-jdk-jammy
 
 CMD ["gradle"]
 
-ENV GRADLE_HOME /opt/gradle
+ENV GRADLE_HOME=/opt/gradle
 
 RUN set -o errexit -o nounset \
     && echo "Adding gradle user and group" \
@@ -27,8 +27,8 @@ RUN set -o errexit -o nounset \
         openssh-client \
     && rm --recursive --force /var/lib/apt/lists/*
 
-ENV GRADLE_VERSION="8.8"
-ARG GRADLE_DOWNLOAD_SHA256=a4b4158601f8636cdeeab09bd76afb640030bb5b144aafe261a5e8af027dc612
+ENV GRADLE_VERSION="8.9"
+ARG GRADLE_DOWNLOAD_SHA256=d725d707bfabd4dfdc958c624003b3c80accc03f7037b5122c4b1d0ef15cecab
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
@@ -50,7 +50,7 @@ RUN set -o errexit -o nounset \
 
 USER root
 
-ENV ANDROID_HOME /opt/android-sdk
+ENV ANDROID_HOME=/opt/android-sdk
 ARG ANDROID_SDK_VERSION=11076708
 ARG ANDROID_SDK_DOWNLOAD_SHA256=2d2d50857e4eb553af5a6dc3ad507a17adf43d115264b1afc116f95c92e5e258
 
@@ -67,7 +67,7 @@ RUN set -o errexit -o nounset \
     && mkdir -p "${ANDROID_HOME}/cmdline-tools/tools" \
     && mv "cmdline-tools/"* "${ANDROID_HOME}/cmdline-tools/tools/"
 
-ENV PATH ${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/cmdline-tools/tools/bin:${ANDROID_HOME}/platform-tools
 
 RUN set -o errexit -o nounset \
     && echo "Accepting Android SDK licenses" \
