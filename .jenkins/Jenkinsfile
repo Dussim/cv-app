@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'dussim/build-env:jdk21_gradle-8.8_android-34'
+            image 'dussim/build-env:jdk21_gradle-8.9_android-34'
             args '-v gradle-cache:/home/gradle/.gradle --net=host'
         }
     }
