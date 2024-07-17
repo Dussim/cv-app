@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Quality') {
             steps {
-                sh 'gradle ktlintCheck'
+                sh 'gradle ktlintCheck --no-build-cache --no-configuration-cache'
                 recordIssues([
                         enabledForFailure: true,
                         tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
