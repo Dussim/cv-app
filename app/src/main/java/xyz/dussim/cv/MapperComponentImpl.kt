@@ -7,15 +7,16 @@ import xyz.dussim.datamodel.language.LanguageMapper
 import xyz.dussim.datamodel.skill.SkillMapper
 
 private class MapperComponentImpl(
-    activityComponent: ActivityComponent
+    activityComponent: ActivityComponent,
 ) : MapperComponent {
     override val languageMapper = LanguageMapper(activityComponent.context)
     override val skillMapper = SkillMapper(activityComponent.context)
 
-    override val universalMapper = UniversalMapper(
-        languageMapper = languageMapper,
-        skillMapper = skillMapper
-    )
+    override val universalMapper =
+        UniversalMapper(
+            languageMapper = languageMapper,
+            skillMapper = skillMapper,
+        )
 }
 
 fun MapperComponent.Companion.create(activityComponent: ActivityComponent): MapperComponent = MapperComponentImpl(activityComponent)

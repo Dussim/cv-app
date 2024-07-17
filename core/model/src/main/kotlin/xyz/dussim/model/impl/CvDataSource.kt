@@ -19,24 +19,24 @@ internal class CvDataSource(
     private val workplacesDataSource: DataSource<List<Workplace>>,
     private val socialsDataSource: DataSource<List<SocialLink>>,
     private val certificatesDataSource: DataSource<List<Certificate>>,
-    private val dispatcher: CoroutineDispatcher
+    private val dispatcher: CoroutineDispatcher,
 ) : DataSource<CvData> {
+    override suspend fun fetch(): CvData =
+        withContext(dispatcher) {
+            val skills = async { skillsDataSource.fetch() }
+            val languages = async { languagesDataSource.fetch() }
+            val aboutMe = async { aboutMeDataSource.fetch() }
+            val workplaces = async { workplacesDataSource.fetch() }
+            val socials = async { socialsDataSource.fetch() }
+            val certificates = async { certificatesDataSource.fetch() }
 
-    override suspend fun fetch(): CvData = withContext(dispatcher) {
-        val skills = async { skillsDataSource.fetch() }
-        val languages = async { languagesDataSource.fetch() }
-        val aboutMe = async { aboutMeDataSource.fetch() }
-        val workplaces = async { workplacesDataSource.fetch() }
-        val socials = async { socialsDataSource.fetch() }
-        val certificates = async { certificatesDataSource.fetch() }
-
-        CvData(
-            skills = skills.await(),
-            languages = languages.await(),
-            aboutMe = aboutMe.await(),
-            workplaces = workplaces.await(),
-            socials = socials.await(),
-            certificates = certificates.await()
-        )
-    }
+            CvData(
+                skills = skills.await(),
+                languages = languages.await(),
+                aboutMe = aboutMe.await(),
+                workplaces = workplaces.await(),
+                socials = socials.await(),
+                certificates = certificates.await(),
+            )
+        }
 }

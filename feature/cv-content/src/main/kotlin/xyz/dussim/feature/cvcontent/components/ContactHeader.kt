@@ -37,7 +37,8 @@ import xyz.dussim.designsystem.ScreenWidthClass
 import xyz.dussim.feature.cvcontent.R
 
 enum class Orientation {
-    Row, Column
+    Row,
+    Column,
 }
 
 @Composable
@@ -49,53 +50,61 @@ internal fun ContactHeader(
     socialLinks: List<SocialLink>,
     socials: @Composable () -> Unit = { SocialLinks(socialLinksOrientation, socialLinks) },
     buttons: @Composable () -> Unit = { GithubButton(buttonsOrientation) },
-    imageRow: @Composable () -> Unit = {}
+    imageRow: @Composable () -> Unit = {},
 ) {
     Box(
-        modifier = modifier.then(
-            Modifier
-                .background(CardBackgroundColor, RoundedCornerShape(16.dp))
-                .padding(contentPadding)
-        )
+        modifier =
+            modifier.then(
+                Modifier
+                    .background(CardBackgroundColor, RoundedCornerShape(16.dp))
+                    .padding(contentPadding),
+            ),
     ) {
         ContactHeaderSlots(
             imageRow = imageRow,
             socials = socials,
             buttons = buttons,
-            verticalArrangement = Arrangement.spacedBy(30.dp)
+            verticalArrangement = Arrangement.spacedBy(30.dp),
         )
     }
 }
 
 @Composable
-internal fun SocialLinks(socialLinksOrientation: Orientation, socialLinks: List<SocialLink>) {
+internal fun SocialLinks(
+    socialLinksOrientation: Orientation,
+    socialLinks: List<SocialLink>,
+) {
     when (socialLinksOrientation) {
-        Orientation.Row -> SocialsRow(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth(),
-            socialLinks = socialLinks
-        )
+        Orientation.Row ->
+            SocialsRow(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth(),
+                socialLinks = socialLinks,
+            )
 
-        Orientation.Column -> SocialsColumn(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxWidth(),
-            socialLinks = socialLinks
-        )
+        Orientation.Column ->
+            SocialsColumn(
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxWidth(),
+                socialLinks = socialLinks,
+            )
     }
 }
 
 @Composable
 internal fun DownloadAndShare(buttonsOrientation: Orientation) {
     when (buttonsOrientation) {
-        Orientation.Row -> ButtonRow(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxWidth()
-        )
+        Orientation.Row ->
+            ButtonRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxWidth(),
+            )
 
-        Orientation.Column -> ButtonColumn(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxWidth()
-        )
+        Orientation.Column ->
+            ButtonColumn(
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxWidth(),
+            )
     }
 }
 
@@ -129,7 +138,7 @@ private fun ContactHeaderSlots(
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         imageRow()
         socials()
@@ -142,12 +151,10 @@ private fun ButtonColumn(
     modifier: Modifier = Modifier,
     download: @Composable ColumnScope.() -> Unit = {
         DownloadButton(Modifier.fillMaxWidth()) {
-
         }
     },
     share: @Composable ColumnScope.() -> Unit = {
         ShareButton(Modifier.fillMaxWidth()) {
-
         }
     },
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
@@ -156,7 +163,7 @@ private fun ButtonColumn(
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         download()
         share()
@@ -168,12 +175,12 @@ private fun SocialsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    socialLinks: List<SocialLink>
+    socialLinks: List<SocialLink>,
 ) {
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         socialLinks.forEach {
             SocialLinkRow(socialLink = it)
@@ -186,12 +193,10 @@ private fun ButtonRow(
     modifier: Modifier = Modifier,
     download: @Composable RowScope.() -> Unit = {
         DownloadButton(Modifier.weight(1f)) {
-
         }
     },
     share: @Composable RowScope.() -> Unit = {
         ShareButton(Modifier.weight(1f)) {
-
         }
     },
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
@@ -200,7 +205,7 @@ private fun ButtonRow(
     Row(
         modifier = modifier,
         horizontalArrangement = horizontalArrangement,
-        verticalAlignment = verticalAlignment
+        verticalAlignment = verticalAlignment,
     ) {
         download()
         share()
@@ -212,12 +217,12 @@ private fun SocialsRow(
     modifier: Modifier = Modifier,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
-    socialLinks: List<SocialLink>
+    socialLinks: List<SocialLink>,
 ) {
     Row(
         modifier = modifier,
         horizontalArrangement = horizontalArrangement,
-        verticalAlignment = verticalAlignment
+        verticalAlignment = verticalAlignment,
     ) {
         socialLinks.forEach {
             SocialLinkRow(socialLink = it)
@@ -225,11 +230,13 @@ private fun SocialsRow(
     }
 }
 
-//TODO refactor this to Defaults, make them required param but also make overload that takes ScreenWidthClass and creates the Defaults
+// TODO refactor this to Defaults, make them required param but also make overload that takes ScreenWidthClass and creates the Defaults
 @Composable
 internal fun contactInfoPhotoHeader(screenWidthClass: ScreenWidthClass): @Composable () -> Unit {
     fun dimen(
-        small: Dp, medium: Dp = small, large: Dp = medium
+        small: Dp,
+        medium: Dp = small,
+        large: Dp = medium,
     ) = when (screenWidthClass) {
         ScreenWidthClass.Small -> small
         ScreenWidthClass.Medium -> medium
@@ -247,7 +254,6 @@ internal fun contactInfoPhotoHeader(screenWidthClass: ScreenWidthClass): @Compos
     }
 }
 
-
 @Composable
 internal fun ContactInfoPhotoHeader(
     imageSize: Dp,
@@ -256,7 +262,7 @@ internal fun ContactInfoPhotoHeader(
     imageTextSpacing: Dp,
     textTopPadding: Dp,
     borderColor: Color = xyz.dussim.designsystem.AccentColor,
-    borderStroke: BorderStroke = BorderStroke(borderSize, borderColor)
+    borderStroke: BorderStroke = BorderStroke(borderSize, borderColor),
 ) {
     val bitmap = painterResource(id = R.drawable.my_image)
 
@@ -264,21 +270,23 @@ internal fun ContactInfoPhotoHeader(
     val jobTitleStyle = LocalTextStyleProvider.current.forHeaderJobTitle()
 
     Row(
-        horizontalArrangement = Arrangement.spacedBy(imageTextSpacing)
+        horizontalArrangement = Arrangement.spacedBy(imageTextSpacing),
     ) {
         Image(
             painter = bitmap,
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(imageSize)
-                .clip(CircleShape)
-                .border(borderStroke, CircleShape)
+            modifier =
+                Modifier
+                    .size(imageSize)
+                    .clip(CircleShape)
+                    .border(borderStroke, CircleShape),
         )
         Column(
             verticalArrangement = Arrangement.spacedBy(textSpacing),
-            modifier = Modifier
-                .padding(top = textTopPadding)
+            modifier =
+                Modifier
+                    .padding(top = textTopPadding),
         ) {
             BasicText(text = "<Artur Tuzim/>", style = nameStyle)
             BasicText(text = "Android developer", style = jobTitleStyle)

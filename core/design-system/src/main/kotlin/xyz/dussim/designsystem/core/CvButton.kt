@@ -5,10 +5,21 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -16,10 +27,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import xyz.dussim.designsystem.*
+import xyz.dussim.designsystem.AccentColor
+import xyz.dussim.designsystem.DisabledColor
+import xyz.dussim.designsystem.RoundedCornerShape_1x
+import xyz.dussim.designsystem.RoundedCornerShape_8x
+import xyz.dussim.designsystem.margin_1x
+import xyz.dussim.designsystem.margin_2x
 
 object CvButtonDefaults {
-
     private val ButtonHorizontalPadding = margin_2x
     private val ButtonVerticalPadding = margin_2x
 
@@ -31,7 +46,7 @@ object CvButtonDefaults {
             start = ButtonHorizontalPadding,
             top = ButtonVerticalPadding,
             end = ButtonHorizontalPadding,
-            bottom = ButtonVerticalPadding
+            bottom = ButtonVerticalPadding,
         )
 
     val OutlinedContentPadding =
@@ -39,13 +54,13 @@ object CvButtonDefaults {
             start = OutlinedButtonHorizontalPadding,
             top = OutlinedButtonVerticalPadding,
             end = OutlinedButtonHorizontalPadding,
-            bottom = OutlinedButtonVerticalPadding
+            bottom = OutlinedButtonVerticalPadding,
         )
 
     val ButtonColors: CvButtonColors =
         CvButtonColorsImpl(
             enabledColor = AccentColor,
-            disabledColor = DisabledColor
+            disabledColor = DisabledColor,
         )
 
     val OutlinedButtonColors: CvOutlinedButtonColors =
@@ -53,7 +68,7 @@ object CvButtonDefaults {
             enabledColor = Color.Transparent,
             disabledColor = Color.Transparent,
             enabledOutlineColor = AccentColor,
-            disabledOutlineColor = DisabledColor
+            disabledOutlineColor = DisabledColor,
         )
 
     val Shape = RoundedCornerShape_8x
@@ -76,7 +91,7 @@ object CvToggleButtonDefaults {
             start = ToggleButtonHorizontalPadding,
             top = ToggleButtonVerticalPadding,
             end = ToggleButtonHorizontalPadding,
-            bottom = ToggleButtonVerticalPadding
+            bottom = ToggleButtonVerticalPadding,
         )
 
     val OutlinedToggleColors: CvOutlinedToggleButtonColors =
@@ -88,11 +103,14 @@ object CvToggleButtonDefaults {
             enabledCheckedOutlineColor = AccentColor,
             disabledCheckedOutlineColor = DisabledColor,
             enabledUncheckedOutlineColor = AccentColor,
-            disabledUncheckedOutlineColor = Color.Transparent
+            disabledUncheckedOutlineColor = Color.Transparent,
         )
 
     @Composable
-    fun outlineBorderStroke(enabled: Boolean, checked: Boolean): BorderStroke {
+    fun outlineBorderStroke(
+        enabled: Boolean,
+        checked: Boolean,
+    ): BorderStroke {
         return BorderStroke(2.dp, OutlinedToggleColors.outlineColorValue(enabled, checked))
     }
 }
@@ -115,20 +133,19 @@ interface CvOutlinedButtonColors : CvButtonColors {
     fun outlineColor(enabled: Boolean): State<Color>
 }
 
-
 @Immutable
 private data class CvButtonColorsImpl(
     override val enabledColor: Color,
-    override val disabledColor: Color
+    override val disabledColor: Color,
 ) : CvButtonColors {
-
     @Composable
     override fun color(enabled: Boolean): State<Color> {
         return rememberUpdatedState(
-            newValue = when (enabled) {
-                true -> enabledColor
-                false -> disabledColor
-            }
+            newValue =
+                when (enabled) {
+                    true -> enabledColor
+                    false -> disabledColor
+                },
         )
     }
 }
@@ -137,31 +154,30 @@ private data class CvButtonColorsImpl(
 private data class CvOutlinedButtonsColorsImpl(
     override val enabledOutlineColor: Color,
     override val disabledOutlineColor: Color,
-    private val cvButtonColors: CvButtonColors
+    private val cvButtonColors: CvButtonColors,
 ) : CvOutlinedButtonColors, CvButtonColors by cvButtonColors {
-
     constructor(
         enabledColor: Color,
         disabledColor: Color,
         enabledOutlineColor: Color,
-        disabledOutlineColor: Color
+        disabledOutlineColor: Color,
     ) : this(
         enabledOutlineColor = enabledOutlineColor,
         disabledOutlineColor = disabledOutlineColor,
-        cvButtonColors = CvButtonColorsImpl(enabledColor, disabledColor)
+        cvButtonColors = CvButtonColorsImpl(enabledColor, disabledColor),
     )
 
     @Composable
     override fun outlineColor(enabled: Boolean): State<Color> {
         return rememberUpdatedState(
-            newValue = when (enabled) {
-                true -> enabledOutlineColor
-                false -> disabledOutlineColor
-            }
+            newValue =
+                when (enabled) {
+                    true -> enabledOutlineColor
+                    false -> disabledOutlineColor
+                },
         )
     }
 }
-
 
 @Stable
 interface CvOutlinedToggleButtonColors {
@@ -177,39 +193,43 @@ interface CvOutlinedToggleButtonColors {
     val enabledUncheckedOutlineColor: Color
     val disabledUncheckedOutlineColor: Color
 
-
     @Composable
     fun backgroundColor(
         enabled: Boolean,
-        checked: Boolean
+        checked: Boolean,
     ): State<Color> {
         return rememberUpdatedState(
-            newValue = when {
-                enabled && checked -> enabledCheckedColor
-                enabled && !checked -> enabledUncheckedColor
-                !enabled && checked -> disabledCheckedColor
-                else -> disabledUncheckedColor
-            }
+            newValue =
+                when {
+                    enabled && checked -> enabledCheckedColor
+                    enabled && !checked -> enabledUncheckedColor
+                    !enabled && checked -> disabledCheckedColor
+                    else -> disabledUncheckedColor
+                },
         )
     }
 
     @Composable
     fun outlineColor(
         enabled: Boolean,
-        checked: Boolean
+        checked: Boolean,
     ): State<Color> {
         return rememberUpdatedState(
-            newValue = when {
-                enabled && checked -> enabledCheckedOutlineColor
-                enabled && !checked -> enabledCheckedOutlineColor
-                !enabled && checked -> disabledCheckedOutlineColor
-                else -> disabledUncheckedOutlineColor
-            }
+            newValue =
+                when {
+                    enabled && checked -> enabledCheckedOutlineColor
+                    enabled && !checked -> enabledCheckedOutlineColor
+                    !enabled && checked -> disabledCheckedOutlineColor
+                    else -> disabledUncheckedOutlineColor
+                },
         )
     }
 
     @Composable
-    fun outlineColorValue(enabled: Boolean, checked: Boolean) = outlineColor(enabled = enabled, checked = checked).value
+    fun outlineColorValue(
+        enabled: Boolean,
+        checked: Boolean,
+    ) = outlineColor(enabled = enabled, checked = checked).value
 }
 
 @Immutable
@@ -221,7 +241,7 @@ private data class CvOutlinedToggleButtonColorsImpl(
     override val enabledCheckedOutlineColor: Color,
     override val disabledCheckedOutlineColor: Color,
     override val enabledUncheckedOutlineColor: Color,
-    override val disabledUncheckedOutlineColor: Color
+    override val disabledUncheckedOutlineColor: Color,
 ) : CvOutlinedToggleButtonColors
 
 @Composable
@@ -233,37 +253,40 @@ fun CvButton(
     border: BorderStroke? = null,
     colors: CvButtonColors = CvButtonDefaults.ButtonColors,
     contentPadding: PaddingValues = CvButtonDefaults.ContentPadding,
-    interactionSource: MutableInteractionSource = remember {
-        MutableInteractionSource()
-    },
-    content: @Composable RowScope.() -> Unit
+    interactionSource: MutableInteractionSource =
+        remember {
+            MutableInteractionSource()
+        },
+    content: @Composable RowScope.() -> Unit,
 ) {
     val background by colors.color(enabled = enabled)
 
     Box(
-        modifier = modifier
-            .then(
-                when (border) {
-                    null -> Modifier
-                    else -> Modifier.border(border, shape)
-                }
-            )
-            .background(background, shape)
-            .clip(shape)
-            .clickable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(), // FIXME, move outside
-                role = Role.Button,
-                enabled = enabled,
-                onClick = onClick
-            )
+        modifier =
+            modifier
+                .then(
+                    when (border) {
+                        null -> Modifier
+                        else -> Modifier.border(border, shape)
+                    },
+                )
+                .background(background, shape)
+                .clip(shape)
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = rememberRipple(),
+                    role = Role.Button,
+                    enabled = enabled,
+                    onClick = onClick,
+                ),
     ) {
         Row(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(contentPadding),
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .padding(contentPadding),
             horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             content()
         }
@@ -279,10 +302,11 @@ fun CvOutlinedButton(
     border: BorderStroke? = CvButtonDefaults.outlineBorderStroke(enabled),
     colors: CvOutlinedButtonColors = CvButtonDefaults.OutlinedButtonColors,
     contentPadding: PaddingValues = CvButtonDefaults.OutlinedContentPadding,
-    interactionSource: MutableInteractionSource = remember {
-        MutableInteractionSource()
-    },
-    content: @Composable RowScope.() -> Unit
+    interactionSource: MutableInteractionSource =
+        remember {
+            MutableInteractionSource()
+        },
+    content: @Composable RowScope.() -> Unit,
 ) {
     CvButton(
         onClick = onClick,
@@ -293,7 +317,7 @@ fun CvOutlinedButton(
         colors = colors,
         contentPadding = contentPadding,
         interactionSource = interactionSource,
-        content = content
+        content = content,
     )
 }
 
@@ -307,129 +331,43 @@ fun CVOutlinedToggleButton(
     border: BorderStroke? = CvToggleButtonDefaults.outlineBorderStroke(enabled, checked),
     colors: CvOutlinedToggleButtonColors = CvToggleButtonDefaults.OutlinedToggleColors,
     contentPadding: PaddingValues = CvToggleButtonDefaults.ContentPadding,
-    interactionSource: MutableInteractionSource = remember {
-        MutableInteractionSource()
-    },
-    content: @Composable RowScope.() -> Unit
+    interactionSource: MutableInteractionSource =
+        remember {
+            MutableInteractionSource()
+        },
+    content: @Composable RowScope.() -> Unit,
 ) {
     val background by colors.backgroundColor(enabled = enabled, checked = checked)
 
     Box(
-        modifier = modifier
-            .then(
-                when (border) {
-                    null -> Modifier
-                    else -> Modifier.border(border, shape)
-                }
-            )
-            .background(background, shape)
-            .clip(shape)
-            .toggleable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(),
-                value = checked,
-                enabled = enabled,
-                role = Role.Switch,
-                onValueChange = onCheckedChange
-            )
+        modifier =
+            modifier
+                .then(
+                    when (border) {
+                        null -> Modifier
+                        else -> Modifier.border(border, shape)
+                    },
+                )
+                .background(background, shape)
+                .clip(shape)
+                .toggleable(
+                    interactionSource = interactionSource,
+                    indication = rememberRipple(),
+                    value = checked,
+                    enabled = enabled,
+                    role = Role.Switch,
+                    onValueChange = onCheckedChange,
+                ),
     ) {
         Row(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(contentPadding),
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .padding(contentPadding),
             horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             content()
         }
     }
 }
-//
-//
-//@Composable
-//private fun PreviewCvButton() {
-//    Column {
-//        CvButton(onClick = { }) {
-//            ButtonPreviewContent()
-//        }
-//    }
-//}
-//
-//
-//@Composable
-//private fun PreviewCvButtonDisabled() {
-//    CvButton(onClick = { }, enabled = false) {
-//        ButtonPreviewContent()
-//    }
-//}
-//
-//
-//@Composable
-//private fun PreviewCvOutlinedButton() {
-//    CvOutlinedButton(onClick = { }) {
-//        ButtonPreviewContent()
-//    }
-//}
-//
-//
-//@Composable
-//private fun PreviewCvOutlinedButtonDisabled() {
-//    CvOutlinedButton(onClick = { }, enabled = false) {
-//        ButtonPreviewContent()
-//    }
-//}
-//
-//
-//@Composable
-//private fun PreviewOutlinedButNormalSizeButtonEnabled() {
-//    CvOutlinedButton(
-//        onClick = { },
-//        shape = CvButtonDefaults.Shape,
-//        contentPadding = CvButtonDefaults.ContentPadding
-//    ) {
-//        ButtonPreviewContent()
-//    }
-//}
-//
-//
-//@Composable
-//private fun PreviewToggleStates() {
-//    Column(
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.spacedBy(8.dp)
-//    ) {
-//        listOf(true to true, true to false, false to true, false to false).forEach { (checked, enabled) ->
-//            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-//                BasicText(text = "Checked = { $checked }, Enabled = { $enabled }", style = xyz.dussim.designsystem.Label)
-//                CVOutlinedToggleButton(checked = checked, onCheckedChange = {}, enabled = enabled) {
-//                    ButtonPreviewContent()
-//                }
-//            }
-//
-//        }
-//    }
-//}
-//
-//
-//@Composable
-//private fun PreviewOutlinedToggle() {
-//    val (checked, setChecked) = remember {
-//        mutableStateOf(false)
-//    }
-//
-//    CVOutlinedToggleButton(checked = checked, onCheckedChange = setChecked) {
-//        ButtonPreviewContent()
-//    }
-//}
-//
-//@Composable
-//private fun ButtonPreviewContent() {
-//    BasicText(text = "Download PDF", style = xyz.dussim.designsystem.H3)
-//    HorizontalSpacer()
-//    CvIcon(vectorRes = R.drawable.download)
-//}
-//
-//@Composable
-//private fun HorizontalSpacer() {
-//    Spacer(modifier = Modifier.width(10.dp))
-//}

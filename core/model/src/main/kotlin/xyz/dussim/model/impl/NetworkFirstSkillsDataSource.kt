@@ -9,7 +9,7 @@ import xyz.dussim.datamodel.skill.Skill
 
 internal class NetworkFirstSkillsDataSource(
     private val network: DataSource<State<List<Skill>>>,
-    private val local: DataSource<List<Skill>>
+    private val local: DataSource<List<Skill>>,
 ) : DataSource<List<Skill>> {
     companion object {
         private const val TIMEOUT = 2_000L

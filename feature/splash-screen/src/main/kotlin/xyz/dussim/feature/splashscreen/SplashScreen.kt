@@ -28,7 +28,7 @@ internal data object SplashScreen : ParcelableScreen {
         val state by model.state.collectAsState()
 
         when (val cvData = state) {
-            State.Loading, is State.Error -> Unit //TODO handle error
+            State.Loading, is State.Error -> Unit // TODO handle error
             is State.Success -> {
                 val screen = rememberScreen(CvAppScreens.CvContent(cvData.value))
                 LaunchedEffect(screen) { navigator.replaceAll(screen) }

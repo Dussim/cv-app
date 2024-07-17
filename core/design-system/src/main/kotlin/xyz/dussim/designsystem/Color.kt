@@ -14,8 +14,9 @@ val BackgroundLightColor: Color = Color(0xFF162A6C)
 val BackgroundMediumColor: Color = Color(0xFF16265B)
 val BackgroundDarkColor: Color = Color(0xFF111737)
 
-val BackgroundBlurBrush: Brush = Brush.linearGradient(
-    0f to BackgroundDarkColor,
-    0.5f to BackgroundLightColor,
-    1f to BackgroundMediumColor,
-)
+val BackgroundBlurBrush: Brush =
+    Brush.linearGradient(
+        0f to BackgroundDarkColor,
+        0.5f to BackgroundLightColor,
+        1f to BackgroundMediumColor,
+    )

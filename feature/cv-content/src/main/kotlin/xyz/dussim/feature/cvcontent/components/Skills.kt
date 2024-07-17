@@ -25,7 +25,7 @@ internal fun SkillsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    skills: List<Skill>
+    skills: List<Skill>,
 ) {
     val navigator = LocalNavigator.currentOrThrow
     val gymStatsEasterEgg = rememberScreen(CvAppScreens.GymStats)
@@ -35,34 +35,36 @@ internal fun SkillsColumn(
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         BasicText(
             text = stringResource(R.string.section_name_skills),
             style = style,
-            modifier = Modifier.easterEggClickable {
-                navigator.push(gymStatsEasterEgg)
-            }
+            modifier =
+                Modifier.easterEggClickable {
+                    navigator.push(gymStatsEasterEgg)
+                },
         )
         Column(
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             skills.forEach {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(20.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     BasicText(
                         text = it.name,
                         style = skillStyle,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(1f),
                     )
                     CvLinearProgressBar(
                         cornerRadius = 40.dp,
                         fraction = it.fraction,
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(10.dp)
+                        modifier =
+                            Modifier
+                                .weight(1f)
+                                .height(10.dp),
                     )
                 }
             }

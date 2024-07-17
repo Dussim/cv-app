@@ -12,7 +12,10 @@ import androidx.window.layout.WindowMetricsCalculator
  * Opinionated screen width classes for responsive design of this app
  */
 enum class ScreenWidthClass {
-    Small, Medium, Big;
+    Small,
+    Medium,
+    Big,
+    ;
 
     companion object {
         @Composable

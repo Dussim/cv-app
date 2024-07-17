@@ -13,4 +13,3 @@ dependencies {
 
     api("xyz.dussim:data-model")
 }
-
