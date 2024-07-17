@@ -16,14 +16,14 @@ import xyz.dussim.ui.R
 @Composable
 fun LanguageChip(
     language: Language,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val style = LocalTextStyleProvider.current.forLanguageChip()
 
     CvChip(modifier = modifier) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(margin_1x),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             CvIcon(R.drawable.languages)
             BasicText(text = "${language.name}:${language.level}", style = style)

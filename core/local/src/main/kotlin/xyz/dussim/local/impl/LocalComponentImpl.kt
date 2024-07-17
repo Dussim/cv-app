@@ -13,13 +13,15 @@ import xyz.dussim.datamodel.skill.Skill
 private class LocalComponentImpl(
     mapperComponent: MapperComponent,
 ) : LocalComponent {
-    override val skillsDataSource: DataSource<List<Skill>> = LocalSkillsDataSource(
-        universalMapper = mapperComponent.universalMapper
-    )
+    override val skillsDataSource: DataSource<List<Skill>> =
+        LocalSkillsDataSource(
+            universalMapper = mapperComponent.universalMapper,
+        )
 
-    override val languagesDataSource: DataSource<List<Language>> = LocalLanguagesDataSource(
-        universalMapper = mapperComponent.universalMapper
-    )
+    override val languagesDataSource: DataSource<List<Language>> =
+        LocalLanguagesDataSource(
+            universalMapper = mapperComponent.universalMapper,
+        )
 
     override val aboutMeDataSource: DataSource<AboutMe> = LocalAboutMeDataSource()
 
@@ -30,6 +32,4 @@ private class LocalComponentImpl(
     override val certificatesDataSource: DataSource<List<Certificate>> = LocalCertificatesDataSource()
 }
 
-fun LocalComponent.Companion.create(
-    mapperComponent: MapperComponent
-): LocalComponent = LocalComponentImpl(mapperComponent)
+fun LocalComponent.Companion.create(mapperComponent: MapperComponent): LocalComponent = LocalComponentImpl(mapperComponent)

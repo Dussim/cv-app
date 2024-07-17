@@ -14,13 +14,13 @@ import java.time.YearMonth
 @Composable
 fun DateChip(
     modifier: Modifier = Modifier,
-    date: YearMonth
+    date: YearMonth,
 ) {
     CvChip(modifier = modifier) {
         BasicText(
             text = CvDateFormatter.format(date),
             style = Caption.copy(TextAlternative),
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier.align(Alignment.Center),
         )
     }
 }
@@ -29,24 +29,25 @@ fun DateChip(
 fun TimeFrameChip(
     modifier: Modifier = Modifier,
     start: YearMonth?,
-    end: YearMonth?
+    end: YearMonth?,
 ) {
-    val text = if (start != null && end != null) {
-        "${CvDateFormatter.format(start)} - ${CvDateFormatter.format(end)}"
-    } else if (start != null) {
-        val endText = stringResource(id = R.string.present_day)
-        "${CvDateFormatter.format(start)} - $endText"
-    } else if (end != null) {
-        CvDateFormatter.format(end)
-    } else {
-        throw IllegalArgumentException("At least one of start or end must be non-null")
-    }
+    val text =
+        if (start != null && end != null) {
+            "${CvDateFormatter.format(start)} - ${CvDateFormatter.format(end)}"
+        } else if (start != null) {
+            val endText = stringResource(id = R.string.present_day)
+            "${CvDateFormatter.format(start)} - $endText"
+        } else if (end != null) {
+            CvDateFormatter.format(end)
+        } else {
+            throw IllegalArgumentException("At least one of start or end must be non-null")
+        }
 
     CvChip(modifier = modifier) {
         BasicText(
             text = text,
             style = Caption.copy(TextAlternative),
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier.align(Alignment.Center),
         )
     }
 }

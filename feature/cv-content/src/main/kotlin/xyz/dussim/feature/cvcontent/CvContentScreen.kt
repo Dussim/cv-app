@@ -8,12 +8,10 @@ import xyz.dussim.designsystem.LocalScreenWidthClass
 import xyz.dussim.designsystem.ScreenWidthClass
 import xyz.dussim.navigation.ParcelableScreen
 
-
 @Parcelize
 data class CvContentScreen(
-    private val cvData: CvData
+    private val cvData: CvData,
 ) : ParcelableScreen {
-
     override fun toString() = "CvContentScreen"
 
     @Composable

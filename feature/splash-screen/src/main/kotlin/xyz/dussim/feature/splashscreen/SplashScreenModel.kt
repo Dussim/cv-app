@@ -8,7 +8,7 @@ import xyz.dussim.api.state.State
 import xyz.dussim.data.CvData
 
 internal class SplashScreenModel(
-    private val cvDataSource: DataSource<CvData>
+    private val cvDataSource: DataSource<CvData>,
 ) : StateScreenModel<State<CvData>>(State.loading()) {
     init {
         screenModelScope.launch {

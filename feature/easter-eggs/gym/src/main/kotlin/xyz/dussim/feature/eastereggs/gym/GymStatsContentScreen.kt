@@ -27,22 +27,23 @@ import xyz.dussim.navigation.ParcelableScreen
 
 @Parcelize
 internal data class GymStatsContentScreen(val gymStats: List<GymStats>) : ParcelableScreen {
-
     @Composable
     override fun Content() {
         val screenWidthClass = LocalScreenWidthClass.current
 
-        val padding = when (screenWidthClass) {
-            ScreenWidthClass.Small -> PaddingValues(margin_1x)
-            ScreenWidthClass.Medium -> PaddingValues(margin_1x)
-            ScreenWidthClass.Big -> PaddingValues(margin_2_5x)
-        }
+        val padding =
+            when (screenWidthClass) {
+                ScreenWidthClass.Small -> PaddingValues(margin_1x)
+                ScreenWidthClass.Medium -> PaddingValues(margin_1x)
+                ScreenWidthClass.Big -> PaddingValues(margin_2_5x)
+            }
 
         GymStatsColumn(
             gymStats = gymStats,
-            modifier = Modifier
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
+            modifier =
+                Modifier
+                    .padding(padding)
+                    .verticalScroll(rememberScrollState()),
         )
     }
 }
@@ -52,7 +53,7 @@ internal fun GymStatsColumn(
     gymStats: List<GymStats>,
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
-    horizontalAlignment: Alignment.Horizontal = Alignment.Start
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
     val skillStyle = LocalTextStyleProvider.current.forSkills()
@@ -60,34 +61,34 @@ internal fun GymStatsColumn(
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         BasicText(
             text = stringResource(R.string.section_name_gym_stats),
-            style = style
+            style = style,
         )
         Column(
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             gymStats.forEach {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(20.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     BasicText(
                         text = it.name,
                         style = skillStyle,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(1f),
                     )
                     Row(
                         modifier = Modifier.weight(2f),
-                        horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.End)
+                        horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.End),
                     ) {
                         it.weight?.value?.let { weight ->
                             CvChip {
                                 BasicText(
                                     text = stringResource(id = R.string.kilograms, weight.toInt()),
-                                    style = skillStyle
+                                    style = skillStyle,
                                 )
                             }
                         }
@@ -95,7 +96,7 @@ internal fun GymStatsColumn(
                             CvChip {
                                 BasicText(
                                     pluralStringResource(id = R.plurals.reps_count, count = reps, reps),
-                                    style = skillStyle
+                                    style = skillStyle,
                                 )
                             }
                         }

@@ -12,7 +12,7 @@ import xyz.dussim.designsystem.DisabledColor
 fun CvLinearProgressBar(
     cornerRadius: Dp,
     fraction: Float,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val r = cornerRadius.value
     val corners = CornerRadius(r, r)

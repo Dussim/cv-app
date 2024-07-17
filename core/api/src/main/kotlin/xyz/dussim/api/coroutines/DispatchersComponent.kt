@@ -16,7 +16,7 @@ private class DispatchersComponentImpl(
     override val main: CoroutineDispatcher = Dispatchers.Main,
     override val io: CoroutineDispatcher = Dispatchers.IO,
     override val default: CoroutineDispatcher = Dispatchers.Default,
-    override val unconfined: CoroutineDispatcher = Dispatchers.Unconfined
+    override val unconfined: CoroutineDispatcher = Dispatchers.Unconfined,
 ) : DispatchersComponent
 
 fun DispatchersComponent.Companion.create(): DispatchersComponent = DispatchersComponentImpl()

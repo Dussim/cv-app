@@ -11,5 +11,5 @@ data class Workplace(
     val endDate: YearMonth?,
     @StringRes val workTitle: Int,
     @StringRes val location: Int,
-    @StringRes val description: Int
+    @StringRes val description: Int,
 ) : Parcelable

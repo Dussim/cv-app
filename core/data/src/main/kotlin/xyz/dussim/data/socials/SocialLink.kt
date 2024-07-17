@@ -11,5 +11,5 @@ data class SocialLink(
     @DrawableRes val icon: Int,
     @StringRes val text: Int,
     val uri: Uri,
-    val action: String
+    val action: String,
 ) : Parcelable

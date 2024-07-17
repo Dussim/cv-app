@@ -7,7 +7,6 @@ import xyz.dussim.designsystem.Caption
 import xyz.dussim.designsystem.TextAlternative
 import xyz.dussim.designsystem.core.CvChip
 
-
 @Preview
 @Composable
 private fun PreviewCvChip() {

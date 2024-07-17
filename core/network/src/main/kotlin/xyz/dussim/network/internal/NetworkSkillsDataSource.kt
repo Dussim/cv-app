@@ -10,13 +10,14 @@ import xyz.dussim.datamodel.skill.Skill
 internal class NetworkSkillsDataSource(
     private val endpointClient: EndpointClient,
     private val universalMapper: UniversalMapper,
-    private val dispatcher: CoroutineDispatcher
+    private val dispatcher: CoroutineDispatcher,
 ) : DataSource<State<List<Skill>>> {
-    override suspend fun fetch(): State<List<Skill>> = withContext(dispatcher) {
-        endpointClient
-            .fetchSkills()
-            .map(universalMapper::mapSkills)
-            .map { State.Success(it) }
-            .getOrElse { State.Error(it) }
-    }
+    override suspend fun fetch(): State<List<Skill>> =
+        withContext(dispatcher) {
+            endpointClient
+                .fetchSkills()
+                .map(universalMapper::mapSkills)
+                .map { State.Success(it) }
+                .getOrElse { State.Error(it) }
+        }
 }

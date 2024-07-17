@@ -13,31 +13,34 @@ import xyz.dussim.network.internal.create
 
 private class ActivityComponentImpl(
     appComponent: AppComponent,
-    override val context: Context
+    override val context: Context,
 ) : ActivityComponent {
+    override val mapperComponent =
+        MapperComponent.create(
+            activityComponent = this,
+        )
 
-    override val mapperComponent = MapperComponent.create(
-        activityComponent = this
-    )
+    override val networkComponent =
+        NetworkComponent.create(
+            mapperComponent = mapperComponent,
+            dispatchersComponent = appComponent.dispatchersComponent,
+            baseUrlProvider = appComponent.baseUrlProvider,
+        )
 
-    override val networkComponent = NetworkComponent.create(
-        mapperComponent = mapperComponent,
-        dispatchersComponent = appComponent.dispatchersComponent,
-        baseUrlProvider = appComponent.baseUrlProvider
-    )
+    override val localComponent =
+        LocalComponent.create(
+            mapperComponent = mapperComponent,
+        )
 
-    override val localComponent = LocalComponent.create(
-        mapperComponent = mapperComponent
-    )
-
-    override val modelComponent = ModelComponent.create(
-        dispatchersComponent = appComponent.dispatchersComponent,
-        localComponent = localComponent,
-        networkComponent = networkComponent
-    )
+    override val modelComponent =
+        ModelComponent.create(
+            dispatchersComponent = appComponent.dispatchersComponent,
+            localComponent = localComponent,
+            networkComponent = networkComponent,
+        )
 }
 
 fun ActivityComponent.Companion.create(
     context: Context,
-    appComponent: AppComponent
+    appComponent: AppComponent,
 ): ActivityComponent = ActivityComponentImpl(appComponent, context)

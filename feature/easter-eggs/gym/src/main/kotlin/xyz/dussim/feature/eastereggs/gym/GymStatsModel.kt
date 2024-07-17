@@ -8,9 +8,8 @@ import xyz.dussim.api.state.State
 import xyz.dussim.data.gym.GymStats
 
 internal class GymStatsModel(
-    private val gymStatsDataSource: DataSource<State<List<GymStats>>>
+    private val gymStatsDataSource: DataSource<State<List<GymStats>>>,
 ) : StateScreenModel<State<List<GymStats>>>(State.Loading) {
-
     init {
         screenModelScope.launch {
             mutableState.value = gymStatsDataSource.fetch()

@@ -25,7 +25,7 @@ internal fun CertificatesVertical(
     CertificatesBase(
         modifier,
         verticalArrangement,
-        horizontalAlignment
+        horizontalAlignment,
     ) {
         certificates.forEach {
             CertificateColumn(certificate = it)
@@ -38,12 +38,12 @@ internal fun CertificatesHorizontal(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    certificates: List<Certificate>
+    certificates: List<Certificate>,
 ) {
     CertificatesBase(
         modifier,
         verticalArrangement,
-        horizontalAlignment
+        horizontalAlignment,
     ) {
         certificates.forEach {
             CertificateRow(certificate = it)
@@ -56,18 +56,18 @@ internal fun CertificatesBase(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         val style = LocalTextStyleProvider.current.forSectionTitle()
         BasicText(text = stringResource(R.string.section_name_certificates), style = style)
         Column(
             verticalArrangement = Arrangement.spacedBy(20.dp),
-            content = content
+            content = content,
         )
     }
 }

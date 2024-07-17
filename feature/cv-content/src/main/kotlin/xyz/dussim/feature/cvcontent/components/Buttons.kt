@@ -21,17 +21,18 @@ import xyz.dussim.feature.cvcontent.R
 @Composable
 internal fun DownloadButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
-    val icon = rememberVectorPainter(
-        ImageVector.vectorResource(R.drawable.download)
-    )
+    val icon =
+        rememberVectorPainter(
+            ImageVector.vectorResource(R.drawable.download),
+        )
 
     val text = stringResource(R.string.button_download_text)
 
     CvButton(
         onClick = onClick,
-        modifier = modifier
+        modifier = modifier,
     ) {
         BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))
@@ -63,11 +64,12 @@ internal fun GithubButton(
 @Composable
 internal fun ShareButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
-    val icon = rememberVectorPainter(
-        ImageVector.vectorResource(R.drawable.share)
-    )
+    val icon =
+        rememberVectorPainter(
+            ImageVector.vectorResource(R.drawable.share),
+        )
 
     val text = stringResource(R.string.button_share_text)
 
@@ -75,7 +77,7 @@ internal fun ShareButton(
         onClick = onClick,
         modifier = modifier,
         shape = CvButtonDefaults.Shape,
-        contentPadding = CvButtonDefaults.ContentPadding
+        contentPadding = CvButtonDefaults.ContentPadding,
     ) {
         BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))

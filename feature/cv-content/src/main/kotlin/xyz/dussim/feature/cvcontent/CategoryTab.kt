@@ -22,7 +22,7 @@ internal fun CategoryTab(
     tabModel: TabModel,
     checked: Boolean,
     modifier: Modifier = Modifier,
-    onSelected: (Tab) -> Unit
+    onSelected: (Tab) -> Unit,
 ) {
     CVOutlinedToggleButton(
         checked = checked,
@@ -31,7 +31,7 @@ internal fun CategoryTab(
                 onSelected(tabModel.tab)
             }
         },
-        modifier = modifier
+        modifier = modifier,
     ) {
         if (tabModel.iconRes != null) {
             CvIcon(vectorRes = tabModel.iconRes)
@@ -41,7 +41,7 @@ internal fun CategoryTab(
             BasicText(
                 text = stringResource(id = tabModel.textRes),
                 style = H3,
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
             )
         }
     }
