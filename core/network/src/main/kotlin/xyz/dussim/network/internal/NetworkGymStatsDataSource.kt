@@ -10,14 +10,14 @@ import xyz.dussim.network.internal.dto.mapToGymStats
 
 internal class NetworkGymStatsDataSource(
     private val endpointClient: EndpointClient,
-    private val dispatcher: CoroutineDispatcher
+    private val dispatcher: CoroutineDispatcher,
 ) : DataSource<State<List<GymStats>>> {
-
-    override suspend fun fetch(): State<List<GymStats>> = withContext(dispatcher) {
-        endpointClient
-            .fetchGymStats()
-            .map { gymStatsDtos -> gymStatsDtos.mapNotNull(GymStatsDto::mapToGymStats) }
-            .map { State.success(it) }
-            .getOrElse { State.error(it) }
-    }
+    override suspend fun fetch(): State<List<GymStats>> =
+        withContext(dispatcher) {
+            endpointClient
+                .fetchGymStats()
+                .map { gymStatsDtos -> gymStatsDtos.mapNotNull(GymStatsDto::mapToGymStats) }
+                .map { State.success(it) }
+                .getOrElse { State.error(it) }
+        }
 }

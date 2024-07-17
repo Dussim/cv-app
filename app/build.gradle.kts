@@ -57,7 +57,7 @@ android {
         }
     }
 
-    lint{
+    lint {
         disable += "Instantiatable"
     }
 }

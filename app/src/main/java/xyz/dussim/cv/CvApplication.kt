@@ -26,11 +26,12 @@ class CvApplication : Application(), AppComponentHolder {
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = AppComponentImpl(
-            appContext = this,
-            baseUrlProvider = { baseUrl },
-            dispatchersComponent = DispatchersComponent.create()
-        )
+        appComponent =
+            AppComponentImpl(
+                appContext = this,
+                baseUrlProvider = { baseUrl },
+                dispatchersComponent = DispatchersComponent.create(),
+            )
 
         ScreenRegistry {
             splashScreenModule()
@@ -42,6 +43,6 @@ class CvApplication : Application(), AppComponentHolder {
     private data class AppComponentImpl(
         override val appContext: Application,
         override val baseUrlProvider: BaseUrlProvider,
-        override val dispatchersComponent: DispatchersComponent
+        override val dispatchersComponent: DispatchersComponent,
     ) : AppComponent
 }

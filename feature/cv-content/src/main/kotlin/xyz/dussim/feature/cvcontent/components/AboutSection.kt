@@ -14,12 +14,11 @@ import xyz.dussim.data.about.AboutMe
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.feature.cvcontent.R
 
-
 @Composable
 internal fun AboutSection(
     modifier: Modifier = Modifier,
     spacingHeight: Dp = 16.dp,
-    aboutMe: AboutMe
+    aboutMe: AboutMe,
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
 
@@ -28,7 +27,7 @@ internal fun AboutSection(
         Spacer(modifier = Modifier.height(spacingHeight))
         BasicText(
             style = xyz.dussim.designsystem.Body1,
-            text = stringResource(id = aboutMe.aboutMeRes)
+            text = stringResource(id = aboutMe.aboutMeRes),
         )
     }
 }

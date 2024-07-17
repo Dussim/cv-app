@@ -23,12 +23,12 @@ data object CvChipDefaults {
     val ContentPadding: PaddingValues =
         PaddingValues(
             horizontal = CvChipHorizontalPadding,
-            vertical = CvChipVerticalPadding
+            vertical = CvChipVerticalPadding,
         )
 
     val CvChipColors: CvChipColors =
         CvChipColorsImpl(
-            background = DisabledColor
+            background = DisabledColor,
         )
 
     val CvChipShape: Shape = RoundedCornerShape_1x
@@ -40,7 +40,7 @@ data object CvChipDefaults {
 
 @Immutable
 internal class CvChipColorsImpl(
-    override val background: Color
+    override val background: Color,
 ) : CvChipColors
 
 @Composable
@@ -49,12 +49,13 @@ fun CvChip(
     contentPadding: PaddingValues = CvChipDefaults.ContentPadding,
     cvChipColors: CvChipColors = CvChipDefaults.CvChipColors,
     shape: Shape = CvChipDefaults.CvChipShape,
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     Box(
-        modifier = modifier
-            .background(cvChipColors.background, shape)
-            .padding(contentPadding),
-        content = content
+        modifier =
+            modifier
+                .background(cvChipColors.background, shape)
+                .padding(contentPadding),
+        content = content,
     )
 }

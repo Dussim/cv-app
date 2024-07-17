@@ -8,7 +8,7 @@ import xyz.dussim.datamodel.skill.dto.SkillDto
 import xyz.dussim.network.internal.dto.GymStatsDto
 
 internal class EndpointClient(
-    private val httpClient: HttpClient
+    private val httpClient: HttpClient,
 ) {
     suspend fun fetchSkills(): Result<List<SkillDto>> {
         return runCatching {

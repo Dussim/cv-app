@@ -8,7 +8,7 @@ import xyz.dussim.data.gym.Weight
 internal data class GymStatsDto(
     val name: String?,
     val reps: Int?,
-    val weight: Double?
+    val weight: Double?,
 )
 
 internal fun GymStatsDto.mapToGymStats(): GymStats? {

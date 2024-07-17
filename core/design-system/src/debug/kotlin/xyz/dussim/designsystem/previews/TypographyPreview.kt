@@ -8,14 +8,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import xyz.dussim.designsystem.*
+import xyz.dussim.designsystem.Body1
+import xyz.dussim.designsystem.Body2
+import xyz.dussim.designsystem.Caption
+import xyz.dussim.designsystem.H1
+import xyz.dussim.designsystem.H2
+import xyz.dussim.designsystem.H3
+import xyz.dussim.designsystem.Label
 
 @Preview(name = "App typography preview")
 @Composable
 private fun PreviewTextStyles() {
     Column(
         verticalArrangement = Arrangement.spacedBy(20.dp),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
     ) {
         BasicText(text = "H1", style = H1)
         BasicText(text = "H2", style = H2)

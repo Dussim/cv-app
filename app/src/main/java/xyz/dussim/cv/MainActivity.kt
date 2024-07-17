@@ -28,14 +28,14 @@ import xyz.dussim.designsystem.core.ContentBox
 import xyz.dussim.navigation.CvAppScreens
 
 class MainActivity(
-    private val appComponentHolder: AppComponentHolder
+    private val appComponentHolder: AppComponentHolder,
 ) : ComponentActivity(), ActivityComponentHolder {
     private var loaded: Boolean = false
 
     override val activityComponent: ActivityComponent by lazy {
         ActivityComponent.create(
             context = this,
-            appComponent = appComponentHolder.appComponent
+            appComponent = appComponentHolder.appComponent,
         )
     }
 
@@ -59,16 +59,18 @@ class MainActivity(
             val darkTheme = isSystemInDarkTheme()
             DisposableEffect(darkTheme) {
                 enableEdgeToEdge(
-                    statusBarStyle = SystemBarStyle.auto(
-                        lightScrim = android.graphics.Color.TRANSPARENT,
-                        darkScrim = android.graphics.Color.TRANSPARENT,
-                        detectDarkMode = { darkTheme }
-                    ),
-                    navigationBarStyle = SystemBarStyle.auto(
-                        lightScrim = android.graphics.Color.TRANSPARENT,
-                        darkScrim = android.graphics.Color.TRANSPARENT,
-                        detectDarkMode = { darkTheme }
-                    )
+                    statusBarStyle =
+                        SystemBarStyle.auto(
+                            lightScrim = android.graphics.Color.TRANSPARENT,
+                            darkScrim = android.graphics.Color.TRANSPARENT,
+                            detectDarkMode = { darkTheme },
+                        ),
+                    navigationBarStyle =
+                        SystemBarStyle.auto(
+                            lightScrim = android.graphics.Color.TRANSPARENT,
+                            darkScrim = android.graphics.Color.TRANSPARENT,
+                            detectDarkMode = { darkTheme },
+                        ),
                 )
 
                 onDispose {}

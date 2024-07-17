@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AboutMe(
-    @StringRes val aboutMeRes: Int
+    @StringRes val aboutMeRes: Int,
 ) : Parcelable

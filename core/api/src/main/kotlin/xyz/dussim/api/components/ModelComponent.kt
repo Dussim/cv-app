@@ -8,4 +8,3 @@ interface ModelComponent {
 
     val cvDataSource: DataSource<CvData>
 }
-

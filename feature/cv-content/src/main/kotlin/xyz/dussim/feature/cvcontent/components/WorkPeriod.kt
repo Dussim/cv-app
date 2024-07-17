@@ -11,7 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.workplace.Workplace
-import xyz.dussim.designsystem.*
+import xyz.dussim.designsystem.AccentColor
+import xyz.dussim.designsystem.Body2
+import xyz.dussim.designsystem.Label
+import xyz.dussim.designsystem.LocalTextStyleProvider
+import xyz.dussim.designsystem.TextAlternative
 import xyz.dussim.feature.cvcontent.R
 import xyz.dussim.ui.language.TimeFrameChip
 
@@ -20,25 +24,25 @@ internal fun WorkPeriodHorizontal(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    workplaces: List<Workplace>
+    workplaces: List<Workplace>,
 ) {
     WorkPeriod(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         workplaces.forEach { workplace ->
             WorkPeriodRow(
                 dates = {
                     TimeFrameChip(
-                        modifier = Modifier.width(156.dp),//fixme hardcoded length
+                        modifier = Modifier.width(156.dp),
                         start = workplace.startDate,
-                        end = workplace.endDate
+                        end = workplace.endDate,
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
                 place = { WorkPeriodPlace(text = stringResource(id = workplace.location)) },
-                description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) }
+                description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) },
             )
         }
     }
@@ -49,25 +53,25 @@ internal fun WorkPeriodVertical(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    workplaces: List<Workplace>
+    workplaces: List<Workplace>,
 ) {
     WorkPeriod(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         workplaces.forEach { workplace ->
             WorkPeriodColumn(
                 dates = {
                     TimeFrameChip(
-                        modifier = Modifier.width(156.dp),//fixme hardcoded length
+                        modifier = Modifier.width(156.dp),
                         start = workplace.startDate,
-                        end = workplace.endDate
+                        end = workplace.endDate,
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
                 place = { WorkPeriodPlace(text = stringResource(id = workplace.location)) },
-                description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) }
+                description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) },
             )
         }
     }
@@ -78,19 +82,18 @@ internal fun WorkPeriod(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         BasicText(text = stringResource(R.string.section_name_work_history), style = style)
         content()
     }
 }
-
 
 @Composable
 internal fun WorkPeriodColumn(
@@ -105,7 +108,7 @@ internal fun WorkPeriodColumn(
     Column(
         modifier = modifier,
         verticalArrangement = verticalArrangement,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = horizontalAlignment,
     ) {
         dates?.invoke()
         title()
@@ -127,35 +130,29 @@ internal fun WorkPeriodRow(
     Row(
         modifier = modifier,
         horizontalArrangement = horizontalArrangement,
-        verticalAlignment = verticalAlignment
+        verticalAlignment = verticalAlignment,
     ) {
         dates()
         WorkPeriodColumn(
             title = title,
             place = place,
-            description = description
+            description = description,
         )
     }
 }
 
 @Composable
-internal fun WorkPeriodTitle(
-    text: String
-) {
+internal fun WorkPeriodTitle(text: String) {
     val style = LocalTextStyleProvider.current.forWorkTitle()
     BasicText(text = text, style = style)
 }
 
 @Composable
-internal fun WorkPeriodPlace(
-    text: String
-) {
+internal fun WorkPeriodPlace(text: String) {
     BasicText(text = text.uppercase(), style = Label.copy(color = AccentColor))
 }
 
 @Composable
-internal fun WorkPeriodDescription(
-    text: String
-) {
+internal fun WorkPeriodDescription(text: String) {
     BasicText(text = text, style = Body2.copy(color = TextAlternative))
 }

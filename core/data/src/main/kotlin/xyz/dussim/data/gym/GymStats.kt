@@ -21,5 +21,5 @@ sealed interface Weight : Parcelable {
 data class GymStats(
     val name: String,
     val reps: Int?,
-    val weight: Weight?
+    val weight: Weight?,
 ) : Parcelable

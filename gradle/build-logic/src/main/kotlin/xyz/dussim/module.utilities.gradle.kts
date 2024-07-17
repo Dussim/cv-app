@@ -11,6 +11,10 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint")
 }
 
+dependencies {
+    ktlintRuleset("com.twitter.compose.rules:ktlint:0.0.26")
+}
+
 moduleGraphConfig {
     readmePath = "./README.md"
     heading = "# Dependency Diagram"
@@ -25,6 +29,10 @@ moduleGraphConfig {
 
 configure<KtlintExtension> {
     ignoreFailures = true
+
+    additionalEditorconfig = mapOf(
+        "ktlint_function_naming_ignore_when_annotated_with" to "Composable"
+    )
 
     reporters {
         reporter(ReporterType.HTML)

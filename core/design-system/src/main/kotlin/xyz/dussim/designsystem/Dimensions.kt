@@ -10,5 +10,4 @@ val margin_3x = 24.dp
 val margin_4x = 32.dp
 val margin_5x = 40.dp
 
-
 val margin_8x = 32.dp

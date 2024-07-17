@@ -21,6 +21,6 @@ fun CvCircularProgressIndicator(
         color = color,
         strokeWidth = strokeWidth,
         trackColor = trackColor,
-        strokeCap = strokeCap
+        strokeCap = strokeCap,
     )
 }

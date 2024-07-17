@@ -15,12 +15,12 @@ import androidx.compose.ui.unit.dp
 fun CvIcon(
     @DrawableRes vectorRes: Int,
     modifier: Modifier = Modifier,
-    contentDescription: String? = null
+    contentDescription: String? = null,
 ) {
     CvIcon(
         painter = rememberVectorPainter(image = ImageVector.vectorResource(vectorRes)),
         modifier = modifier,
-        contentDescription = contentDescription
+        contentDescription = contentDescription,
     )
 }
 
@@ -28,13 +28,14 @@ fun CvIcon(
 fun CvIcon(
     painter: Painter,
     modifier: Modifier = Modifier,
-    contentDescription: String? = null
+    contentDescription: String? = null,
 ) {
     Image(
         painter = painter,
         contentDescription = contentDescription,
-        modifier = Modifier
-            .size(24.dp)
-            .then(modifier)
+        modifier =
+            Modifier
+                .size(24.dp)
+                .then(modifier),
     )
 }

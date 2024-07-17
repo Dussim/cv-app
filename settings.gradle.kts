@@ -1,7 +1,8 @@
 import buildparameters.BuildParametersExtension
-import java.io.ByteArrayOutputStream
-import java.util.Date
 import org.gradle.kotlin.dsl.support.serviceOf
+import java.io.ByteArrayOutputStream
+import java.nio.file.Files
+import java.util.Date
 
 enableFeaturePreview("GROOVY_COMPILATION_AVOIDANCE")
 
@@ -61,7 +62,7 @@ develocity {
             when (buildParameters.ci) {
                 true -> "CI"
                 false -> "LOCAL"
-            }
+            },
         )
 
         background {
@@ -78,6 +79,11 @@ develocity {
         buildScanPublished {
             if (!buildParameters.ci) {
                 file(".reports/scan-journal.log")
+                    .apply {
+                        if (!exists()) {
+                            Files.createDirectories(toPath().parent)
+                        }
+                    }
                     .appendText("${Date()} - $buildScanId - $buildScanUri\n")
             }
         }

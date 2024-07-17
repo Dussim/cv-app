@@ -16,6 +16,5 @@ data class CvData(
     val socials: List<SocialLink>,
     val aboutMe: AboutMe,
     val workplaces: List<Workplace>,
-    val certificates: List<Certificate>
+    val certificates: List<Certificate>,
 ) : Parcelable
-

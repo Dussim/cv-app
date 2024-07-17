@@ -11,9 +11,10 @@ tasks.withType<DependencyUpdatesTask> {
     reportfileName = "app-logic-dependency-updates-report"
     outputDir = layout.projectDirectory.dir(".reports/versions").asFile.path
 
-    filterConfigurations = Spec {
-        !it.isCanBeConsumed
-    }
+    filterConfigurations =
+        Spec {
+            !it.isCanBeConsumed
+        }
 
     rejectVersionIf {
         candidate.version.isNonStable() && !currentVersion.isNonStable()

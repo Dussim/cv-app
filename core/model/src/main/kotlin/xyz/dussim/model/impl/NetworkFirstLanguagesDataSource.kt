@@ -9,7 +9,7 @@ import xyz.dussim.datamodel.language.Language
 
 class NetworkFirstLanguagesDataSource(
     private val network: DataSource<State<List<Language>>>,
-    private val local: DataSource<List<Language>>
+    private val local: DataSource<List<Language>>,
 ) : DataSource<List<Language>> {
     companion object {
         private const val TIMEOUT = 2_000L

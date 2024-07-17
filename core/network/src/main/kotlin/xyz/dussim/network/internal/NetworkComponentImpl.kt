@@ -17,15 +17,16 @@ import xyz.dussim.api.components.MapperComponent
 import xyz.dussim.api.components.NetworkComponent
 import xyz.dussim.api.coroutines.DispatchersComponent
 
-private fun configureJson() = Json {
-    coerceInputValues = true
-    ignoreUnknownKeys = true
-    explicitNulls = false
-}
+private fun configureJson() =
+    Json {
+        coerceInputValues = true
+        ignoreUnknownKeys = true
+        explicitNulls = false
+    }
 
 private fun configureHttpClient(
     serialization: Json,
-    baseUrlProvider: BaseUrlProvider
+    baseUrlProvider: BaseUrlProvider,
 ) = HttpClient(OkHttp) {
     install(ContentNegotiation) {
         json(serialization)
@@ -33,11 +34,15 @@ private fun configureHttpClient(
     install(Resources)
     install(Logging) {
         level = LogLevel.ALL
-        logger = MessageLengthLimitingLogger(delegate = object : Logger {
-            override fun log(message: String) {
-                Log.v("Ktor", message)
-            }
-        })
+        logger =
+            MessageLengthLimitingLogger(
+                delegate =
+                    object : Logger {
+                        override fun log(message: String) {
+                            Log.v("Ktor", message)
+                        }
+                    },
+            )
     }
     defaultRequest {
         url(baseUrlProvider.getBaseUrl())
@@ -47,9 +52,8 @@ private fun configureHttpClient(
 internal class NetworkComponentImpl(
     private val mapperComponent: MapperComponent,
     private val dispatchersComponent: DispatchersComponent,
-    baseUrlProvider: BaseUrlProvider
+    baseUrlProvider: BaseUrlProvider,
 ) : NetworkComponent {
-
     private val serialization by lazy(::configureJson)
 
     private val httpClient by lazy { configureHttpClient(serialization, baseUrlProvider) }
@@ -60,7 +64,7 @@ internal class NetworkComponentImpl(
         NetworkSkillsDataSource(
             endpointClient,
             mapperComponent.universalMapper,
-            dispatchersComponent.io
+            dispatchersComponent.io,
         )
     }
 
@@ -68,14 +72,14 @@ internal class NetworkComponentImpl(
         NetworkLanguagesDataSource(
             endpointClient,
             mapperComponent.universalMapper,
-            dispatchersComponent.io
+            dispatchersComponent.io,
         )
     }
 
     override val gymStatsDataSource by lazy {
         NetworkGymStatsDataSource(
             endpointClient,
-            dispatchersComponent.io
+            dispatchersComponent.io,
         )
     }
 }
@@ -83,9 +87,10 @@ internal class NetworkComponentImpl(
 fun NetworkComponent.Companion.create(
     mapperComponent: MapperComponent,
     dispatchersComponent: DispatchersComponent,
-    baseUrlProvider: BaseUrlProvider
-): NetworkComponent = NetworkComponentImpl(
-    mapperComponent = mapperComponent,
-    dispatchersComponent = dispatchersComponent,
-    baseUrlProvider = baseUrlProvider
-)
+    baseUrlProvider: BaseUrlProvider,
+): NetworkComponent =
+    NetworkComponentImpl(
+        mapperComponent = mapperComponent,
+        dispatchersComponent = dispatchersComponent,
+        baseUrlProvider = baseUrlProvider,
+    )

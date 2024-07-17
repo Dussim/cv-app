@@ -4,7 +4,7 @@ import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 
-//TODO rename all styles, this module doesnt know what skills or languages etc. are
+// TODO rename all styles, this module doesnt know what skills or languages etc. are
 interface TextStyleProvider {
     object Default : TextStyleProvider
 
@@ -37,6 +37,7 @@ interface TextStyleProvider {
     fun forCertificate(): TextStyle = Caption
 }
 
-val LocalTextStyleProvider: ProvidableCompositionLocal<TextStyleProvider> = staticCompositionLocalOf {
-    TextStyleProvider.Default
-}
+val LocalTextStyleProvider: ProvidableCompositionLocal<TextStyleProvider> =
+    staticCompositionLocalOf {
+        TextStyleProvider.Default
+    }
