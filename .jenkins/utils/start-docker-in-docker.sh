@@ -1,8 +1,8 @@
 #!/bin/bash
 set -o errexit -o nounset
-docker run --deetach \
+docker run --detach \
   --name docker-in-docker \
-  --restart=unless-stoped \
+  --restart=unless-stopped \
   --privileged \
   --network jenkins \
   --network-alias docker \
