@@ -11,6 +11,11 @@ pipeline {
                 sh 'cat .jenkins/Jenkinsfile'
             }
         }
+        stage('Gradle'){
+            steps {
+                sh 'gradle --version'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'gradle :app:assembleInstalledAppDebug --scan'
