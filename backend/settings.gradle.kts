@@ -6,6 +6,7 @@ pluginManagement {
                 includeGroupAndSubgroups("androidx")
                 includeGroupAndSubgroups("com.android")
                 includeGroupAndSubgroups("com.google.testing")
+                includeGroupAndSubgroups("com.google.android")
             }
         }
         gradlePluginPortal()

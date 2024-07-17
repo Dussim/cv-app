@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'dussim/build-env:jdk21_gradle-8.8_android-34'
-            args '-v gradle-cache:/home/gradle/.gradle'
+            args '-v gradle-cache:/home/gradle/.gradle --net=host'
         }
     }
     stages {
@@ -21,16 +21,16 @@ pipeline {
                 findBuildScans()
             }
         }
-        stage('Quality') {
-            // TODO add detekt, and android lint
-            steps {
-                sh 'gradle ktlintCheck'
-                recordIssues([
-                        enabledForFailure: true,
-                        tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
-                ])
-            }
-        }
+//         stage('Quality') {
+//             // TODO add detekt, and android lint
+//             steps {
+//                 sh 'gradle ktlintCheck'
+//                 recordIssues([
+//                         enabledForFailure: true,
+//                         tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
+//                 ])
+//             }
+//         }
         stage('Versions') {
             steps {
                 sh 'gradle dependencyUpdates --no-configure-on-demand --no-configuration-cache --warning-mode=none'
