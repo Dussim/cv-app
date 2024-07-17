@@ -28,8 +28,6 @@ moduleGraphConfig {
 }
 
 configure<KtlintExtension> {
-    ignoreFailures = true
-
     additionalEditorconfig = mapOf(
         "ktlint_function_naming_ignore_when_annotated_with" to "Composable"
     )

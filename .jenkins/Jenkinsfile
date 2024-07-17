@@ -21,16 +21,15 @@ pipeline {
                 findBuildScans()
             }
         }
-//         stage('Quality') {
-//             // TODO add detekt, and android lint
-//             steps {
-//                 sh 'gradle ktlintCheck'
-//                 recordIssues([
-//                         enabledForFailure: true,
-//                         tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
-//                 ])
-//             }
-//         }
+        stage('Quality') {
+            steps {
+                sh 'gradle ktlintCheck'
+                recordIssues([
+                        enabledForFailure: true,
+                        tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
+                ])
+            }
+        }
         stage('Versions') {
             steps {
                 sh 'gradle dependencyUpdates --no-configure-on-demand --no-configuration-cache --warning-mode=none'
