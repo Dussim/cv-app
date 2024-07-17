@@ -9,7 +9,14 @@ pluginManagement {
     includeBuild("gradle/build-logic")
     includeBuild("gradle/build-parameters")
     repositories {
-        google()
+        google {
+            content {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google.testing")
+                includeGroupAndSubgroups("com.google.android")
+            }
+        }
         mavenCentral()
         gradlePluginPortal()
     }
@@ -18,10 +25,15 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
+        google {
+            content {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google.testing")
+                includeGroupAndSubgroups("com.google.android")
+            }
+        }
         mavenCentral()
-        gradlePluginPortal()
-        maven("https://androidx.dev/storage/compose-compiler/repository/")
     }
 }
 

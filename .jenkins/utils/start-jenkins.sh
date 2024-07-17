@@ -2,7 +2,7 @@
 set -o errexit -o nounset
 docker run --detach \
   --name jenkins-server \
-  --restart=unless-stoped \
+  --restart=unless-stopped \
   --network jenkins \
   --env DOCKER_HOST=tcp://docker:2376 \
   --env DOCKER_CERT_PATH=/certs/client \
