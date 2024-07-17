@@ -15,6 +15,7 @@ pipeline {
             steps {
                 sh 'gradle --version'
                 sh 'gradle buildEnvironment'
+                sh 'gradle -q javaToolchains'
             }
         }
         stage('Build') {
