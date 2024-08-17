@@ -6,10 +6,10 @@ plugins {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:8.5.1")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.0")
-    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.0")
+    implementation("com.android.tools.build:gradle:8.5.2")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.10")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.10")
+    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.10")
     implementation("dev.iurysouza:modulegraph:0.10.0")
 
     implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.1")

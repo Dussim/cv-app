@@ -7,7 +7,7 @@ android {
 }
 
 dependencies {
-    api("androidx.annotation:annotation:1.8.0")
+    api("androidx.annotation:annotation:1.8.2")
 
     api("xyz.dussim:data-model")
 }
