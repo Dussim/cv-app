@@ -116,13 +116,15 @@ internal fun GithubButton(buttonsOrientation: Orientation) {
     }
 
     when (buttonsOrientation) {
-        Orientation.Row -> Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally)) {
-            GithubButton(onClick = onClick)
-        }
+        Orientation.Row ->
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally)) {
+                GithubButton(onClick = onClick)
+            }
 
-        Orientation.Column -> Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            GithubButton(onClick = onClick)
-        }
+        Orientation.Column ->
+            Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                GithubButton(onClick = onClick)
+            }
     }
 }
 

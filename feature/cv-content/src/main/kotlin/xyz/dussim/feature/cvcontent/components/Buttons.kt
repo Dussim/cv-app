@@ -9,7 +9,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import xyz.dussim.designsystem.H3
 import xyz.dussim.designsystem.core.CvButton
@@ -43,17 +42,18 @@ internal fun DownloadButton(
 @Composable
 internal fun GithubButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
-    val icon = rememberVectorPainter(
-        ImageVector.vectorResource(R.drawable.github)
-    )
+    val icon =
+        rememberVectorPainter(
+            ImageVector.vectorResource(R.drawable.github),
+        )
 
     val text = stringResource(R.string.button_browse_text)
 
     CvButton(
         onClick = onClick,
-        modifier = modifier
+        modifier = modifier,
     ) {
         BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))
