@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream
 import java.nio.file.Files
 import java.util.Date
 
-enableFeaturePreview("GROOVY_COMPILATION_AVOIDANCE")
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 
 pluginManagement {
     includeBuild("gradle/build-logic")
@@ -39,7 +39,8 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("com.gradle.develocity").version("3.17.4")
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+    id("com.gradle.develocity").version("3.18")
     id("xyz.dussim.build-parameters")
 }
 
