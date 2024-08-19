@@ -6,10 +6,10 @@ plugins {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:8.5.2")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.10")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.10")
-    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.10")
+    implementation("com.android.tools.build:gradle:8.6.0")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.20")
+    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.20")
     implementation("dev.iurysouza:modulegraph:0.10.0")
 
     implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.1")
@@ -41,4 +41,41 @@ fun String.isNonStable(): Boolean {
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(this)
     return !isStable
+}
+
+gradlePlugin {
+    plugins {
+        register("xyz.dussim.module.utilities") {
+            id = name
+            implementationClass = "xyz.dussim.ModuleUtilitiesPlugin"
+        }
+        register("xyz.dussim.ktor.app.convention") {
+            id = name
+            implementationClass = "xyz.dussim.KtorAppConventionPlugin"
+        }
+        register("xyz.dussim.multiplatform.library.convention") {
+            id = name
+            implementationClass = "xyz.dussim.MultiplatformLibraryConventionPlugin"
+        }
+        register("xyz.dussim.android.library.convention") {
+            id = name
+            implementationClass = "xyz.dussim.AndroidLibraryConventionPlugin"
+        }
+        register("xyz.dussim.android.library.compose.convention") {
+            id = name
+            implementationClass = "xyz.dussim.AndroidLibraryComposeConventionPlugin"
+        }
+        register("xyz.dussim.android.feature.convention") {
+            id = name
+            implementationClass = "xyz.dussim.AndroidFeatureConventionPlugin"
+        }
+        register("xyz.dussim.android.feature.compose.convention") {
+            id = name
+            implementationClass = "xyz.dussim.AndroidFeatureComposeConventionPlugin"
+        }
+        register("xyz.dussim.android.app.convention") {
+            id = name
+            implementationClass = "xyz.dussim.AndroidAppConventionPlugin"
+        }
+    }
 }

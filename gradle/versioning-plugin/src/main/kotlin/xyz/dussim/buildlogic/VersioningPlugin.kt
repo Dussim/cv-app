@@ -17,11 +17,19 @@ class VersioningPlugin : Plugin<Project> {
         tasks.register<PrintVersionsTask>("printVersions") {
             group = GROUP
             description = "Prints the configured base version name and code"
+
+            versionName.set(extension.versionName)
+            versionCode.set(extension.versionCode)
         }
 
         tasks.register<DescribeVersionCodeTask>("describeVersionCode") {
             group = GROUP
             description = "Prints description of the configured version code"
+
+            versionCode.set(extension.versionCode)
+            minApi.set(extension.minApi)
+            major.set(extension.major)
+            minor.set(extension.minor)
         }
 
         tasks.register<IncrementMajorTask>("incrementMajor") {

@@ -1,3 +1,5 @@
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+
 pluginManagement {
     includeBuild("../gradle/build-logic")
     includeBuild("../gradle/build-parameters")

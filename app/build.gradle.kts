@@ -4,7 +4,7 @@ plugins {
 }
 
 versioning {
-    propertiesFile = rootProject.file("version.properties")
+    propertiesFile = file("../version.properties")
 }
 
 android {
@@ -12,7 +12,7 @@ android {
         create("release") {
             keyAlias = buildParameters.signing.key.name
             keyPassword = buildParameters.signing.key.password
-            storeFile = rootProject.layout.projectDirectory.file(".keystore/${buildParameters.signing.keystore.name}").asFile
+            storeFile = layout.projectDirectory.file("../.keystore/${buildParameters.signing.keystore.name}").asFile
             storePassword = buildParameters.signing.keystore.password
         }
     }

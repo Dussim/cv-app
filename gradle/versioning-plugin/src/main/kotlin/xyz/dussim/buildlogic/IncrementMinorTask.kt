@@ -8,7 +8,7 @@ import java.util.Properties
 
 abstract class IncrementMinorTask : DefaultTask() {
     @get:InputFile
-    val propertiesFile: RegularFileProperty = project.objects.fileProperty()
+    abstract val propertiesFile: RegularFileProperty
 
     @TaskAction
     fun incrementMinor() {
