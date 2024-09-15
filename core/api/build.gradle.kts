@@ -9,7 +9,7 @@ android {
 dependencies {
     api(project(":core:data"))
 
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 
     api("xyz.dussim:data-model")
 }

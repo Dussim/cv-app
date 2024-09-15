@@ -40,7 +40,7 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
                 targetSdk = 34
             }
 
-            buildFeatures{
+            buildFeatures {
 
             }
         }
@@ -52,7 +52,7 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
             androidTarget()
 
             sourceSets.commonMain.dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.1")
             }
         }
