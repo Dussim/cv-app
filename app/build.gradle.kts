@@ -28,7 +28,7 @@ android {
             manifestPlaceholders["api-url-placeholder"] = "https://api.tuzim.xyz"
         }
 
-        create("staging") {
+        getByName("staging") {
             initWith(getByName("debug"))
             applicationIdSuffix = ".staging"
             versionNameSuffix = "-staging"
@@ -63,7 +63,7 @@ android {
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2024.09.01")
+    val composeBom = platform("androidx.compose:compose-bom:2024.10.00")
 
     implementation(composeBom)
 
@@ -87,15 +87,15 @@ dependencies {
     implementation("androidx.compose.foundation:foundation")
 
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.5")
-    implementation("androidx.activity:activity-compose:1.9.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+    implementation("androidx.activity:activity-compose:1.9.3")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
     // Google Play complained that I used an old version; it was probably pulled as a dependency of other libs
-    implementation("androidx.fragment:fragment-ktx:1.8.3")
+    implementation("androidx.fragment:fragment-ktx:1.8.4")
 
     androidTestImplementation(composeBom)
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")

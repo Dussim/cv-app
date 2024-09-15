@@ -1,4 +1,6 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 
 plugins {
     `kotlin-dsl`
@@ -6,10 +8,10 @@ plugins {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:8.6.0")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.20")
-    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.20")
+    implementation("com.android.tools.build:gradle:8.7.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0-Beta2")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:2.1.0-Beta2")
+    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.0-Beta2")
     implementation("dev.iurysouza:modulegraph:0.10.1")
 
     implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.1")
@@ -76,6 +78,20 @@ gradlePlugin {
         register("xyz.dussim.android.app.convention") {
             id = name
             implementationClass = "xyz.dussim.AndroidAppConventionPlugin"
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin.target.compilations.configureEach {
+    compileTaskProvider.configure {
+        compilerOptions {
+            (this as KotlinJvmCompilerOptions).jvmTarget.set(JvmTarget.JVM_17)
+            freeCompilerArgs.add("-Xjdk-release=17")
         }
     }
 }
