@@ -18,38 +18,24 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.parcelize")
 
         configure<LibraryExtension> {
-            compileSdk = 34
-
-            defaultConfig {
-                minSdk = 28
-
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-            }
-
-            buildTypes {
-                create("staging") {
-                    initWith(getByName("debug"))
-                }
-
-                release {
-                    isMinifyEnabled = false
-                }
-            }
-
-            testOptions {
-                targetSdk = 34
-            }
-
-            buildFeatures {
-
-            }
+            baseConfig()
         }
 
         configure<KotlinMultiplatformExtension> {
-            jvmToolchain(21)
-
-            jvm()
-            androidTarget()
+            jvm {
+                compilations.configureEach {
+                    compileTaskProvider.configure {
+                        compilerOptions.jdk(17)
+                    }
+                }
+            }
+            androidTarget {
+                compilations.configureEach {
+                    compileTaskProvider.configure {
+                        compilerOptions.jvmTarget(17)
+                    }
+                }
+            }
 
             sourceSets.commonMain.dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")

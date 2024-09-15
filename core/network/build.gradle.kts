@@ -8,7 +8,7 @@ android {
 
 dependencies {
     api(project(":core:api"))
-    val ktorVersion = "2.3.12"
+    val ktorVersion = "3.0.0"
 
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
@@ -18,7 +18,7 @@ dependencies {
     implementation("io.ktor:ktor-client-logging:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3")
 
     api("xyz.dussim:data-model")
 }
