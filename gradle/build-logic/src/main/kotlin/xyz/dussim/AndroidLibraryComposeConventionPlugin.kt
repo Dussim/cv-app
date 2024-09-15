@@ -11,7 +11,7 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
 
         dependencies {
-            val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
+            val composeBom = platform("androidx.compose:compose-bom:2024.09.01")
 
             "implementation"(composeBom)
 

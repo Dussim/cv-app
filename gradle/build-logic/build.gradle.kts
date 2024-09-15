@@ -10,7 +10,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20")
     implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.20")
     implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.20")
-    implementation("dev.iurysouza:modulegraph:0.10.0")
+    implementation("dev.iurysouza:modulegraph:0.10.1")
 
     implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.1")
 

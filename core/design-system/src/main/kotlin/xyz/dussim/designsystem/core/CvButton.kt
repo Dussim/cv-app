@@ -1,6 +1,7 @@
 package xyz.dussim.designsystem.core
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -12,7 +13,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material.ripple.createRippleModifierNode
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -274,7 +277,7 @@ fun CvButton(
                 .clip(shape)
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = rememberRipple(),
+                    indication = ripple(),
                     role = Role.Button,
                     enabled = enabled,
                     onClick = onClick,
@@ -352,7 +355,7 @@ fun CVOutlinedToggleButton(
                 .clip(shape)
                 .toggleable(
                     interactionSource = interactionSource,
-                    indication = rememberRipple(),
+                    indication = ripple(),
                     value = checked,
                     enabled = enabled,
                     role = Role.Switch,
