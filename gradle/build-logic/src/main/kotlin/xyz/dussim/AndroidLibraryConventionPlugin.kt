@@ -5,6 +5,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
@@ -16,33 +17,18 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.parcelize")
 
         configure<LibraryExtension> {
-            compileSdk = 34
+            baseConfig()
 
-            defaultConfig {
-                minSdk = 28
-
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-            }
-
-            buildTypes {
-                create("staging") {
-                    initWith(getByName("debug"))
-                }
-
-                release {
-                    isMinifyEnabled = false
-
-                    proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-                }
-            }
-
-            testOptions {
-                targetSdk = 34
+            testFixtures {
+                enable = true
+                androidResources = true
             }
         }
 
-        configure<KotlinAndroidProjectExtension> {
-            jvmToolchain(21)
+        configure<KotlinAndroidProjectExtension>(AndroidJvmTarget)
+
+        dependencies {
+            "testFixturesCompileOnly"("org.jetbrains.kotlin:kotlin-stdlib:2.1.0-Beta2")
         }
     }
 }

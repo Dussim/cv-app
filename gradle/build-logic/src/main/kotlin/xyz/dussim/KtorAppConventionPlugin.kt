@@ -3,9 +3,7 @@ package xyz.dussim
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
 class KtorAppConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
@@ -14,12 +12,8 @@ class KtorAppConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.jvm")
         pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
 
-        configure<KotlinJvmProjectExtension> {
-            jvmToolchain(21)
-        }
-
         dependencies {
-            val ktorVersion = "2.3.12"
+            val ktorVersion = "3.0.0"
             "implementation"("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
             "implementation"("io.ktor:ktor-server-core-jvm:$ktorVersion")
             "implementation"("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
