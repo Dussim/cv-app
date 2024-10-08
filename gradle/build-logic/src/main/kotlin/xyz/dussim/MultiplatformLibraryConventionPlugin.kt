@@ -6,7 +6,9 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 class MultiplatformLibraryConventionPlugin : Plugin<Project> {
@@ -18,42 +20,30 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.parcelize")
 
         configure<LibraryExtension> {
-            compileSdk = 34
-
-            defaultConfig {
-                minSdk = 28
-
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-            }
-
-            buildTypes {
-                create("staging") {
-                    initWith(getByName("debug"))
-                }
-
-                release {
-                    isMinifyEnabled = false
-                }
-            }
-
-            testOptions {
-                targetSdk = 34
-            }
-
-            buildFeatures {
-
-            }
+            baseConfig()
         }
 
         configure<KotlinMultiplatformExtension> {
-            jvmToolchain(21)
-
             jvm()
-            androidTarget()
+            androidTarget {
+                compilations.configureEach {
+                    compileTaskProvider.configure {
+                        compilerOptions.jvmTarget(17)
+                    }
+                }
+            }
 
             sourceSets.commonMain.dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.1")
+            }
+
+            targets.withType<KotlinJvmTarget>().configureEach {
+                compilations.configureEach {
+                    compileTaskProvider.configure {
+                        compilerOptions.jdk(17)
+                    }
+                }
             }
         }
 

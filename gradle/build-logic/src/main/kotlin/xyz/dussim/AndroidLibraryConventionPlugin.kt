@@ -17,29 +17,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.parcelize")
 
         configure<LibraryExtension> {
-            compileSdk = 34
-
-            defaultConfig {
-                minSdk = 28
-
-                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-            }
-
-            buildTypes {
-                create("staging") {
-                    initWith(getByName("debug"))
-                }
-
-                release {
-                    isMinifyEnabled = false
-
-                    proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-                }
-            }
-
-            testOptions {
-                targetSdk = 34
-            }
+            baseConfig()
 
             testFixtures {
                 enable = true
@@ -48,7 +26,11 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         }
 
         configure<KotlinAndroidProjectExtension> {
-            jvmToolchain(21)
+            this.target.compilations.configureEach {
+                compileTaskProvider.configure {
+                    compilerOptions.jvmTarget(17)
+                }
+            }
         }
 
         dependencies {

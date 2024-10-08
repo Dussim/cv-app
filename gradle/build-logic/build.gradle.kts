@@ -1,4 +1,8 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import org.gradle.internal.jvm.Jvm
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 plugins {
     `kotlin-dsl`
@@ -76,6 +80,20 @@ gradlePlugin {
         register("xyz.dussim.android.app.convention") {
             id = name
             implementationClass = "xyz.dussim.AndroidAppConventionPlugin"
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin.target.compilations.configureEach {
+    compileTaskProvider.configure {
+        compilerOptions {
+            (this as KotlinJvmCompilerOptions).jvmTarget.set(JvmTarget.JVM_17)
+            freeCompilerArgs.add("-Xjdk-release=17")
         }
     }
 }

@@ -4,6 +4,10 @@ plugins {
 
 android {
     namespace = "xyz.dussim.model"
+
+    compileOptions {
+
+    }
 }
 
 dependencies {

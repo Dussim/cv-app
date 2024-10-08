@@ -14,10 +14,6 @@ class KtorAppConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.jvm")
         pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
 
-        configure<KotlinJvmProjectExtension> {
-            jvmToolchain(21)
-        }
-
         dependencies {
             val ktorVersion = "2.3.12"
             "implementation"("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
