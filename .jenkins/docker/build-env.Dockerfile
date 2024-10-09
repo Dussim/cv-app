@@ -1,4 +1,4 @@
-FROM eclipse-temurin:23-jdk-noble
+FROM bellsoft/liberica-openjdk-debian:23
 
 CMD ["gradle"]
 
@@ -6,8 +6,8 @@ ENV GRADLE_HOME=/opt/gradle
 
 RUN set -o errexit -o nounset \
     && echo "Adding gradle user and group" \
-    && groupadd --system --gid 1100 gradle \
-    && useradd --system --gid gradle --uid 1100 --shell /bin/bash --create-home gradle \
+    && groupadd --system --gid 1000 gradle \
+    && useradd --system --gid gradle --uid 1000 --shell /bin/bash --create-home gradle \
     && mkdir /home/gradle/.gradle \
     && chown --recursive gradle:gradle /home/gradle \
     \
