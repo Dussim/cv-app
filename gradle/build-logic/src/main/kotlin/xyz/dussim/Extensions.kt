@@ -8,7 +8,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 
 internal fun CommonExtension<*, *, *, *, *, *>.baseConfig() {
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 28
@@ -53,7 +53,7 @@ internal fun CommonExtension<*, *, *, *, *, *>.baseConfig() {
     }
 
     (this as? LibraryExtension)?.testOptions {
-        targetSdk = 34
+        targetSdk = 35
     }
 }
 

@@ -75,6 +75,7 @@ RUN set -o errexit -o nounset \
 
 RUN set -o errexit -o nounset \
     && echo "Installing Android SDK build-tools" \
+    && sdkmanager --install "build-tools;35.0.0"\
     && sdkmanager --install "build-tools;34.0.0"\
-    && sdkmanager --install "platforms;android-34"\
+    && sdkmanager --install "platforms;android-35"\
     && sdkmanager --install "platform-tools"
