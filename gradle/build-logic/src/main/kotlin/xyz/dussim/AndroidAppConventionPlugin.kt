@@ -24,6 +24,7 @@ class AndroidAppConventionPlugin : Plugin<Project> {
             namespace = "xyz.dussim.cv"
 
             defaultConfig {
+                targetSdk = 35
                 applicationId = "xyz.dussim.cv"
             }
 
