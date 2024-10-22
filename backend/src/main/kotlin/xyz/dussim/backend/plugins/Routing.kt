@@ -30,44 +30,46 @@ import xyz.dussim.datamodel.skill.dto.SkillName.Ktor
 @Language("JSON")
 private val gymStats =
     """
-        [
-          {
-            "name": "Bench Press",
-            "reps": 2,
-            "weight": 100
-          },
-          {
-            "name": "Squat",
-            "reps": 4,
-            "weight": 135
-          },
-          {
-            "name": "Pull up",
-            "reps": 18
-          },
-          {
-            "name": "Pull up with weight",
-            "reps": 2,
-            "weight": 25
-          }
-        ]
+    [
+      {
+        "name": "Bench Press",
+        "reps": 2,
+        "weight": 100
+      },
+      {
+        "name": "Squat",
+        "reps": 4,
+        "weight": 135
+      },
+      {
+        "name": "Pull up",
+        "reps": 18
+      },
+      {
+        "name": "Pull up with weight",
+        "reps": 2,
+        "weight": 25
+      }
+    ]
     """.trimIndent()
 
-private val skills = listOf(
-    proficient(Kotlin),
-    proficient(Java),
-    proficient(Android),
-    advanced(Dagger2),
-    advanced(Git),
-    advanced("Gradle"),
-    competent(Ktor),
-    competent("Docker")
-)
+private val skills =
+    listOf(
+        proficient(Kotlin),
+        proficient(Java),
+        proficient(Android),
+        advanced(Dagger2),
+        advanced(Git),
+        advanced("Gradle"),
+        competent(Ktor),
+        competent("Docker"),
+    )
 
-private val languages = listOf(
-    LanguageDto(Polish, Native),
-    LanguageDto(English, C1)
-)
+private val languages =
+    listOf(
+        LanguageDto(Polish, Native),
+        LanguageDto(English, C1),
+    )
 
 fun Application.configureRouting() {
     install(StatusPages) {

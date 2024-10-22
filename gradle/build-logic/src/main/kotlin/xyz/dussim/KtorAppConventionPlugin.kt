@@ -28,9 +28,6 @@ class KtorAppConventionPlugin : Plugin<Project> {
 
             "implementation"("org.jetbrains.kotlinx:kotlinx-html-jvm:0.11.0")
             "implementation"("org.jetbrains.kotlin-wrappers:kotlin-css:1.0.0-pre.625")
-
-            "testImplementation"("io.ktor:ktor-server-tests-jvm:$ktorVersion")
-            "testImplementation"("org.jetbrains.kotlin:kotlin-test-junit:2.0.10")
         }
     }
 }

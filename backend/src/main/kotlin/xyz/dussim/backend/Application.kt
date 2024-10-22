@@ -14,7 +14,7 @@ fun main() {
         factory = Netty,
         port = 80,
         host = "0.0.0.0",
-        module = Application::module
+        module = Application::module,
     ).start(wait = true)
 }
 
