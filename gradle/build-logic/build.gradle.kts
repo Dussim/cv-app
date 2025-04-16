@@ -4,17 +4,17 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 
 plugins {
     `kotlin-dsl`
-    id("com.github.ben-manes.versions").version("0.51.0")
+    id("com.github.ben-manes.versions").version("0.52.0")
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:8.7.1")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0-Beta2")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:2.1.0-Beta2")
-    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.0-Beta2")
-    implementation("dev.iurysouza:modulegraph:0.10.1")
+    implementation("com.android.tools.build:gradle:8.9.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.20")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:2.1.20")
+    implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.20")
+    implementation("dev.iurysouza:modulegraph:0.12.0")
 
-    implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.1")
+    implementation("org.jlleitschuh.gradle:ktlint-gradle:12.2.0")
 
     implementation("xyz.dussim:versioning-plugin:1.0.0")
 }

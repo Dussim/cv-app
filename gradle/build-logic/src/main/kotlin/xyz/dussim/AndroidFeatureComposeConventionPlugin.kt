@@ -9,7 +9,7 @@ class AndroidFeatureComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
         apply<AndroidLibraryComposeConventionPlugin>()
         dependencies {
-            val voyagerVersion = "1.0.0"
+            val voyagerVersion = "1.0.1"
             "api"(project(":core:navigation"))
 
             "implementation"("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")

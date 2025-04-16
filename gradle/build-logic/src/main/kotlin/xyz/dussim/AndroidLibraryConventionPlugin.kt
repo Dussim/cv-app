@@ -28,7 +28,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         configure<KotlinAndroidProjectExtension>(AndroidJvmTarget)
 
         dependencies {
-            "testFixturesCompileOnly"("org.jetbrains.kotlin:kotlin-stdlib:2.1.0-Beta2")
+            "testFixturesCompileOnly"("org.jetbrains.kotlin:kotlin-stdlib:2.1.20")
         }
     }
 }

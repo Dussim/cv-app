@@ -13,7 +13,7 @@ class KtorAppConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
 
         dependencies {
-            val ktorVersion = "3.0.0"
+            val ktorVersion = "3.1.2"
             "implementation"("io.ktor:ktor-server-html-builder-jvm:$ktorVersion")
             "implementation"("io.ktor:ktor-server-core-jvm:$ktorVersion")
             "implementation"("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
