@@ -8,6 +8,7 @@ import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.datamodel.language.Language
+import xyz.dussim.data.projects.Project
 import xyz.dussim.datamodel.skill.Skill
 
 private class LocalComponentImpl(
@@ -30,6 +31,8 @@ private class LocalComponentImpl(
     override val socialMediaDataSource: DataSource<List<SocialLink>> = LocalSocialsDataSource()
 
     override val certificatesDataSource: DataSource<List<Certificate>> = LocalCertificatesDataSource()
+
+    override val projectsDataSource: DataSource<List<Project>> = LocalProjectsDataSource()
 }
 
 fun LocalComponent.Companion.create(mapperComponent: MapperComponent): LocalComponent = LocalComponentImpl(mapperComponent)

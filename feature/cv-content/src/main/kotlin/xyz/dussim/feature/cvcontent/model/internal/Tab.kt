@@ -6,4 +6,5 @@ internal enum class Tab {
     Language,
     Skills,
     Certificates,
+    Projects,
 }

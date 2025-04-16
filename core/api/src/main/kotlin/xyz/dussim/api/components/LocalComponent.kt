@@ -6,6 +6,7 @@ import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.datamodel.language.Language
+import xyz.dussim.data.projects.Project
 import xyz.dussim.datamodel.skill.Skill
 
 interface LocalComponent {
@@ -17,4 +18,5 @@ interface LocalComponent {
     val workplacesDataSource: DataSource<List<Workplace>>
     val socialMediaDataSource: DataSource<List<SocialLink>>
     val certificatesDataSource: DataSource<List<Certificate>>
+    val projectsDataSource: DataSource<List<Project>>
 }

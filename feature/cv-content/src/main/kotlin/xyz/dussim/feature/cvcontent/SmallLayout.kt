@@ -28,6 +28,7 @@ import xyz.dussim.feature.cvcontent.components.ConsentFooter
 import xyz.dussim.feature.cvcontent.components.ContactHeader
 import xyz.dussim.feature.cvcontent.components.LanguagesColumn
 import xyz.dussim.feature.cvcontent.components.Orientation
+import xyz.dussim.feature.cvcontent.components.ProjectsColumn
 import xyz.dussim.feature.cvcontent.components.SkillsColumn
 import xyz.dussim.feature.cvcontent.components.WorkPeriodVertical
 import xyz.dussim.feature.cvcontent.components.contactInfoPhotoHeader
@@ -121,11 +122,13 @@ private fun SelectedTabContent(
                 LanguagesColumn(languages = cvData.languages)
                 SkillsColumn(skills = cvData.skills)
                 CertificatesVertical(certificates = cvData.certificates)
+                ProjectsColumn(projects = cvData.projects)
             }
             Tab.Work -> WorkPeriodVertical(workplaces = cvData.workplaces)
             Tab.Language -> LanguagesColumn(languages = cvData.languages)
             Tab.Skills -> SkillsColumn(skills = cvData.skills)
             Tab.Certificates -> CertificatesVertical(certificates = cvData.certificates)
+            Tab.Projects -> ProjectsColumn(projects = cvData.projects)
         }
     }
 }

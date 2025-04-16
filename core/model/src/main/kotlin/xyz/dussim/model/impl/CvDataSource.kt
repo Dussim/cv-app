@@ -7,6 +7,7 @@ import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.CvData
 import xyz.dussim.data.about.AboutMe
 import xyz.dussim.data.certificates.Certificate
+import xyz.dussim.data.projects.Project
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.datamodel.language.Language
@@ -19,6 +20,7 @@ internal class CvDataSource(
     private val workplacesDataSource: DataSource<List<Workplace>>,
     private val socialsDataSource: DataSource<List<SocialLink>>,
     private val certificatesDataSource: DataSource<List<Certificate>>,
+    private val projectsDataSource: DataSource<List<Project>>,
     private val dispatcher: CoroutineDispatcher,
 ) : DataSource<CvData> {
     override suspend fun fetch(): CvData =
@@ -29,6 +31,7 @@ internal class CvDataSource(
             val workplaces = async { workplacesDataSource.fetch() }
             val socials = async { socialsDataSource.fetch() }
             val certificates = async { certificatesDataSource.fetch() }
+            val projects = async { projectsDataSource.fetch() }
 
             CvData(
                 skills = skills.await(),
@@ -37,6 +40,7 @@ internal class CvDataSource(
                 workplaces = workplaces.await(),
                 socials = socials.await(),
                 certificates = certificates.await(),
+                projects = projects.await(),
             )
         }
 }

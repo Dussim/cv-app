@@ -15,6 +15,7 @@ internal class CvContentScreenModel : ScreenModel {
                 TabModel(Tab.Language, R.drawable.languages, R.string.button_tab_languages),
                 TabModel(Tab.Skills, R.drawable.brain, R.string.button_tab_skills),
                 TabModel(Tab.Certificates, R.drawable.certificate, R.string.button_tab_certificates),
+                TabModel(Tab.Projects, R.drawable.github, R.string.button_tab_projects),
             )
     }
 
