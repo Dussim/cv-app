@@ -7,7 +7,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:api-compose"))
+    implementation(projects.core.apiCompose)
 
-    implementation(project(":core:ui"))
+    implementation(projects.core.ui)
 }

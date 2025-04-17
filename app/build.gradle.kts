@@ -67,15 +67,15 @@ dependencies {
 
     implementation(composeBom)
 
-    implementation(project(":core:api-compose"))
-    implementation(project(":core:ui"))
-    implementation(project(":core:model"))
-    implementation(project(":core:local"))
-    implementation(project(":core:network"))
+    implementation(projects.core.apiCompose)
+    implementation(projects.core.ui)
+    implementation(projects.core.model)
+    implementation(projects.core.local)
+    implementation(projects.core.network)
 
-    implementation(project(":feature:splash-screen"))
-    implementation(project(":feature:cv-content"))
-    implementation(project(":feature:easter-eggs:gym"))
+    implementation(projects.feature.splashScreen)
+    implementation(projects.feature.cvContent)
+    implementation(projects.feature.easterEggs.gym)
 
     implementation(libs.bundles.voyager)
 

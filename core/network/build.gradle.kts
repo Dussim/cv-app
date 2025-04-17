@@ -7,8 +7,7 @@ android {
 }
 
 dependencies {
-    api(project(":core:api"))
-    val ktorVersion = "3.1.2"
+    api(projects.core.api)
 
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
