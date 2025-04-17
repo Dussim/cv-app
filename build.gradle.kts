@@ -2,7 +2,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
     id("xyz.dussim.module.utilities")
-    id("com.github.ben-manes.versions").version("0.52.0")
+    id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 tasks.withType<DependencyUpdatesTask> {

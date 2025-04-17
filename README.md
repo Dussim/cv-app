@@ -68,6 +68,7 @@ I wanted to show that I now how to:
           also look at this project
     - configure gradle in a way that both build and configuration cache works
     - enable remote build cache (even when launching this project first time the build should be quicker thanks to this)
+    - version catalogs for dependency management (see `gradle/libs.versions.toml` and `gradle/README.md`)
 - use dependency injection pattern by not using any frameworks for it
 - use resource local and external to app (that is the reason why some data is just hardcoded in app and for small things like languages there is ktor backend)
 - how to work with jenkins (look at `.jenkins` folder) in docker and docker agents for which I created my own image encapsulating whole environment needed to build app. In theory

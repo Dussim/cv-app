@@ -2,7 +2,7 @@ import buildparameters.BuildParametersExtension
 import org.gradle.kotlin.dsl.support.serviceOf
 import java.io.ByteArrayOutputStream
 import java.nio.file.Files
-import java.util.Date
+import java.util.*
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 
@@ -39,7 +39,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("com.gradle.develocity").version("3.18.1")
+    id("com.gradle.develocity").version("4.0")
     id("xyz.dussim.build-parameters")
 }
 
