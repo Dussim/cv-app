@@ -1,5 +1,5 @@
 plugins {
-    id("xyz.dussim.android.library.compose.convention")
+    alias(conventions.plugins.xyz.dussim.android.library.compose.convention)
 }
 
 android {
@@ -7,6 +7,6 @@ android {
 }
 
 dependencies {
-    api(project(":core:data"))
-    api(project(":core:design-system"))
+    api(projects.core.data)
+    api(projects.core.designSystem)
 }

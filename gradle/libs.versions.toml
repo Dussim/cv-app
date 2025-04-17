@@ -158,6 +158,8 @@ application = { id = "org.gradle.application" }
 modulegraph = { id = "dev.iurysouza.modulegraph", version.ref = "modulegraph" }
 android-test = { id = "com.android.test", version.ref = "android-gradle" }
 baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
+gradle-ssh = { id = "xyz.dussim.gradle-ssh", version.require = "0.0.3" }
+docker-java-application = { id = "com.bmuschko.docker-java-application", version.require = "9.4.0" }
 
 [bundles]
 kotlinx-coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
@@ -165,9 +167,9 @@ kotest = ["kotest-runner-junit5", "kotest-assertions-core", "kotest-property"]
 compose-ui = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-foundation"]
 voyager = ["voyager-navigator", "voyager-screenmodel", "voyager-transitions"]
 ktor-server = [
-    "ktor-server-html-builder", "ktor-server-core", "ktor-server-content-negotiation", 
-    "ktor-serialization-kotlinx-json", "ktor-server-call-logging", "ktor-server-compression", 
-    "ktor-server-host-common", "ktor-server-status-pages", "ktor-server-resources", 
+    "ktor-server-html-builder", "ktor-server-core", "ktor-server-content-negotiation",
+    "ktor-serialization-kotlinx-json", "ktor-server-call-logging", "ktor-server-compression",
+    "ktor-server-host-common", "ktor-server-status-pages", "ktor-server-resources",
     "ktor-server-netty", "logback-classic"
 ]
 html-css = ["kotlinx-html", "kotlin-css"]

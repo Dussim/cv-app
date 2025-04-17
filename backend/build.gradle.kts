@@ -1,8 +1,8 @@
 import xyz.dussim.util.libs
 
 plugins {
-    id("xyz.dussim.ktor.app.convention")
-    id("com.bmuschko.docker-java-application") version "9.4.0"
+    alias(conventions.plugins.xyz.dussim.ktor.app.convention)
+    alias(libs.plugins.docker.java.application)
 }
 
 application {

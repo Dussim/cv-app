@@ -1,5 +1,5 @@
 plugins {
-    id("xyz.dussim.android.library.convention")
+    alias(conventions.plugins.xyz.dussim.android.library.convention)
 }
 
 android {

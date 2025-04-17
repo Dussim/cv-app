@@ -1,8 +1,8 @@
 import xyz.dussim.gradlessh.tasks.exec.SshRemoteExecutionTask
 
 plugins {
-    id("xyz.dussim.build-parameters")
-    id("xyz.dussim.gradle-ssh").version("0.0.2")
+    alias(conventions.plugins.xyz.dussim.build.parameters)
+    alias(libs.plugins.gradle.ssh)
 }
 
 val backend by remotes.publicKeyAuthenticated {

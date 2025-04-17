@@ -52,7 +52,6 @@ plugins {
 
 develocity {
     val execOps = serviceOf<ExecOperations>()
-    val buildParameters = the<BuildParametersExtension>()
 
     buildScan {
         publishing.onlyIf { false }
@@ -143,5 +142,5 @@ include(
     ":feature:easter-eggs:gym",
     // Top layer - Top level modules that are dependent on previous layers
     ":app",
-    ":baselineprofile"
+    ":baselineprofile",
 )

@@ -1,6 +1,6 @@
 plugins {
-    id("xyz.dussim.android.app.convention")
-    id("xyz.dussim.build-parameters")
+    alias(conventions.plugins.xyz.dussim.android.app.convention)
+    alias(conventions.plugins.xyz.dussim.build.parameters)
     alias(libs.plugins.android.application)
     alias(libs.plugins.baselineprofile)
 }

@@ -1,5 +1,5 @@
 plugins {
-    id("xyz.dussim.android.library.convention")
+    alias(conventions.plugins.xyz.dussim.android.library.convention)
 }
 
 android {
@@ -7,7 +7,7 @@ android {
 }
 
 dependencies {
-    api(project(":core:data"))
+    api(projects.core.data)
 
     api(libs.kotlinx.coroutines.core)
 
