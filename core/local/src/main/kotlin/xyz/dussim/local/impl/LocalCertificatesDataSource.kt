@@ -12,11 +12,11 @@ internal class LocalCertificatesDataSource : DataSource<List<Certificate>> by Lo
         private val STATIC_DATA =
             listOf(
                 Certificate(
-                    name = R.string.certificate_java,
+                    name = R.string.certificate_samsung,
                     date = YearMonth.of(2021, APRIL),
                 ),
                 Certificate(
-                    name = R.string.certificate_samsung,
+                    name = R.string.certificate_java,
                     date = YearMonth.of(2019, MAY),
                 ),
             )
