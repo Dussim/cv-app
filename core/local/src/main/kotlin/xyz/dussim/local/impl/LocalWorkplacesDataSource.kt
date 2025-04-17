@@ -11,9 +11,16 @@ internal class LocalWorkplacesDataSource : DataSource<List<Workplace>> by LocalD
         private val STATIC_DATA =
             listOf(
                 Workplace(
+                    startDate = YearMonth.of(2023, Month.OCTOBER),
+                    endDate = null,
+                    workTitle = R.string.workplace_location_pricemind,
+                    location = R.string.workplace_location_pricemind,
+                    description = R.string.workplace_description_pricemind,
+                ),
+                Workplace(
                     startDate = YearMonth.of(2022, Month.APRIL),
                     endDate = null,
-                    workTitle = R.string.workplace_title_android_developer,
+                    workTitle = R.string.workplace_title_configuration_engineer,
                     location = R.string.workplace_location_viessmann,
                     description = R.string.workplace_description_viessmann,
                 ),
