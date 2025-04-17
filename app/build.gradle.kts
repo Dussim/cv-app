@@ -1,6 +1,8 @@
 plugins {
     id("xyz.dussim.android.app.convention")
     id("xyz.dussim.build-parameters")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.baselineprofile)
 }
 
 versioning {
@@ -24,6 +26,8 @@ android {
 
         release {
             signingConfig = signingConfigs.getByName("release")
+
+            baselineProfile.automaticGenerationDuringBuild = true
 
             manifestPlaceholders["api-url-placeholder"] = "https://api.tuzim.xyz"
         }
@@ -63,6 +67,7 @@ android {
 }
 
 dependencies {
+
     val composeBom = platform("androidx.compose:compose-bom:2025.04.00")
 
     implementation(composeBom)
@@ -93,9 +98,11 @@ dependencies {
 
     // Google Play complained that I used an old version; it was probably pulled as a dependency of other libs
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.profileinstaller)
 
     androidTestImplementation(composeBom)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
     "instantAppImplementation"(libs.play.services.instantapps)
+    "baselineProfile"(project(":baselineprofile"))
 }

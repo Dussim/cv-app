@@ -3,6 +3,10 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 plugins {
     id("xyz.dussim.module.utilities")
     alias(libs.plugins.gradle.versions)
+    alias(libs.plugins.android.test) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.baselineprofile) apply false
+    alias(libs.plugins.android.application) apply false
 }
 
 tasks.withType<DependencyUpdatesTask> {

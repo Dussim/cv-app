@@ -40,6 +40,12 @@ voyager = "1.0.1"
 # Google
 play-services-instantapps = "18.1.0"
 voyagerVersion = "1.0.1"
+junit = "1.2.1"
+espressoCore = "3.6.1"
+uiautomator = "2.2.0"
+benchmarkMacroJunit4 = "1.3.4"
+baselineprofile = "1.2.4"
+profileinstaller = "1.4.1"
 
 [libraries]
 # Kotlin
@@ -132,6 +138,11 @@ logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.
 kotlinx-html = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-jvm", version.ref = "kotlinx-html" }
 kotlin-css = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-css", version.ref = "kotlin-css" }
 xyz-data-model = { module = "xyz.dussim:data-model" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+androidx-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmarkMacroJunit4" }
+androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileinstaller" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
@@ -145,6 +156,8 @@ ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 gradle-versions = { id = "com.github.ben-manes.versions", version.ref = "gradle-versions" }
 application = { id = "org.gradle.application" }
 modulegraph = { id = "dev.iurysouza.modulegraph", version.ref = "modulegraph" }
+android-test = { id = "com.android.test", version.ref = "android-gradle" }
+baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
 
 [bundles]
 kotlinx-coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
