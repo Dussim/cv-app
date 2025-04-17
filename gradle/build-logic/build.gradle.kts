@@ -4,20 +4,21 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
 
 plugins {
     `kotlin-dsl`
-    id("com.github.ben-manes.versions") version "0.51.0"
+    alias(libs.plugins.gradle.versions)
 }
 
 dependencies {
-    // Direct dependencies instead of using version catalog
-    implementation("com.android.tools.build:gradle:8.3.1")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.0")
-    implementation("org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin:2.0.0")
-    implementation("com.pablisco.gradle.automodule:plugin:0.13")
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 
-    implementation("org.jlleitschuh.gradle:ktlint-gradle:12.1.0")
+    implementation(libs.android.gradle)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.kotlin.serialization)
+    implementation(libs.kotlin.compose.compiler)
+    implementation(libs.modulegraph)
 
-    implementation("xyz.dussim:versioning-plugin:1.0.0")
+    implementation(libs.ktlint.gradle)
+
+    implementation(libs.versioning.plugin)
 }
 
 version = "1.0.0"

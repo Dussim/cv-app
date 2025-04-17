@@ -7,16 +7,18 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import xyz.dussim.buildlogic.VersioningPlugin
+import xyz.dussim.util.apply
+import xyz.dussim.util.libs
 
 class AndroidAppConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
         apply<ModuleUtilitiesPlugin>()
         apply<VersioningPlugin>()
-        pluginManager.apply("com.android.application")
-        pluginManager.apply("org.jetbrains.kotlin.android")
-        pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
-        pluginManager.apply("org.jetbrains.kotlin.plugin.parcelize")
-        pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
+        pluginManager.apply(libs.plugins.android.application)
+        pluginManager.apply(libs.plugins.kotlin.android)
+        pluginManager.apply(libs.plugins.kotlin.serialization)
+        pluginManager.apply(libs.plugins.kotlin.parcelize)
+        pluginManager.apply(libs.plugins.kotlin.compose)
 
         configure<ApplicationExtension> {
             baseConfig()
