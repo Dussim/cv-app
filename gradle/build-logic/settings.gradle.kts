@@ -24,5 +24,8 @@ dependencyResolutionManagement {
         create("libs") {
             from(files("../libs.versions.toml"))
         }
+        create("conventions") {
+            from(files("../conventions.versions.toml"))
+        }
     }
 }

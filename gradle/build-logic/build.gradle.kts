@@ -49,35 +49,35 @@ fun String.isNonStable(): Boolean {
 
 gradlePlugin {
     plugins {
-        register("xyz.dussim.module.utilities") {
+        register(conventions.plugins.xyz.dussim.module.utilities) {
             id = name
             implementationClass = "xyz.dussim.ModuleUtilitiesPlugin"
         }
-        register("xyz.dussim.ktor.app.convention") {
+        register(conventions.plugins.xyz.dussim.ktor.app.convention) {
             id = name
             implementationClass = "xyz.dussim.KtorAppConventionPlugin"
         }
-        register("xyz.dussim.multiplatform.library.convention") {
+        register(conventions.plugins.xyz.dussim.multiplatform.library.convention) {
             id = name
             implementationClass = "xyz.dussim.MultiplatformLibraryConventionPlugin"
         }
-        register("xyz.dussim.android.library.convention") {
+        register(conventions.plugins.xyz.dussim.android.library.convention) {
             id = name
             implementationClass = "xyz.dussim.AndroidLibraryConventionPlugin"
         }
-        register("xyz.dussim.android.library.compose.convention") {
+        register(conventions.plugins.xyz.dussim.android.library.compose.convention) {
             id = name
             implementationClass = "xyz.dussim.AndroidLibraryComposeConventionPlugin"
         }
-        register("xyz.dussim.android.feature.convention") {
+        register(conventions.plugins.xyz.dussim.android.feature.convention) {
             id = name
             implementationClass = "xyz.dussim.AndroidFeatureConventionPlugin"
         }
-        register("xyz.dussim.android.feature.compose.convention") {
+        register(conventions.plugins.xyz.dussim.android.feature.compose.convention) {
             id = name
             implementationClass = "xyz.dussim.AndroidFeatureComposeConventionPlugin"
         }
-        register("xyz.dussim.android.app.convention") {
+        register(conventions.plugins.xyz.dussim.android.app.convention) {
             id = name
             implementationClass = "xyz.dussim.AndroidAppConventionPlugin"
         }
@@ -96,4 +96,8 @@ kotlin.target.compilations.configureEach {
             freeCompilerArgs.add("-Xjdk-release=17")
         }
     }
+}
+
+fun <T : PluginDeclaration> NamedDomainObjectContainer<T>.register(plugin: Provider<PluginDependency>, configurationAction: Action<T>) {
+    register(plugin.get().pluginId, configurationAction)
 }

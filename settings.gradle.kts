@@ -4,9 +4,6 @@ import java.io.ByteArrayOutputStream
 import java.nio.file.Files
 import java.util.Date
 
-include(":baselineprofile")
-
-
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -39,6 +36,12 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+    }
+
+    versionCatalogs {
+        create("conventions") {
+            from(files("gradle/conventions.versions.toml"))
+        }
     }
 }
 
@@ -140,4 +143,5 @@ include(
     ":feature:easter-eggs:gym",
     // Top layer - Top level modules that are dependent on previous layers
     ":app",
+    ":baselineprofile"
 )

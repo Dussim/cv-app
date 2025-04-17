@@ -1,0 +1,9 @@
+[plugins]
+xyz-dussim-module-utilities = { id = "xyz.dussim.module.utilities" }
+xyz-dussim-ktor-app-convention = { id = "xyz.dussim.ktor.app.convention" }
+xyz-dussim-multiplatform-library-convention = { id = "xyz.dussim.multiplatform.library.convention" }
+xyz-dussim-android-library-convention = { id = "xyz.dussim.android.library.convention" }
+xyz-dussim-android-library-compose-convention = { id = "xyz.dussim.android.library.compose.convention" }
+xyz-dussim-android-feature-convention = { id = "xyz.dussim.android.feature.convention" }
+xyz-dussim-android-feature-compose-convention = { id = "xyz.dussim.android.feature.compose.convention" }
+xyz-dussim-android-app-convention = { id = "xyz.dussim.android.app.convention" }
