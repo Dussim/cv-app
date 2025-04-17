@@ -1,6 +1,7 @@
 package xyz.dussim.feature.cvcontent.components
 
 import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.text.ClickableText
@@ -41,7 +42,7 @@ internal fun SocialLinkRow(socialLink: SocialLink) {
     ) {
         CvIcon(vectorRes = socialLink.icon)
         ClickableText(annotatedString) {
-            val intent = Intent(socialLink.action, socialLink.uri)
+            val intent = Intent(socialLink.action, Uri.parse(socialLink.uriString))
 
             context.startActivity(intent)
         }
