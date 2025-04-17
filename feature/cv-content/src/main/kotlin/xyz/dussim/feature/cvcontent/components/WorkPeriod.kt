@@ -1,18 +1,24 @@
 package xyz.dussim.feature.cvcontent.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.designsystem.AccentColor
 import xyz.dussim.designsystem.Body2
+import xyz.dussim.designsystem.CardBackgroundColor
 import xyz.dussim.designsystem.Label
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.TextAlternative
@@ -41,7 +47,7 @@ internal fun WorkPeriodHorizontal(
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
-                place = { WorkPeriodPlace(text = stringResource(id = workplace.location)) },
+                place = { WorkPeriodPlace(text = stringResource(id = workplace.location), isCurrent = workplace.isCurrent) },
                 description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) },
             )
         }
@@ -70,7 +76,7 @@ internal fun WorkPeriodVertical(
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
-                place = { WorkPeriodPlace(text = stringResource(id = workplace.location)) },
+                place = { WorkPeriodPlace(text = stringResource(id = workplace.location), isCurrent = workplace.isCurrent) },
                 description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) },
             )
         }
@@ -148,8 +154,37 @@ internal fun WorkPeriodTitle(text: String) {
 }
 
 @Composable
-internal fun WorkPeriodPlace(text: String) {
-    BasicText(text = text.uppercase(), style = Label.copy(color = AccentColor))
+internal fun WorkPeriodPlace(
+    text: String,
+    isCurrent: Boolean = false,
+) {
+    val style =
+        if (isCurrent) {
+            Label.copy(color = AccentColor, fontWeight = FontWeight.Bold)
+        } else {
+            Label.copy(color = AccentColor)
+        }
+
+    if (isCurrent) {
+        BasicText(
+            text = text.uppercase(),
+            style = style,
+            modifier =
+                Modifier
+                    .background(
+                        color = CardBackgroundColor,
+                        shape = RoundedCornerShape(4.dp),
+                    )
+                    .border(
+                        width = 1.dp,
+                        color = AccentColor,
+                        shape = RoundedCornerShape(4.dp),
+                    )
+                    .padding(horizontal = 8.dp, vertical = 2.dp),
+        )
+    } else {
+        BasicText(text = text.uppercase(), style = style)
+    }
 }
 
 @Composable

@@ -16,6 +16,7 @@ internal class LocalWorkplacesDataSource : DataSource<List<Workplace>> by LocalD
                     workTitle = R.string.workplace_location_pricemind,
                     location = R.string.workplace_location_pricemind,
                     description = R.string.workplace_description_pricemind,
+                    isCurrent = true,
                 ),
                 Workplace(
                     startDate = YearMonth.of(2022, Month.APRIL),
@@ -23,6 +24,7 @@ internal class LocalWorkplacesDataSource : DataSource<List<Workplace>> by LocalD
                     workTitle = R.string.workplace_title_configuration_engineer,
                     location = R.string.workplace_location_viessmann,
                     description = R.string.workplace_description_viessmann,
+                    isCurrent = true,
                 ),
                 Workplace(
                     startDate = YearMonth.of(2020, Month.SEPTEMBER),
