@@ -1,3 +1,5 @@
+import xyz.dussim.util.libs
+
 plugins {
     id("xyz.dussim.ktor.app.convention")
     id("com.bmuschko.docker-java-application") version "9.4.0"
@@ -17,5 +19,5 @@ docker {
 }
 
 dependencies {
-    implementation("xyz.dussim:data-model")
+    implementation(libs.data.model)
 }

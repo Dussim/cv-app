@@ -3,6 +3,12 @@
 kotlin = "2.1.20"
 kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.8.1"
+kotlinx-html = "0.12.0"
+kotlin-css = "1.0.0-pre.625"
+
+# Ktor
+ktor = "3.1.2"
+logback = "1.5.6"
 
 # AndroidX
 androidx-core = "1.16.0"
@@ -34,6 +40,7 @@ play-services-instantapps = "18.1.0"
 
 [libraries]
 # Kotlin
+data-model = { module = "xyz.dussim:data-model" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlin" }
@@ -88,18 +95,44 @@ voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitio
 # Google
 play-services-instantapps = { group = "com.google.android.gms", name = "play-services-instantapps", version.ref = "play-services-instantapps" }
 
+# Ktor
+ktor-server-html-builder = { group = "io.ktor", name = "ktor-server-html-builder-jvm", version.ref = "ktor" }
+ktor-server-core = { group = "io.ktor", name = "ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-content-negotiation = { group = "io.ktor", name = "ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+ktor-server-call-logging = { group = "io.ktor", name = "ktor-server-call-logging-jvm", version.ref = "ktor" }
+ktor-server-compression = { group = "io.ktor", name = "ktor-server-compression-jvm", version.ref = "ktor" }
+ktor-server-host-common = { group = "io.ktor", name = "ktor-server-host-common-jvm", version.ref = "ktor" }
+ktor-server-status-pages = { group = "io.ktor", name = "ktor-server-status-pages-jvm", version.ref = "ktor" }
+ktor-server-resources = { group = "io.ktor", name = "ktor-server-resources", version.ref = "ktor" }
+ktor-server-netty = { group = "io.ktor", name = "ktor-server-netty-jvm", version.ref = "ktor" }
+logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
+
+# HTML and CSS
+kotlinx-html = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-jvm", version.ref = "kotlinx-html" }
+kotlin-css = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-css", version.ref = "kotlin-css" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 gradle-versions = { id = "com.github.ben-manes.versions", version.ref = "gradle-versions" }
+application = { id = "org.gradle.application" }
 
 [bundles]
 kotlinx-coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
 kotest = ["kotest-runner-junit5", "kotest-assertions-core", "kotest-property"]
 compose-ui = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-foundation"]
 voyager = ["voyager-navigator", "voyager-screenmodel", "voyager-transitions"]
+ktor-server = [
+    "ktor-server-html-builder", "ktor-server-core", "ktor-server-content-negotiation", 
+    "ktor-serialization-kotlinx-json", "ktor-server-call-logging", "ktor-server-compression", 
+    "ktor-server-host-common", "ktor-server-status-pages", "ktor-server-resources", 
+    "ktor-server-netty", "logback-classic"
+]
+html-css = ["kotlinx-html", "kotlin-css"]
