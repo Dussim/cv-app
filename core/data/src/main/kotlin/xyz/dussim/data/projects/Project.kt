@@ -9,5 +9,5 @@ data class Project(
     @StringRes val name: Int,
     @StringRes val description: Int,
     @StringRes val githubUrl: Int,
-    @StringRes val contentDescription: Int
+    @StringRes val contentDescription: Int,
 ) : Parcelable

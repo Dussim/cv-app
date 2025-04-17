@@ -40,9 +40,10 @@ internal fun ProjectsColumn(
     val style = LocalTextStyleProvider.current.forSectionTitle()
     val projectTitleStyle = LocalTextStyleProvider.current.forSkills()
     val context = LocalContext.current
-    val githubIcon = rememberVectorPainter(
-        ImageVector.vectorResource(R.drawable.github),
-    )
+    val githubIcon =
+        rememberVectorPainter(
+            ImageVector.vectorResource(R.drawable.github),
+        )
 
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -58,31 +59,34 @@ internal fun ProjectsColumn(
         ) {
             projects.forEach { project ->
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     CvChip(
-                        modifier = Modifier
-                            .padding(vertical = 8.dp)
+                        modifier =
+                            Modifier
+                                .padding(vertical = 8.dp),
                     ) {
                         val githubUrl = stringResource(project.githubUrl)
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             CvIcon(
                                 painter = githubIcon,
-                                contentDescription = stringResource(R.string.button_view_on_github)
+                                contentDescription = stringResource(R.string.button_view_on_github),
                             )
 
-                            val annotatedString = buildAnnotatedString {
-                                withStyle(
-                                    style = SpanStyle(
-                                        textDecoration = TextDecoration.Underline
-                                    )
-                                ) {
-                                    append(stringResource(project.name))
+                            val annotatedString =
+                                buildAnnotatedString {
+                                    withStyle(
+                                        style =
+                                            SpanStyle(
+                                                textDecoration = TextDecoration.Underline,
+                                            ),
+                                    ) {
+                                        append(stringResource(project.name))
+                                    }
                                 }
-                            }
 
                             ClickableText(
                                 text = annotatedString,
@@ -90,7 +94,7 @@ internal fun ProjectsColumn(
                                 onClick = {
                                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(githubUrl))
                                     context.startActivity(intent)
-                                }
+                                },
                             )
                         }
                     }
@@ -98,7 +102,7 @@ internal fun ProjectsColumn(
                     BasicText(
                         text = stringResource(project.description),
                         style = projectTitleStyle,
-                        modifier = Modifier.padding(start = 8.dp)
+                        modifier = Modifier.padding(start = 8.dp),
                     )
                 }
             }
@@ -115,9 +119,10 @@ private fun PreviewProjectsContent(
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
     val projectTitleStyle = LocalTextStyleProvider.current.forSkills()
-    val githubIcon = rememberVectorPainter(
-        ImageVector.vectorResource(R.drawable.github),
-    )
+    val githubIcon =
+        rememberVectorPainter(
+            ImageVector.vectorResource(R.drawable.github),
+        )
 
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -133,36 +138,39 @@ private fun PreviewProjectsContent(
         ) {
             projects.forEach { project ->
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     CvChip(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp),
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             CvIcon(
                                 painter = githubIcon,
-                                contentDescription = stringResource(R.string.button_view_on_github)
+                                contentDescription = stringResource(R.string.button_view_on_github),
                             )
 
-                            val annotatedString = buildAnnotatedString {
-                                withStyle(
-                                    style = SpanStyle(
-                                        textDecoration = TextDecoration.Underline
-                                    )
-                                ) {
-                                    append(stringResource(project.name))
+                            val annotatedString =
+                                buildAnnotatedString {
+                                    withStyle(
+                                        style =
+                                            SpanStyle(
+                                                textDecoration = TextDecoration.Underline,
+                                            ),
+                                    ) {
+                                        append(stringResource(project.name))
+                                    }
                                 }
-                            }
 
                             ClickableText(
                                 text = annotatedString,
                                 style = projectTitleStyle,
-                                onClick = { }
+                                onClick = { },
                             )
                         }
                     }
@@ -170,7 +178,7 @@ private fun PreviewProjectsContent(
                     BasicText(
                         text = stringResource(project.description),
                         style = projectTitleStyle,
-                        modifier = Modifier.padding(start = 8.dp)
+                        modifier = Modifier.padding(start = 8.dp),
                     )
                 }
             }
@@ -181,24 +189,25 @@ private fun PreviewProjectsContent(
 @Preview(name = "Projects preview")
 @Composable
 private fun PreviewProjectsColumn() {
-    val sampleProjects = listOf(
-        Project(
-            name = R.string.preview_project_cv_app_name,
-            description = R.string.preview_project_cv_app_description,
-            githubUrl = R.string.preview_project_cv_app_github_url,
-            contentDescription = R.string.preview_project_cv_app_content_description
-        ),
-        Project(
-            name = R.string.preview_project_weather_app_name,
-            description = R.string.preview_project_weather_app_description,
-            githubUrl = R.string.preview_project_weather_app_github_url,
-            contentDescription = R.string.preview_project_weather_app_content_description
+    val sampleProjects =
+        listOf(
+            Project(
+                name = R.string.preview_project_cv_app_name,
+                description = R.string.preview_project_cv_app_description,
+                githubUrl = R.string.preview_project_cv_app_github_url,
+                contentDescription = R.string.preview_project_cv_app_content_description,
+            ),
+            Project(
+                name = R.string.preview_project_weather_app_name,
+                description = R.string.preview_project_weather_app_description,
+                githubUrl = R.string.preview_project_weather_app_github_url,
+                contentDescription = R.string.preview_project_weather_app_content_description,
+            ),
         )
-    )
 
     ContentBox {
         PreviewProjectsContent(
-            projects = sampleProjects
+            projects = sampleProjects,
         )
     }
 }

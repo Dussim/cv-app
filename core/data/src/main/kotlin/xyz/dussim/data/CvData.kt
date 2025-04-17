@@ -4,10 +4,10 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import xyz.dussim.data.about.AboutMe
 import xyz.dussim.data.certificates.Certificate
+import xyz.dussim.data.projects.Project
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.datamodel.language.Language
-import xyz.dussim.data.projects.Project
 import xyz.dussim.datamodel.skill.Skill
 
 @Parcelize
