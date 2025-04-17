@@ -7,6 +7,7 @@ kotlinx-html = "0.12.0"
 kotlin-css = "1.0.0-pre.625"
 
 # Ktor
+kotlinxSerializationCore = "1.8.1"
 ktor = "3.1.2"
 logback = "1.5.6"
 
@@ -31,16 +32,25 @@ ktlint = "12.2.0"
 versioning = "1.0.0"
 modulegraph = "0.12.0"
 gradle-versions = "0.52.0"
+twitter-compose-rules = "0.0.26"
 
 # Navigation
 voyager = "1.0.1"
 
 # Google
 play-services-instantapps = "18.1.0"
+voyagerVersion = "1.0.1"
 
 [libraries]
 # Kotlin
+androidx-foundation = { module = "androidx.compose.foundation:foundation" }
+androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-material3-window-size-class1 = { module = "androidx.compose.material3:material3-window-size-class" }
+androidx-ui = { module = "androidx.compose.ui:ui" }
+androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 data-model = { module = "xyz.dussim:data-model" }
+dussim-data-model = { module = "xyz.dussim:data-model" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-serialization = { group = "org.jetbrains.kotlin", name = "kotlin-serialization", version.ref = "kotlin" }
@@ -50,6 +60,7 @@ kotlin-compose-compiler = { group = "org.jetbrains.kotlin", name = "compose-comp
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 # AndroidX
@@ -83,11 +94,20 @@ kotest-property = { group = "io.kotest", name = "kotest-property", version.ref =
 # Build tools
 android-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle" }
 ktlint-gradle = { group = "org.jlleitschuh.gradle", name = "ktlint-gradle", version.ref = "ktlint" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktor" }
+ktor-ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 versioning-plugin = { group = "xyz.dussim", name = "versioning-plugin", version.ref = "versioning" }
 modulegraph = { group = "dev.iurysouza", name = "modulegraph", version.ref = "modulegraph" }
 gradle-versions = { group = "com.github.ben-manes", name = "gradle-versions-plugin", version.ref = "gradle-versions" }
+twitter-compose-rules = { group = "com.twitter.compose.rules", name = "ktlint", version.ref = "twitter-compose-rules" }
 
 # Navigation
+voyager-core = { module = "cafe.adriel.voyager:voyager-core", version.ref = "voyagerVersion" }
 voyager-navigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "voyager" }
 voyager-screenmodel = { group = "cafe.adriel.voyager", name = "voyager-screenmodel", version.ref = "voyager" }
 voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitions", version.ref = "voyager" }
@@ -111,6 +131,7 @@ logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.
 # HTML and CSS
 kotlinx-html = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-jvm", version.ref = "kotlinx-html" }
 kotlin-css = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-css", version.ref = "kotlin-css" }
+xyz-data-model = { module = "xyz.dussim:data-model" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
@@ -123,6 +144,7 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 gradle-versions = { id = "com.github.ben-manes.versions", version.ref = "gradle-versions" }
 application = { id = "org.gradle.application" }
+modulegraph = { id = "dev.iurysouza.modulegraph", version.ref = "modulegraph" }
 
 [bundles]
 kotlinx-coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]

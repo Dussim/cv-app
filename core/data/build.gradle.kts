@@ -7,9 +7,9 @@ android {
 }
 
 dependencies {
-    api("androidx.annotation:annotation:1.9.1")
+    api(libs.androidx.annotation)
 
-    api("xyz.dussim:data-model")
+    api(libs.xyz.data.model)
 }
 
 tasks.createModuleGraph {

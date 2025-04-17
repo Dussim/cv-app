@@ -7,8 +7,7 @@ android {
 }
 
 dependencies {
-    val voyagerVersion = "1.0.1"
     api(project(":core:data"))
 
-    api("cafe.adriel.voyager:voyager-core:$voyagerVersion")
+    api(libs.voyager.core)
 }

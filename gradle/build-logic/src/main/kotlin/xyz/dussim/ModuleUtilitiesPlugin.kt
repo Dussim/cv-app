@@ -11,14 +11,16 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+import xyz.dussim.util.apply
+import xyz.dussim.util.libs
 
 class ModuleUtilitiesPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
-        pluginManager.apply("dev.iurysouza.modulegraph")
-        pluginManager.apply("org.jlleitschuh.gradle.ktlint")
+        pluginManager.apply(libs.plugins.modulegraph)
+        pluginManager.apply(libs.plugins.ktlint)
 
         dependencies {
-            "ktlintRuleset"("com.twitter.compose.rules:ktlint:0.0.26")
+            "ktlintRuleset"(libs.twitter.compose.rules)
         }
 
         configure<ModuleGraphExtension> {

@@ -67,7 +67,6 @@ dependencies {
 
     implementation(composeBom)
 
-    val voyagerVersion = "1.0.1"
     implementation(project(":core:api-compose"))
     implementation(project(":core:ui"))
     implementation(project(":core:model"))
@@ -78,27 +77,25 @@ dependencies {
     implementation(project(":feature:cv-content"))
     implementation(project(":feature:easter-eggs:gym"))
 
-    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
-    implementation("cafe.adriel.voyager:voyager-screenmodel:$voyagerVersion")
-    implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+    implementation(libs.bundles.voyager)
 
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.foundation:foundation")
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.foundation)
 
-    implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.activity:activity-compose:1.10.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
 
-    implementation("androidx.core:core-splashscreen:1.0.1")
+    implementation(libs.androidx.core.splashscreen)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    implementation(libs.kotlinx.serialization.json)
 
     // Google Play complained that I used an old version; it was probably pulled as a dependency of other libs
-    implementation("androidx.fragment:fragment-ktx:1.8.6")
+    implementation(libs.androidx.fragment.ktx)
 
     androidTestImplementation(composeBom)
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 
-    "instantAppImplementation"("com.google.android.gms:play-services-instantapps:18.1.0")
+    "instantAppImplementation"(libs.play.services.instantapps)
 }

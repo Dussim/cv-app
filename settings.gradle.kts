@@ -2,9 +2,10 @@ import buildparameters.BuildParametersExtension
 import org.gradle.kotlin.dsl.support.serviceOf
 import java.io.ByteArrayOutputStream
 import java.nio.file.Files
-import java.util.*
+import java.util.Date
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     includeBuild("gradle/build-logic")
