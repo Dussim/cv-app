@@ -27,8 +27,6 @@ android {
         release {
             signingConfig = signingConfigs.getByName("release")
 
-            baselineProfile.automaticGenerationDuringBuild = true
-
             manifestPlaceholders["api-url-placeholder"] = "https://api.tuzim.xyz"
         }
 
@@ -44,13 +42,13 @@ android {
     flavorDimensions.add("installationType")
 
     productFlavors {
-        create("instantApp") {
+        register("instantApp") {
             dimension = "installationType"
             versionCode = versioning.versionCode.get()
             versionNameSuffix = "-instant"
         }
 
-        create("installedApp") {
+        register("installedApp") {
             dimension = "installationType"
             versionCode = versioning.versionCode.get() + 60
         }

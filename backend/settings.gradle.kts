@@ -30,3 +30,5 @@ dependencyResolutionManagement {
 }
 
 includeBuild("../shared")
+
+rootProject.name = "backend"

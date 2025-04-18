@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.test)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.baselineprofile)
+    alias(conventions.plugins.xyz.dussim.module.utilities)
 }
 
 android {
@@ -11,12 +12,12 @@ android {
     compileSdk = 35
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     defaultConfig {
@@ -26,22 +27,24 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    targetProjectPath = ":app"
+    flavorDimensions.add("installationType")
 
-    flavorDimensions += listOf("installationType")
     productFlavors {
-        create("instantApp") { dimension = "installationType" }
-        create("installedApp") { dimension = "installationType" }
+        register("installedApp") {
+            dimension = "installationType"
+        }
+        register("instantApp") {
+            dimension = "installationType"
+        }
     }
 
-    // This code creates the gradle managed device used to generate baseline profiles.
-    // To use GMD please invoke generation through the command line:
-    // ./gradlew :app:generateBaselineProfile
-    testOptions.managedDevices.devices {
-        create<ManagedVirtualDevice>("pixel6Api34") {
+    targetProjectPath = ":app"
+
+    testOptions.managedDevices.allDevices {
+        register<ManagedVirtualDevice>("pixel6Api34") {
             device = "Pixel 6"
             apiLevel = 34
-            systemImageSource = "google"
+            systemImageSource = "aosp"
         }
     }
 }
@@ -58,14 +61,4 @@ dependencies {
     implementation(libs.androidx.espresso.core)
     implementation(libs.androidx.uiautomator)
     implementation(libs.androidx.benchmark.macro.junit4)
-}
-
-androidComponents {
-    onVariants { v ->
-        val artifactsLoader = v.artifacts.getBuiltArtifactsLoader()
-        v.instrumentationRunnerArguments.put(
-            "targetAppId",
-            v.testedApks.map { artifactsLoader.load(it)!!.applicationId }
-        )
-    }
 }

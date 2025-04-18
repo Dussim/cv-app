@@ -144,3 +144,5 @@ include(
     ":app",
     ":baselineprofile",
 )
+
+rootProject.name = "cv-app"

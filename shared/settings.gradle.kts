@@ -33,7 +33,7 @@ dependencyResolutionManagement {
         create("libs") {
             from(files("../gradle/libs.versions.toml"))
         }
-        create("conventions"){
+        create("conventions") {
             from(files("../gradle/conventions.versions.toml"))
         }
     }
@@ -42,3 +42,6 @@ dependencyResolutionManagement {
 include(
     ":data-model"
 )
+
+rootProject.name = "shared"
+
