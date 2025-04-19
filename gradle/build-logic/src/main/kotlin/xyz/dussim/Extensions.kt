@@ -53,7 +53,7 @@ internal fun CommonExtension<*, *, *, *, *, *>.baseConfig() {
     }
 
     (this as? LibraryExtension)?.testOptions {
-        targetSdk = 35
+        targetSdk = 36
     }
 }
 
