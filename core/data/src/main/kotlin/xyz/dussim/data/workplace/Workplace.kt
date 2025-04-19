@@ -12,5 +12,4 @@ data class Workplace(
     @StringRes val workTitle: Int,
     @StringRes val location: Int,
     @StringRes val description: Int,
-    val isCurrent: Boolean = false,
 ) : Parcelable

@@ -10,43 +10,45 @@
 
     <string name="certificate_samsung">Oracle Certified Professional: Java SE 11 Developer</string>
     <string name="certificate_java">Samsung Software Test Level Professional (Internal)</string>
+    <string name="certificate_pricefx">Certified Configuration Engineer</string>
 
     <string name="workplace_title_intern">Intern</string>
     <string name="workplace_title_junior_software_developer">Junior Software Developer</string>
-    <string name="workplace_title_android_developer">Senior Android Developer</string>
+    <string name="workplace_title_android_developer">Android Developer</string>
+    <string name="workplace_title_senior_android_developer">Senior Android Developer</string>
     <string name="workplace_title_configuration_engineer">Configuration Engineer</string>
 
     <string name="workplace_location_samsung">Samsung SRPOL, Warsaw Poland</string>
     <string name="workplace_location_spyrosoft">Spyrosoft, Warsaw Poland, Hybrid</string>
     <string name="workplace_location_paramount">Paramount, Warsaw Poland, Hybrid</string>
     <string name="workplace_location_viessmann">Viessmann Technika Grzewcza, fully remote</string>
-    <string name="workplace_location_pricemind">PriceMind, fully remote, half time</string>
+    <string name="workplace_location_pricemind">PriceMind, fully remote, part time</string>
 
     <string name="workplace_description_pricemind">"External consulting for PriceMind on PriceFx products.
-As a Configuration Engineer at PriceFx, I translated complex business pricing requirements into functional solutions,
-configuring and implementing various modules including price setting, quoting, analytics, and rebates within the cloud-based pricing management platform."
+As a Configuration Engineer at PriceFx, I have translated complex business‑pricing requirements into functional solutions.
+Configuring and implementing various modules, including price setting, quoting, analytics, and rebates, within the cloud‑based pricing management platform."
     </string>
     <string name="workplace_description_viessmann">"External consulting for Viessmann.
-I analyzed, developed, and enhanced the ViCare mobile application for Viessmann,
-implementing user-focused features to optimize smart home heating control while ensuring seamless integration with their heating systems."
+I have analyzed, developed, and enhanced the ViCare mobile application for Viessmann, implementing user‑focused features to optimize smart‑home heating control while ensuring seamless integration with their heating systems."
     </string>
     <string name="workplace_description_paramount">"The work consisted of creating new features and maintaining Noggin application.
-The app was written in a modern android stack in a big multi-module monorepository for several of the Paramount products.
-It consisted of over 200 modules and maintained over 80% unit test coverage."
+The work consisted of creating new features and maintaining the Noggin application.
+The app was written in a modern Android stack in a large multi‑module mono repository for several Paramount products.
+It consisted of over 200 modules and maintained over 80% unit‑test coverage"
     </string>
     <string name="workplace_description_spyrosoft">"External consulting for Huawei.
-Maintenance and fixes for several Huawei\'s system applications.
+Maintenance and fixes for several of Huawei\’s system applications.
 Prototyping applications based on client requirements.
-Analyzing performance problems and anomalies of EMUI user interface and system."
+Analyzing performance problems and anomalies in the EMUI user interface and system."
     </string>
 
-    <string name="workplace_description_samsung_junior">"Continued maintenance and bug fixes for SmartThings (Samsung Connect) application as well as taking parts in writing new features and refactoring apps to new standard.
-Notably I was invited to two business trips to South Korea as support in development."
+    <string name="workplace_description_samsung_junior">"Continued maintenance and bug fixes for the SmartThings (Samsung Connect) application, as well as taking part in writing new features and refactoring apps to a new standard.
+Notably, I was invited on two business trips to South Korea to support development."
     </string>
 
-    <string name="workplace_description_samsung_intern">"Maintenance and bug fixes for SmartThings (Samsung Connect) application."</string>
+    <string name="workplace_description_samsung_intern">"Maintenance and bug fixes for the SmartThings (Samsung Connect) application."</string>
 
-    <string name="about_me">Hello, I am Artur and I am a passionate Android developer with a history of working on ambitious projects. Since my first job, I have worked on big projects at the top of their respective genre. I keep up with all recent trends and developments in the Android world, just check the source code of this app to be sure. In my free time, I go to the gym, travel, or just play video games.</string>
+    <string name="about_me">Hello, I am Artur, and I am a passionate Android developer with a history of working on ambitious projects. Since my first job, I have worked on big projects at the top of their respective genres. I keep up with all recent trends and developments in the Android world, check the source code of this app to be sure. In my free time, I go to the gym, travel, or just play video games.</string>
 
     <!-- Project strings -->
     <string name="project_gradle_ssh_name">Gradle SSH</string>

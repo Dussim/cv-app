@@ -3,6 +3,7 @@ package xyz.dussim.local.impl
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.local.R
+import java.time.Month.MARCH
 import java.time.YearMonth
 import java.util.Calendar.APRIL
 import java.util.Calendar.MAY
@@ -11,6 +12,10 @@ internal class LocalCertificatesDataSource : DataSource<List<Certificate>> by Lo
     companion object {
         private val STATIC_DATA =
             listOf(
+                Certificate(
+                    name = R.string.certificate_pricefx,
+                    date = YearMonth.of(2024, MARCH),
+                ),
                 Certificate(
                     name = R.string.certificate_samsung,
                     date = YearMonth.of(2021, APRIL),

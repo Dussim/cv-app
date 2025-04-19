@@ -47,7 +47,7 @@ internal fun WorkPeriodHorizontal(
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
-                place = { WorkPeriodPlace(text = stringResource(id = workplace.location), isCurrent = workplace.isCurrent) },
+                place = { WorkPeriodPlace(text = stringResource(id = workplace.location), isCurrent = workplace.endDate == null) },
                 description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) },
             )
         }
@@ -76,7 +76,7 @@ internal fun WorkPeriodVertical(
                     )
                 },
                 title = { WorkPeriodTitle(text = stringResource(id = workplace.workTitle)) },
-                place = { WorkPeriodPlace(text = stringResource(id = workplace.location), isCurrent = workplace.isCurrent) },
+                place = { WorkPeriodPlace(text = stringResource(id = workplace.location), isCurrent = workplace.endDate == null) },
                 description = { WorkPeriodDescription(text = stringResource(id = workplace.description)) },
             )
         }

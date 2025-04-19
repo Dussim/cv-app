@@ -13,18 +13,16 @@ internal class LocalWorkplacesDataSource : DataSource<List<Workplace>> by LocalD
                 Workplace(
                     startDate = YearMonth.of(2023, Month.OCTOBER),
                     endDate = null,
-                    workTitle = R.string.workplace_location_pricemind,
+                    workTitle = R.string.workplace_title_configuration_engineer,
                     location = R.string.workplace_location_pricemind,
                     description = R.string.workplace_description_pricemind,
-                    isCurrent = true,
                 ),
                 Workplace(
                     startDate = YearMonth.of(2022, Month.APRIL),
                     endDate = null,
-                    workTitle = R.string.workplace_title_configuration_engineer,
+                    workTitle = R.string.workplace_title_senior_android_developer,
                     location = R.string.workplace_location_viessmann,
                     description = R.string.workplace_description_viessmann,
-                    isCurrent = true,
                 ),
                 Workplace(
                     startDate = YearMonth.of(2020, Month.SEPTEMBER),
