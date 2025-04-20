@@ -31,8 +31,7 @@ Configuring and implementing various modules, including price setting, quoting, 
     <string name="workplace_description_viessmann">"External consulting for Viessmann.
 I have analyzed, developed, and enhanced the ViCare mobile application for Viessmann, implementing user‑focused features to optimize smart‑home heating control while ensuring seamless integration with their heating systems."
     </string>
-    <string name="workplace_description_paramount">"The work consisted of creating new features and maintaining Noggin application.
-The work consisted of creating new features and maintaining the Noggin application.
+    <string name="workplace_description_paramount">"The work consisted of creating new features and maintaining the Noggin application.
 The app was written in a modern Android stack in a large multi‑module mono repository for several Paramount products.
 It consisted of over 200 modules and maintained over 80% unit‑test coverage"
     </string>
