@@ -27,7 +27,7 @@ compose-bom = "2025.04.00"
 kotest = "6.0.0.M3"
 
 # Plugins
-android-gradle = "8.9.1"
+android-gradle = "8.9.2"
 ktlint = "12.2.0"
 versioning = "1.0.0"
 modulegraph = "0.12.0"

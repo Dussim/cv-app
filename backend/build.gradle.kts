@@ -1,5 +1,3 @@
-import xyz.dussim.util.libs
-
 plugins {
     alias(conventions.plugins.xyz.dussim.ktor.app.convention)
     alias(libs.plugins.docker.java.application)
