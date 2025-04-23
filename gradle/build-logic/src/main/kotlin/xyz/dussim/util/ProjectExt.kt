@@ -7,6 +7,6 @@ import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.the
 import org.gradle.plugin.use.PluginDependency
 
-val Project.libs get() = the<LibrariesForLibs>()
+internal val Project.libs get() = the<LibrariesForLibs>()
 
 fun PluginManager.apply(pluginId: Provider<PluginDependency>) = apply(pluginId.get().pluginId)

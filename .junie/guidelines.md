@@ -1,0 +1,1 @@
+See and use [testing guidelines](../.guidelines/TESTING.MD)
