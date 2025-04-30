@@ -47,7 +47,8 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
             compilerOptions {
                 freeCompilerArgs.addAll(
                     "-opt-in=kotlin.RequiresOptIn",
-                    "-Xexpect-actual-classes"
+                    "-Xexpect-actual-classes",
+                    "-Xannotation-default-target=param-property"
                 )
             }
         }

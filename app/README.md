@@ -8,6 +8,7 @@
 }%%
 
 graph TB
+  :app -- baselineProfile --> :baselineprofile
   :app -- implementation --> :core:api-compose
   :app -- implementation --> :core:ui
   :app -- implementation --> :core:model
@@ -20,6 +21,7 @@ graph TB
 classDef android-application fill:#2C4162,stroke:#fff,stroke-width:2px,color:#fff;
 classDef unknown fill:#676767,stroke:#fff,stroke-width:2px,color:#fff;
 class :app android-application
+class :baselineprofile unknown
 class :core:api-compose unknown
 class :core:ui unknown
 class :core:model unknown

@@ -6,7 +6,7 @@ plugins {
 
 gradlePlugin {
     plugins {
-        create("versioning") {
+        register("versioning") {
             id = "xyz.dussim.versioning"
             implementationClass = "xyz.dussim.buildlogic.VersioningPlugin"
         }

@@ -1,0 +1,1 @@
+Always use dependencies from version catalogs if it is not present there please add a new version

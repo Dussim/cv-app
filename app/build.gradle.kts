@@ -11,7 +11,7 @@ versioning {
 
 android {
     signingConfigs {
-        create("release") {
+        register("release") {
             keyAlias = buildParameters.signing.key.name
             keyPassword = buildParameters.signing.key.password
             storeFile = layout.projectDirectory.file("../.keystore/${buildParameters.signing.keystore.name}").asFile
@@ -66,7 +66,7 @@ android {
 
 dependencies {
 
-    val composeBom = platform("androidx.compose:compose-bom:2025.04.00")
+    val composeBom = platform(libs.androidx.compose.bom)
 
     implementation(composeBom)
 
@@ -85,6 +85,8 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.foundation)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.ui.tooling.preview)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

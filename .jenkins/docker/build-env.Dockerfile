@@ -1,4 +1,4 @@
-FROM bellsoft/liberica-openjdk-debian:23
+FROM bellsoft/liberica-openjdk-debian:25
 
 CMD ["gradle"]
 
@@ -27,8 +27,8 @@ RUN set -o errexit -o nounset \
         openssh-client \
     && rm --recursive --force /var/lib/apt/lists/*
 
-ENV GRADLE_VERSION="8.10.2"
-ARG GRADLE_DOWNLOAD_SHA256=31c55713e40233a8303827ceb42ca48a47267a0ad4bab9177123121e71524c26
+ENV GRADLE_VERSION="9.2.1"
+ARG GRADLE_DOWNLOAD_SHA256=72f44c9f8ebcb1af43838f45ee5c4aa9c5444898b3468ab3f4af7b6076c5bc3f
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \

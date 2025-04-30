@@ -11,10 +11,10 @@ dependencyResolutionManagement {
     repositories.mavenCentral()
 
     versionCatalogs {
-        create("libs") {
+        register("libs") {
             from(files("../gradle/libs.versions.toml"))
         }
-        create("conventions") {
+        register("conventions") {
             from(files("../gradle/conventions.versions.toml"))
         }
     }

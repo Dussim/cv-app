@@ -4,6 +4,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
+import xyz.dussim.util.libs
 
 class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
@@ -11,7 +12,7 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
 
         dependencies {
-            val composeBom = platform("androidx.compose:compose-bom:2025.04.00")
+            val composeBom = platform(libs.androidx.compose.bom)
 
             "implementation"(composeBom)
 

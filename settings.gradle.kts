@@ -1,4 +1,4 @@
-import buildparameters.BuildParametersExtension
+
 import org.gradle.kotlin.dsl.support.serviceOf
 import java.io.ByteArrayOutputStream
 import java.nio.file.Files
@@ -39,14 +39,14 @@ dependencyResolutionManagement {
     }
 
     versionCatalogs {
-        create("conventions") {
+        register("conventions") {
             from(files("gradle/conventions.versions.toml"))
         }
     }
 }
 
 plugins {
-    id("com.gradle.develocity").version("4.0")
+    id("com.gradle.develocity").version("4.1.1")
     id("xyz.dussim.build-parameters")
 }
 
@@ -56,7 +56,7 @@ develocity {
     buildScan {
         publishing.onlyIf { false }
 
-        termsOfUseUrl = "https://gradle.com/terms-of-service"
+        termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
         termsOfUseAgree = "yes"
 
         capture {
@@ -97,7 +97,6 @@ develocity {
 }
 
 buildCache {
-    val buildParameters = the<BuildParametersExtension>()
     local {
         isEnabled = !buildParameters.ci
         isPush = true
