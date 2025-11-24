@@ -9,21 +9,27 @@ import xyz.dussim.api.state.State
  *
  * A fake data source that returns the provided data.
  */
-class FakeDataSource<T>(private val data: T) : DataSource<T> {
+class FakeDataSource<T>(
+    private val data: T,
+) : DataSource<T> {
     override suspend fun fetch(): T = data
 }
 
 /**
  * A fake data source that returns a successful state with the provided data.
  */
-class FakeSuccessNetworkDataSource<T>(private val data: T) : DataSource<State<T>> {
+class FakeSuccessNetworkDataSource<T>(
+    private val data: T,
+) : DataSource<State<T>> {
     override suspend fun fetch(): State<T> = State.Success(data)
 }
 
 /**
  * A fake data source that returns an error state with the provided error.
  */
-class FakeFailureNetworkDataSource<T>(private val error: Throwable) : DataSource<State<T>> {
+class FakeFailureNetworkDataSource<T>(
+    private val error: Throwable,
+) : DataSource<State<T>> {
     override suspend fun fetch(): State<T> = State.Error(error)
 }
 
@@ -41,6 +47,8 @@ class FakeTimeoutNetworkDataSource<T> : DataSource<State<T>> {
 /**
  * A fake data source that returns the provided local data
  */
-class FakeLocalDataSource<T>(private val data: T) : DataSource<T> {
+class FakeLocalDataSource<T>(
+    private val data: T,
+) : DataSource<T> {
     override suspend fun fetch(): T = data
 }

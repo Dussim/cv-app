@@ -26,7 +26,9 @@ import xyz.dussim.feature.ee.gym.R
 import xyz.dussim.navigation.ParcelableScreen
 
 @Parcelize
-internal data class GymStatsContentScreen(val gymStats: List<GymStats>) : ParcelableScreen {
+internal data class GymStatsContentScreen(
+    val gymStats: List<GymStats>,
+) : ParcelableScreen {
     @Composable
     override fun Content() {
         val screenWidthClass = LocalScreenWidthClass.current

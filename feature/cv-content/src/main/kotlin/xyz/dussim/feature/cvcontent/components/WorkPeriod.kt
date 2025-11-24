@@ -174,13 +174,11 @@ internal fun WorkPeriodPlace(
                     .background(
                         color = CardBackgroundColor,
                         shape = RoundedCornerShape(4.dp),
-                    )
-                    .border(
+                    ).border(
                         width = 1.dp,
                         color = AccentColor,
                         shape = RoundedCornerShape(4.dp),
-                    )
-                    .padding(horizontal = 8.dp, vertical = 2.dp),
+                    ).padding(horizontal = 8.dp, vertical = 2.dp),
         )
     } else {
         BasicText(text = text.uppercase(), style = style)

@@ -1,4 +1,4 @@
-FROM bellsoft/liberica-openjdk-debian:25
+FROM eclipse-temurin:25-jdk-noble
 
 CMD ["gradle"]
 
@@ -6,8 +6,8 @@ ENV GRADLE_HOME=/opt/gradle
 
 RUN set -o errexit -o nounset \
     && echo "Adding gradle user and group" \
-    && groupadd --system --gid 1000 gradle \
-    && useradd --system --gid gradle --uid 1000 --shell /bin/bash --create-home gradle \
+    && groupadd --system --gid 1100 gradle \
+    && useradd --system --gid gradle --uid 1100 --shell /bin/bash --create-home gradle \
     && mkdir /home/gradle/.gradle \
     && chown --recursive gradle:gradle /home/gradle \
     \
@@ -76,6 +76,6 @@ RUN set -o errexit -o nounset \
 RUN set -o errexit -o nounset \
     && echo "Installing Android SDK build-tools" \
     && sdkmanager --install "build-tools;35.0.0"\
-    && sdkmanager --install "build-tools;34.0.0"\
-    && sdkmanager --install "platforms;android-35"\
-    && sdkmanager --install "platform-tools"
+    && sdkmanager --install "platforms;android-36"\
+    && sdkmanager --install "platform-tools" \
+    && sdkmanager --update

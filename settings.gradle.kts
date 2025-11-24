@@ -46,7 +46,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("com.gradle.develocity").version("4.1.1")
+    id("com.gradle.develocity").version("4.2.2")
     id("xyz.dussim.build-parameters")
 }
 
@@ -89,8 +89,7 @@ develocity {
                         if (!exists()) {
                             Files.createDirectories(toPath().parent)
                         }
-                    }
-                    .appendText("${Date()} - $buildScanId - $buildScanUri\n")
+                    }.appendText("${Date()} - $buildScanId - $buildScanUri\n")
             }
         }
     }
@@ -141,7 +140,7 @@ include(
     ":feature:easter-eggs:gym",
     // Top layer - Top level modules that are dependent on previous layers
     ":app",
-    ":baselineprofile",
+    ":baselineProfile",
 )
 
 rootProject.name = "cv-app"

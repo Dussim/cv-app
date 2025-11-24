@@ -10,21 +10,18 @@ import xyz.dussim.network.internal.dto.GymStatsDto
 internal class EndpointClient(
     private val httpClient: HttpClient,
 ) {
-    suspend fun fetchSkills(): Result<List<SkillDto>> {
-        return runCatching {
+    suspend fun fetchSkills(): Result<List<SkillDto>> =
+        runCatching {
             httpClient.get(ApiRoutes.Skills()).body()
         }
-    }
 
-    suspend fun fetchLanguages(): Result<List<LanguageDto>> {
-        return runCatching {
+    suspend fun fetchLanguages(): Result<List<LanguageDto>> =
+        runCatching {
             httpClient.get(ApiRoutes.Languages()).body()
         }
-    }
 
-    suspend fun fetchGymStats(): Result<List<GymStatsDto>> {
-        return runCatching {
+    suspend fun fetchGymStats(): Result<List<GymStatsDto>> =
+        runCatching {
             httpClient.get(EasterEggsRoutes.GymStats()).body()
         }
-    }
 }

@@ -87,8 +87,7 @@ fun HidingHeader(
                     state = scrollableState,
                     orientation = Orientation.Vertical,
                     overscrollEffect = ScrollableDefaults.overscrollEffect(),
-                )
-                .nestedScroll(nestedScrollConnection),
+                ).nestedScroll(nestedScrollConnection),
         content = {
             header()
             content(contentScrollableState)

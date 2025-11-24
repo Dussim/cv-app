@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'dussim/build-env:jdk25_gradle-9.2.1_android-35'
+            image 'dussim/build-env:jdk25_gradle-9.2.1_android-36'
             args '-v gradle-cache:/home/gradle/.gradle --net=host'
         }
     }
@@ -40,12 +40,12 @@ pipeline {
         }
         stage('Versions') {
             steps {
-                sh 'gradle dependencyUpdates --no-configure-on-demand --warning-mode=none --no-configuration-cache -Dorg.gradle.unsafe.isolated-projects=false'
+                sh 'gradle dependencyUpdates --no-configure-on-demand --warning-mode=none --no-configuration-cache -Dorg.gradle.unsafe.isolated-projects=false --no-parallel'
             }
         }
     }
     post {
-        success {
+        always {
             echo 'Archiving artifacts'
             archiveArtifacts([
                     allowEmptyArchive: true,

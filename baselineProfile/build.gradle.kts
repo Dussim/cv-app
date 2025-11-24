@@ -24,17 +24,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    flavorDimensions.add("installationType")
-
-    productFlavors {
-        register("installedApp") {
-            dimension = "installationType"
-        }
-        register("instantApp") {
-            dimension = "installationType"
-        }
-    }
-
     targetProjectPath = ":app"
 
     testOptions.managedDevices.allDevices {

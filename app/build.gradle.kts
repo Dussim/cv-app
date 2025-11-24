@@ -19,6 +19,12 @@ android {
         }
     }
 
+    defaultConfig {
+        versionCode = versioning.versionCode.get()
+        versionName = versioning.versionName.get()
+        minSdk = versioning.minApi.get()
+    }
+
     buildTypes {
         debug {
             manifestPlaceholders["api-url-placeholder"] = "https://api.tuzim.xyz"
@@ -39,36 +45,13 @@ android {
         }
     }
 
-    flavorDimensions.add("installationType")
-
-    productFlavors {
-        register("instantApp") {
-            dimension = "installationType"
-            versionCode = versioning.versionCode.get()
-            versionNameSuffix = "-instant"
-        }
-
-        register("installedApp") {
-            dimension = "installationType"
-            versionCode = versioning.versionCode.get() + 60
-        }
-
-        forEach {
-            it.versionName = versioning.versionName.get()
-            it.minSdk = versioning.minApi.get()
-        }
-    }
-
     lint {
         disable += "Instantiatable"
     }
 }
 
 dependencies {
-
-    val composeBom = platform(libs.androidx.compose.bom)
-
-    implementation(composeBom)
+    implementation(platform(libs.androidx.compose.bom))
 
     implementation(projects.core.apiCompose)
     implementation(projects.core.ui)
@@ -100,9 +83,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.profileinstaller)
 
-    androidTestImplementation(composeBom)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
-    "instantAppImplementation"(libs.play.services.instantapps)
-    "baselineProfile"(project(":baselineprofile"))
+    baselineProfile(projects.baselineProfile)
 }

@@ -12,9 +12,7 @@ class CvAppComponentFactory : AppComponentFactory() {
     override fun instantiateApplicationCompat(
         cl: ClassLoader,
         className: String,
-    ): Application {
-        return CvApplication().also { appComponentHolder = it }
-    }
+    ): Application = CvApplication().also { appComponentHolder = it }
 
     override fun instantiateActivityCompat(
         cl: ClassLoader,
