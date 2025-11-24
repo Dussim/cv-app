@@ -13,7 +13,10 @@ tasks.withType<DependencyUpdatesTask> {
     checkForGradleUpdate = true
     gradleReleaseChannel = "current"
     reportfileName = "app-logic-dependency-updates-report"
-    outputDir = layout.projectDirectory.dir(".reports/versions").asFile.path
+    outputDir =
+        layout.projectDirectory
+            .dir(".reports/versions")
+            .asFile.path
 
     filterConfigurations =
         Spec {

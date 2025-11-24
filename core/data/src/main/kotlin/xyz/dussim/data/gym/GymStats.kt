@@ -11,10 +11,14 @@ sealed interface Weight : Parcelable {
     val value: Double
 
     @Parcelize
-    data class Kilogram(override val value: Double) : Weight
+    data class Kilogram(
+        override val value: Double,
+    ) : Weight
 
     @Parcelize
-    data class Pounds(override val value: Double) : Weight
+    data class Pounds(
+        override val value: Double,
+    ) : Weight
 }
 
 @Parcelize

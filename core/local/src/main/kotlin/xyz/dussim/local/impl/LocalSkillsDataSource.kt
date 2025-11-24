@@ -19,8 +19,7 @@ internal class LocalSkillsDataSource(
                 SkillDto.advanced(SkillName.Dagger2),
                 SkillDto.advanced(SkillName.Git),
                 SkillDto.competent(SkillName.Ktor),
-            )
-                .sortedWith(comparing(SkillDto::level).reversed())
+            ).sortedWith(comparing(SkillDto::level).reversed())
                 .map(universalMapper::map)
     }
 }

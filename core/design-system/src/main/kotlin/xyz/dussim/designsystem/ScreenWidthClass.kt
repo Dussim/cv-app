@@ -23,7 +23,13 @@ enum class ScreenWidthClass {
             LocalConfiguration.current
             val density = LocalDensity.current
             val metrics = WindowMetricsCalculator.getOrCreate().computeCurrentWindowMetrics(activity)
-            val width = with(density) { metrics.bounds.toComposeRect().size.toDpSize() }.width
+            val width =
+                with(density) {
+                    metrics.bounds
+                        .toComposeRect()
+                        .size
+                        .toDpSize()
+                }.width
 
             return when {
                 width < 768.dp -> Small

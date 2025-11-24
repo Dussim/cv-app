@@ -29,7 +29,8 @@ import xyz.dussim.navigation.CvAppScreens
 
 class MainActivity(
     private val appComponentHolder: AppComponentHolder,
-) : ComponentActivity(), ActivityComponentHolder {
+) : ComponentActivity(),
+    ActivityComponentHolder {
     private var loaded: Boolean = false
 
     override val activityComponent: ActivityComponent by lazy {

@@ -110,9 +110,7 @@ object CvToggleButtonDefaults {
     fun outlineBorderStroke(
         enabled: Boolean,
         checked: Boolean,
-    ): BorderStroke {
-        return BorderStroke(2.dp, OutlinedToggleColors.outlineColorValue(enabled, checked))
-    }
+    ): BorderStroke = BorderStroke(2.dp, OutlinedToggleColors.outlineColorValue(enabled, checked))
 }
 
 @Stable
@@ -139,15 +137,14 @@ private data class CvButtonColorsImpl(
     override val disabledColor: Color,
 ) : CvButtonColors {
     @Composable
-    override fun color(enabled: Boolean): State<Color> {
-        return rememberUpdatedState(
+    override fun color(enabled: Boolean): State<Color> =
+        rememberUpdatedState(
             newValue =
                 when (enabled) {
                     true -> enabledColor
                     false -> disabledColor
                 },
         )
-    }
 }
 
 @Immutable
@@ -155,7 +152,8 @@ private data class CvOutlinedButtonsColorsImpl(
     override val enabledOutlineColor: Color,
     override val disabledOutlineColor: Color,
     private val cvButtonColors: CvButtonColors,
-) : CvOutlinedButtonColors, CvButtonColors by cvButtonColors {
+) : CvOutlinedButtonColors,
+    CvButtonColors by cvButtonColors {
     constructor(
         enabledColor: Color,
         disabledColor: Color,
@@ -168,15 +166,14 @@ private data class CvOutlinedButtonsColorsImpl(
     )
 
     @Composable
-    override fun outlineColor(enabled: Boolean): State<Color> {
-        return rememberUpdatedState(
+    override fun outlineColor(enabled: Boolean): State<Color> =
+        rememberUpdatedState(
             newValue =
                 when (enabled) {
                     true -> enabledOutlineColor
                     false -> disabledOutlineColor
                 },
         )
-    }
 }
 
 @Stable
@@ -197,8 +194,8 @@ interface CvOutlinedToggleButtonColors {
     fun backgroundColor(
         enabled: Boolean,
         checked: Boolean,
-    ): State<Color> {
-        return rememberUpdatedState(
+    ): State<Color> =
+        rememberUpdatedState(
             newValue =
                 when {
                     enabled && checked -> enabledCheckedColor
@@ -207,14 +204,13 @@ interface CvOutlinedToggleButtonColors {
                     else -> disabledUncheckedColor
                 },
         )
-    }
 
     @Composable
     fun outlineColor(
         enabled: Boolean,
         checked: Boolean,
-    ): State<Color> {
-        return rememberUpdatedState(
+    ): State<Color> =
+        rememberUpdatedState(
             newValue =
                 when {
                     enabled && checked -> enabledCheckedOutlineColor
@@ -223,7 +219,6 @@ interface CvOutlinedToggleButtonColors {
                     else -> disabledUncheckedOutlineColor
                 },
         )
-    }
 
     @Composable
     fun outlineColorValue(
@@ -269,8 +264,7 @@ fun CvButton(
                         null -> Modifier
                         else -> Modifier.border(border, shape)
                     },
-                )
-                .background(background, shape)
+                ).background(background, shape)
                 .clip(shape)
                 .clickable(
                     interactionSource = interactionSource,
@@ -347,8 +341,7 @@ fun CVOutlinedToggleButton(
                         null -> Modifier
                         else -> Modifier.border(border, shape)
                     },
-                )
-                .background(background, shape)
+                ).background(background, shape)
                 .clip(shape)
                 .toggleable(
                     interactionSource = interactionSource,

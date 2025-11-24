@@ -15,7 +15,9 @@ import xyz.dussim.feature.splashscreen.splashScreenModule
 /**
  * This is not a mistake, that is application with a constructor. See [CvAppComponentFactory].
  * */
-class CvApplication : Application(), AppComponentHolder {
+class CvApplication :
+    Application(),
+    AppComponentHolder {
     private val baseUrl by lazy {
         packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA).metaData.run {
             getString("api-url") ?: throw IllegalStateException("api-url is not defined")

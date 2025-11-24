@@ -7,7 +7,9 @@ import kotlinx.parcelize.Parcelize
 import xyz.dussim.navigation.ParcelableScreen
 
 @Parcelize
-internal data class GymStatsErrorScreen(val error: String) : ParcelableScreen {
+internal data class GymStatsErrorScreen(
+    val error: String,
+) : ParcelableScreen {
     @Composable
     override fun Content() {
         LocalNavigator.currentOrThrow.pop() // TODO fix this someday

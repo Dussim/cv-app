@@ -20,7 +20,9 @@ import xyz.dussim.datamodel.skill.Skill
  *
  * A fake dispatchers component that uses the provided test dispatcher for all dispatchers.
  */
-class FakeDispatchersComponent(private val testDispatcher: CoroutineDispatcher) : DispatchersComponent {
+class FakeDispatchersComponent(
+    private val testDispatcher: CoroutineDispatcher,
+) : DispatchersComponent {
     override val main: CoroutineDispatcher = testDispatcher
     override val io: CoroutineDispatcher = testDispatcher
     override val default: CoroutineDispatcher = testDispatcher

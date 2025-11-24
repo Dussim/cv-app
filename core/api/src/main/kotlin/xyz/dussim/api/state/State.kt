@@ -11,9 +11,13 @@ sealed interface State<out T> {
 
     data object Loading : State<Nothing>
 
-    data class Error(val error: Throwable) : State<Nothing>
+    data class Error(
+        val error: Throwable,
+    ) : State<Nothing>
 
-    data class Success<T>(val value: T) : State<T>
+    data class Success<T>(
+        val value: T,
+    ) : State<T>
 }
 
 fun <T> State<T>.orElse(recover: (Throwable) -> State<T>): State<T> =
