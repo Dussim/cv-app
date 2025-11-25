@@ -12,19 +12,18 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
         pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
 
         dependencies {
-            val composeBom = platform(libs.androidx.compose.bom)
+            val implementation = configurations.getByName("implementation")
+            val debugImplementation = configurations.getByName("debugImplementation")
 
-            "implementation"(composeBom)
+            implementation(platform(libs.androidx.compose.bom))
 
-            "implementation"("androidx.compose.ui:ui")
-            "implementation"("androidx.compose.ui:ui-graphics")
-            "implementation"("androidx.compose.runtime:runtime")
-            "implementation"("androidx.compose.foundation:foundation")
-            "implementation"("androidx.compose.ui:ui-tooling-preview")
+            implementation(libs.androidx.compose.ui)
+            implementation(libs.androidx.compose.ui.graphics)
+            implementation(libs.androidx.compose.runtime)
+            implementation(libs.androidx.compose.foundation)
+            implementation(libs.androidx.compose.ui.tooling.preview)
 
-            "debugImplementation"("androidx.compose.ui:ui-tooling")
-
-            "androidTestImplementation"(composeBom)
+            debugImplementation(libs.androidx.compose.ui.tooling)
         }
     }
 }

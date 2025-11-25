@@ -11,5 +11,5 @@ dependencies {
 
     api(libs.kotlinx.coroutines.core)
 
-    api(libs.dussim.data.model)
+    api(libs.data.model)
 }

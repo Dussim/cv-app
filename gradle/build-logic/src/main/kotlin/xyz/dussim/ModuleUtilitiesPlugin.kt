@@ -19,10 +19,6 @@ class ModuleUtilitiesPlugin : Plugin<Project> {
         pluginManager.apply(libs.plugins.modulegraph)
         pluginManager.apply(libs.plugins.ktlint)
 
-        dependencies {
-            "ktlintRuleset"(libs.twitter.compose.rules)
-        }
-
         configure<ModuleGraphExtension> {
             readmePath = "./README.md"
             heading = "# Dependency Diagram"
