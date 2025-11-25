@@ -7,9 +7,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.material3.window.size.class1)
-
+    implementation(libs.androidx.compose.animation.core)
     implementation(libs.androidx.window)
 }
 

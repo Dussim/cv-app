@@ -9,7 +9,7 @@ android {
 dependencies {
     api(libs.androidx.annotation)
 
-    api(libs.xyz.data.model)
+    api(libs.data.model)
 }
 
 tasks.createModuleGraph {

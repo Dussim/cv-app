@@ -1,7 +1,6 @@
 plugins {
     alias(conventions.plugins.xyz.dussim.android.app.convention)
     alias(conventions.plugins.xyz.dussim.build.parameters)
-    alias(libs.plugins.android.application)
     alias(libs.plugins.baselineprofile)
 }
 
@@ -65,25 +64,20 @@ dependencies {
 
     implementation(libs.bundles.voyager)
 
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.foundation)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.activity.compose)
-
     implementation(libs.androidx.core.splashscreen)
 
-    implementation(libs.kotlinx.serialization.json)
+    releaseImplementation(libs.androidx.profileinstaller)
 
-    // Google Play complained that I used an old version; it was probably pulled as a dependency of other libs
-    implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.profileinstaller)
-
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
 
     baselineProfile(projects.baselineProfile)
+}
+
+configurations.configureEach {
+    exclude(group = "androidx.fragment", module = "fragment-ktx")
 }

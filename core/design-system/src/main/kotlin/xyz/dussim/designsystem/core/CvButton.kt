@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -268,7 +267,7 @@ fun CvButton(
                 .clip(shape)
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = ripple(),
+                    indication = null,
                     role = Role.Button,
                     enabled = enabled,
                     onClick = onClick,
@@ -345,7 +344,7 @@ fun CVOutlinedToggleButton(
                 .clip(shape)
                 .toggleable(
                     interactionSource = interactionSource,
-                    indication = ripple(),
+                    indication = null,
                     value = checked,
                     enabled = enabled,
                     role = Role.Switch,

@@ -1,14 +1,9 @@
 package xyz.dussim.network.internal
 
-import android.util.Log
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logger
-import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.logging.MessageLengthLimitingLogger
 import io.ktor.client.plugins.resources.Resources
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
@@ -27,23 +22,11 @@ private fun configureJson() =
 private fun configureHttpClient(
     serialization: Json,
     baseUrlProvider: BaseUrlProvider,
-) = HttpClient(OkHttp) {
+) = HttpClient(Android) {
     install(ContentNegotiation) {
         json(serialization)
     }
     install(Resources)
-    install(Logging) {
-        level = LogLevel.ALL
-        logger =
-            MessageLengthLimitingLogger(
-                delegate =
-                    object : Logger {
-                        override fun log(message: String) {
-                            Log.v("Ktor", message)
-                        }
-                    },
-            )
-    }
     defaultRequest {
         url(baseUrlProvider.getBaseUrl())
     }

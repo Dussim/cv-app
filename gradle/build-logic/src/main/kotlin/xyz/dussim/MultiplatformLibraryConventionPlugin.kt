@@ -8,6 +8,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import xyz.dussim.util.libs
 
 class MultiplatformLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project): Unit = target.run {
@@ -38,8 +39,8 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
             }
 
             sourceSets.commonMain.dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.8.1")
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization.core)
             }
         }
 

@@ -9,5 +9,5 @@ android {
 dependencies {
     api(projects.core.data)
 
-    api(libs.voyager.core)
+    implementation(libs.voyager.core)
 }
