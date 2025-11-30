@@ -26,6 +26,9 @@ dependencyResolutionManagement {
         create("conventions") {
             from(files("../gradle/conventions.versions.toml"))
         }
+        create("ktor") {
+            from("io.ktor:ktor-version-catalog:3.3.2")
+        }
     }
 }
 

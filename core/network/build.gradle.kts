@@ -9,11 +9,11 @@ android {
 dependencies {
     api(projects.core.api)
 
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.ktor.client.resources)
-    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(ktor.client.core)
+    implementation(ktor.client.android)
+    implementation(ktor.client.contentNegotiation)
+    implementation(ktor.client.resources)
+    implementation(ktor.serialization.kotlinx.json)
 
     api(libs.data.model)
 }

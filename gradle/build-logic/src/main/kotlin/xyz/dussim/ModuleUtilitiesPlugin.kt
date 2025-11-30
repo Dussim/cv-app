@@ -8,7 +8,6 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.dependencies
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import xyz.dussim.util.apply
@@ -32,6 +31,8 @@ class ModuleUtilitiesPlugin : Plugin<Project> {
         }
 
         configure<KtlintExtension> {
+            version = "1.8.0"
+
             additionalEditorconfig = mapOf(
                 "ktlint_function_naming_ignore_when_annotated_with" to "Composable"
             )
