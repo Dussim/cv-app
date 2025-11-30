@@ -40,10 +40,14 @@ internal data object GymStatsLoadingScreen : ParcelableScreen {
         }
         LaunchedEffect(state) {
             when (val gymStats = state) {
-                State.Loading -> Unit
+                State.Loading -> {
+                    Unit
+                }
+
                 is State.Error -> {
                     navigator.replace(GymStatsErrorScreen(gymStats.error.message ?: unknown))
                 }
+
                 is State.Success -> {
                     navigator.replace(GymStatsContentScreen(gymStats.value))
                 }

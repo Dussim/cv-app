@@ -124,11 +124,26 @@ private fun SelectedTabContent(
                 CertificatesVertical(certificates = cvData.certificates)
                 ProjectsColumn(projects = cvData.projects)
             }
-            Tab.Work -> WorkPeriodVertical(workplaces = cvData.workplaces)
-            Tab.Language -> LanguagesColumn(languages = cvData.languages)
-            Tab.Skills -> SkillsColumn(skills = cvData.skills)
-            Tab.Certificates -> CertificatesVertical(certificates = cvData.certificates)
-            Tab.Projects -> ProjectsColumn(projects = cvData.projects)
+
+            Tab.Work -> {
+                WorkPeriodVertical(workplaces = cvData.workplaces)
+            }
+
+            Tab.Language -> {
+                LanguagesColumn(languages = cvData.languages)
+            }
+
+            Tab.Skills -> {
+                SkillsColumn(skills = cvData.skills)
+            }
+
+            Tab.Certificates -> {
+                CertificatesVertical(certificates = cvData.certificates)
+            }
+
+            Tab.Projects -> {
+                ProjectsColumn(projects = cvData.projects)
+            }
         }
     }
 }
