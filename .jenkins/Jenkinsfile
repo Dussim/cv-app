@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Versions') {
             steps {
-                sh './gradlew dependencyUpdates --no-parallel'
+                sh './gradlew dependencyUpdates --no-parallel -Dorg.gradle.unsafe.isolated-projects=false'
             }
         }
     }
