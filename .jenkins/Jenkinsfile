@@ -13,15 +13,15 @@ pipeline {
         }
         stage('Gradle'){
             steps {
-                sh 'gradle --version -Dorg.gradle.unsafe.isolated-projects=true'
-                sh 'gradle --status -Dorg.gradle.unsafe.isolated-projects=true'
-                sh 'gradle buildEnvironment -Dorg.gradle.unsafe.isolated-projects=true'
-                sh 'gradle -q javaToolchains -Dorg.gradle.unsafe.isolated-projects=true'
+                sh './gradlew --version'
+                sh './gradlew --status'
+                sh './gradlew buildEnvironment'
+                sh './gradlew -q javaToolchains'
             }
         }
         stage('Build') {
             steps {
-                sh 'gradle :app:assembleInstalledAppDebug --scan -Dorg.gradle.unsafe.isolated-projects=true'
+                sh './gradlew :app:assembleDebug'
                 recordIssues([
                         enabledForFailure: true,
                         tool             : kotlin()
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Quality') {
             steps {
-                sh 'gradle ktlintCheck --no-build-cache --no-configuration-cache -Dorg.gradle.unsafe.isolated-projects=false'
+                sh './gradlew ktlintCheck'
                 recordIssues([
                         enabledForFailure: true,
                         tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Versions') {
             steps {
-                sh 'gradle dependencyUpdates --no-configure-on-demand --warning-mode=none --no-configuration-cache -Dorg.gradle.unsafe.isolated-projects=false --no-parallel'
+                sh './gradlew dependencyUpdates --no-parallel'
             }
         }
     }
