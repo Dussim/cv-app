@@ -6,12 +6,10 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Aggressive optimization settings
--optimizationpasses 50
 -allowaccessmodification
 -mergeinterfacesaggressively
 -overloadaggressively
 -flattenpackagehierarchy
--dontpreverify
 -dontusemixedcaseclassnames
 -dontskipnonpubliclibraryclasses
 -dontskipnonpubliclibraryclassmembers

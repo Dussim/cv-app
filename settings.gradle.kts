@@ -42,6 +42,9 @@ dependencyResolutionManagement {
         register("conventions") {
             from(files("gradle/conventions.versions.toml"))
         }
+        register("ktor") {
+            from("io.ktor:ktor-version-catalog:3.3.3")
+        }
     }
 }
 
