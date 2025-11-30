@@ -31,10 +31,11 @@ fun CvCircularProgressIndicator(
     val rotation by transition.animateFloat(
         initialValue = 0f,
         targetValue = 360f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1200, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart,
-        ),
+        animationSpec =
+            infiniteRepeatable(
+                animation = tween(durationMillis = 1200, easing = LinearEasing),
+                repeatMode = RepeatMode.Restart,
+            ),
         label = "cv_circular_progress_rotation",
     )
 
@@ -50,7 +51,9 @@ fun CvCircularProgressIndicator(
             sweepAngle = 360f,
             useCenter = false,
             topLeft = topLeft,
-            size = androidx.compose.ui.geometry.Size(diameter, diameter),
+            size =
+                androidx.compose.ui.geometry
+                    .Size(diameter, diameter),
             style = Stroke(width = strokePx, cap = strokeCap),
         )
 
@@ -62,7 +65,9 @@ fun CvCircularProgressIndicator(
             sweepAngle = sweep,
             useCenter = false,
             topLeft = topLeft,
-            size = androidx.compose.ui.geometry.Size(diameter, diameter),
+            size =
+                androidx.compose.ui.geometry
+                    .Size(diameter, diameter),
             style = Stroke(width = strokePx, cap = strokeCap),
         )
     }

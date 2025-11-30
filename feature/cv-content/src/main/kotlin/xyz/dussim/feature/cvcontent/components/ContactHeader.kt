@@ -75,36 +75,40 @@ internal fun SocialLinks(
     socialLinks: List<SocialLink>,
 ) {
     when (socialLinksOrientation) {
-        Orientation.Row ->
+        Orientation.Row -> {
             SocialsRow(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth(),
                 socialLinks = socialLinks,
             )
+        }
 
-        Orientation.Column ->
+        Orientation.Column -> {
             SocialsColumn(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.fillMaxWidth(),
                 socialLinks = socialLinks,
             )
+        }
     }
 }
 
 @Composable
 internal fun DownloadAndShare(buttonsOrientation: Orientation) {
     when (buttonsOrientation) {
-        Orientation.Row ->
+        Orientation.Row -> {
             ButtonRow(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.fillMaxWidth(),
             )
+        }
 
-        Orientation.Column ->
+        Orientation.Column -> {
             ButtonColumn(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.fillMaxWidth(),
             )
+        }
     }
 }
 
@@ -116,15 +120,17 @@ internal fun GithubButton(buttonsOrientation: Orientation) {
     }
 
     when (buttonsOrientation) {
-        Orientation.Row ->
+        Orientation.Row -> {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally)) {
                 GithubButton(onClick = onClick)
             }
+        }
 
-        Orientation.Column ->
+        Orientation.Column -> {
             Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 GithubButton(onClick = onClick)
             }
+        }
     }
 }
 
