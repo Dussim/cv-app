@@ -4,22 +4,17 @@ kotlin = "2.2.21"
 kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.9.0"
 
-# Kotlinx Serialization
-kotlinx-serialization-core = "1.9.0"
-
 # AndroidX
-androidx-core = "1.17.0"
-androidx-lifecycle = "2.10.0"
 androidx-activity = "1.12.0"
 
 # Compose
 compose-bom = "2025.11.01"
 
 # Testing
-kotest = "6.0.5"
+kotest = "6.0.7"
 
 # Plugins
-android-gradle = "8.13.1"
+android-gradle = "8.12.3"
 
 # Navigation
 voyager = "1.1.0-beta03"
@@ -38,15 +33,12 @@ kotlin-compose-compiler = { module = "org.jetbrains.kotlin:compose-compiler-grad
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
-kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization-core" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 # AndroidX
-androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
-androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.strictly = "1.9.1" }
-androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.strictly = "1.8.9" }
 androidx-window = { module = "androidx.window:window", version.strictly = "1.5.1" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.strictly = "1.2.0" }
 
@@ -93,7 +85,7 @@ logback-classic = { module = "ch.qos.logback:logback-classic", version.strictly 
 
 # HTML and CSS
 kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.strictly = "0.12.0" }
-kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.strictly = "2025.11.12" }
+kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.strictly = "2025.12.0" }
 
 # Custom
 data-model = { module = "xyz.dussim:data-model" }
@@ -112,12 +104,9 @@ application = { id = "org.gradle.application" }
 modulegraph = { id = "dev.iurysouza.modulegraph", version.strictly = "0.13.0" }
 android-test = { id = "com.android.test", version.ref = "android-gradle" }
 baselineprofile = { id = "androidx.baselineprofile", version.ref = "baselineprofile" }
-gradle-ssh = { id = "xyz.dussim.gradle-ssh", version.require = "0.0.4" }
+gradle-ssh = { id = "xyz.dussim.gradle-ssh", version.require = "0.0.5" }
 docker-java-application = { id = "com.bmuschko.docker-java-application", version.require = "10.0.0" }
 
 [bundles]
-kotlinx-coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
-kotest = ["kotest-runner-junit5", "kotest-assertions-core", "kotest-property"]
-compose-ui = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-foundation"]
 voyager = ["voyager-navigator", "voyager-screenmodel", "voyager-transitions"]
 html-css = ["kotlinx-html", "kotlin-css"]
