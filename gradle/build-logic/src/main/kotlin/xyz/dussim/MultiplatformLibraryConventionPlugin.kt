@@ -11,47 +11,48 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import xyz.dussim.util.libs
 
 class MultiplatformLibraryConventionPlugin : Plugin<Project> {
-    override fun apply(target: Project): Unit = target.run {
-        apply<ModuleUtilitiesPlugin>()
-        pluginManager.apply("com.android.library")
-        pluginManager.apply("org.jetbrains.kotlin.multiplatform")
-        pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
-        pluginManager.apply("org.jetbrains.kotlin.plugin.parcelize")
+    override fun apply(target: Project): Unit =
+        target.run {
+            apply<ModuleUtilitiesPlugin>()
+            pluginManager.apply("com.android.library")
+            pluginManager.apply("org.jetbrains.kotlin.multiplatform")
+            pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
+            pluginManager.apply("org.jetbrains.kotlin.plugin.parcelize")
 
-        configure<LibraryExtension> {
-            baseConfig()
-        }
+            configure<LibraryExtension> {
+                baseConfig()
+            }
 
-        configure<KotlinMultiplatformExtension> {
-            jvm {
-                compilations.configureEach {
-                    compileTaskProvider.configure {
-                        compilerOptions.jdk(17)
+            configure<KotlinMultiplatformExtension> {
+                jvm {
+                    compilations.configureEach {
+                        compileTaskProvider.configure {
+                            compilerOptions.jdk(17)
+                        }
                     }
                 }
-            }
-            androidTarget {
-                compilations.configureEach {
-                    compileTaskProvider.configure {
-                        compilerOptions.jvmTarget(17)
+                androidTarget {
+                    compilations.configureEach {
+                        compileTaskProvider.configure {
+                            compilerOptions.jvmTarget(17)
+                        }
                     }
+                }
+
+                sourceSets.commonMain.dependencies {
+                    implementation(libs.kotlinx.coroutines.core)
+                    implementation(libs.kotlinx.serialization.core)
                 }
             }
 
-            sourceSets.commonMain.dependencies {
-                implementation(libs.kotlinx.coroutines.core)
-                implementation(libs.kotlinx.serialization.core)
+            tasks.withType<KotlinCompilationTask<*>> {
+                compilerOptions {
+                    freeCompilerArgs.addAll(
+                        "-opt-in=kotlin.RequiresOptIn",
+                        "-Xexpect-actual-classes",
+                        "-Xannotation-default-target=param-property",
+                    )
+                }
             }
         }
-
-        tasks.withType<KotlinCompilationTask<*>> {
-            compilerOptions {
-                freeCompilerArgs.addAll(
-                    "-opt-in=kotlin.RequiresOptIn",
-                    "-Xexpect-actual-classes",
-                    "-Xannotation-default-target=param-property"
-                )
-            }
-        }
-    }
 }

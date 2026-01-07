@@ -11,12 +11,13 @@ val backend by remotes.publicKeyAuthenticated {
 }
 
 val launchNewerVersionOfBackendDockerImage by remoteExecCommands.command {
-    commands = listOf(
-        "docker container stop backend",
-        "docker container rm backend",
-        "docker image rm dussim/cv-api",
-        "docker run -d --restart always -p 9090:80 --name backend dussim/cv-api:latest"
-    )
+    commands =
+        listOf(
+            "docker container stop backend",
+            "docker container rm backend",
+            "docker image rm dussim/cv-api",
+            "docker run -d --restart always -p 9090:80 --name backend dussim/cv-api:latest",
+        )
 }
 
 val pushDockerImage by tasks.registering {

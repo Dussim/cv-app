@@ -28,7 +28,7 @@ internal fun CommonExtension<*, *, *, *, *, *>.baseConfig() {
         getByName("release") {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -55,7 +55,10 @@ internal fun CommonExtension<*, *, *, *, *, *>.baseConfig() {
 }
 
 internal fun KotlinJvmCompilerOptions.jdkRelease(version: Int) {
-    freeCompilerArgs.add("-Xjdk-release=${version}")
+    freeCompilerArgs.addAll(
+        "-Xjdk-release=$version",
+        "-Xannotation-default-target=param-property",
+    )
 }
 
 internal fun KotlinJvmCompilerOptions.jvmTarget(version: Int) {

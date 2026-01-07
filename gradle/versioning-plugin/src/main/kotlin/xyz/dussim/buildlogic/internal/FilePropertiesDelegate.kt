@@ -5,13 +5,18 @@ import java.util.Properties
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
-internal class FilePropertiesDelegate(private val file: File) : ReadOnlyProperty<Any?, Properties> {
+internal class FilePropertiesDelegate(
+    private val file: File,
+) : ReadOnlyProperty<Any?, Properties> {
     private val props = Properties()
     private val File.isDirty get() = lastModified() != lastSync
 
     private var lastSync = 0L
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>): Properties {
+    override fun getValue(
+        thisRef: Any?,
+        property: KProperty<*>,
+    ): Properties {
         if (file.isDirty) reload()
         return props
     }

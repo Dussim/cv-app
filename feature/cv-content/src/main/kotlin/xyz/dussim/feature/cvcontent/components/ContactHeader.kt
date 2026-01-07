@@ -121,7 +121,10 @@ internal fun GithubButton(buttonsOrientation: Orientation) {
 
     when (buttonsOrientation) {
         Orientation.Row -> {
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+            ) {
                 GithubButton(onClick = onClick)
             }
         }

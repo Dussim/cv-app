@@ -23,9 +23,15 @@
     <string name="preview_project_cv_app_github_url">https://github.com/user/cv-app</string>
     <string name="preview_project_cv_app_content_description">CV Application project</string>
     <string name="preview_project_weather_app_name">Weather App</string>
-    <string name="preview_project_weather_app_description">A weather forecasting application with clean architecture</string>
+    <string name="preview_project_weather_app_description">A weather forecasting application with clean architecture
+    </string>
     <string name="preview_project_weather_app_github_url">https://github.com/user/weather-app</string>
     <string name="preview_project_weather_app_content_description">Weather Application project</string>
 
-    <string name="footer_content">"I hereby give consent for my personal data included in the application to be processed for the purposes of the current and future recruitment processes in accordance with Art. 6 paragraph 1 letter a of the Regulation of the European Parliament and of the Council (EU) 2016/679 of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)."</string>
+    <string name="footer_content">"I hereby give consent for my personal data included in the application to be
+        processed for the purposes of the current and future recruitment processes in accordance with Art. 6 paragraph 1
+        letter a of the Regulation of the European Parliament and of the Council (EU) 2016/679 of 27 April 2016 on the
+        protection of natural persons with regard to the processing of personal data and on the free movement of such
+        data, and repealing Directive 95/46/EC (General Data Protection Regulation)."
+    </string>
 </resources>

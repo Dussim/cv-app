@@ -6,12 +6,11 @@ import kotlinx.serialization.Serializable
 data class LanguageDto(
     val name: LanguageName,
     val level: LanguageLevel,
-    val description: String? = null
+    val description: String? = null,
 )
 
 @Serializable
 sealed interface LanguageName {
-
     @Serializable
     sealed interface Predefined : LanguageName {
         @Serializable
@@ -22,7 +21,9 @@ sealed interface LanguageName {
     }
 
     @Serializable
-    data class Custom(val name: String) : LanguageName
+    data class Custom(
+        val name: String,
+    ) : LanguageName
 }
 
 @Serializable
@@ -33,5 +34,5 @@ enum class LanguageLevel {
     B2,
     C1,
     C2,
-    Native
+    Native,
 }

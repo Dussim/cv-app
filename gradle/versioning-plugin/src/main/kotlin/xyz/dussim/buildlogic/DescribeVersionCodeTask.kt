@@ -6,7 +6,6 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 
 abstract class DescribeVersionCodeTask : DefaultTask() {
-
     @get:Input
     abstract val versionCode: Property<Int>
 

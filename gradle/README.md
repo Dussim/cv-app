@@ -1,6 +1,7 @@
 # Gradle Version Catalog
 
-This project uses Gradle Version Catalog to manage dependencies and plugins. The version catalog is defined in the `libs.versions.toml` file.
+This project uses Gradle Version Catalog to manage dependencies and plugins. The version catalog is defined in the
+`libs.versions.toml` file.
 
 ## Structure
 
@@ -15,7 +16,8 @@ The version catalog is organized into the following sections:
 
 ### In Module Build Files
 
-To use the version catalog in your module build files, replace direct dependency declarations with references to the version catalog:
+To use the version catalog in your module build files, replace direct dependency declarations with references to the
+version catalog:
 
 ```kotlin
 // Before

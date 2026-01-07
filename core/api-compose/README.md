@@ -18,4 +18,5 @@ class :core:api unknown
 ```
 # :core:api-compose
 
-Extension for the [:core:api](../api/README.md) module that adds compose specific interfaces and components like different `LocalXyz`
+Extension for the [:core:api](../api/README.md) module that adds compose specific interfaces and components like
+different `LocalXyz`

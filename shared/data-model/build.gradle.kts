@@ -10,7 +10,7 @@ android {
     sourceSets.getByName("main") {
         res.srcDirs(
             "src/androidMain/res",
-            "src/commonMain/resources"
+            "src/commonMain/resources",
         )
     }
 }
