@@ -5,6 +5,6 @@ import xyz.dussim.datamodel.skill.SkillMapper
 
 class UniversalMapper(
     private val languageMapper: LanguageMapper,
-    private val skillMapper: SkillMapper
+    private val skillMapper: SkillMapper,
 ) : LanguageMapper by languageMapper,
     SkillMapper by skillMapper

@@ -6,10 +6,11 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 
 class AndroidFeatureConventionPlugin : Plugin<Project> {
-    override fun apply(target: Project) = target.run {
-        apply<AndroidLibraryConventionPlugin>()
-        dependencies {
-            "implementation"(project(":core:api"))
+    override fun apply(target: Project) =
+        target.run {
+            apply<AndroidLibraryConventionPlugin>()
+            dependencies {
+                "implementation"(project(":core:api"))
+            }
         }
-    }
 }

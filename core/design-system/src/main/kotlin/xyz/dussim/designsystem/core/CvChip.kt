@@ -34,7 +34,8 @@ data object CvChipDefaults {
     val CvChipShape: Shape = RoundedCornerShape_1x
 }
 
-@Stable interface CvChipColors {
+@Stable
+interface CvChipColors {
     val background: Color
 }
 

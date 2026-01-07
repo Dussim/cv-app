@@ -6,13 +6,14 @@ import xyz.dussim.datamodel.skill.dto.toDisplayString
 
 fun interface SkillMapper {
     companion object {
-        operator fun invoke(context: Context) = SkillMapper { skillDto ->
-            Skill(
-                name = skillDto.name,
-                fraction = skillDto.level.fraction,
-                contentDescription = skillDto.level.toDisplayString(context),
-            )
-        }
+        operator fun invoke(context: Context) =
+            SkillMapper { skillDto ->
+                Skill(
+                    name = skillDto.name,
+                    fraction = skillDto.level.fraction,
+                    contentDescription = skillDto.level.toDisplayString(context),
+                )
+            }
     }
 
     fun map(skillDto: SkillDto): Skill

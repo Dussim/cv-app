@@ -25,33 +25,47 @@
     <string name="workplace_location_pricemind">PriceMind, fully remote, part time</string>
 
     <string name="workplace_description_pricemind">"External consulting for PriceMind on PriceFx products.
-As a Configuration Engineer at PriceFx, I have translated complex business‑pricing requirements into functional solutions.
-Configuring and implementing various modules, including price setting, quoting, analytics, and rebates, within the cloud‑based pricing management platform."
+        As a Configuration Engineer at PriceFx, I have translated complex business‑pricing requirements into functional
+        solutions.
+        Configuring and implementing various modules, including price setting, quoting, analytics, and rebates, within
+        the cloud‑based pricing management platform."
     </string>
     <string name="workplace_description_viessmann">"External consulting for Viessmann.
-I have analyzed, developed, and enhanced the ViCare mobile application for Viessmann, implementing user‑focused features to optimize smart‑home heating control while ensuring seamless integration with their heating systems."
+        I have analyzed, developed, and enhanced the ViCare mobile application for Viessmann, implementing user‑focused
+        features to optimize smart‑home heating control while ensuring seamless integration with their heating systems."
     </string>
-    <string name="workplace_description_paramount">"The work consisted of creating new features and maintaining the Noggin application.
-The app was written in a modern Android stack in a large multi‑module mono repository for several Paramount products.
-It consisted of over 200 modules and maintained over 80% unit‑test coverage"
+    <string name="workplace_description_paramount">"The work consisted of creating new features and maintaining the
+        Noggin application.
+        The app was written in a modern Android stack in a large multi‑module mono repository for several Paramount
+        products.
+        It consisted of over 200 modules and maintained over 80% unit‑test coverage"
     </string>
     <string name="workplace_description_spyrosoft">"External consulting for Huawei.
-Maintenance and fixes for several of Huawei\’s system applications.
-Prototyping applications based on client requirements.
-Analyzing performance problems and anomalies in the EMUI user interface and system."
+        Maintenance and fixes for several of Huawei\’s system applications.
+        Prototyping applications based on client requirements.
+        Analyzing performance problems and anomalies in the EMUI user interface and system."
     </string>
 
-    <string name="workplace_description_samsung_junior">"Continued maintenance and bug fixes for the SmartThings (Samsung Connect) application, as well as taking part in writing new features and refactoring apps to a new standard.
-Notably, I was invited on two business trips to South Korea to support development."
+    <string name="workplace_description_samsung_junior">"Continued maintenance and bug fixes for the SmartThings
+        (Samsung Connect) application, as well as taking part in writing new features and refactoring apps to a new
+        standard.
+        Notably, I was invited on two business trips to South Korea to support development."
     </string>
 
-    <string name="workplace_description_samsung_intern">"Maintenance and bug fixes for the SmartThings (Samsung Connect) application."</string>
+    <string name="workplace_description_samsung_intern">"Maintenance and bug fixes for the SmartThings (Samsung Connect)
+        application."
+    </string>
 
-    <string name="about_me">Hello, I am Artur, and I am a passionate Android developer with a history of working on ambitious projects. Since my first job, I have worked on big projects at the top of their respective genres. I keep up with all recent trends and developments in the Android world, check the source code of this app to be sure. In my free time, I go to the gym, travel, or just play video games.</string>
+    <string name="about_me">Hello, I am Artur, and I am a passionate Android developer with a history of working on
+        ambitious projects. Since my first job, I have worked on big projects at the top of their respective genres. I
+        keep up with all recent trends and developments in the Android world, check the source code of this app to be
+        sure. In my free time, I go to the gym, travel, or just play video games.
+    </string>
 
     <!-- Project strings -->
     <string name="project_gradle_ssh_name">Gradle SSH</string>
-    <string name="project_gradle_ssh_description">A Gradle plugin for executing SSH commands during build process</string>
+    <string name="project_gradle_ssh_description">A Gradle plugin for executing SSH commands during build process
+    </string>
     <string name="project_gradle_ssh_content_description">Gradle SSH plugin project</string>
     <string name="project_gradle_ssh_github_url">https://github.com/Dussim/gradle-ssh</string>
 

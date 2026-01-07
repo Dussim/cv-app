@@ -40,8 +40,7 @@ dependencyResolutionManagement {
 }
 
 include(
-    ":data-model"
+    ":data-model",
 )
 
 rootProject.name = "shared"
-

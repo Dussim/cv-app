@@ -7,12 +7,13 @@ import org.gradle.kotlin.dsl.dependencies
 import xyz.dussim.util.libs
 
 class AndroidFeatureComposeConventionPlugin : Plugin<Project> {
-    override fun apply(target: Project) = target.run {
-        apply<AndroidLibraryComposeConventionPlugin>()
-        dependencies {
-            "api"(project(":core:navigation"))
+    override fun apply(target: Project) =
+        target.run {
+            apply<AndroidLibraryComposeConventionPlugin>()
+            dependencies {
+                "api"(project(":core:navigation"))
 
-            "implementation"(libs.bundles.voyager)
+                "implementation"(libs.bundles.voyager)
+            }
         }
-    }
 }

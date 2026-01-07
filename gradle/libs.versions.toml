@@ -1,14 +1,14 @@
 [versions]
 # Kotlin
-kotlin = "2.2.21"
+kotlin = "2.3.0"
 kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.9.0"
 
 # AndroidX
-androidx-activity = "1.12.0"
+androidx-activity = "1.12.2"
 
 # Compose
-compose-bom = "2025.11.01"
+compose-bom = "2025.12.01"
 
 # Testing
 kotest = "6.0.7"
@@ -81,11 +81,11 @@ modulegraph = { module = "dev.iurysouza:modulegraph", version.strictly = "0.13.0
 versioning-plugin = { module = "xyz.dussim:versioning-plugin", version.strictly = "1.0.0" }
 
 # Logging
-logback-classic = { module = "ch.qos.logback:logback-classic", version.strictly = "1.5.21" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.strictly = "1.5.23" }
 
 # HTML and CSS
 kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.strictly = "0.12.0" }
-kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.strictly = "2025.12.0" }
+kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.strictly = "2025.12.11" }
 
 # Custom
 data-model = { module = "xyz.dussim:data-model" }

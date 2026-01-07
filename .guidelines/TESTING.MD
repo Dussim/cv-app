@@ -3,12 +3,16 @@
 ## Testing Framework
 
 ### Kotest
-All tests in this project should use [Kotest](https://kotest.io/) as the testing framework. Kotest is a flexible and comprehensive testing framework for Kotlin with multiplatform support.
+
+All tests in this project should use [Kotest](https://kotest.io/) as the testing framework. Kotest is a flexible and
+comprehensive testing framework for Kotlin with multiplatform support.
 
 ### FunSpec Style
+
 All tests should use the **FunSpec** style, which provides a simple and readable way to structure tests.
 
 Example:
+
 ```kotlin
 class MyTest : FunSpec({
     test("my first test") {
@@ -24,18 +28,22 @@ class MyTest : FunSpec({
 ## Test Structure
 
 ### Test Organization
+
 - Group related tests in the same test class
 - Use descriptive test names that explain what is being tested
 - Use `context` blocks to group related tests when appropriate
 
 ### Setup and Teardown
+
 Use the following hooks for setup and teardown:
+
 - `beforeTest` - Runs before each test
 - `afterTest` - Runs after each test
 - `beforeSpec` - Runs once before any test in the spec
 - `afterSpec` - Runs once after all tests in the spec
 
 Example:
+
 ```kotlin
 class ResourceTest : FunSpec({
     lateinit var tempDir: File
@@ -95,6 +103,7 @@ testImplementation(libs.kotlinx.coroutines.test)
 ```
 
 and configure a test task
+
 ```kotlin
 tasks.test {
     useJUnitPlatform()

@@ -11,33 +11,34 @@ import xyz.dussim.util.apply
 import xyz.dussim.util.libs
 
 class AndroidAppConventionPlugin : Plugin<Project> {
-    override fun apply(target: Project) = target.run {
-        apply<ModuleUtilitiesPlugin>()
-        apply<VersioningPlugin>()
-        pluginManager.apply(libs.plugins.android.application)
-        pluginManager.apply(libs.plugins.kotlin.android)
-        pluginManager.apply(libs.plugins.kotlin.serialization)
-        pluginManager.apply(libs.plugins.kotlin.parcelize)
-        pluginManager.apply(libs.plugins.kotlin.compose)
+    override fun apply(target: Project) =
+        target.run {
+            apply<ModuleUtilitiesPlugin>()
+            apply<VersioningPlugin>()
+            pluginManager.apply(libs.plugins.android.application)
+            pluginManager.apply(libs.plugins.kotlin.android)
+            pluginManager.apply(libs.plugins.kotlin.serialization)
+            pluginManager.apply(libs.plugins.kotlin.parcelize)
+            pluginManager.apply(libs.plugins.kotlin.compose)
 
-        configure<ApplicationExtension> {
-            baseConfig()
+            configure<ApplicationExtension> {
+                baseConfig()
 
-            namespace = "xyz.dussim.cv"
+                namespace = "xyz.dussim.cv"
 
-            defaultConfig {
-                targetSdk = 36
-                applicationId = "xyz.dussim.cv"
-            }
+                defaultConfig {
+                    targetSdk = 36
+                    applicationId = "xyz.dussim.cv"
+                }
 
-            buildTypes {
-                release {
-                    isMinifyEnabled = true
-                    isShrinkResources = true
+                buildTypes {
+                    release {
+                        isMinifyEnabled = true
+                        isShrinkResources = true
+                    }
                 }
             }
-        }
 
-        configure<KotlinAndroidProjectExtension>(AndroidJvmTarget)
-    }
+            configure<KotlinAndroidProjectExtension>(AndroidJvmTarget)
+        }
 }

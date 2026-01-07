@@ -59,5 +59,6 @@ class FakeNetworkComponent(
 ) : NetworkComponent {
     override val skillsDataSource: DataSource<State<List<Skill>>> = FakeSuccessNetworkDataSource(skills)
     override val leanguagesDataSource: DataSource<State<List<Language>>> = FakeSuccessNetworkDataSource(languages)
-    override val gymStatsDataSource: DataSource<State<List<GymStats>>> = FakeDataSource(State.Error(RuntimeException("Not implemented")))
+    override val gymStatsDataSource: DataSource<State<List<GymStats>>> =
+        FakeDataSource(State.Error(RuntimeException("Not implemented")))
 }

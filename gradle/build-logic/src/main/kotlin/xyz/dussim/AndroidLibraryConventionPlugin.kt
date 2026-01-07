@@ -11,26 +11,27 @@ import xyz.dussim.util.apply
 import xyz.dussim.util.libs
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
-    override fun apply(target: Project) = target.run {
-        apply<ModuleUtilitiesPlugin>()
-        pluginManager.apply(libs.plugins.android.library)
-        pluginManager.apply(libs.plugins.kotlin.android)
-        pluginManager.apply(libs.plugins.kotlin.serialization)
-        pluginManager.apply(libs.plugins.kotlin.parcelize)
+    override fun apply(target: Project) =
+        target.run {
+            apply<ModuleUtilitiesPlugin>()
+            pluginManager.apply(libs.plugins.android.library)
+            pluginManager.apply(libs.plugins.kotlin.android)
+            pluginManager.apply(libs.plugins.kotlin.serialization)
+            pluginManager.apply(libs.plugins.kotlin.parcelize)
 
-        configure<LibraryExtension> {
-            baseConfig()
+            configure<LibraryExtension> {
+                baseConfig()
 
-            testFixtures {
-                enable = true
-                androidResources = true
+                testFixtures {
+                    enable = true
+                    androidResources = true
+                }
+            }
+
+            configure<KotlinAndroidProjectExtension>(AndroidJvmTarget)
+
+            dependencies {
+                "testFixturesCompileOnly"(libs.kotlin.stdlib)
             }
         }
-
-        configure<KotlinAndroidProjectExtension>(AndroidJvmTarget)
-
-        dependencies {
-            "testFixturesCompileOnly"(libs.kotlin.stdlib)
-        }
-    }
 }

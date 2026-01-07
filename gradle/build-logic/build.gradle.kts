@@ -28,11 +28,15 @@ tasks.withType<DependencyUpdatesTask> {
     checkForGradleUpdate = true
     gradleReleaseChannel = "current"
     reportfileName = "build-logic-dependency-updates-report"
-    outputDir = layout.projectDirectory.dir(".reports/versions").asFile.path
+    outputDir =
+        layout.projectDirectory
+            .dir(".reports/versions")
+            .asFile.path
 
-    filterConfigurations = Spec {
-        !it.isCanBeConsumed
-    }
+    filterConfigurations =
+        Spec {
+            !it.isCanBeConsumed
+        }
 
     rejectVersionIf {
         candidate.version.isNonStable() && !currentVersion.isNonStable()
@@ -99,6 +103,9 @@ kotlin.target.compilations.configureEach {
     }
 }
 
-fun <T : PluginDeclaration> NamedDomainObjectContainer<T>.register(plugin: Provider<PluginDependency>, configurationAction: Action<T>) {
+fun <T : PluginDeclaration> NamedDomainObjectContainer<T>.register(
+    plugin: Provider<PluginDependency>,
+    configurationAction: Action<T>,
+) {
     register(plugin.get().pluginId, configurationAction)
 }

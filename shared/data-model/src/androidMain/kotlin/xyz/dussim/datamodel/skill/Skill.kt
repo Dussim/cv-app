@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class Skill(
     val name: String,
     val fraction: Float,
-    val contentDescription: String
+    val contentDescription: String,
 ) : Parcelable

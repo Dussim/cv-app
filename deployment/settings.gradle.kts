@@ -23,4 +23,3 @@ dependencyResolutionManagement {
 includeBuild("../backend")
 
 rootProject.name = "deployment"
-
