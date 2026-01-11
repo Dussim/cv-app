@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh './gradlew :app:assembleDebug'
+                sh './gradlew :app:assembleDebug --scan'
                 recordIssues([
                         enabledForFailure: true,
                         tool             : kotlin()
