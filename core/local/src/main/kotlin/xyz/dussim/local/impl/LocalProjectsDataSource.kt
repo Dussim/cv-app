@@ -9,6 +9,18 @@ internal class LocalProjectsDataSource : DataSource<List<Project>> by LocalDataS
         private fun staticData() =
             listOf(
                 Project(
+                    name = R.string.project_viessmannapi_name,
+                    description = R.string.project_viessmannapi_description,
+                    githubUrl = R.string.project_viessmannapi_github_url,
+                    contentDescription = R.string.project_viessmannapi_content_description,
+                ),
+                Project(
+                    name = R.string.project_jmhreport_name,
+                    description = R.string.project_jmhreporth_description,
+                    githubUrl = R.string.project_jmhreport_github_url,
+                    contentDescription = R.string.project_jmhreport_content_description,
+                ),
+                Project(
                     name = R.string.project_gradle_ssh_name,
                     description = R.string.project_gradle_ssh_description,
                     githubUrl = R.string.project_gradle_ssh_github_url,
