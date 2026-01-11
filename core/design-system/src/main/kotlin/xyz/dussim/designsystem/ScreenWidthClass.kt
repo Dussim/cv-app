@@ -1,9 +1,9 @@
 package xyz.dussim.designsystem
 
-import android.app.Activity
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.toComposeRect
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.window.layout.WindowMetricsCalculator
@@ -19,10 +19,14 @@ enum class ScreenWidthClass {
 
     companion object {
         @Composable
-        fun calculateFor(activity: Activity): ScreenWidthClass {
-            LocalConfiguration.current
+        @ReadOnlyComposable
+        fun calculate(): ScreenWidthClass {
+            val context = LocalContext.current
             val density = LocalDensity.current
-            val metrics = WindowMetricsCalculator.getOrCreate().computeCurrentWindowMetrics(activity)
+            val metrics =
+                WindowMetricsCalculator
+                    .getOrCreate()
+                    .computeCurrentWindowMetrics(context)
             val width =
                 with(density) {
                     metrics.bounds

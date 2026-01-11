@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.designsystem.H3
 import xyz.dussim.designsystem.core.CvButton
@@ -22,11 +19,6 @@ internal fun DownloadButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
-    val icon =
-        rememberVectorPainter(
-            ImageVector.vectorResource(R.drawable.download),
-        )
-
     val text = stringResource(R.string.button_download_text)
 
     CvButton(
@@ -35,7 +27,7 @@ internal fun DownloadButton(
     ) {
         BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))
-        CvIcon(icon, contentDescription = text)
+        CvIcon(R.drawable.download, contentDescription = text)
     }
 }
 
@@ -44,11 +36,6 @@ internal fun GithubButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
-    val icon =
-        rememberVectorPainter(
-            ImageVector.vectorResource(R.drawable.github),
-        )
-
     val text = stringResource(R.string.button_browse_text)
 
     CvButton(
@@ -57,7 +44,7 @@ internal fun GithubButton(
     ) {
         BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))
-        CvIcon(icon, contentDescription = text)
+        CvIcon(R.drawable.github, contentDescription = text)
     }
 }
 
@@ -66,11 +53,6 @@ internal fun ShareButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
-    val icon =
-        rememberVectorPainter(
-            ImageVector.vectorResource(R.drawable.share),
-        )
-
     val text = stringResource(R.string.button_share_text)
 
     CvOutlinedButton(
@@ -81,6 +63,6 @@ internal fun ShareButton(
     ) {
         BasicText(text, style = H3)
         Spacer(modifier = Modifier.width(10.dp))
-        CvIcon(icon, contentDescription = text)
+        CvIcon(R.drawable.share, contentDescription = text)
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import xyz.dussim.data.CvData
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.designsystem.DisabledColor
 import xyz.dussim.designsystem.RoundedCornerShape_2x
 import xyz.dussim.designsystem.ScreenWidthClass
@@ -128,7 +129,7 @@ private fun Card(
 @Composable
 private fun TopBar(
     modifier: Modifier = Modifier,
-    tabs: List<TabModel>,
+    tabs: ImmutableList<TabModel>,
     selectedTab: Tab,
     onTabSelected: (Tab) -> Unit,
 ) {

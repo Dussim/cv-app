@@ -7,7 +7,9 @@ android {
 }
 
 dependencies {
+    api(platform(libs.androidx.compose.bom))
     api(libs.androidx.annotation)
+    api(libs.androidx.compose.runtime)
 
     api(libs.data.model)
 }

@@ -5,11 +5,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import xyz.dussim.data.YearMonth
 import xyz.dussim.designsystem.Caption
 import xyz.dussim.designsystem.TextAlternative
 import xyz.dussim.designsystem.core.CvChip
 import xyz.dussim.ui.R
-import java.time.YearMonth
 
 @Composable
 fun DateChip(

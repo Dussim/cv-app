@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.datamodel.skill.Skill
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.core.CvLinearProgressBar
@@ -25,7 +26,7 @@ internal fun SkillsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    skills: List<Skill>,
+    skills: ImmutableList<Skill>,
 ) {
     val navigator = LocalNavigator.currentOrThrow
     val gymStatsEasterEgg = rememberScreen(CvAppScreens.GymStats)

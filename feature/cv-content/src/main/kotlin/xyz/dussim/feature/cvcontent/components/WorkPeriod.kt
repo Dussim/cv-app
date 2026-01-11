@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.designsystem.AccentColor
 import xyz.dussim.designsystem.Body2
@@ -30,7 +31,7 @@ internal fun WorkPeriodHorizontal(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    workplaces: List<Workplace>,
+    workplaces: ImmutableList<Workplace>,
 ) {
     WorkPeriod(
         modifier = modifier,
@@ -64,7 +65,7 @@ internal fun WorkPeriodVertical(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    workplaces: List<Workplace>,
+    workplaces: ImmutableList<Workplace>,
 ) {
     WorkPeriod(
         modifier = modifier,

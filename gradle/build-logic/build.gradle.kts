@@ -11,14 +11,34 @@ dependencies {
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
     implementation(files(ktor.javaClass.superclass.protectionDomain.codeSource.location))
 
-    implementation(libs.android.gradle)
-    implementation(libs.kotlin.gradle.plugin)
-    implementation(libs.kotlin.serialization)
-    implementation(libs.kotlin.compose.compiler)
-    implementation(libs.modulegraph)
-
-    implementation(libs.ktlint.gradle)
-
+    implementation(
+        libs.plugins.android.library
+            .toMavenCoordinates(),
+    )
+    implementation(
+        libs.plugins.android.application
+            .toMavenCoordinates(),
+    )
+    implementation(
+        libs.plugins.kotlin.android
+            .toMavenCoordinates(),
+    )
+    implementation(
+        libs.plugins.kotlin.serialization
+            .toMavenCoordinates(),
+    )
+    implementation(
+        libs.plugins.kotlin.compose
+            .toMavenCoordinates(),
+    )
+    implementation(
+        libs.plugins.modulegraph
+            .toMavenCoordinates(),
+    )
+    implementation(
+        libs.plugins.ktlint
+            .toMavenCoordinates(),
+    )
     implementation(libs.versioning.plugin)
 }
 
@@ -55,35 +75,27 @@ fun String.isNonStable(): Boolean {
 gradlePlugin {
     plugins {
         register(conventions.plugins.xyz.dussim.module.utilities) {
-            id = name
             implementationClass = "xyz.dussim.ModuleUtilitiesPlugin"
         }
         register(conventions.plugins.xyz.dussim.ktor.app.convention) {
-            id = name
             implementationClass = "xyz.dussim.KtorAppConventionPlugin"
         }
         register(conventions.plugins.xyz.dussim.multiplatform.library.convention) {
-            id = name
             implementationClass = "xyz.dussim.MultiplatformLibraryConventionPlugin"
         }
         register(conventions.plugins.xyz.dussim.android.library.convention) {
-            id = name
             implementationClass = "xyz.dussim.AndroidLibraryConventionPlugin"
         }
         register(conventions.plugins.xyz.dussim.android.library.compose.convention) {
-            id = name
             implementationClass = "xyz.dussim.AndroidLibraryComposeConventionPlugin"
         }
         register(conventions.plugins.xyz.dussim.android.feature.convention) {
-            id = name
             implementationClass = "xyz.dussim.AndroidFeatureConventionPlugin"
         }
         register(conventions.plugins.xyz.dussim.android.feature.compose.convention) {
-            id = name
             implementationClass = "xyz.dussim.AndroidFeatureComposeConventionPlugin"
         }
         register(conventions.plugins.xyz.dussim.android.app.convention) {
-            id = name
             implementationClass = "xyz.dussim.AndroidAppConventionPlugin"
         }
     }
@@ -103,9 +115,32 @@ kotlin.target.compilations.configureEach {
     }
 }
 
+/**
+ * Converts a Gradle plugin dependency to its Maven coordinate notation.
+ *
+ * This extension function transforms a plugin dependency into the format required
+ * by Gradle's classpath dependencies: `{pluginId}:{pluginId}.gradle.plugin:{version}`
+ *
+ * @receiver Provider of the plugin dependency to convert
+ * @return Provider of the Maven coordinate string
+ *
+ * @sample
+ * ```
+ * libs.plugins.android.library.toMavenCoordinates()
+ * // Returns: "com.android.library:com.android.library.gradle.plugin:8.12.3"
+ * ```
+ */
+fun Provider<PluginDependency>.toMavenCoordinates(): Provider<String> =
+    map {
+        "${it.pluginId}:${it.pluginId}.gradle.plugin:${it.version}"
+    }
+
 fun <T : PluginDeclaration> NamedDomainObjectContainer<T>.register(
     plugin: Provider<PluginDependency>,
     configurationAction: Action<T>,
 ) {
-    register(plugin.get().pluginId, configurationAction)
+    register(plugin.get().pluginId) {
+        id = name
+        configurationAction.execute(this)
+    }
 }

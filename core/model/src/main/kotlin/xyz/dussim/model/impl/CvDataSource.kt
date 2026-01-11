@@ -5,6 +5,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import xyz.dussim.api.data.DataSource
 import xyz.dussim.data.CvData
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.data.about.AboutMe
 import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.data.projects.Project
@@ -34,13 +35,13 @@ internal class CvDataSource(
             val projects = async { projectsDataSource.fetch() }
 
             CvData(
-                skills = skills.await(),
-                languages = languages.await(),
+                skills = ImmutableList(skills.await()),
+                languages = ImmutableList(languages.await()),
                 aboutMe = aboutMe.await(),
-                workplaces = workplaces.await(),
-                socials = socials.await(),
-                certificates = certificates.await(),
-                projects = projects.await(),
+                workplaces = ImmutableList(workplaces.await()),
+                socials = ImmutableList(socials.await()),
+                certificates = ImmutableList(certificates.await()),
+                projects = ImmutableList(projects.await()),
             )
         }
 }

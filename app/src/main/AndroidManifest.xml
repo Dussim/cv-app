@@ -57,6 +57,7 @@
                 android:name="androidx.startup.InitializationProvider"
                 android:authorities="xyz.dussim.cv.androidx-startup"
                 android:exported="false"
+                tools:replace="android:authorities"
                 tools:node="merge">
 
             <meta-data

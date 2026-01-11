@@ -1,21 +1,26 @@
 package xyz.dussim.feature.cvcontent
 
+import androidx.compose.runtime.Stable
 import cafe.adriel.voyager.core.model.ScreenModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.feature.cvcontent.model.internal.Tab
 import xyz.dussim.feature.cvcontent.model.internal.TabModel
 
+@Stable
 internal class CvContentScreenModel : ScreenModel {
     companion object {
         private val TABS =
-            listOf(
-                TabModel(Tab.All, null, R.string.button_tab_all),
-                TabModel(Tab.Work, R.drawable.briefcase, R.string.button_tab_work_history),
-                TabModel(Tab.Language, R.drawable.languages, R.string.button_tab_languages),
-                TabModel(Tab.Skills, R.drawable.brain, R.string.button_tab_skills),
-                TabModel(Tab.Certificates, R.drawable.certificate, R.string.button_tab_certificates),
-                TabModel(Tab.Projects, R.drawable.github, R.string.button_tab_projects),
+            ImmutableList(
+                listOf(
+                    TabModel(Tab.All, null, R.string.button_tab_all),
+                    TabModel(Tab.Work, R.drawable.briefcase, R.string.button_tab_work_history),
+                    TabModel(Tab.Language, R.drawable.languages, R.string.button_tab_languages),
+                    TabModel(Tab.Skills, R.drawable.brain, R.string.button_tab_skills),
+                    TabModel(Tab.Certificates, R.drawable.certificate, R.string.button_tab_certificates),
+                    TabModel(Tab.Projects, R.drawable.github, R.string.button_tab_projects),
+                ),
             )
     }
 

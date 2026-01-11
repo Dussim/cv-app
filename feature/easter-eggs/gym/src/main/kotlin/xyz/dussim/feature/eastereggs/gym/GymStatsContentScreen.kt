@@ -15,6 +15,7 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import kotlinx.parcelize.Parcelize
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.data.gym.GymStats
 import xyz.dussim.designsystem.LocalScreenWidthClass
 import xyz.dussim.designsystem.LocalTextStyleProvider
@@ -27,7 +28,7 @@ import xyz.dussim.navigation.ParcelableScreen
 
 @Parcelize
 internal data class GymStatsContentScreen(
-    val gymStats: List<GymStats>,
+    val gymStats: ImmutableList<GymStats>,
 ) : ParcelableScreen {
     @Composable
     override fun Content() {
@@ -52,7 +53,7 @@ internal data class GymStatsContentScreen(
 
 @Composable
 internal fun GymStatsColumn(
-    gymStats: List<GymStats>,
+    gymStats: ImmutableList<GymStats>,
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,

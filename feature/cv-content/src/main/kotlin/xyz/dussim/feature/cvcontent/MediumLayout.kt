@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import xyz.dussim.data.CvData
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.designsystem.DisabledColor
 import xyz.dussim.designsystem.RoundedCornerShape_2x
 import xyz.dussim.designsystem.ScreenWidthClass
@@ -76,7 +77,7 @@ internal fun MediumLayout(
 @Composable
 private fun TopBar(
     modifier: Modifier = Modifier,
-    tabs: List<TabModel>,
+    tabs: ImmutableList<TabModel>,
     selectedTab: Tab,
     onTabSelected: (Tab) -> Unit,
 ) {

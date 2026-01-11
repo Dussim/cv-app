@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.datamodel.language.Language
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.feature.cvcontent.R
@@ -23,7 +24,7 @@ internal fun LanguagesColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    languages: List<Language>,
+    languages: ImmutableList<Language>,
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
     Column(

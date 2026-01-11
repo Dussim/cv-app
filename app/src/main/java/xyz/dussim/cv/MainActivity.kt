@@ -77,7 +77,7 @@ class MainActivity(
                 onDispose {}
             }
 
-            val screenWidthClass = ScreenWidthClass.calculateFor(activity = this)
+            val screenWidthClass = ScreenWidthClass.calculate()
 
             val splash = rememberScreen(CvAppScreens.Splash)
 
