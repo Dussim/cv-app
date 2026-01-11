@@ -29,9 +29,5 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
 
             configure<KotlinAndroidProjectExtension>(AndroidJvmTarget)
-
-            dependencies {
-                "testFixturesCompileOnly"(libs.kotlin.stdlib)
-            }
         }
 }

@@ -15,6 +15,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import kotlinx.parcelize.Parcelize
 import xyz.dussim.api.state.State
 import xyz.dussim.apicompose.LocalActivityComponent
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.designsystem.core.CvCircularProgressIndicator
 import xyz.dussim.feature.ee.gym.R
 import xyz.dussim.navigation.ParcelableScreen
@@ -49,7 +50,7 @@ internal data object GymStatsLoadingScreen : ParcelableScreen {
                 }
 
                 is State.Success -> {
-                    navigator.replace(GymStatsContentScreen(gymStats.value))
+                    navigator.replace(GymStatsContentScreen(ImmutableList(gymStats.value)))
                 }
             }
         }

@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.feature.cvcontent.R
@@ -20,7 +21,7 @@ internal fun CertificatesVertical(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    certificates: List<Certificate>,
+    certificates: ImmutableList<Certificate>,
 ) {
     CertificatesBase(
         modifier,
@@ -38,7 +39,7 @@ internal fun CertificatesHorizontal(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    certificates: List<Certificate>,
+    certificates: ImmutableList<Certificate>,
 ) {
     CertificatesBase(
         modifier,

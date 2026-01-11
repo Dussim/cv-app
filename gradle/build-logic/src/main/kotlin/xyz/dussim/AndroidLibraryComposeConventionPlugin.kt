@@ -4,13 +4,15 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
+import xyz.dussim.util.apply
 import xyz.dussim.util.libs
 
 class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) =
         target.run {
             apply<AndroidLibraryConventionPlugin>()
-            pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
+            pluginManager.apply(libs.plugins.kotlin.compose)
+            pluginManager.apply(libs.plugins.stability.analyzer)
 
             dependencies {
                 val implementation = configurations.getByName("implementation")

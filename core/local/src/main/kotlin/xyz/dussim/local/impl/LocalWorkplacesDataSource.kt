@@ -1,10 +1,10 @@
 package xyz.dussim.local.impl
 
 import xyz.dussim.api.data.DataSource
+import xyz.dussim.data.YearMonth
 import xyz.dussim.data.workplace.Workplace
 import xyz.dussim.local.R
 import java.time.Month
-import java.time.YearMonth
 
 internal class LocalWorkplacesDataSource : DataSource<List<Workplace>> by LocalDataSource(STATIC_DATA) {
     companion object {

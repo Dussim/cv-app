@@ -1,12 +1,12 @@
 package xyz.dussim.local.impl
 
 import xyz.dussim.api.data.DataSource
+import xyz.dussim.data.YearMonth
 import xyz.dussim.data.certificates.Certificate
 import xyz.dussim.local.R
+import java.time.Month.APRIL
 import java.time.Month.MARCH
-import java.time.YearMonth
-import java.util.Calendar.APRIL
-import java.util.Calendar.MAY
+import java.time.Month.MAY
 
 internal class LocalCertificatesDataSource : DataSource<List<Certificate>> by LocalDataSource(STATIC_DATA) {
     companion object {

@@ -30,6 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.data.socials.SocialLink
 import xyz.dussim.designsystem.CardBackgroundColor
 import xyz.dussim.designsystem.LocalTextStyleProvider
@@ -47,7 +48,7 @@ internal fun ContactHeader(
     socialLinksOrientation: Orientation = Orientation.Column,
     buttonsOrientation: Orientation = Orientation.Column,
     contentPadding: PaddingValues = PaddingValues(20.dp),
-    socialLinks: List<SocialLink>,
+    socialLinks: ImmutableList<SocialLink>,
     socials: @Composable () -> Unit = { SocialLinks(socialLinksOrientation, socialLinks) },
     buttons: @Composable () -> Unit = { GithubButton(buttonsOrientation) },
     imageRow: @Composable () -> Unit = {},
@@ -72,7 +73,7 @@ internal fun ContactHeader(
 @Composable
 internal fun SocialLinks(
     socialLinksOrientation: Orientation,
-    socialLinks: List<SocialLink>,
+    socialLinks: ImmutableList<SocialLink>,
 ) {
     when (socialLinksOrientation) {
         Orientation.Row -> {
@@ -186,7 +187,7 @@ private fun SocialsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    socialLinks: List<SocialLink>,
+    socialLinks: ImmutableList<SocialLink>,
 ) {
     Column(
         modifier = modifier,
@@ -228,7 +229,7 @@ private fun SocialsRow(
     modifier: Modifier = Modifier,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
     verticalAlignment: Alignment.Vertical = Alignment.Top,
-    socialLinks: List<SocialLink>,
+    socialLinks: ImmutableList<SocialLink>,
 ) {
     Row(
         modifier = modifier,

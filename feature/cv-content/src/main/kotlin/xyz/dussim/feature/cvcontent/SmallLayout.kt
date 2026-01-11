@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import xyz.dussim.data.CvData
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.designsystem.ScreenWidthClass
 import xyz.dussim.designsystem.core.HidingHeader
 import xyz.dussim.designsystem.margin_1x
@@ -69,7 +70,7 @@ internal fun SmallLayout(
 @Composable
 private fun TopBar(
     modifier: Modifier = Modifier,
-    tabs: List<TabModel>,
+    tabs: ImmutableList<TabModel>,
     selectedTab: Tab,
     onTabSelected: (Tab) -> Unit,
 ) {

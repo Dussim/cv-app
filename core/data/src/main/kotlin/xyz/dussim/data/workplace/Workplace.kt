@@ -2,9 +2,11 @@ package xyz.dussim.data.workplace
 
 import android.os.Parcelable
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Immutable
 import kotlinx.parcelize.Parcelize
-import java.time.YearMonth
+import xyz.dussim.data.YearMonth
 
+@Immutable
 @Parcelize
 data class Workplace(
     val startDate: YearMonth,

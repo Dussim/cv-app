@@ -2,8 +2,10 @@ package xyz.dussim.data.projects
 
 import android.os.Parcelable
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Immutable
 import kotlinx.parcelize.Parcelize
 
+@Immutable
 @Parcelize
 data class Project(
     @StringRes val name: Int,

@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.baselineprofile) apply false
     alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.stability.analyzer) apply false
 }
 
 tasks.withType<DependencyUpdatesTask> {

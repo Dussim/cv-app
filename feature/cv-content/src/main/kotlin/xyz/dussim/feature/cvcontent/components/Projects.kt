@@ -12,17 +12,15 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import xyz.dussim.data.ImmutableList
 import xyz.dussim.data.projects.Project
 import xyz.dussim.designsystem.LocalTextStyleProvider
 import xyz.dussim.designsystem.core.ContentBox
@@ -35,15 +33,11 @@ internal fun ProjectsColumn(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    projects: List<Project>,
+    projects: ImmutableList<Project>,
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
     val projectTitleStyle = LocalTextStyleProvider.current.forSkills()
     val context = LocalContext.current
-    val githubIcon =
-        rememberVectorPainter(
-            ImageVector.vectorResource(R.drawable.github),
-        )
 
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -72,7 +66,7 @@ internal fun ProjectsColumn(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             CvIcon(
-                                painter = githubIcon,
+                                vectorRes = R.drawable.github,
                                 contentDescription = stringResource(R.string.button_view_on_github),
                             )
 
@@ -115,14 +109,10 @@ private fun PreviewProjectsContent(
     modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(30.dp),
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    projects: List<Project>,
+    projects: ImmutableList<Project>,
 ) {
     val style = LocalTextStyleProvider.current.forSectionTitle()
     val projectTitleStyle = LocalTextStyleProvider.current.forSkills()
-    val githubIcon =
-        rememberVectorPainter(
-            ImageVector.vectorResource(R.drawable.github),
-        )
 
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -151,7 +141,7 @@ private fun PreviewProjectsContent(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             CvIcon(
-                                painter = githubIcon,
+                                vectorRes = R.drawable.github,
                                 contentDescription = stringResource(R.string.button_view_on_github),
                             )
 
@@ -207,7 +197,7 @@ private fun PreviewProjectsColumn() {
 
     ContentBox {
         PreviewProjectsContent(
-            projects = sampleProjects,
+            projects = ImmutableList(sampleProjects),
         )
     }
 }
