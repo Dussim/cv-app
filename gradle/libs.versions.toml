@@ -1,6 +1,6 @@
 [versions]
 # Kotlin
-kotlin = "2.3.0"
+kotlin = "2.3.20-Beta1"
 kotlinx-coroutines = "1.10.2"
 kotlinx-serialization = "1.9.0"
 
@@ -8,7 +8,7 @@ kotlinx-serialization = "1.9.0"
 androidx-activity = "1.12.2"
 
 # Compose
-compose-bom = "2025.12.01"
+compose-bom = "2026.01.00"
 
 # Testing
 kotest = "6.0.7"
@@ -75,7 +75,7 @@ logback-classic = { module = "ch.qos.logback:logback-classic", version.require =
 
 # HTML and CSS
 kotlinx-html = { module = "org.jetbrains.kotlinx:kotlinx-html-jvm", version.require = "0.12.0" }
-kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.require = "2026.1.3" }
+kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.require = "2026.1.5" }
 
 # Custom
 data-model = { module = "xyz.dussim:data-model" }

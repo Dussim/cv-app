@@ -51,4 +51,5 @@ tasks.named("dependencyUpdates") {
 
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = "release-candidate"
 }
