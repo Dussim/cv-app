@@ -1,5 +1,5 @@
-import org.gradle.kotlin.dsl.support.serviceOf
-import java.io.ByteArrayOutputStream
+import buildparameters.BuildParametersExtension
+import xyz.dussim.settings.GitRevisionValueSource
 import java.nio.file.Files
 import java.util.Date
 
@@ -9,6 +9,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     includeBuild("gradle/build-logic")
     includeBuild("gradle/build-parameters")
+    includeBuild("gradle/git-revision-plugin")
     repositories {
         google {
             content {
@@ -48,13 +49,19 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("com.gradle.develocity").version("4.2.2")
+    id("com.gradle.develocity").version("4.3")
     id("xyz.dussim.build-parameters")
+    id("xyz.dussim.git-revision")
 }
 
 develocity {
-    val execOps = serviceOf<ExecOperations>()
-
+    val scanLogFile: File =
+        layout
+            .settingsDirectory
+            .file(".reports/scan-journal.log")
+            .asFile
+    val buildParameters = the<BuildParametersExtension>()
+    val gitHash = providers.of(GitRevisionValueSource::class) {}
     buildScan {
         publishing.onlyIf { false }
 
@@ -75,18 +82,13 @@ develocity {
 
         background {
             if (!buildParameters.ci) {
-                val output = ByteArrayOutputStream()
-                execOps.exec {
-                    commandLine("git", "rev-parse", "--short", "HEAD")
-                    standardOutput = output
-                }
-                value("Git Commit ID", output.toString())
+                value("Git Commit ID", gitHash.get())
             }
         }
 
         buildScanPublished {
             if (!buildParameters.ci) {
-                file(".reports/scan-journal.log")
+                scanLogFile
                     .apply {
                         if (!exists()) {
                             Files.createDirectories(toPath().parent)
