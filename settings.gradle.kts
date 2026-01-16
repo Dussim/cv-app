@@ -119,11 +119,7 @@ buildCache {
 
 includeBuild("backend")
 includeBuild("deployment")
-includeBuild("shared") {
-    dependencySubstitution {
-        substitute(module("xyz.dussim:data-model")).using(project(":data-model"))
-    }
-}
+includeBuild("shared")
 
 include(
     // Layer 1 - Modules that are not dependent on any other project module

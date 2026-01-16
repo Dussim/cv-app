@@ -8,6 +8,11 @@
 }%%
 
 graph TB
+  subgraph :core
+    :core:api-compose["api-compose"]
+    :core:api["api"]
+  end
+
   :core:api-compose -- api --> :core:api
 
 classDef android-library fill:#3BD482,stroke:#fff,stroke-width:2px,color:#fff;

@@ -8,6 +8,12 @@
 }%%
 
 graph TB
+  subgraph :core
+    :core:ui["ui"]
+    :core:data["data"]
+    :core:design-system["design-system"]
+  end
+
   :core:ui -- api --> :core:data
   :core:ui -- api --> :core:design-system
 

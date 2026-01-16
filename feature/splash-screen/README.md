@@ -8,6 +8,14 @@
 }%%
 
 graph TB
+  subgraph :feature
+    :feature:splash-screen["splash-screen"]
+  end
+  subgraph :core
+    :core:navigation["navigation"]
+    :core:api-compose["api-compose"]
+  end
+
   :feature:splash-screen -- api --> :core:navigation
   :feature:splash-screen -- implementation --> :core:api-compose
 

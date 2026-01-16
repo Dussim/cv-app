@@ -14,13 +14,13 @@ compose-bom = "2026.01.00"
 kotest = "6.0.7"
 
 # Plugins
-android-gradle = "8.12.3"
+android-gradle = "9.0.0"
 
 # Navigation
 voyager = "1.1.0-beta03"
 
 # Google
-baselineprofile = "1.4.1"
+baselineprofile = "1.5.0-alpha01"
 
 [libraries]
 # Kotlinx
@@ -83,6 +83,7 @@ data-model = { module = "xyz.dussim:data-model" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
+android-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

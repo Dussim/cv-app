@@ -8,6 +8,15 @@
 }%%
 
 graph TB
+  subgraph :feature
+    :feature:cv-content["cv-content"]
+  end
+  subgraph :core
+    :core:navigation["navigation"]
+    :core:api-compose["api-compose"]
+    :core:ui["ui"]
+  end
+
   :feature:cv-content -- api --> :core:navigation
   :feature:cv-content -- implementation --> :core:api-compose
   :feature:cv-content -- implementation --> :core:ui

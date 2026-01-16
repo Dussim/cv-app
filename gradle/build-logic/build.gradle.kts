@@ -16,11 +16,11 @@ dependencies {
             .toMavenCoordinates(),
     )
     implementation(
-        libs.plugins.android.application
+        libs.plugins.android.multiplatform.library
             .toMavenCoordinates(),
     )
     implementation(
-        libs.plugins.kotlin.android
+        libs.plugins.android.application
             .toMavenCoordinates(),
     )
     implementation(
