@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'dussim/build-env:jdk25_gradle-9.2.1_android-36'
+            image 'dussim/build-env:jdk25_gradle-9.3.0_android-36'
             args '-v gradle-cache:/home/gradle/.gradle --net=host'
         }
     }
@@ -13,15 +13,15 @@ pipeline {
         }
         stage('Gradle'){
             steps {
-                sh './gradlew --version'
-                sh './gradlew --status'
-                sh './gradlew buildEnvironment'
-                sh './gradlew -q javaToolchains'
+                sh 'gradle --version'
+                sh 'gradle --status'
+                sh 'gradle buildEnvironment'
+                sh 'gradle -q javaToolchains'
             }
         }
         stage('Build') {
             steps {
-                sh './gradlew :app:assembleDebug --scan'
+                sh 'gradle :app:assembleDebug --scan'
                 recordIssues([
                         enabledForFailure: true,
                         tool             : kotlin()
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Quality') {
             steps {
-                sh './gradlew ktlintCheck'
+                sh 'gradle ktlintCheck'
                 recordIssues([
                         enabledForFailure: true,
                         tool             : ktLint(pattern: '**/build/reports/ktlint/**/*.xml')
@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Versions') {
             steps {
-                sh './gradlew dependencyUpdates --no-parallel -Dorg.gradle.unsafe.isolated-projects=false'
+                sh 'gradle dependencyUpdates --no-parallel -Dorg.gradle.unsafe.isolated-projects=false'
             }
         }
     }
