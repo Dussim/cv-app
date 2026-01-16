@@ -16,7 +16,7 @@ internal class LocalProjectsDataSource : DataSource<List<Project>> by LocalDataS
                 ),
                 Project(
                     name = R.string.project_jmhreport_name,
-                    description = R.string.project_jmhreporth_description,
+                    description = R.string.project_jmhreport_description,
                     githubUrl = R.string.project_jmhreport_github_url,
                     contentDescription = R.string.project_jmhreport_content_description,
                 ),
