@@ -61,7 +61,7 @@ Notably, I was invited on two business trips to South Korea to support developme
     <string name="project_cv_app_github_url">https://github.com/Dussim/cv-app</string>
 
     <string name="project_jmhreport_name">Gradle JMH Report</string>
-    <string name="project_jmhreporth_description">A fork of unmaintained Gradle plugin updated to the newest standards used for generating HTML reports from raw JMH tests data</string>
+    <string name="project_jmhreport_description">A fork of unmaintained Gradle plugin updated to the newest standards used for generating HTML reports from raw JMH tests data</string>
     <string name="project_jmhreport_content_description">Gradle JMH Report plugin project</string>
     <string name="project_jmhreport_github_url">https://github.com/Dussim/gradle-jmh-report</string>
 
