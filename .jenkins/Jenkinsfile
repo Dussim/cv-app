@@ -38,11 +38,12 @@ pipeline {
                 ])
             }
         }
-        stage('Versions') {
-            steps {
-                sh 'gradle dependencyUpdates --no-parallel -Dorg.gradle.unsafe.isolated-projects=false'
-            }
-        }
+// disabled because android plugin does some stupid things (like always) that cause this plugin to throw exception
+//         stage('Versions') {
+//             steps {
+//                 sh 'gradle dependencyUpdates --no-parallel -Dorg.gradle.unsafe.isolated-projects=false'
+//             }
+//         }
     }
     post {
         always {
