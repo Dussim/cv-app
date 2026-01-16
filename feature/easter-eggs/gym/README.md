@@ -8,6 +8,17 @@
 }%%
 
 graph TB
+  subgraph :feature
+    subgraph :easter-eggs
+      :feature:easter-eggs:gym["gym"]
+    end
+  end
+  subgraph :core
+    :core:navigation["navigation"]
+    :core:api-compose["api-compose"]
+    :core:ui["ui"]
+  end
+
   :feature:easter-eggs:gym -- api --> :core:navigation
   :feature:easter-eggs:gym -- implementation --> :core:api-compose
   :feature:easter-eggs:gym -- implementation --> :core:ui

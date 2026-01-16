@@ -35,7 +35,7 @@ android {
             manifestPlaceholders["api-url-placeholder"] = "https://api.tuzim.xyz"
         }
 
-        getByName("staging") {
+        register("staging") {
             initWith(getByName("debug"))
             applicationIdSuffix = ".staging"
             versionNameSuffix = "-staging"

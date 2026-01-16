@@ -29,6 +29,7 @@ class ModuleUtilitiesPlugin : Plugin<Project> {
                 excludedConfigurationsRegex = ".*[Tt]est.*"
                 setStyleByModuleType = true
                 showFullPath = true
+                nestingEnabled = true
             }
 
             configure<KtlintExtension> {

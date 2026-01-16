@@ -1,6 +1,7 @@
 package xyz.dussim
 
 import com.android.build.api.dsl.LibraryExtension
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -15,12 +16,36 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         target.run {
             apply<ModuleUtilitiesPlugin>()
             pluginManager.apply(libs.plugins.android.library)
-            pluginManager.apply(libs.plugins.kotlin.android)
             pluginManager.apply(libs.plugins.kotlin.serialization)
             pluginManager.apply(libs.plugins.kotlin.parcelize)
 
             configure<LibraryExtension> {
-                baseConfig()
+                compileSdk = 36
+
+                defaultConfig {
+                    minSdk = 28
+                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                    vectorDrawables.useSupportLibrary = true
+                }
+
+                buildTypes.register("staging") {
+                    initWith(buildTypes.getByName("debug"))
+                }
+
+                buildTypes.named("release") {
+                    proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                }
+
+                packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
+
+                lint.abortOnError = false
+
+                compileOptions {
+                    sourceCompatibility = JavaVersion.VERSION_17
+                    targetCompatibility = JavaVersion.VERSION_17
+                }
+
+                testOptions.targetSdk = 36
 
                 testFixtures {
                     enable = true

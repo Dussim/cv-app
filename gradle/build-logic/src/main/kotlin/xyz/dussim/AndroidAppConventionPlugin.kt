@@ -1,6 +1,7 @@
 package xyz.dussim
 
 import com.android.build.api.dsl.ApplicationExtension
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -16,15 +17,14 @@ class AndroidAppConventionPlugin : Plugin<Project> {
             apply<ModuleUtilitiesPlugin>()
             apply<VersioningPlugin>()
             pluginManager.apply(libs.plugins.android.application)
-            pluginManager.apply(libs.plugins.kotlin.android)
             pluginManager.apply(libs.plugins.kotlin.serialization)
             pluginManager.apply(libs.plugins.kotlin.parcelize)
             pluginManager.apply(libs.plugins.kotlin.compose)
 
             configure<ApplicationExtension> {
-                baseConfig()
-
                 namespace = "xyz.dussim.cv"
+
+                compileSdk = 36
 
                 defaultConfig {
                     targetSdk = 36
@@ -36,6 +36,11 @@ class AndroidAppConventionPlugin : Plugin<Project> {
                         isMinifyEnabled = true
                         isShrinkResources = true
                     }
+                }
+
+                compileOptions{
+                    sourceCompatibility = JavaVersion.VERSION_17
+                    targetCompatibility = JavaVersion.VERSION_17
                 }
             }
 

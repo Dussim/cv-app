@@ -4,7 +4,6 @@ plugins {
     alias(conventions.plugins.xyz.dussim.module.utilities)
     alias(libs.plugins.gradle.versions)
     alias(libs.plugins.android.test) apply false
-    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.baselineprofile) apply false
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.stability.analyzer) apply false

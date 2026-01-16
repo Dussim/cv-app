@@ -8,6 +8,37 @@
 }%%
 
 graph TB
+  :app["app"]
+  :baselineProfile["baselineProfile"]
+  subgraph :core
+    :core:navigation["navigation"]
+    :core:data["data"]
+    :core:api-compose["api-compose"]
+    :core:api["api"]
+    :core:navigation["navigation"]
+    :core:api-compose["api-compose"]
+    :core:ui["ui"]
+    :core:model["model"]
+    :core:local["local"]
+    :core:network["network"]
+    :core:model["model"]
+    :core:network["network"]
+    :core:api["api"]
+    :core:local["local"]
+    :core:ui["ui"]
+    :core:design-system["design-system"]
+  end
+  subgraph :feature
+    :feature:splash-screen["splash-screen"]
+    :feature:splash-screen["splash-screen"]
+    :feature:cv-content["cv-content"]
+    :feature:cv-content["cv-content"]
+    subgraph :easter-eggs
+      :feature:easter-eggs:gym["gym"]
+      :feature:easter-eggs:gym["gym"]
+    end
+  end
+
   :core:navigation -- api --> :core:data
   :core:api-compose -- api --> :core:api
   :feature:splash-screen -- api --> :core:navigation

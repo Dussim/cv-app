@@ -8,6 +8,23 @@
 }%%
 
 graph TB
+  :app["app"]
+  :baselineProfile["baselineProfile"]
+  subgraph :core
+    :core:api-compose["api-compose"]
+    :core:ui["ui"]
+    :core:model["model"]
+    :core:local["local"]
+    :core:network["network"]
+  end
+  subgraph :feature
+    :feature:splash-screen["splash-screen"]
+    :feature:cv-content["cv-content"]
+    subgraph :easter-eggs
+      :feature:easter-eggs:gym["gym"]
+    end
+  end
+
   :app -- baselineProfile --> :baselineProfile
   :app -- implementation --> :core:api-compose
   :app -- implementation --> :core:ui
