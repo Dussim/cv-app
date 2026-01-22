@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        GRADLE_OPTS = '-Xmx6g -XX:+UseParallelGC -XX:+UseCompactObjectHeaders -XX:+UnlockExperimentalVMOptions -XX:+TrustFinalNonStaticFields'
+    }
     agent {
         docker {
             image 'dussim/build-env:jdk25_gradle-9.3.0_android-36'
